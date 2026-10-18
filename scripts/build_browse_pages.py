@@ -9,8 +9,10 @@ import shutil
 from urllib.parse import urlsplit
 
 from build_discovery_pages import collection_page_schema, jsonld_script
+from open_graph import open_graph_meta
 from build_repository_index import CATEGORIES
 from source_descriptions import description_fallback
+from source_scope import exclusion_counts, unavailable_clause
 
 CATEGORY_ICONS = {
     'web-analysis': 'globe', 'game-analysis': 'gamepad', 'android': 'phone',
@@ -51,9 +53,9 @@ def related_links(record: dict, language: str) -> str:
             if entry.get('kind') != kind:
                 continue
             identifier = entry['id']
-            href = ('/zh' if language == 'zh' else '') + f'/{route}/#{identifier}'
+            href = ('/zh' if language == 'zh' else '') + f'/{route}/{identifier}/'
             if entry[f'href_{language}'] != href:
-                raise ValueError('Related entry must use its internal catalog anchor')
+                raise ValueError('Related entry must use its internal detail page')
             links.append(f'<li><a class="source-related-link" href="{escape(href, quote=True)}">'
                          f'{escape(entry[f"title_{language}"])}</a></li>')
         if links:
@@ -109,6 +111,7 @@ def build_browse_pages(
 
     scanned = [record for record in source_document.get('resources', []) if record.get('scan_status') == 'readme-scanned']
     records = [record for record in scanned if record.get('scope_status') != 'excluded']
+    out_of_scope, unavailable = exclusion_counts(scanned)
     identifiers = [record['id'] for record in records]
     if len(identifiers) != len(set(identifiers)):
         raise ValueError('Duplicate repository IDs in browse pages')
@@ -134,9 +137,9 @@ def build_browse_pages(
         root_link = '/zh/' if zh else '/'
         search_link = '/zh/?view=source-index' if zh else '/?view=source-index&amp;lang=en'
         curated_link = '/zh/resources/' if zh else '/resources/'
-        scope_note = (f'共扫描 {len(scanned):,} 个仓库，提供 {len(records):,} 个浏览条目；{len(scanned)-len(records)} 个超出范围的条目仍保留在完整 JSON 中。'
-                      if zh else f'{len(records):,} repositories are available to browse from {len(scanned):,} successful README scans. The {len(scanned)-len(records)} out-of-scope records remain in the full JSON.')
-        provenance = ('这是自动发现的仓库索引，未逐项精选或运行测试。分类依据元数据；简介提供 AI 辅助中英翻译。星标为采集时快照。'
+        scope_note = (f'共扫描 {len(scanned):,} 个仓库，提供 {len(records):,} 个浏览条目；{out_of_scope} 个超出范围的条目{unavailable_clause(unavailable, zh)}仍保留在完整 JSON 中。'
+                      if zh else f'{len(records):,} repositories are available to browse from {len(scanned):,} successful README scans. The {out_of_scope} out-of-scope records{unavailable_clause(unavailable, zh)} remain in the full JSON.')
+        provenance = ('这是自动发现的仓库索引，未逐项精选或运行验证。分类依据元数据；简介提供 AI 辅助中英翻译。星标为采集时快照。'
                       if zh else 'This automatically discovered repository index has not been individually curated or execution-tested. Categories come from metadata; descriptions have AI-assisted translations. Stars are collection-time snapshots.')
         for category in (None, *CATEGORIES):
             path = browse_path(language, category)
@@ -194,19 +197,7 @@ def build_browse_pages(
   <link rel="alternate" hreflang="en" href="{english_url}">
   <link rel="alternate" hreflang="zh-CN" href="{chinese_url}">
   <link rel="alternate" hreflang="x-default" href="{english_url}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AwesomeREA.org">
-  <meta property="og:locale" content="{('zh_CN' if zh else 'en_US')}">
-  <meta property="og:locale:alternate" content="{('en_US' if zh else 'zh_CN')}">
-  <meta property="og:title" content="{escape(title, quote=True)}">
-  <meta property="og:description" content="{escape(description, quote=True)}">
-  <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{escape(social_image_href, quote=True)}">
-  <meta property="og:image:alt" content="{escape(title, quote=True)}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{escape(title, quote=True)}">
-  <meta name="twitter:description" content="{escape(description, quote=True)}">
-  <meta name="twitter:image" content="{escape(social_image_href, quote=True)}">
+  {open_graph_meta(language=language, title=title, description=description, image_url=social_image_href, url=canonical)}
   <link rel="icon" href="{escape(favicon_href, quote=True)}" type="image/svg+xml">
   <link rel="stylesheet" href="{escape(styles_href, quote=True)}">
   <link rel="stylesheet" href="{escape(browse_styles_href, quote=True)}">
@@ -230,7 +221,7 @@ def build_browse_pages(
     <p>{escape(description)}</p>
   </section>
   <div class="browse-actions"><a class="button button-primary" href="{search_link}">{icon('search', use_pro)}{('搜索仓库' if zh else 'Search repositories')}</a><a class="button button-outline" href="{curated_link}">{('精选资源' if zh else 'Curated resources')} <span class="browse-count">{curated_count:,}</span></a><a class="browse-download" href="/source-index.json?v={data_revision}" download="awesomerea-repository-index.json" type="application/json">{('下载完整 JSON ↓' if zh else 'Download full JSON ↓')}</a></div>
-  <details class="browse-provenance"><summary>{('关于这个索引' if zh else 'About this index')}</summary><p>{escape(scope_note)}</p><p>{escape(provenance)}</p><p><a href="{escape(repository_url, quote=True)}/blob/main/docs/source-scan.md">{('扫描方法 ↗' if zh else 'Scan methodology ↗')}</a> · <a href="{escape(repository_url, quote=True)}/blob/main/data/source-scope.json">{('范围排除记录 ↗' if zh else 'Scope exclusions ↗')}</a></p></details>
+  <details class="browse-provenance"><summary>{('关于这个索引' if zh else 'About this index')}</summary><p>{escape(scope_note)}</p><p>{escape(provenance)}</p><p><a href="{escape(repository_url, quote=True)}/blob/main/docs/source-scan.md">{('扫描方法（英文）↗' if zh else 'Scan methodology ↗')}</a> · <a href="{escape(repository_url, quote=True)}/blob/main/data/source-scope.json">{('范围排除记录 ↗' if zh else 'Scope exclusions ↗')}</a></p></details>
   {('<nav class="browse-category-nav" aria-label="' + ('仓库分类' if zh else 'Repository categories') + '">' + ''.join(category_links) + '</nav>' if category else '')}
   <div class="browse-topline"><p>{count_text}</p><p>{date_text}</p></div>
   {content}

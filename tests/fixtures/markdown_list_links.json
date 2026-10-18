@@ -1,0 +1,401 @@
+{
+  "renderer": "https://api.github.com/markdown",
+  "mode": "gfm",
+  "context": null,
+  "observed_at": "2026-10-17T11:42:30.688672+00:00",
+  "note": "GitHub HTML confirms visible destinations; source line numbers are asserted separately. The empty-item/four-space expectation was corrected to the observed top-level code block. Tests do not call the network. The collector preserves its existing pattern-group order; rendered href inventories compare multiplicities, not order. Peer probes cover multiline code and preformatted text while retaining real HTML links.",
+  "cases": [
+    {
+      "id": "nested-unordered",
+      "markdown": "- Parent\n    - [Nested](missing-nested.md)\n",
+      "expected_links": [
+        [
+          "missing-nested.md",
+          2
+        ]
+      ],
+      "html": "<ul>\n<li>Parent\n<ul>\n<li><a href=\"missing-nested.md\">Nested</a></li>\n</ul>\n</li>\n</ul>",
+      "html_sha256": "9c7212c7c362c8cef4df6c39d78e7276ad49d699c265e49d9d5af049365f883b"
+    },
+    {
+      "id": "blank-separated-list-paragraph",
+      "markdown": "- Parent\n\n    Continued [guide](missing-guide.md).\n",
+      "expected_links": [
+        [
+          "missing-guide.md",
+          3
+        ]
+      ],
+      "html": "<ul>\n<li>\n<p>Parent</p>\n<p>Continued <a href=\"missing-guide.md\">guide</a>.</p>\n</li>\n</ul>",
+      "html_sha256": "ebd547ddc9db2dc24d21264c75477560ee20a2852878276daf2f7a3b0b07d22c"
+    },
+    {
+      "id": "multi-digit-ordered-padding",
+      "markdown": "10. Parent\n\n    Continued [guide](missing-ordered.md).\n",
+      "expected_links": [
+        [
+          "missing-ordered.md",
+          3
+        ]
+      ],
+      "html": "<ol start=\"10\">\n<li>\n<p>Parent</p>\n<p>Continued <a href=\"missing-ordered.md\">guide</a>.</p>\n</li>\n</ol>",
+      "html_sha256": "3d12e2fa9bf0cb9676afca6092ad02517ef8fab68b3826761057cd3b05ddaaaa"
+    },
+    {
+      "id": "mixed-nesting",
+      "markdown": "1. Parent\n   - Child\n\n     Continued [guide](missing-mixed.md).\n",
+      "expected_links": [
+        [
+          "missing-mixed.md",
+          4
+        ]
+      ],
+      "html": "<ol>\n<li>Parent\n<ul>\n<li>\n<p>Child</p>\n<p>Continued <a href=\"missing-mixed.md\">guide</a>.</p>\n</li>\n</ul>\n</li>\n</ol>",
+      "html_sha256": "cd737be44d7d92de3de3ce3c762fd69c149f57a02d388ca11891f08f60d8d381"
+    },
+    {
+      "id": "tab-in-list",
+      "markdown": "- Parent\n\n\tContinued [guide](missing-tab.md).\n",
+      "expected_links": [
+        [
+          "missing-tab.md",
+          3
+        ]
+      ],
+      "html": "<ul>\n<li>\n<p>Parent</p>\n<p>Continued <a href=\"missing-tab.md\">guide</a>.</p>\n</li>\n</ul>",
+      "html_sha256": "fcf5d3eb8331ae3f11168ce0a9d70e4fbf761a724907dc8d5e1aec5cc1bab2a6"
+    },
+    {
+      "id": "dedent-after-list",
+      "markdown": "- Parent\n  Continued [guide](missing-inside.md).\n\nOutside [guide](missing-outside.md).\n",
+      "expected_links": [
+        [
+          "missing-inside.md",
+          2
+        ],
+        [
+          "missing-outside.md",
+          4
+        ]
+      ],
+      "html": "<ul>\n<li>Parent<br>\nContinued <a href=\"missing-inside.md\">guide</a>.</li>\n</ul>\n<p>Outside <a href=\"missing-outside.md\">guide</a>.</p>",
+      "html_sha256": "02d9eec4fd50b598f12a295d837a7b1b73f8d0f3a38bf65ee49a5dba5b48fc44"
+    },
+    {
+      "id": "literal-next-to-real",
+      "markdown": "- Parent\n    \\[literal\\]\\(missing-literal.md#nope)\n    [Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          3
+        ]
+      ],
+      "html": "<ul>\n<li>Parent<br>\n[literal](missing-literal.md#nope)<br>\n<a href=\"missing-real.md\">Real</a></li>\n</ul>",
+      "html_sha256": "d10e123358eaecb7d2094c102c554692a49b9a8cbcfc68b3924ce95ef7c22f47"
+    },
+    {
+      "id": "top-level-indented-code",
+      "markdown": "# Fixture\n\n    [Code](missing-code.md)\n",
+      "expected_links": [],
+      "html": "<h1>Fixture</h1>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-code.md)\n</code></pre>",
+      "html_sha256": "022612826a8d8f4a658a67c10d3eb83551f4bd0e5eb3d79f5da8f612b7742c4f"
+    },
+    {
+      "id": "top-level-tab-code",
+      "markdown": "# Fixture\n\n\t[Code](missing-tab-code.md)\n",
+      "expected_links": [],
+      "html": "<h1>Fixture</h1>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-tab-code.md)\n</code></pre>",
+      "html_sha256": "39f148ec9bcae3e95bab40c80af7c5005a3e10322d9302d036ba4d5b22f73d3d"
+    },
+    {
+      "id": "list-relative-indented-code",
+      "markdown": "- Parent\n\n      [Code](missing-list-code.md)\n",
+      "expected_links": [],
+      "html": "<ul>\n<li>\n<p>Parent</p>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-list-code.md)\n</code></pre>\n</li>\n</ul>",
+      "html_sha256": "73bb5f2f81147774b39a87ede4ec0c63912da967289e21b9962edaa51044ada5"
+    },
+    {
+      "id": "nested-list-relative-code",
+      "markdown": "- Parent\n    - Child\n\n          [Code](missing-child-code.md)\n",
+      "expected_links": [],
+      "html": "<ul>\n<li>Parent\n<ul>\n<li>\n<p>Child</p>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-child-code.md)\n</code></pre>\n</li>\n</ul>\n</li>\n</ul>",
+      "html_sha256": "2a52fea995e3c29306a4c441152e46a953b892aa8882a03f7d3ed7cee5fa9694"
+    },
+    {
+      "id": "nested-list-fence",
+      "markdown": "- Parent\n    - Child\n\n      ```md\n      [Code](missing-fenced.md)\n      ```\n",
+      "expected_links": [],
+      "html": "<ul>\n<li>Parent\n<ul>\n<li>\n<p>Child</p>\n<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing-fenced.md</span><span class=\"pl-s\">)</span></pre></div>\n</li>\n</ul>\n</li>\n</ul>",
+      "html_sha256": "6a591137f2d2ceb7d30685a41114eae4393bdc2bf6c44a2e1970451d771a5c67"
+    },
+    {
+      "id": "fence-on-marker-line",
+      "markdown": "- ```md\n  [Code](missing-fenced.md)\n  ```\n\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          5
+        ]
+      ],
+      "html": "<ul>\n<li>\n<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing-fenced.md</span><span class=\"pl-s\">)</span></pre></div>\n</li>\n</ul>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "3003b75acc0e66573ee8af6bee7f4d66fe1a526a019852d8ab18a5f705f9a8b4"
+    },
+    {
+      "id": "short-or-mismatched-fence",
+      "markdown": "````md\n[Code](missing-one.md)\n```\n~~~\n[Code](missing-two.md)\n````\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          7
+        ]
+      ],
+      "html": "<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing-one.md</span><span class=\"pl-s\">)</span>\n<span class=\"pl-s\">```</span><span class=\"pl-c1\"></span>\n<span class=\"pl-c1\">~~~</span>\n<span class=\"pl-c1\">[Code](missing-two.md)</span></pre></div>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "97724528ab3a54aadbb89645d1a022706c2ade2fec6f81e5adfc3c2bd6df7096"
+    },
+    {
+      "id": "closing-fence-needs-only-whitespace",
+      "markdown": "```md\n[Code](missing-one.md)\n``` trailing prose\n[Code](missing-two.md)\n```\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          6
+        ]
+      ],
+      "html": "<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing-one.md</span><span class=\"pl-s\">)</span>\n<span class=\"pl-s\">```</span> <span class=\"pl-en\">trailing</span> prose<span class=\"pl-c1\"></span>\n<span class=\"pl-c1\">[Code](missing-two.md)</span></pre></div>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "308c294c5723d1e794031a328a895cf45d4ec6706b3ab776bcdde2bb8fa23966"
+    },
+    {
+      "id": "unclosed-root-fence",
+      "markdown": "~~~md\n[Code](missing.md)\n",
+      "expected_links": [],
+      "html": "<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing.md</span><span class=\"pl-s\">)</span></pre></div>",
+      "html_sha256": "5ff70fb5562fe29f6dbe4e5135167681c2755d84df87de87f3436e2a9742b721"
+    },
+    {
+      "id": "inline-code",
+      "markdown": "- Parent\n    `[Code](missing-inline.md)` and [Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          2
+        ]
+      ],
+      "html": "<ul>\n<li>Parent<br>\n<code class=\"notranslate\">[Code](missing-inline.md)</code> and <a href=\"missing-real.md\">Real</a></li>\n</ul>",
+      "html_sha256": "2f27736f60092fb1d9c3720b4599d9a6da2b8c5adad5cbaebae0b8b959809374"
+    },
+    {
+      "id": "current-173-generated-literal",
+      "markdown": "- Parent\n    \\[literal\\]\\(missing-literal.md#nope)\n",
+      "expected_links": [],
+      "html": "<ul>\n<li>Parent<br>\n[literal](missing-literal.md#nope)</li>\n</ul>",
+      "html_sha256": "ba9f5877aa62a9ae5549aac9885a3659ea76598ac929fb90d6533b4562c5828c"
+    },
+    {
+      "id": "paragraph-cannot-be-interrupted-by-indent",
+      "markdown": "Paragraph\n    Visible [link](missing-continuation.md)\n",
+      "expected_links": [
+        [
+          "missing-continuation.md",
+          2
+        ]
+      ],
+      "html": "<p>Paragraph<br>\nVisible <a href=\"missing-continuation.md\">link</a></p>",
+      "html_sha256": "483705d2dcb906c239f24c48648360423921341b896662989bcc395ef93d279c"
+    },
+    {
+      "id": "indented-code-after-heading",
+      "markdown": "# Heading\n    [Code](missing-code.md)\n",
+      "expected_links": [],
+      "html": "<h1>Heading</h1>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-code.md)\n</code></pre>",
+      "html_sha256": "0ee77652879e4e7f236ad92cd9d4d8d97f299f37336b5eeae5b364b354bf91b7"
+    },
+    {
+      "id": "empty-list-item-continued",
+      "markdown": "-\n\n  [Link](missing-empty-item.md)\n",
+      "expected_links": [
+        [
+          "missing-empty-item.md",
+          3
+        ]
+      ],
+      "html": "<ul>\n<li></li>\n</ul>\n<p><a href=\"missing-empty-item.md\">Link</a></p>",
+      "html_sha256": "6a07079a12dca6443679c877d4c9492cc69833734d310f16af8f0cf382c1878c"
+    },
+    {
+      "id": "excess-marker-padding-is-code",
+      "markdown": "-     [Code](missing-padding-code.md)\n",
+      "expected_links": [],
+      "html": "<ul>\n<li>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-padding-code.md)\n</code></pre>\n</li>\n</ul>",
+      "html_sha256": "20ef2a9fa0f9938295fa1d08ab44cb79a0954b7c6b49b0fff45dce3465d851e1"
+    },
+    {
+      "id": "list-marker-inside-list-code",
+      "markdown": "- Parent\n\n      - [Code](missing-marked-code.md)\n",
+      "expected_links": [],
+      "html": "<ul>\n<li>\n<p>Parent</p>\n<pre class=\"notranslate\"><code class=\"notranslate\">- [Code](missing-marked-code.md)\n</code></pre>\n</li>\n</ul>",
+      "html_sha256": "09403f3d73355bbf719a6697ce603bf1895c2c53c6e31c088f4955e9b80bc7d9"
+    },
+    {
+      "id": "ordered-relative-code",
+      "markdown": "10. Parent\n\n        [Code](missing-ordered-code.md)\n",
+      "expected_links": [],
+      "html": "<ol start=\"10\">\n<li>\n<p>Parent</p>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-ordered-code.md)\n</code></pre>\n</li>\n</ol>",
+      "html_sha256": "c8b9d449b216a0c51c2cebe7752afc8b1a49ba4c2cb7c53d80491547e9c8dc3d"
+    },
+    {
+      "id": "unclosed-list-fence-ends-with-container",
+      "markdown": "- ```md\n  [Code](missing-fenced.md)\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          3
+        ]
+      ],
+      "html": "<ul>\n<li>\n<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing-fenced.md</span><span class=\"pl-s\">)</span></pre></div>\n</li>\n</ul>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "3003b75acc0e66573ee8af6bee7f4d66fe1a526a019852d8ab18a5f705f9a8b4"
+    },
+    {
+      "id": "unclosed-child-fence-outer-continuation",
+      "markdown": "- Parent\n  - ```md\n    [Code](missing-fenced.md)\n  [Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          4
+        ]
+      ],
+      "html": "<ul>\n<li>Parent\n<ul>\n<li>\n<div class=\"highlight highlight-text-md\"><pre class=\"notranslate\"><span class=\"pl-s\">[</span>Code<span class=\"pl-s\">]</span><span class=\"pl-s\">(</span><span class=\"pl-corl\">missing-fenced.md</span><span class=\"pl-s\">)</span></pre></div>\n</li>\n</ul>\n<a href=\"missing-real.md\">Real</a></li>\n</ul>",
+      "html_sha256": "fd0668ab40e94c33ae29339803c1582d138eff20a5029c939c54eb16fe0ed462"
+    },
+    {
+      "id": "fence-too-indented-at-root",
+      "markdown": "    ```md\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          2
+        ]
+      ],
+      "html": "<pre class=\"notranslate\"><code class=\"notranslate\">```md\n</code></pre>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "2143f76799b53393d0149aecb1c6f275c328d42206dcdfe80f88d9a2f00b3af2"
+    },
+    {
+      "id": "sibling-after-list-code",
+      "markdown": "- Parent\n\n      [Code](missing-code.md)\n- [Sibling](missing-sibling.md)\n",
+      "expected_links": [
+        [
+          "missing-sibling.md",
+          4
+        ]
+      ],
+      "html": "<ul>\n<li>\n<p>Parent</p>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-code.md)\n</code></pre>\n</li>\n<li>\n<p><a href=\"missing-sibling.md\">Sibling</a></p>\n</li>\n</ul>",
+      "html_sha256": "9d5a451f8657dc48d9d6c3041554f0ed089cee050f20975c268d01b36adc4946"
+    },
+    {
+      "id": "ordered-marker-not-interrupting-paragraph",
+      "markdown": "Paragraph\n2. text\n    [Visible](missing-visible.md)\n",
+      "expected_links": [
+        [
+          "missing-visible.md",
+          3
+        ]
+      ],
+      "html": "<p>Paragraph<br>\n2. text<br>\n<a href=\"missing-visible.md\">Visible</a></p>",
+      "html_sha256": "573dd0d41b9754d99dad92649c4995bac1ad6ae119d08325e2e8b54e9422a4e4"
+    },
+    {
+      "id": "list-marker-width-three-spaces",
+      "markdown": "-   Parent\n\n    [Visible](missing-width.md)\n",
+      "expected_links": [
+        [
+          "missing-width.md",
+          3
+        ]
+      ],
+      "html": "<ul>\n<li>\n<p>Parent</p>\n<p><a href=\"missing-width.md\">Visible</a></p>\n</li>\n</ul>",
+      "html_sha256": "5d51b841a9c795f254e1d682040904e7aec5fac0a786de4088a1f1f6b55949b3"
+    },
+    {
+      "id": "fence-backtick-info-invalid",
+      "markdown": "```bad`info\n[Visible](missing-visible.md)\n",
+      "expected_links": [
+        [
+          "missing-visible.md",
+          2
+        ]
+      ],
+      "html": "<p>```bad`info<br>\n<a href=\"missing-visible.md\">Visible</a></p>",
+      "html_sha256": "a2207d6d2deba0cc54315694feb8eb45a5ed3fcaa6152bd6510d98c705dd82fb"
+    },
+    {
+      "id": "top-level-link-after-code-blank",
+      "markdown": "    [Code](missing-code.md)\n\n[Visible](missing-visible.md)\n",
+      "expected_links": [
+        [
+          "missing-visible.md",
+          3
+        ]
+      ],
+      "html": "<pre class=\"notranslate\"><code class=\"notranslate\">[Code](missing-code.md)\n</code></pre>\n<p><a href=\"missing-visible.md\">Visible</a></p>",
+      "html_sha256": "310af8a1e1e13beea3b240c7366760375ad3e731cd3b9d533309e2725cbd1a10"
+    },
+    {
+      "id": "empty-list-four-space-continuation",
+      "markdown": "-\n\n    [Link](missing-empty-list.md)\n",
+      "expected_links": [],
+      "html": "<ul>\n<li></li>\n</ul>\n<pre class=\"notranslate\"><code class=\"notranslate\">[Link](missing-empty-list.md)\n</code></pre>",
+      "html_sha256": "3ad59672e0eb95f385bf5d76ed19279a03e672cd2f247bf202e0c2d2fca18542"
+    },
+    {
+      "id": "setext-marker-without-paragraph",
+      "markdown": "=\n    [Link](missing-continuation.md)\n",
+      "expected_links": [
+        [
+          "missing-continuation.md",
+          2
+        ]
+      ],
+      "html": "<p>=<br>\n<a href=\"missing-continuation.md\">Link</a></p>",
+      "html_sha256": "513f8b9c073cefb44ab4e035f7a67edc74914afe60a7843c0f8605526c1d0531"
+    },
+    {
+      "id": "multiline-inline-code-in-continuation",
+      "markdown": "- Parent\n  `example\n    [Code](missing-code.md)\n  continued`\n\n  [Real](missing-real.md#x)\n",
+      "expected_links": [
+        [
+          "missing-real.md#x",
+          6
+        ]
+      ],
+      "html": "<ul>\n<li>\n<p>Parent<br>\n<code class=\"notranslate\">example [Code](missing-code.md) continued</code></p>\n<p><a href=\"missing-real.md#x\">Real</a></p>\n</li>\n</ul>",
+      "html_sha256": "2ee6158ef417c0540bb8525b95a435fe99f24d3551af2dd7b8905cb87256ca68"
+    },
+    {
+      "id": "html-pre-indented-code",
+      "markdown": "<pre>\n    [Code](missing-code.md)\n</pre>\n\n[Real](missing-real.md)\n",
+      "expected_links": [
+        [
+          "missing-real.md",
+          5
+        ]
+      ],
+      "html": "<pre class=\"notranslate\">    [Code](missing-code.md)\n</pre>\n<p><a href=\"missing-real.md\">Real</a></p>",
+      "html_sha256": "e26c6bee95e2c866fea7ab9bb10286d15ae8d97d51ed69518e1ad93aca35e0d6"
+    },
+    {
+      "id": "pre-intervening-text-and-html-link",
+      "markdown": "<pre>\nliteral text\n    [Code](missing-code.md)\n<a href=\"real.md#heading\">Real HTML link</a>\n</pre>\n\n[After](after.md)\n",
+      "expected_links": [
+        [
+          "after.md",
+          7
+        ],
+        [
+          "real.md#heading",
+          4
+        ]
+      ],
+      "html": "<pre class=\"notranslate\">literal text\n    [Code](missing-code.md)\n<a href=\"real.md#heading\">Real HTML link</a>\n</pre>\n<p><a href=\"after.md\">After</a></p>",
+      "html_sha256": "2b1560746cb4db0344a5b5a363cf9302fb3f2c0f11391ab2fed7c3588cf3743f"
+    }
+  ]
+}

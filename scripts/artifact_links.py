@@ -56,7 +56,7 @@ def related_entry(kind: str, record: dict) -> dict:
     route = 'papers' if kind == 'paper' else 'resources'
     return {
         'kind': kind, 'id': identifier, 'title_en': title_en, 'title_zh': title_zh,
-        'href_en': f'/{route}/#{identifier}', 'href_zh': f'/zh/{route}/#{identifier}',
+        'href_en': f'/{route}/{identifier}/', 'href_zh': f'/zh/{route}/{identifier}/',
         'match_basis': 'bibliography-artifact-repository' if kind == 'paper' else 'curated-canonical-repository',
     }
 

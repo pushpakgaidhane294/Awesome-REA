@@ -218,7 +218,8 @@
     ],
     "targets": [
       "website",
-      "app"
+      "app",
+      "protocol"
     ],
     "kind": "documentation"
   },
@@ -239,6 +240,76 @@
     ],
     "targets": [
       "firmware"
+    ],
+    "kind": "documentation"
+  },
+  {
+    "id": "rea-packet-captures",
+    "name": "Recorded packet capture inspection",
+    "url": "https://github.com/morluto/rea/blob/main/docs/packet-captures.md",
+    "category": "workflow-guides",
+    "relationship": "official-documentation",
+    "description_en": "Select TShark fields, display filters and decode-as rules over an existing network, USB or Bluetooth capture, and look up installed field names. It does not capture traffic, open an interface or control a device.",
+    "description_zh": "用 TShark 字段、显示过滤器和 decode-as 规则检查已有的网络、USB 或蓝牙抓包，并可查询已安装的字段名；不抓取流量、不打开网络接口，也不控制设备。",
+    "evidence_url": "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/docs/packet-captures.md",
+    "additional_evidence_urls": [
+      "https://github.com/morluto/rea/blob/3b79af28e80785afce9f5998d8f03289402a1847/CHANGELOG.md"
+    ],
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Caller-supplied TShark 4.x on Linux with util-linux prlimit; macOS and Windows hosts are refused before inspection. Listed in the rea-agents 6.5.0 release notes.",
+      "Dissector output describes the selected recording, not verified device behavior. Upstream fixtures are generated Ethernet/UDP/DNS and Bluetooth HCI PCAPs; PCAPNG, USB, BLE ATT and physical capture are not established by them."
+    ],
+    "targets": [
+      "protocol"
+    ],
+    "kind": "documentation"
+  },
+  {
+    "id": "rea-pcap-summaries",
+    "name": "Packet capture summaries",
+    "url": "https://github.com/morluto/rea/blob/main/docs/pcap-analysis.md",
+    "category": "workflow-guides",
+    "relationship": "official-documentation",
+    "description_en": "Summarize a saved pcap or pcapng file’s endpoints, DNS questions and addresses, TLS SNI, protocol stacks and HTTP URIs into paged Evidence views. It does not capture traffic or fetch recorded targets.",
+    "description_zh": "把已保存 pcap/pcapng 文件中的端点、DNS 查询与地址、TLS SNI、协议栈和 HTTP URI 汇总为可分页的 Evidence 视图；不抓取流量，也不访问记录中的目标。",
+    "evidence_url": "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/docs/pcap-analysis.md",
+    "additional_evidence_urls": [
+      "https://github.com/morluto/rea/blob/3b79af28e80785afce9f5998d8f03289402a1847/CHANGELOG.md"
+    ],
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Caller-supplied Wireshark 4.x tshark and capinfos. Capture inspection needs Linux with util-linux prlimit or Windows Job Objects; macOS reports a capability gap. Listed in the rea-agents 6.5.0 release notes.",
+      "Upstream’s current verification used Linux, Node 24.18.0 and Wireshark 4.0.17; actual Windows execution is unverified. Summaries do not establish decrypted payloads, process identity or the absence of unrecorded traffic."
+    ],
+    "targets": [
+      "protocol"
+    ],
+    "kind": "documentation"
+  },
+  {
+    "id": "rea-signal-recordings",
+    "name": "Recorded signal decoding",
+    "url": "https://github.com/morluto/rea/blob/main/docs/signal-recordings.md",
+    "category": "workflow-guides",
+    "relationship": "official-documentation",
+    "description_en": "Run caller-chosen sigrok protocol decoders, such as UART or I2C, over an existing logic-signal recording and keep annotation text with sample ranges. It does not acquire samples or communicate with hardware.",
+    "description_zh": "用调用方指定的 sigrok 协议解码器（如 UART、I2C）解码已有的逻辑信号记录，并保留带采样区间的注释文本；不采集样本，也不与硬件通信。",
+    "evidence_url": "https://github.com/morluto/rea/blob/808339f0b1cf3837445f392b5d5f1f362d64a27d/docs/signal-recordings.md",
+    "additional_evidence_urls": [
+      "https://github.com/morluto/rea/blob/3b79af28e80785afce9f5998d8f03289402a1847/CHANGELOG.md"
+    ],
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Caller-supplied sigrok-cli 0.7.2 with libsigrokdecode on Linux, plus util-linux prlimit; macOS and Windows are refused. Listed in the rea-agents 6.5.0 release notes.",
+      "The caller supplies decoder stacks, channel names and settings such as baud rate. Upstream’s fixture is a synthesized 9600-baud UART VCD; other formats, decoders and physical acquisition are not established."
+    ],
+    "targets": [
+      "firmware",
+      "protocol"
     ],
     "kind": "documentation"
   },
@@ -392,7 +463,7 @@
     "relationship": "community-learning-resource",
     "description_en": "An Electron practice target, Evidence extractor and MCP probe; offline fixture mode is distinguished from real REA analysis.",
     "description_zh": "提供 Electron 练习目标、Evidence 提取与 MCP 探测，区分离线展示和真正调用 REA。",
-    "evidence_url": "https://github.com/jinshi666888/rea-playbook/blob/main/README.md",
+    "evidence_url": "https://github.com/jinshi666888/rea-playbook/blob/0ad65a85139025f32402be13ed64c8003e39b00a/README.md",
     "verified_at": "2026-10-15",
     "verification": "source-reviewed",
     "requirements": [
@@ -412,7 +483,7 @@
     "relationship": "community-integration",
     "description_en": "A community MCP bridge presents a smaller selected tool surface and forwards explicit commands to the REA CLI.",
     "description_zh": "社区 MCP 适配桥，以精选工具和 CLI 转发缩小宿主需要处理的工具面。",
-    "evidence_url": "https://github.com/Ersith/dsh-mcp-rea/blob/main/README.md",
+    "evidence_url": "https://github.com/Ersith/dsh-mcp-rea/blob/74e82f09e3f78fc945e07321d729e2e6b56406a8/README.md",
     "verified_at": "2026-10-15",
     "verification": "source-reviewed",
     "requirements": [
@@ -437,8 +508,8 @@
     "relationship": "community-integration",
     "description_en": "A Claude Code plugin adds Jev-based routing and evidence checks around a pinned REA MCP integration.",
     "description_zh": "Claude Code 社区插件，在固定版本 REA MCP 外增加 Jev 路由和证据检查。",
-    "evidence_url": "https://github.com/juan-viox/rea-jev/blob/main/README.md",
-    "verified_at": "2026-10-15",
+    "evidence_url": "https://github.com/juan-viox/rea-jev/blob/236f149638971d1c98399fc9de864378b2011bfd/README.md",
+    "verified_at": "2026-10-17T12:48:42Z",
     "verification": "source-reviewed",
     "requirements": [
       "Claude Code, supported Node.js and the plugin's documented macOS/Linux environment.",
@@ -459,8 +530,8 @@
     "relationship": "community-learning-resource",
     "description_en": "A Windows REA/Ghidra lab with seeded challenges, published studies, upstream contributions and recorded limitations.",
     "description_zh": "Windows REA/Ghidra 实验室，提供已知答案挑战、公开研究、上游贡献与限制说明。",
-    "evidence_url": "https://github.com/pablodiazjorge/rea-lab/blob/main/README.md",
-    "verified_at": "2026-10-15",
+    "evidence_url": "https://github.com/pablodiazjorge/rea-lab/blob/c96b76b75046fc884b8d7526205f1adb9497a5d7/README.md",
+    "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "requirements": [
       "The documented environment uses Windows 11, REA 6.4.0 and Ghidra 12.1.4.",
@@ -480,7 +551,7 @@
     "relationship": "community-integration",
     "description_en": "A Claude Code mod collects received REA Evidence, tracks unknowns and records findings that cite delivered evidence IDs.",
     "description_zh": "Claude Code mod 汇集收到的 REA Evidence、追踪 unknown，并校验发现所引用的证据 ID。",
-    "evidence_url": "https://github.com/pablodiazjorge/rea-casebook/blob/main/README.md",
+    "evidence_url": "https://github.com/pablodiazjorge/rea-casebook/blob/311c29688c82048971b2ef86df59e0ed78310fd8/README.md",
     "verified_at": "2026-10-15",
     "verification": "source-reviewed",
     "requirements": [
@@ -511,7 +582,6 @@
     ],
     "targets": [
       "app",
-      "firmware",
       "protocol"
     ],
     "kind": "case-study"
@@ -524,8 +594,8 @@
     "relationship": "upstream-maintainer-companion-list",
     "description_en": "A task-oriented reverse-engineering resource list by REA's maintainer, useful for broader tools and foundations.",
     "description_zh": "REA 维护者整理的通用逆向资源目录，适合查找基础知识与相邻工具。",
-    "evidence_url": "https://github.com/morluto/awesome-reverse-engineering/blob/main/README.md",
-    "verified_at": "2026-10-15",
+    "evidence_url": "https://github.com/morluto/awesome-reverse-engineering/blob/901e752191ebdff4f1b8e1a2f15c82fef2de77e7/README.md",
+    "verified_at": "2026-10-17T12:48:42Z",
     "verification": "source-reviewed",
     "requirements": [
       "Individual tools retain their own requirements and licenses.",
@@ -548,8 +618,11 @@
     "relationship": "community-learning-resource",
     "description_en": "A bilingual collection of REA and other AI-assisted reverse engineering cases, with source links and explicit distinctions between reported and reproduced outcomes.",
     "description_zh": "中英双语的 REA 与其他 AI 辅助逆向案例合集，附来源并区分作者报告、进行中的工作和复现状态。",
-    "evidence_url": "https://github.com/songshikang0111/awesome-REA-cases/blob/main/README.md",
-    "verified_at": "2026-10-16T01:08:16Z",
+    "evidence_url": "https://github.com/songshikang0111/awesome-REA-cases/blob/afea8a6c6ea29559533cf5ba4063e15b6649e0af/README.md",
+    "additional_evidence_urls": [
+      "https://github.com/songshikang0111/awesome-REA-cases/blob/afea8a6c6ea29559533cf5ba4063e15b6649e0af/README.zh-CN.md"
+    ],
+    "verified_at": "2026-10-17T12:48:42Z",
     "verification": "source-reviewed",
     "requirements": "A discovery index; review each case's original source, redistribution rights, and evidence status before reproducing it.",
     "targets": [
@@ -661,7 +734,8 @@
       "Device compatibility and formula accuracy are project claims not independently tested here. The reviewed primary files do not establish REA use."
     ],
     "targets": [
-      "protocol"
+      "protocol",
+      "app"
     ],
     "kind": "case-study",
     "additional_evidence_urls": [
@@ -1360,6 +1434,560 @@
     "additional_evidence_urls": [
       "https://github.com/k4zmu2a/SpaceCadetPinball/blob/cb9b7b886244a27773f66b0b19fdc2998392565e/CMakeLists.txt",
       "https://github.com/k4zmu2a/SpaceCadetPinball/blob/cb9b7b886244a27773f66b0b19fdc2998392565e/LICENSE"
+    ]
+  },
+  {
+    "id": "sm64-decomp-case",
+    "name": "Super Mario 64: ROM reconstruction with explicit comparison gates",
+    "url": "https://github.com/n64decomp/sm64",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reconstructs Super Mario 64 source for Japanese, North American, European, Shindou and iQue releases. Its build files distinguish original-ROM hash comparison from nonmatching or modified configurations, while source naming and documentation remain ongoing.",
+    "description_zh": "为日版、北美版、欧洲版、Shindou 版和 iQue 版 Super Mario 64 重建源码。构建文件区分原 ROM 哈希比较与非匹配或修改配置；源码命名和文档工作仍在推进。",
+    "evidence_url": "https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the user’s matching original ROM for asset extraction. The five target releases are separate; this repository’s reconstruction should not be confused with the separately maintained sm64ex, Ghostship or multiplayer ports.",
+      "The documented build uses GNU make, Python 3.6+, MIPS binutils, pkgconf and host development tools. Windows instructions use WSL/Linux; macOS instructions require an appropriate MIPS toolchain and newer GNU make.",
+      "The Makefile normally checks the output ROM’s SHA-1 against the selected reference. NON_MATCHING, a non-N64 target or nonstandard configurations disable comparison; a successful modified build is not a matching-result claim.",
+      "The pinned Jenkins configuration explicitly sets COMPARE=0 for iQue and enhancement builds. Its five-version build matrix therefore must not be described as five independently confirmed byte-identical results; no build or game was run for this catalog.",
+      "The repository carries CC0-1.0; original Nintendo content and any separate third-party rights are not supplied by that declaration. No REA or coding-agent involvement is established by the reviewed files."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/Makefile",
+      "https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/Jenkinsfile",
+      "https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/LICENSE.md"
+    ]
+  },
+  {
+    "id": "unleashed-recompiled-case",
+    "name": "Unleashed Recompiled: translating Xbox 360 game code and shaders",
+    "url": "https://github.com/hedge-dev/UnleashedRecomp",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Builds an unofficial Sonic Unleashed PC port by statically recompiling Xbox 360 PowerPC code with XenonRecomp and Xenos shaders with XenosRecomp. The port adds modern display and modding options while documenting original-engine limits and remaining compatibility issues.",
+    "description_zh": "使用 XenonRecomp 静态重编译 Xbox 360 PowerPC 代码，并用 XenosRecomp 转换 Xenos 着色器，构建非官方 Sonic Unleashed PC 移植。项目增加现代显示与模组选项，同时记录原引擎限制和仍存在的兼容性问题。",
+    "evidence_url": "https://github.com/hedge-dev/UnleashedRecomp/blob/cf829a9eca8fb680fba4b0409ddeb6ca92f22e3c/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the user’s US or EU Xbox 360 game files and the title update; the Japanese release and PS3 files are unsupported by the reviewed installation guide. DLC is optional, and the project does not provide game assets.",
+      "The README’s Windows/Linux baseline includes an AVX-capable CPU, 8 GB RAM and Direct3D 12.0 with Shader Model 6 or Vulkan 1.2 graphics. It lists Windows 10 version 1909 and a modern Linux distribution such as Ubuntu 22.04.",
+      "Source builds require submodules, CMake 3.20+, C++20 tooling, vcpkg with VCPKG_ROOT configured, and matching executable/update/shader inputs. At the same revision, BUILDING.md documents Xcode 16.3+ and macOS presets while the README says macOS is not on the roadmap; this inconsistency does not establish verified macOS support.",
+      "High-frame-rate gameplay glitches, loading stutters and ultrawide cutscene issues remain documented. Mods replacing the original executable or shaders are unsupported; improvements and performance claims were not independently reproduced here.",
+      "GPLv3 project license, with separate original-game and dependency terms. This is static recompilation, not a claim to recover the original authored source; reviewed primary files do not establish REA or coding-agent involvement."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/hedge-dev/UnleashedRecomp/blob/cf829a9eca8fb680fba4b0409ddeb6ca92f22e3c/docs/BUILDING.md",
+      "https://github.com/hedge-dev/UnleashedRecomp/blob/cf829a9eca8fb680fba4b0409ddeb6ca92f22e3c/CMakeLists.txt",
+      "https://github.com/hedge-dev/UnleashedRecomp/blob/cf829a9eca8fb680fba4b0409ddeb6ca92f22e3c/COPYING"
+    ]
+  },
+  {
+    "id": "openmw-engine-case",
+    "name": "OpenMW: replacing Morrowind’s engine while reusing original content",
+    "url": "https://github.com/OpenMW/openmw",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Provides an independent engine for playing Morrowind and an alternative editor, OpenMW-CS. It loads original game content through its own runtime and documents script and mod compatibility differences; it is an engine replacement rather than a recovered Bethesda source tree.",
+    "description_zh": "提供用于运行 Morrowind 的独立引擎和替代编辑器 OpenMW-CS，通过自己的运行时加载原游戏内容，并记录脚本及模组兼容性差异。这是引擎替代实现，而非恢复出的 Bethesda 源码树。",
+    "evidence_url": "https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Playing Morrowind requires the user’s original game data, including Morrowind.esm and the installation settings. Tribunal and Bloodmoon are optional expansions; the installation guide recommends both for best results. OpenMW-CS can also support separately authored projects.",
+      "The pinned README and build files identify version 0.52.0; this is a source-snapshot identifier, not a claim that a release was tested. The README lists Windows 10+, macOS 14.8+ and Linux, with no 32-bit support.",
+      "The source configuration uses CMake 3.16+, C++20, SDL2 2.26+, OpenSceneGraph 3.6.5+, Boost 1.70+ and OpenAL; launcher/editor/wizard builds use Qt6. Additional dependencies depend on enabled components.",
+      "The project reports the main quests as completable, but warns about side quests and mods that depend on original-engine quirks. Example Suite integration tests and the separate Morrowind-content test setup cover selected behavior, not complete original-game or mod equivalence; none was rerun here.",
+      "The official GitHub mirror points to the main GitLab project. GPLv3 covers project code, with separate font/dependency terms and original-game data rights. No REA or coding-agent involvement is established by the reviewed sources."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/CMakeLists.txt",
+      "https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/LICENSE",
+      "https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/docs/source/manuals/installation/install-game-files.rst",
+      "https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/scripts/data/morrowind_tests/README.md",
+      "https://github.com/OpenMW/openmw/blob/5fdc0f1c4d1d07575f9b360b8cf1d6562232bf8e/CI/run_integration_tests.sh"
+    ]
+  },
+  {
+    "id": "redriver2-case",
+    "name": "REDRIVER2: reconstructing Driver 2 through a PlayStation compatibility layer",
+    "url": "https://github.com/OpenDriver2/REDRIVER2",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Translates reverse-engineered Driver 2 MIPS routines into C/C++ and uses Psy-X/Psy-Cross to adapt PlayStation interfaces for desktop systems. The project documents symbol-assisted Ghidra/IDA work alongside intentional bug fixes and gameplay changes.",
+    "description_zh": "将逆向分析的 Driver 2 MIPS 例程转为 C/C++，并用 Psy-X/Psy-Cross 将 PlayStation 接口适配到桌面系统。项目记录借助符号的 Ghidra/IDA 分析，同时明确包含有意修复的错误和玩法改动。",
+    "evidence_url": "https://github.com/OpenDriver2/REDRIVER2/blob/b2d8857426f815007486def9bd23f9a6007a2c64/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Requires the user’s copies of both Driver 2 discs. The pinned installation wiki lists English PAL EU and NTSC US revisions 1.0/1.1; other languages remain planned. Italian/Spanish SYM files cited as decompilation inputs do not imply support for those game-data editions.",
+      "Documented play paths cover Windows and Linux; installation converts disc video/audio using Java. Linux runtime instructions list SDL2 and OpenAL; original game content is not supplied by the project.",
+      "Source builds use submodules, Premake5 and a C++ toolchain. The Windows guide uses Visual Studio 2022; Linux builds link SDL2, OpenAL, OpenGL and libjpeg. The wiki’s old Premake beta download example is not treated as a general minimum-version requirement.",
+      "The README reports a playable reconstruction but explicitly excludes the memory-card menu from its decompilation claim. Original bugs and some gameplay are deliberately changed; [D], [T] and [A] annotations distinguish decompiled, tested and altered code rather than proving whole-game fidelity.",
+      "MIT license for project code; original game data and third-party components retain their own rights. No byte-identical rebuild, independent runtime test or REA/coding-agent involvement is established by this review."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/OpenDriver2/REDRIVER2/blob/b2d8857426f815007486def9bd23f9a6007a2c64/src_rebuild/premake5.lua",
+      "https://github.com/OpenDriver2/REDRIVER2/blob/b2d8857426f815007486def9bd23f9a6007a2c64/data/install/conv.sh",
+      "https://github.com/OpenDriver2/REDRIVER2/blob/b2d8857426f815007486def9bd23f9a6007a2c64/appveyor.yml",
+      "https://github.com/OpenDriver2/REDRIVER2/blob/b2d8857426f815007486def9bd23f9a6007a2c64/LICENSE",
+      "https://github.com/OpenDriver2/REDRIVER2/wiki/Installation-instructions/35c32de044cc80e10574838860489e5fe773fed3",
+      "https://github.com/OpenDriver2/REDRIVER2/wiki/Contributing-to-project/35c32de044cc80e10574838860489e5fe773fed3"
+    ]
+  },
+  {
+    "id": "photocraft-case",
+    "name": "PhotoCraft: editor workflow reconstruction and PSD round-trip boundaries",
+    "url": "https://github.com/storytold/photocraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe this Rust image editor as a clean-room reimplementation of Photoshop-style workflows. Its document engine, UI and automation interfaces share editing commands, while the source distinguishes PSD editor round trips from byte preservation in the standalone file codec.",
+    "description_zh": "作者将这款 Rust 图像编辑器描述为 Photoshop 风格流程的净室重实现。文档引擎、界面与自动化接口共用编辑命令；源码区分编辑器中的 PSD 往返处理与独立文件编解码器的字节保留。",
+    "evidence_url": "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.9.0 and declares Rust 1.95+ for source builds with Cargo. Native and WebAssembly paths have platform-specific dependencies; optional font inputs and reference documents are separate. No build or installer was run here.",
+      "This is an implemented document/compositing engine and editing interface, not merely a screenshot mockup. It does not establish recovery of Adobe’s source code or Photoshop cloud services; the author’s clean-room characterization was not independently audited.",
+      "The editor-level corpus tests compare rendering before and after export/reimport. Separate PSD codec tests compare bytes for parseable files, with a named malformed-file exception. Editor saves are explicitly not byte-identical to their inputs; these finite test definitions are not results independently reproduced by this catalog.",
+      "The project remains alpha and distinguishes menu-command coverage from behavioral fidelity. Its dated parity assessment retains gaps in PSD exchange, typography, professional workflows, performance and plug-in compatibility; no complete Photoshop-equivalence percentage is asserted here.",
+      "Project code is MIT OR Apache-2.0, subject to NOTICE; fonts, artwork and other assets retain separate terms. ArtCraft branding is excluded; published modified versions must remove it, apart from contribution-only forks. REA use is not established, and no application assets or corpus files were downloaded for this review."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/Cargo.toml",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/docs/target-app-parity.md",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/crates/io/tests/corpus.rs",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/crates/psd/tests/corpus.rs",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/LICENSE-MIT",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/LICENSE-APACHE",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/NOTICE",
+      "https://github.com/storytold/photocraft/blob/5f65579ecb44047c2a619036c18ff273202e1389/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "wordcraft-case",
+    "name": "WordCraft: document workflow reconstruction and bounded DOCX compatibility",
+    "url": "https://github.com/storytold/wordcraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe WordCraft as a clean-room Rust implementation of familiar Microsoft Word workflows. It provides its own document model, layout engine and DOCX reader/writer, with desktop and browser interfaces; source tests exercise selected editing and file-preservation behavior.",
+    "description_zh": "作者将 WordCraft 描述为以 Rust 净室重实现熟悉的 Microsoft Word 流程。项目提供自己的文档模型、排版引擎和 DOCX 读写器，以及桌面与浏览器界面；源码测试覆盖选定的编辑与文件保留行为。",
+    "evidence_url": "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.7.0 and declares Rust 1.95+ with Cargo. The documented browser build uses Trunk; native builds and faithful layout require the relevant platform dependencies and fonts. The catalog did not build the app or download reference documents.",
+      "The outcome is a document-engine and interaction implementation, not recovery of Microsoft’s source tree or Microsoft 365’s hosted backend. CLI/MCP and control-channel support are automation surfaces, not evidence that REA was used.",
+      "The reviewed DOCX tests use constructed documents and specification-based XML fixtures to check modeled properties and passthrough parts. They do not establish arbitrary-document byte identity or Word-equivalent pagination. The dated assessment against Word for Mac 16.113.4 explicitly says real-world side-by-side file/page comparisons were not performed in that assessment pass.",
+      "The project is alpha. File fidelity, page layout, advanced typography, stability and ecosystem compatibility remain limited; ribbon-command counts and author readiness estimates are not acceptance-test pass rates. No original-versus-rebuilt application test was rerun here.",
+      "Code is MIT OR Apache-2.0 with NOTICE obligations; fonts and other assets retain separate rights, and ArtCraft branding has separate restricted terms. Clean-room is the authors’ characterization, not an independently established process or legal finding; no Microsoft code or assets are provided by this catalog."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/Cargo.toml",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/target-app-parity.md",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/crates/docx/tests/passthrough.rs",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/crates/docx/tests/roundtrip.rs",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-MIT",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/LICENSE-APACHE",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/NOTICE",
+      "https://github.com/storytold/wordcraft/blob/eae242176108d328c5dd81fbc10370c51ab90706/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "gridcraft-case",
+    "name": "GridCraft: spreadsheet workflow reconstruction and XLSX round-trip limits",
+    "url": "https://github.com/storytold/gridcraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe GridCraft as a clean-room Rust implementation of Excel-style spreadsheet workflows. A workbook model, formula parser and dependency-driven recalculation are connected to XLSX I/O and a shared editing-command layer for desktop, browser and automation interfaces.",
+    "description_zh": "作者将 GridCraft 描述为以 Rust 净室重实现 Excel 风格的电子表格流程。工作簿模型、公式解析器与依赖驱动的重新计算连接到 XLSX 读写，以及供桌面、浏览器和自动化接口共用的编辑命令层。",
+    "evidence_url": "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.7.0 and declares Rust 1.90+ with Cargo. Browser builds use Trunk and wasm32-unknown-unknown; native Linux CI lists X11/Wayland, GTK, fontconfig/FreeType and graphics dependencies. Fonts and input workbooks are separate; no build was run here.",
+      "Reviewed XLSX tests construct workbooks and OOXML packages, compare modeled values after writing and reading, and check selected unmodeled parts and relationships. These checks do not establish arbitrary-workbook byte identity; preserving a connection part is not implementing or refreshing its data source.",
+      "Calculation tests use expected values for selected formulas, dependency changes and spilled arrays. The dated assessment against Excel for Mac 16.113.4 says Excel was not launched and no build or test ran in that assessment pass; it also records the absence of Excel-computed conformance oracles.",
+      "The project remains alpha. Ribbon/function-name counts and readiness estimates are not behavioral-compatibility pass rates. File fidelity, advanced workflows, performance and ecosystem compatibility remain bounded, and the README documents graphics-driver startup issues. No Microsoft source tree or Microsoft 365 backend recovery is established.",
+      "Code is MIT OR Apache-2.0 with NOTICE obligations; optional fonts and ArtCraft branding have separate terms. Published modified versions must remove the ArtCraft marks, except contribution-only forks. Clean-room is the authors’ characterization, not an independently audited process; CLI/MCP support does not establish REA involvement."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/Cargo.toml",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/.github/workflows/ci.yml",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/docs/target-app-parity.md",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/xlsx/src/tests/roundtrip.rs",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/xlsx/src/tests/passthrough_tests.rs",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/crates/calc/src/tests.rs",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/LICENSE-MIT",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/LICENSE-APACHE",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/NOTICE",
+      "https://github.com/storytold/gridcraft/blob/f1894c6da64d4326022ae644c767581816a23c2c/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "deckcraft-case",
+    "name": "DeckCraft: presentation workflow reconstruction and bounded PPTX interchange",
+    "url": "https://github.com/storytold/deckcraft",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "The authors describe DeckCraft as a clean-room Rust implementation of PowerPoint-style presentation workflows. Its slide model, rendering and command layers support desktop/browser editing and PPTX interchange; reviewed source tests check constructed decks and selected preserved package parts.",
+    "description_zh": "作者将 DeckCraft 描述为以 Rust 净室重实现 PowerPoint 风格的演示文稿流程。其幻灯片模型、渲染与命令层支撑桌面／浏览器编辑及 PPTX 交换；所审阅源码测试检查构造的文稿和选定的保留包部件。",
+    "evidence_url": "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The pinned workspace identifies version 0.7.0 and declares Rust 1.95+ with Cargo. Linux source builds need ALSA headers and display/window dependencies; the browser path uses Trunk and wasm32-unknown-unknown. Optional craft-fonts inputs affect rendering, with system-font fallback documented; no application or asset package was downloaded or run here.",
+      "The reviewed PPTX corpus is authored in code, not collected from PowerPoint. Tests check retained text and content-part counts after saving, then part names and text after another save. Separate tests preserve selected XML metadata; they do not prove arbitrary-deck byte identity or original PowerPoint rendering.",
+      "The dated assessment against PowerPoint for Mac 16.113.4 explicitly says rendering fidelity, performance against PowerPoint and end-to-end workflows with real users’ decks were not measured in that assessment. Feature breadth and readiness percentages are checklist counts or author estimates, not acceptance-test pass rates.",
+      "The project is alpha and has documented file-exchange, presentation-workflow, stability and ecosystem gaps. Source snapshots and older assessment rows differ; no complete PowerPoint/Office equivalence, recovery of Microsoft’s authored source or reconstruction of its hosted services is asserted. The catalog did not rerun any original-versus-reimplementation comparison.",
+      "Code is MIT OR Apache-2.0 with NOTICE obligations. Fonts/icons retain separate terms, and NOTICE lists the Symphonia audio decoder under MPL-2.0. ArtCraft marks have restricted terms and must be removed from published modified versions except contribution-only forks. Clean-room remains author-attributed; automation interfaces do not establish REA use."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/Cargo.toml",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/.github/workflows/ci.yml",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/apps/deckcraft-web/Trunk.toml",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/docs/target-app-parity.md",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/corpus.rs",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/roundtrip.rs",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/crates/pptx/tests/kept_parts.rs",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/LICENSE-MIT",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/LICENSE-APACHE",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/NOTICE",
+      "https://github.com/storytold/deckcraft/blob/1dc69720db64323370dda061226becb09ad79fd4/docs/brand/LICENSE-brand.txt"
+    ]
+  },
+  {
+    "id": "devilutionx-case",
+    "name": "DevilutionX: porting Diablo’s reconstructed engine",
+    "url": "https://github.com/diasurgical/DevilutionX",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Builds a modern Diablo and Hellfire port on the Devilution reconstruction, with platform support, bug fixes and optional quality-of-life features. The project documents the original symbol-assisted reconstruction and includes selected dungeon-generation and saved-game regression checks.",
+    "description_zh": "基于 Devilution 重建成果提供现代平台上的 Diablo 与 Hellfire 移植，加入平台支持、错误修复及可选便利功能。项目记录了早期借助符号信息的重建过程，并包含特定地牢生成与存档回归检查。",
+    "evidence_url": "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Full Diablo play requires the user’s original DIABDAT.MPQ. Hellfire additionally needs hellfire.mpq, hfmonk.mpq, hfmusic.mpq and hfvoice.mpq. The separately offered spawn.mpq supports only the shareware portion; source availability does not supply rights to original game content.",
+      "The pinned source identifies 1.6.0-dev and requires CMake 3.22 and C++23. SDL2 is the default, with separate SDL1/SDL3 options; build documentation lists platform-dependent libraries and packaging steps. This is a source snapshot, not a tested release.",
+      "The background describes Devilution’s use of PlayStation debug symbols, assertion strings, compiler information and assembly comparisons. Its historical binary-matching milestone does not establish that the current cross-platform port, with intentional fixes and enhancements, is byte-identical to the original executable.",
+      "The reviewed timedemo test replays a warrior’s level-1-to-2 session and compares saved hero state; it skips without MPQ data and explicitly selects shareware mode. Separate dungeon tests compare seeded fixtures. These are bounded regression checks, not a complete original-versus-port equivalence result; none was run here.",
+      "The root LICENSE.md declares Sustainable Use License 1.0: use/modification is limited to internal business purposes, non-commercial use or personal use, while distribution must be free and non-commercial. Components and original game data retain separate terms.",
+      "The same snapshot retains conflicting Public Domain wording in the Windows package README and Unlicense metadata in the Apple bundle configuration. Those notices are recorded without treating the complete current project as permissively licensed or resolving the conflict. The reviewed sources do not establish REA or coding-agent involvement."
+    ],
+    "targets": [
+      "game"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/docs/BACKGROUND.md",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/VERSION",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/CMakeLists.txt",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/docs/building.md",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/test/timedemo_test.cpp",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/test/drlg_l1_test.cpp",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/LICENSE.md",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/windows/README.txt",
+      "https://github.com/diasurgical/DevilutionX/blob/94433061f847d22863e5d705c398f7c13d7bab85/Packaging/resources/README-SDL.txt"
+    ]
+  },
+  {
+    "id": "thinkpad-imx471-camera-case",
+    "name": "ThinkPad IMX471: recovering camera tuning for Linux",
+    "url": "https://github.com/cschalle/mipi-fixes-x1-aura",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Recovers selected camera-tuning structures from an Intel Windows driver package and uses them to repair Linux image capture on one ThinkPad model. Public CPFF/AIQB parsers, kernel patches and libcamera changes accompany the author’s Claude-assisted investigation and bounded before/after measurements.",
+    "description_zh": "从 Intel Windows 驱动包中恢复选定的相机调校结构，用于修复一个 ThinkPad 型号在 Linux 下的图像采集。公开的 CPFF／AIQB 解析器、内核补丁及 libcamera 修改，配有作者报告的 Claude 辅助调查和有限范围的前后测量。",
+    "evidence_url": "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed target is a Lenovo ThinkPad X1 Carbon Gen 14 (Aura Edition), with a Sony IMX471 sensor behind Intel IPU7. The author tested Fedora 44 kernel 7.2.8 and a libcamera 0.7.1 backport. The published kernel package omits BTF/debug information and is described as a test kernel, not a daily-driver recommendation.",
+      "The Python 3 analysis tools use NumPy and assume a 1928x1088 RG10 stream with a 3904-byte stride. Some scripts embed the author’s local layout and need path adaptation. Repeating the tuning analysis requires the corresponding vendor driver-package data or device captures; these are separate inputs, not original-driver source recovered by this project.",
+      "The author’s controlled low-light comparison holds 400 frames for convergence and reports frame brightness rising from 31.1 to 90.9. The test record describes crop-selection, colour-bar and analogue-gain checks on the affected device. Its 46/46 v4l2-compliance passes occurred before and after the crop fix, so that pass count alone did not detect the defect. These measurements were not reproduced by this collection.",
+      "The work adds three kernel fixes plus lens-shading and white-balance-statistics changes to an existing Linux driver and software ISP. Low-light blue remains about 17% short, an 18.8 ms exposure ceiling is not fixed here, and the second IR camera is outside scope. It does not recover the entire Windows driver, emulate the laptop or establish compatibility across camera models.",
+      "The dated investigation includes corrected and withdrawn hypotheses; its final README and test record should not be replaced by earlier intermediate claims. The patch cover letter attributes Claude assistance and hardware checking to the author. The later blog reports submission/review activity, not a verified upstream merge; REA use is not established.",
+      "No top-level project license is present at the pinned revision. Newly added libcamera implementation files in the patch declare LGPL-2.1-or-later, and the tuning-data section declares CC0-1.0; these are component notices, not a blanket license for every script or vendor-derived input. Existing kernel/libcamera code and vendor materials retain their separate terms."
+    ],
+    "targets": [
+      "firmware"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/findings/WINDOWS-DRIVER.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/findings/TESTING.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/kernel/README.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/libcamera/README.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/kernel/patches/0000-cover-letter.patch",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/libcamera/patches/libcamera-lsc-0.7.1.patch",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/aiqb.py",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/gen-tuning.py",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/rpms/README.md",
+      "https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/README.md",
+      "https://github.com/cschalle/mipi-fixes-x1-aura/blob/533d995b7acbd6965e5b0b85c97f8bafab9fed4e/tools/raw.py"
+    ]
+  },
+  {
+    "id": "ledger-reborn-accounting-case",
+    "name": "Ledger Reborn: an independent accounting app informed by QuickBooks study",
+    "url": "https://github.com/lxistired/ledger-reborn",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "description_en": "The maintainer reports using REA and Ghidra to study selected QuickBooks Desktop for Mac behavior, then independently implements a local accounting application. Its Python/SQLite engine persists double-entry journals, invoices, inventory and payments, while public synthetic fixtures test bounded accounting and rollback behavior.",
+    "description_zh": "维护者报告使用 REA 与 Ghidra 研究 QuickBooks Desktop for Mac 的选定行为，随后独立实现本地记账应用。Python／SQLite 引擎持久保存复式分录、发票、库存和付款；公开合成样例检查有限范围的记账与回滚行为。",
+    "evidence_url": "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/CASE_STUDY.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The reviewed release is 2026.10.12-preview.1. The local browser edition needs Python 3.11+; the accounting core uses the standard library and SQLite. Native desktop builds use pywebview 6.2.1, PyInstaller 6.22.3 and Pillow 12.3.0, built on the target OS; Windows additionally needs the separately installed WebView2 runtime.",
+      "The maintainer identifies QuickBooks Desktop for Mac 2024 Trial, version 23.1.13.962 R14 Trial, as the investigation target. REA 6.4.0 with Ghidra, NIB decoding and selected runtime observations informed inventory arithmetic, budget signs, reconciliation paths and layouts. The Python/SQLite engine and frontend are independently written, not recovered Intuit source.",
+      "Public synthetic fixtures contain frozen, independently specified integer-cent expectations. Reviewed tests compare reports and check atomic rollback of invalid journals, bills and inventory operations. These are implementation checks, not a complete QuickBooks conformance suite; this collection did not execute them.",
+      "The separate original-software comparison reportedly matched three official-sample reports account-by-account to the cent. The vendor sample company and exports are not public here, so that result remains author-reported. It does not establish recovered invoice lines, SKU quantities, payment links or full company-file migration.",
+      "The preview is single-user, local and USD-only. Payroll, tax filing, live bank/payment services, multicurrency and complete QuickBooks migration are outside the implementation. Its cash-basis output is a defined management cash view, not established equivalence with all original or tax rules; full visual/interaction parity also remains unverified.",
+      "MIT covers the authored application; vendor inputs and bundled runtime dependencies keep separate terms. The preview is not Developer ID-signed or notarized on macOS and lacks Windows publisher signing. Package smoke tests and selected native-window observations have separate scopes; no installer, original application, vendor company data or runtime package was downloaded or executed for this review."
+    ],
+    "targets": [
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/README.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/ENGINE_README.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/BUILDING.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/requirements-desktop.txt",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/EVIDENCE.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/PUBLICATION_SCOPE.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/docs/BRAND_AND_PROVENANCE.md",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/ledger.py",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/tests/test_acceptance.py",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/fixtures/FROZEN.sha256",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/fixtures/expected.json",
+      "https://github.com/lxistired/ledger-reborn/blob/d7f6b8a1f4ad6c4ae8b10100d1c93cf15940c21d/LICENSE"
+    ]
+  },
+  {
+    "id": "rauchg-rsc-reconstruction-case",
+    "name": "rauchg.com: rebuilding an RSC blog from captured Flight output",
+    "url": "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/rsc-reconstruction.md",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Documents a website-rebuild-skill case that decodes browser-delivered React Server Component Flight streams, reconstructs a buildable Next project and compares its output with a captured site. The reported rauchg.com campaign uses route-tree comparison and module-reference mapping; the new server source is inferred from observable output.",
+    "description_zh": "记录 website-rebuild-skill 的一个案例：解码浏览器收到的 React 服务端组件 Flight 流，重建可构建的 Next 项目，再与捕获站点的输出比较。作者报告的 rauchg.com 重建过程采用路由树比较与模块引用映射；新服务端源码由可观察输出推断。",
+    "evidence_url": "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/rsc-reconstruction.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The documented rauchg.com snapshot used Next 16.1.1, Turbopack and React 19 canary. The tooling requires Node.js 22+ and a local Chrome/Chromium for comparison; some stages invoke version-pinned external tools. Repeating the method needs an authorized target snapshot and a separately built reconstruction, not just the skill repository.",
+      "Flight decoding exposes delivered element trees, route state and client-module references. The reconstructed server-component source is explicitly an inference from that output; flight-to-mdx also needs site-specific shape/link adaptations. This is not extraction of undistributed server source or automatic recovery of an arbitrary Next.js application.",
+      "The author reports 18/18 routes passing a Flight semantic gate and a runtime sweep for this case. The gate compares normalized trees and enforces a global module-ID bijection. It normalizes build-hash namespaces and selected encoding differences; configured prop/class exclusions can omit registered fields or subtrees. A pass is not byte identity or full behavioral equivalence.",
+      "The gate does not check CSS, so layout, fonts and rendered pixels need separate comparisons. Public synthetic self-tests include changed-text rejection and rejection of a one-to-many module mapping. This review inspected those checks as source and did not run them or reproduce the reported website campaign.",
+      "The method explicitly leaves unobserved error responses, database/write paths, server caches, dynamic-image generator source and unlinked routes unresolved. Historical public-source comparisons and reported reconstruction percentages do not prove access to hidden backend logic; the author also notes possible model-training familiarity with a nominally blind target.",
+      "MIT applies to the skill and tooling, not to reconstructed websites, their scripts, fonts or other assets. The source documents separate authorization/publication decisions and private, noindex output defaults. No original-site assets or model payloads were downloaded, and no browser session or upstream script was run in this review."
+    ],
+    "targets": [
+      "website"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/README.en.md",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/references/case-studies/rsc-reconstruction.md",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/scripts/flight-decode.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/scripts/verify-flight.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/skills/website-rebuild/tools/flight-to-mdx.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/selftest/run.mjs",
+      "https://github.com/boyang-hu/website-rebuild-skill/blob/ac60c9d8a2ab40045a89b5403c3457f1404e92b3/LICENSE"
+    ]
+  },
+  {
+    "id": "njfe-ear-camera-bridge-case",
+    "name": "NJFE: a Soulear camera protocol bridge for desktop inspection",
+    "url": "https://github.com/WildweaselMS/NJFE",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Reuses otoscope's reverse-engineered i4season/Soulear protocol in an ESP32-C3 bridge and Python desktop viewer. The author credits Claude Code for implementation and reports streaming one Hopefox Find T to a Windows PC, with recording, orientation and LED controls.",
+    "description_zh": "在 ESP32-C3 桥接器与 Python 电脑查看器中复用 otoscope 经逆向得到的 i4season／Soulear 协议。作者将实现归功于 Claude Code 辅助，报告把一台 Hopefox Find T 的视频传到 Windows 电脑，并提供录像、方向调整及 LED 控制。",
+    "evidence_url": "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "The input is the camera's Wi-Fi i4season/Soulear UDP traffic. An ESP32-C3 SuperMini with the documented 0.42-inch, 72×40 SSD1306 OLED reassembles JPEG frames and forwards them with accelerometer metadata over custom USB CDC serial to the supplied Python viewer. This is not a UVC webcam output; the camera's own USB port is described as charge-only. No vendor-camera firmware or complete companion-app source is recovered.",
+      "The documented build uses PlatformIO espressif32 6.11.0, Arduino core 2.0.17 and U8g2 ^2.35.30. The desktop tools require Python with Tkinter plus pyserial >=3.5, opencv-python >=4.8, NumPy >=1.24 and Pillow >=12.3.0. The project reports Windows testing; it does not establish support for every desktop OS or compatible-looking ear camera.",
+      "The README and NOTICE credit rbeilvert/otoscope by rubec for the packet format, commands, frame assembly and accelerometer/rotation logic. That project documents reverse engineering Soulear's libWifiCamera.so. NJFE reports Claude Code assistance across research, implementation, tools and documentation, with the human supplying hardware, decisions and device testing. This does not establish Claude as the original protocol discoverer, or any REA involvement; NJFE does not pin the exact otoscope revision it borrowed.",
+      "The author reports one Hopefox Find T with HKV41B firmware, 480×480 JPEG at about 17 fps, plus photos, MJPG AVI recording, rotation and LED control. The public --test N viewer mode receives and decodes N live frames, saves the last image and prints frame rate; it needs the hardware. The reviewed tree has no separate offline conformance-fixture suite. These reports and source-level framing checks do not establish full protocol compatibility; this collection did not run the tools or reproduce the hardware result.",
+      "The camera network remains open and unauthenticated. SECURITY.md states that the bridge accepts UDP traffic without source authentication and can receive injected images or replies; serial access is trusted and recordings are stored unencrypted. A local USB bridge does not remove these camera-network limitations. The project describes an inspection tool, not a medical device for diagnosis or treatment.",
+      "NJFE declares GPL-3.0-or-later in its README, NOTICE and REUSE metadata, and identifies protocol code and roll calculation derived from GPL otoscope. Third-party build/runtime libraries retain their own licenses. Public source review does not grant rights to vendor software or images; no proprietary app, firmware binary, image capture, device or upstream runtime was used in this review."
+    ],
+    "targets": [
+      "protocol"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/NOTICE",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/REUSE.toml",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/LICENSE",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/SECURITY.md",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/platformio.ini",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/requirements.txt",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/src_i4season/main.cpp",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/viewer.py",
+      "https://github.com/WildweaselMS/NJFE/blob/992866c6609f8c813f459ff79840cf04d5883f8e/wifi_scanner/tools/gui.py",
+      "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/README.md",
+      "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/I4seasonProtocol.kt",
+      "https://github.com/rbeilvert/otoscope/blob/d14ac8e368854146ded4f3347614a24539e6696a/app/src/main/kotlin/dev/rubec/otoscope/stream/i4season/FrameAssembler.kt"
+    ]
+  },
+  {
+    "id": "baocut-slides-editor-case",
+    "name": "BaoCut Slides: adapting an interactive web editor",
+    "url": "https://github.com/JimLiu/baocut/tree/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime",
+    "category": "reconstruction-cases",
+    "relationship": "independent-reconstruction",
+    "description_en": "Documents BaoCut’s interactive slide editor, whose author says the implementation draws on Claude Slides. It adds a local deck store, HTML/CSS compiler and annotation-to-agent bridge for browser and desktop hosts; the design reports a Web-flow check, without establishing original backend recovery or full behavioral parity.",
+    "description_zh": "记录 BaoCut 交互式幻灯片编辑器，作者称其实现借鉴自 Claude Slides。它为浏览器与桌面宿主加入本地文稿存储、HTML/CSS 编译器及标注到智能体的桥接；设计说明报告了 Web 流程检查，但未确立原有后端恢复或完整行为一致性。",
+    "evidence_url": "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/docs/design/slides/slides-design.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "This entry covers the pinned Slides component, whose author says the implementation draws on Claude Slides, not the whole BaoCut product. It contains an editor runtime, a restricted HTML/CSS slide compiler and a new BaoCut host. Decks use a v4 deck.json index, per-slide HTML and local assets. The reviewed design/runtime notes do not identify the exact Claude Slides release or extraction record; they do not establish a clean-room process or recovery of Anthropic’s original hosted backend.",
+      "Building the editor requires Node.js >=22.12.0, npm workspace dependencies and the apps/slides-editor build; a BaoCut Runtime/host supplies file, annotation and download capabilities. The runtime declares React ^19.3.0 and PptxGenJS 3.12.0 with project patches. Full BaoCut source builds also require Rust/Cargo, CMake and platform C++ tools; Apple Silicon native inference needs full Xcode/Metal. Agent-driven deck creation requires a configured agent engine such as Codex CLI or Claude Code, with its own account and service terms.",
+      "The documented implementation is single-user and file-backed: it supports local saves with version/conflict checks, asset routes and external-change notifications. Conflict checks precede writes; individual-file writes do not establish whole-batch transactional rollback. Shared rooms/presence, share links, persistent comment threads and sending to Google Drive/Google Slides are explicitly out of scope. External updates may reload the editor and lose selection/scroll position. Export code exists, but the design still places PPTX/PDF downloads in P1; these documents do not establish complete export compatibility.",
+      "The design note reports end-to-end Web annotation validation and explicitly says Electron was not tested for that flow. Published tests exercise local file publication/conflicts, HTTP read/write boundaries and annotation forwarding; some host tests use fake fetch and agent-harness tests use a fake driver. HTML/CSS compiler and round-trip checks are skipped when the built compiler is unavailable. These are implementation tests, not an original-Claude differential oracle or proof of full visual/behavioral parity; this collection did not run them.",
+      "The root BaoCut Community License 1.0 is source-available: it permits stated personal/internal uses and content creation, while commercialization of the software/code or commercial hosting needs a separate license. Third-party components keep their own terms, including the documented PptxGenJS MIT and embedded mediabunny MPL-2.0 notices. Those dependency notices do not establish reuse rights in any reused Claude material or the bundled icon font; the runtime notes say that font needs replacement. This source review does not supply such rights or treat the whole component as permissively open source.",
+      "BaoCut documents agent-assisted creation and annotation workflows, but the reviewed case sources do not establish which model produced the adaptation or any REA involvement. Support for Claude Code/Codex as agent engines is not evidence of the reconstruction method. Use independently authorized slide content and respect external asset/font terms. This review inspected pinned source and test definitions without running the app, models or checks, or retrieving bundled fonts, media or application packages."
+    ],
+    "targets": [
+      "website",
+      "app"
+    ],
+    "kind": "case-study",
+    "additional_evidence_urls": [
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime/README.md",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/LICENSE",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/THIRD_PARTY_NOTICES.md",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/package.json",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides-runtime/package.json",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/apps/slides-editor/build.mjs",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-store.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-store.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-routes.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/deck-check.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/slides/src/editor/editor-host.test.ts",
+      "https://github.com/JimLiu/baocut/blob/b8585e0c8d7a82bdee9f0ed019cf6edb075e41c1/packages/harness/src/slide-annotations.test.ts"
+    ]
+  },
+  {
+    "id": "pocket-tasks-reconstruction-case",
+    "name": "Pocket Tasks: reconstructing task state and persistence",
+    "url": "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/tree/main/evals/reference/reconstruction",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "app"
+    ],
+    "description_en": "A teaching case with disclosed prior source access carries a REA-assisted investigation of a small command-line app into a separate Node implementation. It preserves observed task editing, persistence and selection behavior, then compares scoped outputs against fixed expectations and captured reference sessions.",
+    "description_zh": "此教学案例明确披露作者先前接触过源码，将一次 REA 辅助的小型命令行应用调查推进为另行编写的 Node 实现。它保留所观察到的任务编辑、持久保存及选择行为，再将限定范围的输出与固定期望值及捕获的参考会话比较。",
+    "evidence_url": "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/README.md",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Pocket Tasks 1.0.0 is an authored local command-line app, not a commercial application or a native-binary benchmark. Its separate Node.js 20+ candidate implements nine commands and schema-1 JSON storage, including saved/draft separation, explicit save, cancel, restart and the original row-position selection quirk. It needs only the Node standard library and disposable local stores; there is no graphical interface or network backend.",
+      "The historical investigation combines REA JavaScript source analysis, ordinary source inspection and recorded process/file observations. The sanitized REA excerpt identifies the same target bytes but retains unknown semantic coverage and 230 semantic unknowns. It is not a canonical Evidence bundle or independent attestation, and parsing coverage is not behavioral equivalence. The later Node validator does not repeat that REA session.",
+      "The author had already seen the target source, reviewer scenarios, tests and prior answers before implementation. The candidate imports only Node filesystem/path modules; a published test definition copies its file alone before checking save behavior. Runtime independence from the reference does not establish independent discovery, a blind trial, clean-room provenance or an agent/model performance result.",
+      "The saved report records 16/16 checker process sessions across 12 scenarios and 10/10 replays of captured observations across seven scenarios. These overlap and must not be counted as 26 independent observations. The checker uses fixed, hand-authored expectations; responses and saved JSON are compared semantically, while malformed stores and foreign pending files use byte-preservation checks where required. The report retains humanReview=pending, reaTrial=unverified and independentEvaluation=false; these are author-reported results, not rerun by this collection.",
+      "The six recorded target/candidate/observation/validator/checker/packet-tool hashes and the oracle digest match the reviewed source. The report’s TASK.md packet hash instead matches an earlier instruction revision: a later edit changed review/authorization wording without changing the behavioral contract. Treat the packet record as historical evidence, not fresh validation of every file in the current package. The failure history also retains an initial restricted-Windows attempt with five passes and four failures, followed by nine passes with unchanged candidate code in a permitted local environment.",
+      "The contract bounds each invocation to 64 commands and 65,536 UTF-8 bytes, stores to 32 tasks and titles to 80 UTF-16 code units. Coverage is limited to named behaviors and tests; concurrent writers, crash durability, hostile filesystem races, UI behavior, hidden backends and production performance are outside the parity claim. MIT covers the authored example; upstream REA and other linked material remain separate. No target, candidate, checker, installer, model or upstream test was executed in this review."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/WALKTHROUGH.md",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/TASK.md",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/target/pocket-tasks.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/walkthrough/rea-excerpt.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/walkthrough/runtime-observations.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/candidate.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validate.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validation-report.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reconstruction/validation-history.json",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/check.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/evals/reference/reviewer/scenarios.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/tests/reference-reconstruction.test.mjs",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/590e65dd99596c7fb66598eaa5d6c051c2ec9a5f/LICENSE",
+      "https://github.com/ShadowSwaps/REA-Reconstruction-Companion/blob/ad6dccd7760fae50f5e45fe74f1f2ef92a452239/evals/reference/TASK.md"
+    ]
+  },
+  {
+    "id": "open-scrantic-screensaver-case",
+    "name": "Open Scrantic: reconstructing the Johnny Castaway screensaver engine",
+    "url": "https://github.com/glauberlima/open-scrantic",
+    "category": "community-case-studies",
+    "relationship": "community-reported-mixed-workflow",
+    "kind": "case-study",
+    "targets": [
+      "app"
+    ],
+    "description_en": "Reconstructs the Johnny Castaway screensaver engine in Rust, with author-disclosed REA and Claude Code use. It reads original files to run recovered animation scripts and calendar-based story state on modern desktops; documented deviations and limited tests stop short of complete behavioral equivalence.",
+    "description_zh": "以 Rust 重建 Johnny Castaway 屏幕保护程序引擎，作者明确披露使用 REA 与 Claude Code。它读取原始文件，在现代桌面上运行恢复的动画脚本及按日历推进的故事状态；文档保留实现差异与有限测试范围，未确立完整行为等价。",
+    "evidence_url": "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/README.md",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "requirements": [
+      "Reviewed at v0.3.0: this is a Windows 3.1 screensaver-engine reconstruction, not a game port. The author reports recovering formats and TTM/ADS script semantics from disassembly, with human-directed REA/Claude Code work and comparisons against the original. Those reports do not establish exhaustive parity or an independent agent-performance result.",
+      "Builds pin Rust 1.99.1; Cargo declares minimum Rust 1.99 and edition 2024. The project targets Windows, macOS and Linux using winit, softbuffer and rodio. Linux builds also require ALSA development headers and pkg-config.",
+      "Runtime requires separately obtained SCRANTIC.SCR, RESOURCE.MAP and RESOURCE.001 beside the executable. README sizes and SHA-256 values identify the expected original files; the loader instead checks known executable strings/layout, not whole-file hashes. Arbitrary original builds are unsupported. Options and story state use SCRANTIC.INI, saved on normal exit.",
+      "Deliberate differences include full-frame redraw, potentially one-pixel line/ellipse differences, bounded final-scene selection and a fixed two-second title display. Optional dedithering and softened audio default off. The original settings dialog and password feature are absent, as are unused animated-palette, 256-color and ADS-variable features.",
+      "The headless test runs 6,000 steps and requires three completed scenes, without original-frame comparison. Data-dependent tests silently return when OPEN_SCRANTIC_DATA is unset; other tests cover parsing and arithmetic. CI checks formatting, lint, three-platform builds and --version, not cargo test or original-data playback. Snapshot output supports inspection, not an automated original-output oracle.",
+      "MIT covers project source, not original executable content, art, scripts or sounds, which users must supply with appropriate authorization. The author describes independent, non-commercial interoperability without Sierra/Dynamix endorsement. This collection reviewed sources and test definitions; it did not reproduce the implementation or results."
+    ],
+    "additional_evidence_urls": [
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/docs/ENGINE.md",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/docs/ARCHITECTURE.md",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/Cargo.toml",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/rust-toolchain.toml",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/LICENSE",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/assets/exe.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/assets/mod.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/engine/mod.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/engine/config.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/src/engine/rng.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/examples/snapshot.rs",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/.github/workflows/ci.yml",
+      "https://github.com/glauberlima/open-scrantic/blob/2db75008931eb744f79d0c3fb12e0d89950466ff/CHANGELOG.md"
     ]
   }
 ]

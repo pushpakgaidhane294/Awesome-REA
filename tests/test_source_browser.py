@@ -52,8 +52,8 @@ def full_export():
                    readme_git_sha_matches_content=False, readme_integrity_review=integrity,
                    related_entries=[{'kind': 'paper', 'id': 'paper-example',
                                      'title_en': 'Research', 'title_zh': '研究',
-                                     'href_en': '/papers/#paper-example',
-                                     'href_zh': '/zh/papers/#paper-example'}]),
+                                     'href_en': '/papers/paper-example/',
+                                     'href_zh': '/zh/papers/paper-example/'}]),
         ],
         'failures': [{'id': 'scan-4'}],
     }

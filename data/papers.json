@@ -118,6 +118,14 @@
     "arxiv_version_reviewed": "v2",
     "first_arxiv_date": "2019-09-19",
     "doi": "10.1109/ASE.2019.00064",
+    "citation": {
+      "container_title": "2019 34th IEEE/ACM International Conference on Automated Software Engineering (ASE)",
+      "pages": "628-639",
+      "publisher": "IEEE",
+      "sources": [
+        "https://api.crossref.org/works/10.1109/ASE.2019.00064"
+      ]
+    },
     "url": "https://doi.org/10.1109/ASE.2019.00064",
     "pdf_url": "https://arxiv.org/pdf/1909.09029",
     "code_url": "https://github.com/pcyin/dire",
@@ -218,6 +226,14 @@
     "arxiv_version_reviewed": null,
     "first_arxiv_date": null,
     "doi": "10.1145/3658644.3670340",
+    "citation": {
+      "container_title": "Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security",
+      "pages": "4554-4568",
+      "publisher": "ACM",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3658644.3670340"
+      ]
+    },
     "url": "https://doi.org/10.1145/3658644.3670340",
     "pdf_url": "https://www.cs.purdue.edu/homes/lintan/publications/resym-ccs24.pdf",
     "code_url": "https://github.com/lt-asset/resym",
@@ -463,8 +479,8 @@
     "venue": "NAACL 2025",
     "publication_status": "conference-paper",
     "arxiv_id": "2403.03163",
-    "arxiv_version_reviewed": null,
-    "first_arxiv_date": null,
+    "arxiv_version_reviewed": "v3",
+    "first_arxiv_date": "2024-03-05",
     "doi": "10.18653/v1/2025.naacl-long.199",
     "url": "https://aclanthology.org/2025.naacl-long.199/",
     "pdf_url": "https://aclanthology.org/2025.naacl-long.199.pdf",
@@ -482,17 +498,19 @@
     "evidence_urls": [
       "https://aclanthology.org/2025.naacl-long.199/",
       "https://aclanthology.org/2025.naacl-long.199.pdf",
+      "https://arxiv.org/abs/2403.03163",
+      "https://arxiv.org/abs/2403.03163v1",
       "https://salt-nlp.github.io/Design2Code/",
       "https://github.com/NoviScl/Design2Code"
     ],
-    "metadata_notes": "Use the final NAACL 2025 title and six-author list; the older project page/arXiv-era citation has a different title and omits Ryan Li. SALT-NLP/Design2Code hosts the project website, whereas NoviScl/Design2Code is the verified research-code repository.",
+    "metadata_notes": "Use the final NAACL 2025 title and six-author list. arXiv v1 (2024-03-05) and the project page’s BibTeX use the earlier title “Design2Code: How Far Are We From Automating Front-End Engineering?” and list five authors without Ryan Li; v2 and the reviewed v3 match the final title and authors. SALT-NLP/Design2Code hosts the project website, whereas NoviScl/Design2Code is the verified research-code repository.",
     "kind": "research",
-    "verified_at": "2026-10-16",
+    "verified_at": "2026-10-17",
     "verification": "source-reviewed",
     "runtime_tested": false,
     "title_zh": "Design2Code：面向自动化前端工程的多模态代码生成评测",
     "date_basis_zh": "ACL 会议论文集的出版月份。",
-    "metadata_notes_zh": "采用正式 NAACL 2025 标题及六位作者名单；较早的项目页和 arXiv 阶段引用使用不同标题，且未列 Ryan Li。SALT-NLP/Design2Code 托管项目网站，NoviScl/Design2Code 才是已确认的研究代码仓库。"
+    "metadata_notes_zh": "采用正式 NAACL 2025 标题及六位作者名单。arXiv v1（2024-03-05）和项目页 BibTeX 使用较早的标题“Design2Code: How Far Are We From Automating Front-End Engineering?”，只列五位作者，未含 Ryan Li；v2 和本次核对的 v3 已与正式标题及作者一致。SALT-NLP/Design2Code 托管项目网站，NoviScl/Design2Code 才是已确认的研究代码仓库。"
   },
   {
     "kind": "research",
@@ -982,6 +1000,16 @@
     "arxiv_version_reviewed": "v2",
     "first_arxiv_date": "2018-02-07",
     "doi": "10.1109/TSE.2018.2844788",
+    "citation": {
+      "container_title": "IEEE Transactions on Software Engineering",
+      "volume": "46",
+      "issue": "2",
+      "pages": "196-221",
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "sources": [
+        "https://api.crossref.org/works/10.1109/TSE.2018.2844788"
+      ]
+    },
     "code_url": null,
     "project_url": "https://www.android-dev-tools.com/redraw",
     "targets": [
@@ -1029,6 +1057,18 @@
     "publication_status": "journal-article",
     "arxiv_id": "2409.11667",
     "doi": "10.1145/3715726",
+    "citation": {
+      "container_title": "Proceedings of the ACM on Software Engineering",
+      "volume": "2",
+      "issue": "FSE",
+      "pages": "219-241",
+      "article_number": "FSE011",
+      "publisher": "Association for Computing Machinery (ACM)",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3715726",
+        "https://xinyi-hou.github.io/files/zhou2024bridging.pdf"
+      ]
+    },
     "url": "https://doi.org/10.1145/3715726",
     "pdf_url": "https://xinyi-hou.github.io/files/zhou2024bridging.pdf",
     "code_url": "https://github.com/security-pride/DeclarUI",
@@ -1217,6 +1257,14 @@
     "date_basis_zh": "采用 USENIX 官方论文集引用中的出版月份，不推定具体出版日。",
     "venue": "USENIX Security 2022",
     "doi": null,
+    "citation": {
+      "container_title": "31st USENIX Security Symposium (USENIX Security 22)",
+      "pages": "1239-1256",
+      "publisher": "USENIX Association",
+      "sources": [
+        "https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski"
+      ]
+    },
     "url": "https://www.usenix.org/conference/usenixsecurity22/presentation/scharnowski",
     "pdf_url": "https://www.usenix.org/system/files/sec22-scharnowski.pdf",
     "code_url": "https://github.com/fuzzware-fuzzer/fuzzware",
@@ -1270,6 +1318,14 @@
     "date_basis_zh": "采用 ACM 在 Crossref 登记的印刷出版日期；在线出版日期在元数据说明中单独记录。",
     "venue": "ACSAC 2020",
     "doi": "10.1145/3427228.3427294",
+    "citation": {
+      "container_title": "Annual Computer Security Applications Conference",
+      "pages": "733-745",
+      "publisher": "ACM",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3427228.3427294"
+      ]
+    },
     "url": "https://doi.org/10.1145/3427228.3427294",
     "pdf_url": "https://syssec.kaist.ac.kr/pub/2020/kim_acsac2020.pdf",
     "code_url": "https://github.com/pr0v3rbs/FirmAE",
@@ -1476,6 +1532,16 @@
     "arxiv_version_reviewed": "v3",
     "first_arxiv_date": "2026-03-27",
     "doi": null,
+    "citation": {
+      "container_title": "Proceedings of the 43rd International Conference on Machine Learning",
+      "volume": "306",
+      "series": "Proceedings of Machine Learning Research",
+      "pages": "41393-41415",
+      "publisher": "PMLR",
+      "sources": [
+        "https://proceedings.mlr.press/v306/he26n.html"
+      ]
+    },
     "url": "https://proceedings.mlr.press/v306/he26n.html",
     "pdf_url": "https://raw.githubusercontent.com/mlresearch/v306/main/assets/he26n/he26n.pdf",
     "code_url": "https://github.com/zai-org/Vision2Web",
@@ -1524,6 +1590,14 @@
     "arxiv_version_reviewed": null,
     "first_arxiv_date": null,
     "doi": "10.1145/3180155.3180240",
+    "citation": {
+      "container_title": "Proceedings of the 40th International Conference on Software Engineering",
+      "pages": "665-676",
+      "publisher": "ACM",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3180155.3180240"
+      ]
+    },
     "url": "https://doi.org/10.1145/3180155.3180240",
     "pdf_url": "https://chunyang-chen.github.io/publication/ui2code.pdf",
     "code_url": "https://github.com/ccywch/UI2code",
@@ -1625,6 +1699,15 @@
     "arxiv_version_reviewed": null,
     "first_arxiv_date": "2024-02-19",
     "doi": "10.52202/079017-2243",
+    "citation": {
+      "container_title": "Advances in Neural Information Processing Systems",
+      "volume": "37",
+      "pages": "70148-70212",
+      "sources": [
+        "https://papers.nips.cc/paper_files/paper/2024/hash/820c61a0cd419163ccbd2c33b268816e-Abstract-Conference.html",
+        "https://api.crossref.org/works/10.52202/079017-2243"
+      ]
+    },
     "url": "https://papers.nips.cc/paper_files/paper/2024/hash/820c61a0cd419163ccbd2c33b268816e-Abstract-Conference.html",
     "pdf_url": "https://papers.neurips.cc/paper_files/paper/2024/file/820c61a0cd419163ccbd2c33b268816e-Paper-Conference.pdf",
     "code_url": "https://github.com/haotang1995/WorldCoder",
@@ -1735,6 +1818,14 @@
     "arxiv_version_reviewed": "v1",
     "first_arxiv_date": "2025-06-25",
     "doi": "10.1145/3719027.3744871",
+    "citation": {
+      "container_title": "Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security",
+      "pages": "36-50",
+      "publisher": "ACM",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3719027.3744871"
+      ]
+    },
     "url": "https://doi.org/10.1145/3719027.3744871",
     "pdf_url": "https://arxiv.org/pdf/2506.20170v1",
     "code_url": "https://github.com/Ch3nYe/JsDeObsBench",
@@ -1784,6 +1875,14 @@
     "arxiv_version_reviewed": "v2",
     "first_arxiv_date": "2025-07-23",
     "doi": "10.1145/3786583.3786873",
+    "citation": {
+      "container_title": "Proceedings of the IEEE/ACM 48th International Conference on Software Engineering: Software Engineering in Practice",
+      "pages": "292-302",
+      "publisher": "ACM",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3786583.3786873"
+      ]
+    },
     "url": "https://doi.org/10.1145/3786583.3786873",
     "pdf_url": "https://arxiv.org/pdf/2507.17691v2",
     "code_url": "https://github.com/google/jsir",
@@ -1837,6 +1936,18 @@
     "arxiv_version_reviewed": "v3",
     "first_arxiv_date": "2024-06-24",
     "doi": "10.1145/3729364",
+    "citation": {
+      "container_title": "Proceedings of the ACM on Software Engineering",
+      "volume": "2",
+      "issue": "FSE",
+      "pages": "2099-2122",
+      "article_number": "FSE094",
+      "publisher": "Association for Computing Machinery (ACM)",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3729364",
+        "https://arxiv.org/pdf/2406.16386v3"
+      ]
+    },
     "url": "https://doi.org/10.1145/3729364",
     "pdf_url": "https://arxiv.org/pdf/2406.16386v3",
     "code_url": "https://github.com/WebPAI/DCGen",
@@ -2019,6 +2130,890 @@
     "metadata_notes_zh": "USENIX 官方页面、其中的 BibTeX 条目和正式 PDF 确认了这篇研讨会论文；尚未核实 DOI 或 arXiv 标识。正式 PDF 采用 WOOT 19 的下划线路径，conference/woot19 形式的地址返回 404。PDF 带有 Artifact Evaluated “Passed”（工件评估通过）标志。论文指明其实现位于 Universal Radio Hacker 中，URH README 也将自动字段推断功能链接到本文。固定提交中该 GPL-3.0 仓库已归档，推断代码位于 src/urh/awre，最新发行版为 v2.10.0。URH 自身的 WOOT 18 工具论文是另一篇独立发表的论文。",
     "kind": "research",
     "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-code-world-models",
+    "title": "Generating Code World Models with Large Language Models Guided by Monte Carlo Tree Search",
+    "title_zh": "通过蒙特卡洛树搜索引导大语言模型生成代码世界模型",
+    "authors": [
+      "Nicola Dainese",
+      "Matteo Merler",
+      "Minttu Alakuijala",
+      "Pekka Marttinen"
+    ],
+    "year": 2024,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The final NeurIPS proceedings and publisher-deposited Crossref record identify 2024. No publication month or day is asserted; conference event dates are not substituted for publication dates.",
+    "date_basis_zh": "正式 NeurIPS 论文集及出版方提交的 Crossref 记录给出 2024 年。不推定出版月份或日期，也不把会议举办日期当作出版日期。",
+    "venue": "NeurIPS 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2405.15383",
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": "2024-05-24",
+    "doi": "10.52202/079017-1933",
+    "citation": {
+      "container_title": "Advances in Neural Information Processing Systems",
+      "volume": "37",
+      "pages": "60429-60474",
+      "sources": [
+        "https://proceedings.neurips.cc/paper_files/paper/2024/hash/6f479ea488e0908ac8b1b37b27fd134c-Abstract-Conference.html",
+        "https://api.crossref.org/works/10.52202/079017-1933"
+      ]
+    },
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/6f479ea488e0908ac8b1b37b27fd134c-Abstract-Conference.html",
+    "pdf_url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/6f479ea488e0908ac8b1b37b27fd134c-Paper-Conference.pdf",
+    "code_url": "https://github.com/nicoladainese96/code-world-models",
+    "project_url": "https://sites.google.com/view/code-world-models/home",
+    "targets": [
+      "game"
+    ],
+    "description_en": "GIF-MCTS generates executable Python transition and reward models from natural-language environment descriptions and offline state-transition trajectories, using prediction feedback to generate, improve and repair code. CWMB evaluates 18 reinforcement-learning environments and downstream planning; a separate experiment uses a simplified Read to Fight Monsters grid world.",
+    "description_zh": "GIF-MCTS 根据环境的自然语言描述与离线状态转移轨迹生成可执行的 Python 状态转移和奖励模型，并利用预测反馈生成、改进和修复代码。CWMB 评估 18 个强化学习环境及后续规划；另一个实验使用简化的 Read to Fight Monsters 网格世界。",
+    "scope_limitations_en": "Assumes deterministic, fully observable dynamics and sufficiently detailed descriptions; this is not recovery from pixels or binaries alone. Accuracy uses the replay transitions supplied during synthesis, alongside planning-return evaluation, rather than proving correctness on all unseen states or full-engine equivalence. RTFM fixes the manual across episodes and keeps monsters stationary. CWMB also includes non-game control and physics tasks; some planning returns are unavailable and complex continuous-state models remain difficult.",
+    "scope_limitations_zh": "假设环境动态具有确定性、状态完全可观测，并且描述足够详细；并非仅凭像素或二进制进行恢复。准确率使用合成过程中提供的回放转移，并结合规划回报评估，不能证明所有未见状态上的正确性或完整引擎等价。RTFM 在不同回合间固定手册内容，并让怪物保持静止。CWMB 也包含非游戏的控制与物理任务；部分规划回报未给出，复杂连续状态模型仍然困难。",
+    "why_fits_en": "Shows how documented rules and observed transitions in game-like environments can become executable behavior models with test feedback. It complements game reconstruction without claiming recovery of original engines, graphics or assets.",
+    "why_fits_zh": "展示如何借助测试反馈，将类游戏环境中的已记录规则和已观察转移转为可执行行为模型。它可补充游戏重建研究，但不声称恢复原始引擎、图形或资产。",
+    "evidence_urls": [
+      "https://proceedings.neurips.cc/paper_files/paper/2024/hash/6f479ea488e0908ac8b1b37b27fd134c-Abstract-Conference.html",
+      "https://proceedings.neurips.cc/paper_files/paper/2024/file/6f479ea488e0908ac8b1b37b27fd134c-Paper-Conference.pdf",
+      "https://api.crossref.org/works/10.52202/079017-1933",
+      "https://arxiv.org/abs/2405.15383",
+      "https://sites.google.com/view/code-world-models/home",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/README.md",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/LICENSE",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/RTFM/LICENSE",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/environment.yml",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/src/mcts/gif_mcts/simulators/simulator_cwm.py",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/src/cwm_benchmark/generate_env.py",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/src/experiments/eval_cwm_planning.py",
+      "https://github.com/nicoladainese96/code-world-models/blob/e17e787b41137793bcef9f860bdfe9e6fc07b768/data/prompts/rtfm/generate.md"
+    ],
+    "metadata_notes": "Reviewed the final proceedings paper, pages 60429–60474. Its WorldCoder baseline follows the first arXiv version, not later revisions. The Apache-2.0 repository provides prompts, replay-buffer files and evaluation scripts; bundled RTFM carries CC BY-NC 4.0. The pinned evaluator balances reward classes, grants partial credit over next-state components, skips terminal next-state checks, and accepts nonempty valid-action subsets for RTFM; continuous states use 1e-5 relative/absolute tolerance. Its score is not a strict full-transition match rate. The planning script defaults to two episodes, while the paper reports ten. Reproduction needs the Linux-oriented Conda/Python 3.10 environment, Gymnasium/MuJoCo and model access. No upstream code, serialized buffer or model was executed.",
+    "metadata_notes_zh": "核查的是正式论文集版本，页码 60429–60474。其中的 WorldCoder 基线依据首个 arXiv 版本，而非后续修订版。Apache-2.0 仓库提供提示词、回放缓冲区文件和评估脚本；随附 RTFM 采用 CC BY-NC 4.0。固定版本评估器对奖励类别作平衡加权，按下一状态分量给予部分分数，跳过终止转移的下一状态核对，并允许 RTFM 返回有效动作集合的非空子集；连续状态采用 1e-5 的相对和绝对容差。因此该分数不是严格的完整转移匹配率。规划脚本默认运行两个回合，而论文报告十个回合。复现需要面向 Linux 的 Conda/Python 3.10 环境、Gymnasium/MuJoCo 及模型访问权限。本次未执行上游代码、加载序列化缓冲区或调用模型。",
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-stateinspector",
+    "title": "The Closer You Look, The More You Learn: A Grey-box Approach to Protocol State Machine Learning",
+    "title_zh": "越仔细观察，学到的越多：用于协议状态机学习的灰盒方法",
+    "authors": [
+      "Chris McMahon Stone",
+      "Sam L. Thomas",
+      "Mathy Vanhoef",
+      "James Henderson",
+      "Nicolas Bailluet",
+      "Tom Chothia"
+    ],
+    "year": 2022,
+    "publication_date": "2022-11-07",
+    "date_precision": "day",
+    "date_basis": "The ACM-deposited Crossref record gives November 7, 2022 for both online and print publication; this date is not inferred solely from the conference schedule.",
+    "date_basis_zh": "ACM 提交的 Crossref 记录将在线及印刷出版日期均列为 2022 年 11 月 7 日；该日期并非仅根据会议日程推定。",
+    "venue": "ACM CCS 2022",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.1145/3548606.3559365",
+    "citation": {
+      "container_title": "Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security",
+      "pages": "2265-2278",
+      "publisher": "ACM",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3548606.3559365"
+      ]
+    },
+    "url": "https://doi.org/10.1145/3548606.3559365",
+    "pdf_url": "https://tomchothia.gitlab.io/Papers/greyboxstatelearning_ccs2022.pdf",
+    "code_url": "https://github.com/ChrisMcMStone/state-inspector",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "StateInspector learns protocol Mealy machines by combining active message queries with snapshots of runtime memory, without requiring the target’s source code. It identifies candidate state-defining heap locations and uses taint and concolic analysis to merge states, evaluated by the authors on TLS 1.2 and WPA/2 implementations.",
+    "description_zh": "StateInspector 将主动消息查询与运行时内存快照结合起来，学习协议的 Mealy 状态机，无需目标实现的源代码。它识别可能决定状态的堆内存位置，并通过污点分析与混合执行合并状态；作者在 TLS 1.2 和 WPA/2 实现上进行了评估。",
+    "scope_limitations_en": "Assumes a finite Mealy-machine abstraction, a known input alphabet that can reach the relevant states, and state-defining memory on the heap exercised by bootstrap queries. State merging depends on configured search-depth and symbolic look-ahead bounds. Missing inputs or state stored elsewhere can leave behavior unmodeled; malformed harness messages, response abstraction and timeouts can create misleading transitions. Learned models and bounded checks do not establish full implementation equivalence, recover unknown message formats or reconstruct an application’s source code.",
+    "scope_limitations_zh": "假设协议可抽象为有限 Mealy 状态机、已知输入字母表能到达相关状态，且决定状态的内存位于堆上并可由初始化查询触及。状态合并依赖所配置的搜索深度与符号执行前瞻上限。缺失的输入或存储在其他位置的状态可能导致行为未被建模；测试驱动程序构造的错误消息、响应抽象方式和超时也可能产生误导性转移。学习出的模型与有界检查不能证明实现完全等价，也不恢复未知消息格式或重建应用源代码。",
+    "why_fits_en": "Provides a concrete method for reconstructing communication-state behavior from executable protocol implementations and testing deviations from expected flows, complementing message-format inference.",
+    "why_fits_zh": "提供从可执行协议实现中重建通信状态行为、检查其与预期流程偏差的具体方法，可与消息格式推断互补。",
+    "evidence_urls": [
+      "https://doi.org/10.1145/3548606.3559365",
+      "https://api.crossref.org/works/10.1145/3548606.3559365",
+      "https://tomchothia.gitlab.io/Papers/greyboxstatelearning_ccs2022.pdf",
+      "https://github.com/ChrisMcMStone/state-inspector/blob/103494e6d30fd7741e74393d844212acb4daf683/README.md",
+      "https://github.com/ChrisMcMStone/state-inspector/blob/103494e6d30fd7741e74393d844212acb4daf683/.gitmodules",
+      "https://github.com/ChrisMcMStone/state-inspector/blob/103494e6d30fd7741e74393d844212acb4daf683/ptrace-statemem/LICENSE",
+      "https://github.com/ChrisMcMStone/state-inspector/blob/103494e6d30fd7741e74393d844212acb4daf683/blackbox/statelearner/LICENSE"
+    ],
+    "metadata_notes": "Reviewed the author-hosted 19-page copy; ACM-deposited metadata lists proceedings pages 2265–2278, so these are not asserted to be identical PDF versions. Public code documents a dated Linux setup with Python 2, OpenJDK 14, Maven, per-protocol input/reset harnesses and target-specific ptrace hooks. The taint path requires Triton and IDA Pro/Wine; omitting it can prevent termination on counters. No project-wide license was found in the inspected repository; component licenses and proprietary-tool rights remain separate. Only public text and paper documents were retrieved; no upstream code was executed and no encrypted archive was downloaded or decrypted.",
+    "metadata_notes_zh": "核查的是作者托管的 19 页版本；ACM 提交的元数据将论文集页码列为 2265–2278，因此不声称两者是完全相同的 PDF 版本。公开代码记录了较早的 Linux 环境，包括 Python 2、OpenJDK 14、Maven、针对各协议的输入与重置测试驱动程序，以及目标相关的 ptrace 钩子。污点分析路径需要 Triton 和 IDA Pro/Wine；省略该路径可能因计数器而无法终止。所检查仓库中未发现项目整体许可证；各组件许可与专有工具使用权需分别处理。本次仅获取公开文本及论文文档，未执行上游代码，也未下载或解密加密归档。",
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-halucinator",
+    "title": "HALucinator: Firmware Re-hosting Through Abstraction Layer Emulation",
+    "title_zh": "HALucinator：通过抽象层仿真实现固件重托管",
+    "authors": [
+      "Abraham A Clements",
+      "Eric Gustafson",
+      "Tobias Scharnowski",
+      "Paul Grosen",
+      "David Fritz",
+      "Christopher Kruegel",
+      "Giovanni Vigna",
+      "Saurabh Bagchi",
+      "Mathias Payer"
+    ],
+    "year": 2020,
+    "publication_date": "2020-08",
+    "date_precision": "month",
+    "date_basis": "The official USENIX proceedings citation gives August 2020. Month precision is retained; the conference’s event dates are not substituted for a publication day.",
+    "date_basis_zh": "USENIX 官方论文集引用信息给出 2020 年 8 月。保留月份精度，不把会议举办日期当作具体出版日。",
+    "venue": "USENIX Security 2020",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": null,
+    "citation": {
+      "container_title": "29th USENIX Security Symposium (USENIX Security 20)",
+      "pages": "1201-1218",
+      "publisher": "USENIX Association",
+      "sources": [
+        "https://www.usenix.org/conference/usenixsecurity20/presentation/clements"
+      ]
+    },
+    "url": "https://www.usenix.org/conference/usenixsecurity20/presentation/clements",
+    "pdf_url": "https://www.usenix.org/system/files/sec20-clements.pdf",
+    "code_url": "https://github.com/embedded-sec/halucinator",
+    "project_url": null,
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "HALucinator rehosts monolithic ARM Cortex-M firmware by identifying hardware-abstraction-library functions and replacing them with authored Python handlers and peripheral models. LibMatch locates library interfaces; the QEMU/Avatar2 implementation supports interactive I/O, while the paper-associated HAL-fuzz variant uses AFL-Unicorn for fuzzing.",
+    "description_zh": "HALucinator 识别单体 ARM Cortex-M 固件中的硬件抽象库函数，并用人工编写的 Python 处理函数和外设模型替换它们，从而重托管固件。LibMatch 定位库接口；QEMU/Avatar2 实现支持交互式输入输出，与论文关联的 HAL-fuzz 变体则使用 AFL-Unicorn 进行模糊测试。",
+    "scope_limitations_en": "LibMatch requires an available HAL/library and a sufficiently similar compilation environment; compiler variation and inlining limit matching. Rehosting also needs a QEMU-supported architecture, firmware memory layout, interception addresses and authored handlers/models. Unmodeled direct hardware accesses may return zero or ignore writes, and simplified timing and peripheral behavior do not establish hardware equivalence. The authors’ rehosting and fuzzing demonstrations are not universal firmware coverage, complete device reconstruction or original-source recovery.",
+    "scope_limitations_zh": "LibMatch 需要可获取的硬件抽象层或库，以及足够相似的编译环境；编译器差异与内联会限制匹配效果。重托管还需要 QEMU 支持的架构、固件内存布局、拦截地址及人工编写的处理函数和模型。未建模的直接硬件访问可能在读取时返回零、在写入时被忽略；简化的时序与外设行为不能证明硬件等价。作者的重托管与模糊测试演示不代表普遍覆盖所有固件、完整重建设备或恢复原始源代码。",
+    "why_fits_en": "Shows how binary library identification and explicit environment models can reconstruct enough of an embedded execution environment to analyze existing firmware, with the abstraction boundary made visible.",
+    "why_fits_zh": "展示如何通过二进制库识别与显式环境模型，重建分析已有固件所需的嵌入式执行环境，并明确其抽象边界。",
+    "evidence_urls": [
+      "https://www.usenix.org/conference/usenixsecurity20/presentation/clements",
+      "https://www.usenix.org/system/files/sec20-clements.pdf",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/README.md",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/LICENSE",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/dependencies.md",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/Developing.md",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/doc/tutorial/0_Preqs.md",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/doc/tutorial/1_HALucinator_overview.md",
+      "https://github.com/embedded-sec/halucinator/blob/fa85a1dcbaaa72bd425094fc3917abdd7d9b9a8a/install_deps.sh",
+      "https://github.com/ucsb-seclab/hal-fuzz/blob/1446408e64b25aa77971226b764d1db65fe8ba09/LICENSE",
+      "https://github.com/ucsb-seclab/hal-fuzz/blob/1446408e64b25aa77971226b764d1db65fe8ba09/README.md",
+      "https://github.com/ucsb-seclab/hal-fuzz/blob/1446408e64b25aa77971226b764d1db65fe8ba09/requirements.txt"
+    ],
+    "metadata_notes": "Reviewed the final USENIX paper, pages 1201–1218; no DOI or arXiv identifier is asserted. The paper-linked embedded-sec/halucinator repository carries GPLv3, while the separate ucsb-seclab/hal-fuzz implementation carries Apache-2.0; these licenses are not interchangeable. The original README describes a lightly tested Ubuntu 16.04/18.04 and Python 3 environment with Avatar2, QEMU and GDB, and points to a newer project separately. Reproduction needs firmware images, compatible HAL/SDK inputs and configuration; vendor firmware, dependencies and SDK rights remain separate. HAL-fuzz uses simplified handlers and deterministic timers rather than wall-clock equivalence. No firmware binaries were retrieved and no upstream runtime or experiment was executed.",
+    "metadata_notes_zh": "核查的是 USENIX 正式论文，页码 1201–1218；不推定 DOI 或 arXiv 标识。论文链接的 embedded-sec/halucinator 仓库采用 GPLv3，独立的 ucsb-seclab/hal-fuzz 实现采用 Apache-2.0，两者许可不可混同。原始 README 记载了仅经有限测试的 Ubuntu 16.04/18.04 与 Python 3 环境，依赖 Avatar2、QEMU 和 GDB，并另行指向较新项目。复现需要固件镜像、兼容的 HAL/SDK 输入及配置；厂商固件、依赖项和 SDK 的使用权需分别处理。HAL-fuzz 使用简化处理函数和确定性计时器，不保证与真实时钟等价。本次未获取固件二进制，也未运行上游程序或实验。",
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-firmwell",
+    "title": "User-Space Dependency-Aware Rehosting for Linux-Based Firmware Binaries",
+    "title_zh": "面向 Linux 固件二进制的用户空间依赖感知重托管",
+    "authors": [
+      "Chuan Qin",
+      "Cen Zhang",
+      "Yaowen Zheng",
+      "Puzhuo Liu",
+      "Jian Zhang",
+      "Yeting Li",
+      "Weidong Zhang",
+      "Yang Liu",
+      "Limin Sun"
+    ],
+    "year": 2026,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The Internet Society’s Crossref deposit and the official NDSS paper identify publication year 2026. No finer publication date is asserted from the conference event dates.",
+    "date_basis_zh": "Internet Society 提交的 Crossref 元数据与 NDSS 官方论文标明出版年份为 2026；不根据会议举办日期推定更精确的出版日期。",
+    "venue": "NDSS 2026",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/ndss.2026.230249",
+    "url": "https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/2026-s249-paper.pdf",
+    "code_url": "https://github.com/qc9c/Firmwell",
+    "project_url": null,
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "FIRMWELL reconstructs the execution environment of Linux firmware services by running their initialization processes, locating blocking dependencies and repairing missing system-level behavior. It combines containerized QEMU-user emulation with a QEMU-system fallback, using process traces and binary analysis to recover resources needed by the target service.",
+    "description_zh": "FIRMWELL 通过运行初始化进程、定位阻塞依赖并修补缺失的系统层行为，重建 Linux 固件服务的执行环境。它结合容器化 QEMU-user 仿真与 QEMU-system 回退，并利用进程轨迹和二进制分析恢复目标服务所需的资源。",
+    "scope_limitations_en": "The evaluation concerns selected network services, not complete device or hardware equivalence. HTTP acceptance uses configured response-status and error-content checks; other services need their own criteria. Coverage depends on unpacking, supported architectures, initialization heuristics and peripheral models. Symbolic path explosion, solver timeouts and complex peripheral checks remain failure modes. The paper’s recovery strategy avoids patching target binaries; successful service interaction does not establish recovery of original source code or every device function.",
+    "scope_limitations_zh": "评估针对选定网络服务，并非完整设备或硬件等价。HTTP 验收采用配置好的响应状态与错误内容检查；其他服务需要各自的判定标准。覆盖范围受解包、架构支持、初始化启发式规则和外设模型限制，符号执行路径爆炸、求解超时及复杂外设检查仍可能导致失败。论文中的修复策略避免补丁修改目标二进制；服务交互成功不能证明恢复了原始源码或全部设备功能。",
+    "why_fits_en": "A concrete method for reconstructing the dependencies around shipped firmware binaries, complementing HAL-level and full-system rehosting research.",
+    "why_fits_zh": "提供围绕已发布固件二进制重建运行依赖的具体方法，可与 HAL 层及全系统重托管研究互补。",
+    "metadata_notes": "The nine-author order follows the official paper. Crossref agrees on the DOI but repeats Jian Zhang as a tenth author row; that duplicate is not reproduced here. Its appendix lists 1 CPU core, 4 GiB RAM and 100 GiB disk per task, and describes the full firmware corpus as private. The pinned repository declares GPLv3; vendor firmware and dependencies retain separate terms. Its Docker-in-Docker workflow uses an elevated-privilege outer container, and the authors recommend VM isolation; the current inner-container privilege flag defaults off. Mutable container tags mean the source pin alone does not fix the execution environment. Experiments were not rerun for this collection.",
+    "metadata_notes_zh": "九位作者的顺序以官方论文为准。Crossref 的 DOI 相符，但将 Jian Zhang 重复列为第十个作者条目；此处不沿用该重复项。论文附录列出每个任务需 1 个 CPU 核心、4 GiB 内存和 100 GiB 磁盘，并将完整固件语料描述为私有。固定仓库声明采用 GPLv3；厂商固件与依赖仍有各自条款。其 Docker-in-Docker 流程使用具有较高权限的外层容器，作者建议以虚拟机隔离；当前内层容器权限开关默认关闭。容器标签可变，因此固定源码版本本身并未固定执行环境。本合集未重新运行实验。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/user-space-dependency-aware-rehosting-for-linux-based-firmware-binaries/",
+      "https://www.ndss-symposium.org/wp-content/uploads/2026-s249-paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2026.230249",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/README.md",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/LICENSE",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/Dockerfile",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/firmwell.py",
+      "https://github.com/qc9c/Firmwell/blob/d46bc7552c463a08387125a346397e9866e5889e/firmwell/plugins/http_check.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-penguin",
+    "title": "Target-Centric Firmware Rehosting with Penguin",
+    "title_zh": "使用 Penguin 进行以目标为中心的固件重托管",
+    "authors": [
+      "Andrew Fasano",
+      "Zachary Estrada",
+      "Luke Craig",
+      "Ben Levy",
+      "Jordan McLeod",
+      "Jacques Becker",
+      "Caden Kline",
+      "Elysia Witham",
+      "Cole DiLorenzo",
+      "Ali Bobi",
+      "Dinko Dermendzhiev",
+      "Tim Leek",
+      "Wil Robertson"
+    ],
+    "year": 2025,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The Internet Society’s Crossref deposit gives publication year 2025. The PDF footer names the 28 February 2025 workshop; no finer publication date is asserted from the event date.",
+    "date_basis_zh": "Internet Society 向 Crossref 提交的元数据给出出版年份 2025。PDF 页脚标注研讨会于 2025 年 2 月 28 日举行；不据此推定更精确的出版日期。",
+    "venue": "Workshop on Binary Analysis Research (BAR) 2025",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/bar.2025.23010",
+    "url": "https://www.ndss-symposium.org/ndss-paper/auto-draft-634/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/bar2025-final10.pdf",
+    "code_url": "https://github.com/rehosting/penguin",
+    "project_url": null,
+    "targets": [
+      "firmware"
+    ],
+    "description_en": "Penguin rehosts embedded Linux firmware from an extracted filesystem by deriving an editable configuration of emulation transformations, such as file changes, pseudofiles, NVRAM values and network interfaces, from static analysis. Dynamic-analysis plugins expose failures so the configuration can be refined for each target, and a minimizer identifies which transformations a working rehosting needs.",
+    "description_zh": "Penguin 以提取出的固件文件系统为输入，通过静态分析生成可编辑的仿真变换配置（如文件修改、伪文件、NVRAM 值和网络接口），用于重托管嵌入式 Linux 固件。动态分析插件揭示运行失败，便于针对具体目标完善配置；配置最小化工具则找出可用的重托管所必需的变换。",
+    "scope_limitations_en": "Targets embedded Linux firmware through whole-system emulation with kernel replacement, as in Firmadyne and FirmAE; the implementation covers x86, ARM and MIPS and relies on the Linux syscall ABI. In the FirmAE comparison, success means a process binds port 80 or 443; a non-empty HTTP response is a stricter check, and the authors note neither shows full functionality. The 75% gain over FirmAE is author-reported on their own corpus of 13,649 images from vendor websites. Refinement still needs an analyst, and nondeterministic runs were repeated up to ten times. It builds an analysis environment, not a faithful device reproduction or source recovery.",
+    "scope_limitations_zh": "面向嵌入式 Linux 固件，沿用 Firmadyne 和 FirmAE 的思路，采用替换内核的整机仿真；实现支持 x86、ARM 和 MIPS，并依赖 Linux 系统调用 ABI。与 FirmAE 对比时，判定成功的标准是有进程绑定 80 或 443 端口，更严格的检查是 HTTP 返回非空响应；作者指出两者都不代表系统功能完整。比 FirmAE 多出 75% 的结果由作者在其自建语料（13,649 个取自厂商网站的镜像）上报告。完善配置仍需分析人员参与；运行结果不完全确定，作者对配置最多重复运行十次。该工作构建的是分析环境，不代表忠实复现设备或恢复源代码。",
+    "why_fits_en": "Makes firmware rehosting an explicit, shareable per-target configuration refined from runtime evidence, a reproducible way to rebuild an analyzable execution environment without the original hardware.",
+    "why_fits_zh": "将固件重托管表达为明确、可共享并针对具体目标的配置，依据运行时证据逐步完善，以可复现的方式在脱离原始硬件的条件下重建可分析的执行环境。",
+    "metadata_notes": "BAR 2025 is a workshop co-located with NDSS Symposium 2025, not the NDSS main track. The 13-author order and the name ‘Wil Robertson’ follow the PDF and the Internet Society’s Crossref deposit; the NDSS paper and program pages list ‘William Robertson’ and place Caden Kline after Cole DiLorenzo. The DOI resolves directly to the PDF, whose footer gives ISBN 979-8-9919276-4-2; no page range was verified. The conclusion says 13,650 images where the abstract and appendix say 13,649. The PDF’s availability section points to rehosting/penguin but names no evaluated release; the curated tool record reviews v3.1.21 (2026-10-06), which postdates the paper. The repository is GPL-2.0-or-later at the pinned commit, and the paper does not describe its firmware corpus as released. Experiments were not rerun for this collection.",
+    "metadata_notes_zh": "BAR 2025 是与 NDSS Symposium 2025 同期举办的研讨会，并非 NDSS 主会。13 位作者的顺序及“Wil Robertson”的写法以 PDF 和 Internet Society 向 Crossref 提交的元数据为准；NDSS 论文页和日程页写作“William Robertson”，并将 Caden Kline 排在 Cole DiLorenzo 之后。该 DOI 直接解析到 PDF，PDF 页脚标注 ISBN 979-8-9919276-4-2；未核实页码范围。论文结论写作 13,650 个镜像，摘要和附录则为 13,649 个。PDF 的“可用性”一节指向 rehosting/penguin 仓库，但未注明评测所用版本；精选工具条目审阅的 v3.1.21（2026-10-06）晚于论文发表。固定提交中的仓库采用 GPL-2.0-or-later，论文也未说明公开其固件语料。本合集未重新运行实验。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/auto-draft-634/",
+      "https://www.ndss-symposium.org/wp-content/uploads/bar2025-final10.pdf",
+      "https://doi.org/10.14722/bar.2025.23010",
+      "https://api.crossref.org/works/10.14722/bar.2025.23010",
+      "https://www.ndss-symposium.org/ndss-program/bar-2025/",
+      "https://github.com/rehosting/penguin/blob/b645cd23852a41781181a651779b82a48c0c3fd3/README.md",
+      "https://github.com/rehosting/penguin/blob/b645cd23852a41781181a651779b82a48c0c3fd3/LICENSE",
+      "https://github.com/rehosting/penguin/releases/tag/v3.1.21"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-ble-automata-learning",
+    "title": "Fingerprinting and analysis of Bluetooth devices with automata learning",
+    "title_zh": "基于自动机学习的蓝牙设备指纹识别与分析",
+    "authors": [
+      "Andrea Pferscher",
+      "Bernhard K. Aichernig"
+    ],
+    "year": 2022,
+    "publication_date": "2022-08",
+    "date_precision": "month",
+    "date_basis": "Springer-deposited Crossref metadata and the article page give the August 2022 issue date of volume 61, issue 1, represented at month precision; the 22 May 2023 online publication is recorded in metadata notes.",
+    "date_basis_zh": "Springer 向 Crossref 提交的元数据及文章页面将第 61 卷第 1 期的刊期标为 2022 年 8 月，本目录采用月份精度；2023 年 5 月 22 日的在线出版日期另在元数据说明中记录。",
+    "venue": "Formal Methods in System Design",
+    "publication_status": "journal-article",
+    "arxiv_id": "2211.16074",
+    "arxiv_version_reviewed": "v2",
+    "first_arxiv_date": "2022-11-29",
+    "doi": "10.1007/s10703-023-00425-y",
+    "url": "https://doi.org/10.1007/s10703-023-00425-y",
+    "pdf_url": "https://arxiv.org/pdf/2211.16074v2",
+    "code_url": "https://github.com/apferscher/ble-learning",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Learns Mealy-machine models of Bluetooth Low Energy implementations on physical peripherals by active automata learning. An nRF52840 central running SweynTooth-derived firmware sends abstract BLE inputs, with error handling, repeated queries and caching for lost packets and non-deterministic replies. The authors learn connection-procedure models of six devices and legacy-pairing models of three, and use model differences to fingerprint their SoCs.",
+    "description_zh": "通过主动自动机学习，为实体外设上的低功耗蓝牙（BLE）协议实现推断 Mealy 状态机模型。运行 SweynTooth 衍生固件的 nRF52840 中心设备发送抽象 BLE 输入，并以错误处理、重复查询和缓存应对丢包与不确定的响应。作者学习了六款设备的连接过程模型和其中三款的传统配对（legacy pairing）模型，并利用模型差异识别各设备的 SoC。",
+    "scope_limitations_en": "Models are bounded by the chosen abstract alphabet and cover only connection and legacy pairing; message formats are not inferred, and secure pairing is left to future work. Equivalence was approximated with a small number of conformance tests per state, so models are hypotheses, not proofs. One SoC was learnable only with reduced alphabets, two were learned from an already-connected state, and some pairing runs needed manual hard resets. The fingerprinting sequence holds only for the tested SoCs. Apart from one crashing input sequence, the authors report no security vulnerabilities in the learned models.",
+    "scope_limitations_zh": "模型受所选抽象输入字母表限制，仅覆盖连接过程和传统配对；不推断报文格式，安全配对留待后续研究。等价性仅以每个状态少量的一致性测试近似检验，因此模型只是假设而非证明。其中一款 SoC 只能缩减输入字母表后学习，两款设备从已建立连接的状态开始学习，部分配对实验还需人工硬重置设备。所得指纹识别序列仅适用于受测 SoC。除一条会导致设备崩溃的输入序列外，作者未在学习所得模型中发现安全漏洞。",
+    "why_fits_en": "Reconstructs the protocol-state behavior of closed BLE implementations through black-box interaction with real devices, showing how learned state machines expose implementation differences and deviations from the specification.",
+    "why_fits_zh": "通过与真实设备的黑盒交互重建封闭 BLE 实现的协议状态行为，展示学习所得的状态机如何揭示不同实现之间的差异及其与规范的偏离。",
+    "metadata_notes": "Formal Methods in System Design 61(1), pages 35–62, published online on 22 May 2023 as an open-access CC BY 4.0 article. It extends the authors’ FM 2021 paper ‘Fingerprinting Bluetooth Low Energy Devices via Active Automata Learning’ (LNCS 13047, pages 524–542, DOI 10.1007/978-3-030-90870-6_28), which is not listed separately because no open copy was verified. The ble-learning README, linked from AALpy’s applications list, names this article ‘Identification and Analysis of Bluetooth Devices via Automata Learning’, unlike the published title. Springer’s PDF could not be fetched automatically, so its full-text page and arXiv v2, the accepted manuscript, were reviewed. The study used Python 3.9.0, AALpy 1.0.1 and a modified Scapy 2.4.4; the repository, pinned at a 2025 commit, now requires aalpy>=1.1.7 and scapy>=2.4.5. It needs an nRF52840 dongle or development kit flashed with the supplied SweynTooth-derived firmware, and pairing also needs Linux with SweynTooth’s BlueZ-based Security Manager module. The repository has no license file, so no reuse license is implied. No learning experiments were run.",
+    "metadata_notes_zh": "发表于 Formal Methods in System Design 第 61 卷第 1 期，35–62 页，于 2023 年 5 月 22 日在线出版，为 CC BY 4.0 开放获取论文。本文是作者 FM 2021 论文“Fingerprinting Bluetooth Low Energy Devices via Active Automata Learning”（LNCS 13047，524–542 页，DOI 10.1007/978-3-030-90870-6_28）的扩展版；因未核实该会议论文的公开全文，未单独收录。AALpy 应用列表链接的 ble-learning README 将本文称为“Identification and Analysis of Bluetooth Devices via Automata Learning”，与正式标题不同。Springer 的 PDF 无法自动获取，因此核查的是出版方全文页面和 arXiv v2（作者接收稿）。研究使用 Python 3.9.0、AALpy 1.0.1 和修改版 Scapy 2.4.4；固定在 2025 年提交的仓库目前要求 aalpy>=1.1.7 和 scapy>=2.4.5。运行需要一块刷入仓库所附 SweynTooth 衍生固件的 nRF52840 Dongle 或开发板，配对实验另需 Linux 及 SweynTooth 基于 BlueZ 的安全管理器（Security Manager）模块。仓库没有许可证文件，因此不意味着授予任何复用许可。本次未运行学习实验。",
+    "evidence_urls": [
+      "https://doi.org/10.1007/s10703-023-00425-y",
+      "https://api.crossref.org/works/10.1007/s10703-023-00425-y",
+      "https://link.springer.com/article/10.1007/s10703-023-00425-y",
+      "https://arxiv.org/abs/2211.16074",
+      "https://arxiv.org/pdf/2211.16074v2",
+      "https://api.crossref.org/works/10.1007/978-3-030-90870-6_28",
+      "https://github.com/apferscher/ble-learning/blob/febd774109c41a6635659b8847cc766e667841dd/README.md",
+      "https://github.com/apferscher/ble-learning/blob/febd774109c41a6635659b8847cc766e667841dd/requirements.txt",
+      "https://github.com/DES-Lab/AALpy/blob/335c50a1b4b5a830d788f86b7c30a8cb6c73ecc0/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-web2code",
+    "title": "Web2Code: A Large-scale Webpage-to-Code Dataset and Evaluation Framework for Multimodal LLMs",
+    "title_zh": "Web2Code：面向多模态大语言模型的大规模网页转代码数据集与评估框架",
+    "authors": [
+      "Sukmin Yun",
+      "Haokun Lin",
+      "Rusiru Thushara",
+      "Mohammad Qazim Bhat",
+      "Yongxin Wang",
+      "Zutao Jiang",
+      "Mingkai Deng",
+      "Jinhong Wang",
+      "Tianhua Tao",
+      "Junbo Li",
+      "Haonan Li",
+      "Preslav Nakov",
+      "Timothy Baldwin",
+      "Zhengzhong Liu",
+      "Eric P. Xing",
+      "Xiaodan Liang",
+      "Zhiqiang Shen"
+    ],
+    "year": 2024,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The official NeurIPS proceedings and publisher-deposited Crossref metadata identify publication year 2024; Crossref provides no finer publication date. The first arXiv submission date is recorded separately.",
+    "date_basis_zh": "NeurIPS 官方论文集与出版方提交的 Crossref 元数据标明出版年份为 2024；Crossref 未提供更精确的出版日期。arXiv 首次提交日期另行记录。",
+    "venue": "NeurIPS 2024 Datasets and Benchmarks",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2406.20098",
+    "arxiv_version_reviewed": "v2",
+    "first_arxiv_date": "2024-06-28",
+    "doi": "10.52202/079017-3560",
+    "url": "https://proceedings.nips.cc/paper_files/paper/2024/hash/cb66be286795d71f89367d596bf78ea7-Abstract-Datasets_and_Benchmarks_Track.html",
+    "pdf_url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/cb66be286795d71f89367d596bf78ea7-Paper-Datasets_and_Benchmarks_Track.pdf",
+    "code_url": "https://github.com/MBZUAI-LLM/web2code",
+    "project_url": "https://mbzuai-llm.github.io/webpage2code/",
+    "targets": [
+      "website"
+    ],
+    "description_en": "Studies screenshot-to-HTML reconstruction through instruction tuning and two evaluation benchmarks. Web2Code combines generated webpages, refined WebSight and pix2code image/code pairs, and WebSRC-derived question answering. Models produce HTML from a webpage image and instruction; rendered output is compared visually, while a separate benchmark measures screenshot understanding.",
+    "description_zh": "通过指令微调和两个评测基准研究从截图重建 HTML。Web2Code 结合生成网页、经改进的 WebSight 与 pix2code 图像／代码对，以及来自 WebSRC 的问答。模型根据网页图像与指令生成 HTML，渲染输出接受视觉比较，另一个基准则测量截图理解能力。",
+    "scope_limitations_en": "Evaluation uses 1,198 screenshots and 5,990 yes/no questions. WCGB grades rendered images with GPT-4V; its User Interface and Interactivity category measures element appearance, not executed click paths, persistent state or backend behavior. Synthetic and refined examples do not establish coverage of arbitrary real web applications, original-source equivalence or code quality. The paper reports contact-information issues in 2.7% of a 1,000-item privacy sample, so a blanket claim that the data is free of such information is unsupported.",
+    "scope_limitations_zh": "评估使用 1,198 张截图和 5,990 个是／否问题。WCGB 用 GPT-4V 评价渲染图像；其“用户界面与交互性”类别衡量元素外观，并不执行点击路径、持久状态或后端行为。合成与改进样本不能确立对任意真实 Web 应用的覆盖、与原始源码等价或代码质量。论文报告，在 1,000 项隐私抽样中，2.7% 存在联系信息问题，因此不能笼统宣称数据完全不含此类信息。",
+    "why_fits_en": "A foundational visual reconstruction dataset and evaluation method, useful for distinguishing screenshot fidelity from the behavioral guarantees of later website-reconstruction benchmarks.",
+    "why_fits_zh": "提供基础性的视觉重建数据集与评估方法，有助于区分截图保真度与后续网站重建基准所检验的行为保证。",
+    "metadata_notes": "Published in NeurIPS volume 37, pages 112134–112157; full author names follow the proceedings PDF. The repository still cites the preprint; reviewed arXiv v2 is dated 2024-11-17. The LLaVA-based training subtree carries Apache-2.0. Dataset licensing is inconsistent: the GitHub README and dataset-card frontmatter say MIT, while the same card’s body says CC BY 4.0 with research-only/non-commercial wording. No blanket reuse permission is inferred for constituent data or model weights. The training metadata requires Python >=3.8 and pins PyTorch 2.0.1; evaluation needs browser rendering and an external vision-model API. No training, evaluation, model or dataset payload was run or downloaded.",
+    "metadata_notes_zh": "发表于 NeurIPS 第 37 卷，第 112134–112157 页；作者完整姓名以论文集 PDF 为准。仓库仍引用预印本；所审阅 arXiv v2 日期为 2024-11-17。基于 LLaVA 的训练子目录采用 Apache-2.0。数据集许可声明不一致：GitHub README 与数据卡元数据写 MIT，同一数据卡正文却写 CC BY 4.0，并附仅供研究／非商业措辞。不据此推定全部组成数据或模型权重具有统一复用许可。训练元数据要求 Python >=3.8，固定 PyTorch 2.0.1；评估需要浏览器渲染与外部视觉模型 API。本合集未运行训练或评估，也未下载模型或数据集载荷。",
+    "evidence_urls": [
+      "https://proceedings.nips.cc/paper_files/paper/2024/hash/cb66be286795d71f89367d596bf78ea7-Abstract-Datasets_and_Benchmarks_Track.html",
+      "https://proceedings.neurips.cc/paper_files/paper/2024/file/cb66be286795d71f89367d596bf78ea7-Paper-Datasets_and_Benchmarks_Track.pdf",
+      "https://arxiv.org/abs/2406.20098v2",
+      "https://arxiv.org/html/2406.20098v2",
+      "https://api.crossref.org/works/10.52202/079017-3560",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/README.md",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/web2code/README.md",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/web2code/pyproject.toml",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/web2code/LICENSE",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/code_generation/README.md",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/code_generation/gpt4_vision_evaluation.py",
+      "https://github.com/MBZUAI-LLM/web2code/blob/48c356a97dd6199f29a9710fdd2b4b2689b5e361/webpage_understanding/README.md",
+      "https://huggingface.co/datasets/MBZUAI/Web2Code/blob/21e587b4509b946e56732fe8c621b17bad631e6b/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false,
+    "citation": {
+      "container_title": "Advances in Neural Information Processing Systems",
+      "volume": "37",
+      "pages": "112134-112157",
+      "sources": [
+        "https://proceedings.nips.cc/paper_files/paper/2024/hash/cb66be286795d71f89367d596bf78ea7-Abstract-Datasets_and_Benchmarks_Track.html",
+        "https://api.crossref.org/works/10.52202/079017-3560"
+      ]
+    }
+  },
+  {
+    "id": "paper-degpt",
+    "title": "DeGPT: Optimizing Decompiler Output with LLM",
+    "title_zh": "DeGPT：使用大语言模型优化反编译器输出",
+    "authors": [
+      "Peiwei Hu",
+      "Ruigang Liang",
+      "Kai Chen"
+    ],
+    "year": 2024,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The official NDSS paper and the publisher’s Crossref deposit establish publication year 2024. The conference dates and DOI registration date do not establish a publication day.",
+    "date_basis_zh": "NDSS 官方论文与出版方提交的 Crossref 元数据确认出版年份为 2024；会议日期与 DOI 注册日期不能据此推定具体出版日。",
+    "venue": "NDSS 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/ndss.2024.24401",
+    "citation": {
+      "container_title": "Proceedings 2024 Network and Distributed System Security Symposium",
+      "publisher": "Internet Society",
+      "sources": [
+        "https://api.crossref.org/works/10.14722/ndss.2024.24401"
+      ]
+    },
+    "url": "https://www.ndss-symposium.org/ndss-paper/degpt-optimizing-decompiler-output-with-llm/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/2024-401-paper.pdf",
+    "code_url": "https://github.com/PeiweiHu/DeGPT",
+    "project_url": null,
+    "targets": [
+      "binary"
+    ],
+    "description_en": "Refines existing C-like decompiler output through three coordinated roles that select, propose and check changes. It simplifies structures, adds comments and renames variables; Micro Snippet Semantic Calculation compares simulated symbol values and calls before accepting structural changes. The authors evaluate readability and naming on 620 functions from four codebases, with separate stripped and non-stripped variants.",
+    "description_zh": "通过三个协同角色选择、提出并检查修改，改进已有的类 C 反编译输出。其流程简化代码结构、添加注释并重命名变量，在接受结构修改前，使用微代码片段语义计算比较模拟的符号值与调用。作者以四个代码库中的 620 个函数评估可读性与命名效果，并分别测试保留与剥离符号的版本。",
+    "scope_limitations_en": "The reported 24.4% reduction is a Halstead-effort proxy on non-stripped output, not a measured reduction in human effort. The 62.9% comment result is the average non-trivial share among manually judged correct comments. MSSC is an intraprocedural heuristic: calls are abstracted and loops become branches; parsing, aliasing and path growth remain limitations. Its 80-case manual audit reports 84% accuracy and 85% recall, including three harmful changes missed. This supports assisted pseudocode comprehension, not guaranteed binary equivalence, recompilable whole programs or original-source recovery.",
+    "scope_limitations_zh": "报告的 24.4% 降幅来自保留符号版本输出的 Halstead 工作量代理指标，并非直接测得的人力节省。62.9% 的注释结果是人工判定正确的注释中，具有非平凡信息者的平均占比。MSSC 是过程内启发式检查：调用被抽象处理，循环转化为分支；解析、别名与路径增长仍有限制。其 80 个案例的人工审查报告准确率为 84%、召回率为 85%，其中漏过三处有害修改。这支持辅助理解伪代码，不能保证二进制等价、整程序可重新编译或恢复原始源码。",
+    "why_fits_en": "A concrete LLM-assisted reverse-engineering method combining readability edits with an explicitly evaluated semantic-change filter.",
+    "why_fits_zh": "将可读性改写与经过明确评估的语义变化过滤器结合，为大语言模型辅助逆向工程提供具体方法。",
+    "metadata_notes": "The publisher and PDF agree on the title, three-author order and DOI; no arXiv identifier or proceedings page range was verified. The September 2024 artifact snapshot is later than the paper, has no release tag, and declares no project license. Its README requires manually installed cinspector, openai==1.28.1, tiktoken==0.2.0 and python-levenshtein, without a DeGPT Python minimum. Current code reads model, API key and endpoint from config.ini, differing from the README’s chat.py setup example; it uses Unix-style SIGALRM timeouts. The separately pinned cinspector dependency declares WTFPL and tree-sitter==0.20.4; this does not license DeGPT or its third-party samples. The paper primarily used gpt-3.5-turbo at temperature 0.2 and Ghidra 10.2.3. Source and dependency inspection do not establish present service compatibility; experiments were not rerun.",
+    "metadata_notes_zh": "出版方与 PDF 的标题、三位作者顺序和 DOI 一致；未核实到 arXiv 标识符或论文集页码范围。2024 年 9 月的产物快照晚于论文，没有发布标签，也未声明项目许可证。其 README 要求手动安装 cinspector、openai==1.28.1、tiktoken==0.2.0 和 python-levenshtein，但未声明 DeGPT 所需的最低 Python 版本。当前代码从 config.ini 读取模型、API 密钥和端点，与 README 的 chat.py 配置示例不同，并采用 Unix 风格的 SIGALRM 超时机制。单独固定版本的 cinspector 依赖声明采用 WTFPL，并要求 tree-sitter==0.20.4；这不代表 DeGPT 或其中的第三方样本获得相同授权。论文主要采用温度为 0.2 的 gpt-3.5-turbo 与 Ghidra 10.2.3。源码和依赖审查不证明当前服务仍兼容，本合集未重新运行实验。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/degpt-optimizing-decompiler-output-with-llm/",
+      "https://www.ndss-symposium.org/wp-content/uploads/2024-401-paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2024.24401",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/README.md",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/degpt/chat.py",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/degpt/role.py",
+      "https://github.com/PeiweiHu/DeGPT/blob/0f632cc52fabd70c7e7b3b9ad1ed7aef517a3714/degpt/mssc.py",
+      "https://github.com/PeiweiHu/cinspector/blob/e827cfd9fccb1c5d7c4e0169c0da0bd2006de63b/README.md",
+      "https://github.com/PeiweiHu/cinspector/blob/e827cfd9fccb1c5d7c4e0169c0da0bd2006de63b/LICENSE",
+      "https://github.com/PeiweiHu/cinspector/blob/e827cfd9fccb1c5d7c4e0169c0da0bd2006de63b/setup.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-binpre",
+    "title": "BinPRE: Enhancing Field Inference in Binary Analysis Based Protocol Reverse Engineering",
+    "title_zh": "BinPRE：增强基于二进制分析的协议逆向工程中的字段推断",
+    "authors": [
+      "Jiayi Jiang",
+      "Xiyuan Zhang",
+      "Chengcheng Wan",
+      "Haoyi Chen",
+      "Haiying Sun",
+      "Ting Su"
+    ],
+    "year": 2024,
+    "publication_date": "2024-12-02",
+    "date_precision": "day",
+    "date_basis": "The publisher’s Crossref deposit records published/print publication on 2024-12-02 and a separate publisher publication-history assertion on 2024-12-09. This record uses the published/print date; the October 14–18 CCS meeting dates and the September arXiv submission are separate.",
+    "date_basis_zh": "出版方提交的 Crossref 元数据将 published／纸质出版日期记为 2024-12-02，另有一项出版方发表历史声明记为 2024-12-09。本条目采用 published／纸质出版日期；10 月 14–18 日的 CCS 会议日期及 9 月的 arXiv 提交日期另行区分。",
+    "venue": "ACM CCS 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2409.01994",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2024-09-03",
+    "doi": "10.1145/3658644.3690299",
+    "citation": {
+      "container_title": "Proceedings of the 2024 on ACM SIGSAC Conference on Computer and Communications Security",
+      "publisher": "ACM",
+      "pages": "3689-3703",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3658644.3690299"
+      ]
+    },
+    "url": "https://dl.acm.org/doi/10.1145/3658644.3690299",
+    "pdf_url": "https://tingsu.github.io/files/ccs24-BinPRE.pdf",
+    "code_url": "https://github.com/ecnusse/BinPRE",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Infers protocol-message field boundaries and semantics from instrumented server binaries and input messages. BinPRE groups bytes by the instruction operators that process them, applies detectors for field types and functions, then refines results across similar messages. On eight protocols with 50 messages each, the authors report average field perfection of 0.73 and type/function F1 scores of 0.74/0.81.",
+    "description_zh": "根据受插桩监测的服务端二进制及输入报文，推断协议报文的字段边界与语义。BinPRE 按处理字节的指令操作符进行分组，使用检测器识别字段类型和功能，再借助相似报文细化结果。作者在八种协议、每种 50 条报文上报告平均字段完美分割率为 0.73，类型／功能推断的 F1 分数为 0.74／0.81。",
+    "scope_limitations_en": "This is field inference, not recovery of a protocol state machine or complete endpoint behavior. It requires an accessible, instrumentable implementation and runtime message processing; passive captures alone are insufficient. Perfection counts exactly segmented fields against all true fields, not fully recovered protocols. The detector library covers five semantic types and six functions. Byte-level taint cannot accurately resolve bit flags, and unexercised behavior is not established. Ground truth uses Wireshark dissectors and specifications; three binary-analysis baselines were author reimplementations. Reported fuzzing improvements are a downstream evaluation, not proof of implementation equivalence.",
+    "scope_limitations_zh": "研究对象是字段推断，不是恢复协议状态机或端点的完整行为。方法需要能够访问并插桩的实现及运行时的报文处理；仅有被动捕获数据并不足够。完美分割率统计被精确分割的字段占全部真实字段的比例，而非完整恢复的协议比例。检测器库覆盖五种语义类型与六种功能。字节级污点分析无法准确解析位标志，也不确立未执行行为。真实标签依据 Wireshark 解析器与协议规范构建；三种二进制分析基线由作者重新实现。报告的模糊测试改进属于下游评估，不是实现等价性的证明。",
+    "why_fits_en": "Adds recent executable-assisted protocol field and semantic inference, complementing the collection’s traffic-based syntax inference and protocol-state learning research.",
+    "why_fits_zh": "补充近期借助可执行程序进行协议字段与语义推断的研究，与合集已有的流量语法推断和协议状态学习形成互补。",
+    "metadata_notes": "The author’s publication page links the CCS-formatted paper, the 17-page arXiv v1 and the artifact. Six-author order, DOI and proceedings pages match Crossref. The reviewed artifact snapshot is dated 2024-10-25 and declares no project-level license. Its README specifies Ubuntu 20.04, Python 3.8 and Intel Pin 3.28; the workflow runs a server and client and requires protocol/thread selection. The reviewed tree supplies a Modbus example, not a complete eight-protocol benchmark package; additional servers, captures and evaluation ground truth need separate setup. The README’s Docker example uses a privileged container, and the Dockerfile fetches a named branch rather than the reviewed commit. Public availability does not grant rights to bundled binaries or dependencies. No binaries, captures, containers or installers were downloaded, and no upstream code or experiments were executed.",
+    "metadata_notes_zh": "作者发表列表链接了 CCS 排版论文、17 页的 arXiv v1 及产物。六位作者顺序、DOI 和论文集页码与 Crossref 一致。所审阅产物快照日期为 2024-10-25，未声明项目级许可证。README 指定 Ubuntu 20.04、Python 3.8 与 Intel Pin 3.28；流程运行服务端和客户端，并需选择协议与线程。所审阅源码树提供 Modbus 示例，并非完整的八协议评测包；其他服务端、捕获数据及评估用真实标签需要另行配置。README 的 Docker 示例使用特权容器，Dockerfile 获取具名分支，而非所审阅的固定提交。公开可见不授予捆绑二进制或依赖的使用权。本次未下载二进制、捕获数据、容器或安装程序，也未执行上游代码或实验。",
+    "evidence_urls": [
+      "https://dl.acm.org/doi/10.1145/3658644.3690299",
+      "https://api.crossref.org/works/10.1145/3658644.3690299",
+      "https://tingsu.github.io/files/ccs24-BinPRE.pdf",
+      "https://tingsu.github.io/files/publication.html",
+      "https://arxiv.org/abs/2409.01994",
+      "https://arxiv.org/pdf/2409.01994v1",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/README.md",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/requirements.txt",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Dockerfile",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/install_pin.sh",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Artifact_Evaluation/BinPRE_scripts/run_modbus_client.sh",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Artifact_Evaluation/BinPRE_scripts/run_modbus_server.sh",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Analyzer/config.py",
+      "https://github.com/ecnusse/BinPRE/blob/9a32bd22b6158d285a237dec10d11403eda8ac4c/Analyzer/AAA_Evaluation/Syntax_Evaluator.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-binaryinferno",
+    "title": "BinaryInferno: A Semantic-Driven Approach to Field Inference for Binary Message Formats",
+    "title_zh": "BinaryInferno：面向二进制报文格式字段推断的语义驱动方法",
+    "authors": [
+      "Jared Chandler",
+      "Adam Wick",
+      "Kathleen Fisher"
+    ],
+    "year": 2023,
+    "publication_date": null,
+    "date_precision": "year",
+    "date_basis": "The official NDSS paper and publisher-deposited Crossref metadata establish publication year 2023. Crossref supplies no publication month or day; the conference dates and DOI registration date are not substituted.",
+    "date_basis_zh": "NDSS 官方论文与出版方提交的 Crossref 元数据确立出版年份为 2023。Crossref 未给出出版月份或日期；本条目不以会议日期或 DOI 注册日期代替。",
+    "venue": "NDSS 2023",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.14722/ndss.2023.23131",
+    "citation": {
+      "container_title": "Proceedings 2023 Network and Distributed System Security Symposium",
+      "publisher": "Internet Society",
+      "sources": [
+        "https://api.crossref.org/works/10.14722/ndss.2023.23131"
+      ]
+    },
+    "url": "https://www.ndss-symposium.org/ndss-paper/binaryinferno-a-semantic-driven-approach-to-field-inference-for-binary-message-formats/",
+    "pdf_url": "https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_s131_paper.pdf",
+    "code_url": "https://github.com/binaryinferno/binaryinferno",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Infers partial binary-message formats from static message samples without instrumenting an executable. Specialized detectors recognize floats, timestamps, lengths, entropy boundaries and serialization patterns; a graph-based integration step reconciles their descriptions. Across samples from ten protocols, the authors report top-level field-boundary precision of 0.69, recall of 0.73 and false-positive rate of 0.04 for the 1,000-message setting without analyst priors.",
+    "description_zh": "无需对可执行程序插桩，即可从静态报文样本推断部分二进制报文格式。专用检测器识别浮点数、时间戳、长度、熵边界和序列化模式，再通过基于图的集成步骤协调各自的描述。作者对十种协议的样本开展评估，在每组 1,000 条报文且不使用分析者先验的设置下，报告顶层字段边界的精确率为 0.69、召回率为 0.73、假阳性率为 0.04。",
+    "scope_limitations_en": "Assumes error-free, uncompressed, unencrypted, byte-aligned data and infers common fields or payload regions beginning at consistent offsets. It leaves optional/union fields and unsupported serialization patterns unresolved; sample diversity matters. The 26 encapsulated-payload test sets were pre-grouped using ground-truth message types, not discovered automatically. Ground truth merges adjacent fields that are constant across the sample; empty inference results are excluded from reported averages where stated. BI+ additionally uses supplied endianness and capture-time ranges. These are field-boundary results, not complete semantic recovery, protocol-state inference or behavioral equivalence.",
+    "scope_limitations_zh": "假设数据无错误、未经压缩或加密、按字节对齐，并推断起始偏移一致的共有字段或载荷区域。可选字段、联合类型字段及不支持的序列化模式仍未解决；样本多样性会影响结果。26 组封装载荷测试集依据已知真实报文类型预先分组，并非自动发现。真实标签合并了在整个样本中均保持常量的相邻字段；文中注明的平均值排除了没有推断结果的样本。BI+ 额外使用给定的字节序和捕获时间范围。这些是字段边界结果，不代表完整语义恢复、协议状态推断或行为等价。",
+    "why_fits_en": "Provides trace-only semantic field inference that complements executable-assisted analysis and protocol-state learning, with explicit assumptions and evaluated false-positive behavior.",
+    "why_fits_zh": "提供仅依赖报文轨迹的语义字段推断，与借助可执行程序的分析及协议状态学习互补，并明确列出假设和假阳性评估。",
+    "metadata_notes": "Three-author order, title and DOI agree across the publisher, paper and Crossref. No arXiv identifier or proceedings page range was verified; the PDF has 18 pages. The paper’s project URL leads to the author’s Tufts page, which links the repository. The reviewed 2023-05-02 snapshot has GPL-3.0-or-later code headers and a GPLv3 LICENSE; third-party trace provenance and rights require separate checking. README prerequisites are Python 3, sklearn, scipy and parallel, without pinned dependency versions; the pattern-search launcher also uses timeout and hardcodes 30 parallel jobs. Input is one hexadecimal message per line; timestamp search accepts a supplied time range. The actual entry file is binaryinferno/blackboard.py, despite the README’s basic-command blackboard.by typo. A dataset directory is present, but its README remains a placeholder. Historical setup and dataset completeness were not reproduced; no captures, binaries or model payloads were downloaded and no upstream code or notebooks were run.",
+    "metadata_notes_zh": "出版方、论文和 Crossref 的三位作者顺序、标题及 DOI 一致。未核实到 arXiv 标识符或论文集页码范围；PDF 共 18 页。论文给出的项目网址跳转到作者的 Tufts 页面，该页面链接了仓库。所审阅的 2023-05-02 快照在代码头部声明 GPL-3.0-or-later，并包含 GPLv3 LICENSE；第三方轨迹的来源与权利需另行核查。README 要求 Python 3、sklearn、scipy 和 parallel，未固定依赖版本；模式搜索启动脚本还使用 timeout，并将并行任务数写定为 30。输入为每行一条十六进制报文；时间戳搜索可接受给定的时间范围。实际入口文件为 binaryinferno/blackboard.py，README 的基本命令将其误写为 blackboard.by。仓库包含数据集目录，但其 README 仍是占位说明。本次未复现历史环境或确认数据集完整性；未下载捕获数据、二进制或模型载荷，也未运行上游代码或笔记本。",
+    "evidence_urls": [
+      "https://www.ndss-symposium.org/ndss-paper/binaryinferno-a-semantic-driven-approach-to-field-inference-for-binary-message-formats/",
+      "https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_s131_paper.pdf",
+      "https://api.crossref.org/works/10.14722/ndss.2023.23131",
+      "https://binaryinferno.net",
+      "https://www.eecs.tufts.edu/~chandler/binaryinferno.html",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/README.md",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/LICENSE",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/binaryinferno/blackboard.py",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/binaryinferno/deconflict.py",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/binaryinferno/rep_parallel.sh",
+      "https://github.com/binaryinferno/binaryinferno/blob/cb42a63ada74737c10d01e2c22f4502ba3983976/dataset/README.md"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-icepre",
+    "title": "ICEPRE: ICS Protocol Reverse Engineering via Data-Driven Concolic Execution",
+    "title_zh": "ICEPRE：基于数据驱动混合符号执行的工控协议逆向工程",
+    "authors": [
+      "Yibo Qu",
+      "Dongliang Fang",
+      "Zhen Wang",
+      "Jiaxing Cheng",
+      "Shuaizong Si",
+      "Yongle Chen",
+      "Limin Sun"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-22",
+    "date_precision": "day",
+    "date_basis": "The ACM article page and publisher-deposited Crossref metadata agree on publication on 2025-06-22. The ISSTA presentation date is not substituted for this journal publication date.",
+    "date_basis_zh": "ACM 文章页面与出版方提交的 Crossref 元数据均将出版日期列为 2025-06-22；本条目不以 ISSTA 报告日期替代该期刊出版日期。",
+    "venue": "Proceedings of the ACM on Software Engineering (ISSTA 2025)",
+    "publication_status": "journal-article",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.1145/3728982",
+    "citation": {
+      "container_title": "Proceedings of the ACM on Software Engineering",
+      "publisher": "ACM",
+      "volume": "2",
+      "issue": "ISSTA",
+      "pages": "2384-2406",
+      "article_number": "ISSTA105",
+      "sources": [
+        "https://dl.acm.org/doi/10.1145/3728982",
+        "https://api.crossref.org/works/10.1145/3728982"
+      ]
+    },
+    "url": "https://dl.acm.org/doi/10.1145/3728982",
+    "pdf_url": "https://dl.acm.org/doi/pdf/10.1145/3728982",
+    "code_url": "https://github.com/QYbPtqyb/ICEPRE",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "Infers message-field boundaries by following concrete message-guided paths through binary protocol parsers, then symbolically replaying them to extract byte-level data flow. It merges bytes using value-preserving operations and similar processing traces. For the 1,000-message datasets of four public ICS protocols, the authors report average boundary F1 of 0.76 and field perfection of 0.67.",
+    "description_zh": "在二进制协议解析器中沿具体报文引导的路径分析，再进行符号化重放，提取字节级数据流以推断报文字段边界。它依据保持原值的运算和相似处理轨迹合并字节。作者在四种公开工控协议、每组 1,000 条报文的数据集上，报告平均边界 F1 分数为 0.76、字段完美分割率为 0.67。",
+    "scope_limitations_en": "Recovers message syntax, not field semantics, protocol state machines or endpoint equivalence. It needs the binary, loader configuration and correctly identified initialization, input and parsing functions; manual filtering remains necessary, especially without symbols. Encrypted protocols and bit-level fields are unsupported, and ignored or only copied bytes can be merged incorrectly. Perfection measures fields with both boundaries correct. Quantitative tests use four public protocols with 50- and 1,000-message sets; separate proprietary studies cover three protocols in five firmware targets, with interaction checks on three devices and manually established ground truth. Those checks do not demonstrate complete device behavior.",
+    "scope_limitations_zh": "恢复的是报文语法，并非字段语义、协议状态机或端点等价性。方法需要二进制、加载配置，以及正确识别的初始化、输入和解析函数；尤其在缺少符号时，仍需人工筛选。不支持加密协议和位级字段；被忽略或仅被复制的字节可能遭到错误合并。完美分割率衡量两端边界均正确的字段。量化实验使用四种公开协议的 50 条与 1,000 条报文集合；另行开展的专有协议研究覆盖五个固件目标中的三种协议，在三台设备上进行交互检查，并由人工建立真实标签。这些检查不能证明完整设备行为。",
+    "why_fits_en": "Adds firmware-assisted protocol format inference using concolic analysis, complementing live-server instrumentation and traffic-only field inference.",
+    "why_fits_zh": "补充借助固件与混合符号分析推断协议格式的方法，与实时服务端插桩和仅基于流量的字段推断互补。",
+    "metadata_notes": "The publisher identifies article ISSTA105 and licenses the paper under CC BY 4.0; its Data Availability section links the repository. The reviewed 2025-04-16 code snapshot has no project-level license declaration. Python 3 dependencies use compatible-release bounds, including angr~=9.2.100, Netzob~=2.0.0 and scapy~=2.5.0; the paper describes Ghidra 11.0.3 for function analysis. The repository includes public-protocol configurations and a Modbus capture, but no firmware images; target binaries and libraries need separate provision. The paper specifies trace-similarity threshold 0.9, while released InferSyntax.py uses 99 on a 100-point scale. Its batch evaluator excludes abnormal traces from aggregate metrics. These source differences prevent treating this snapshot as a reproduced paper configuration. No firmware, captures or model payloads were downloaded, and no upstream code or experiments were run.",
+    "metadata_notes_zh": "出版方将文章编号列为 ISSTA105，并以 CC BY 4.0 授权论文；其数据可用性章节链接了仓库。所审阅的 2025-04-16 代码快照未声明项目级许可证。Python 3 依赖使用兼容版本范围，包括 angr~=9.2.100、Netzob~=2.0.0 与 scapy~=2.5.0；论文说明使用 Ghidra 11.0.3 进行函数分析。仓库包含公开协议配置和一份 Modbus 捕获数据，但没有固件映像；目标二进制与库需要另行提供。论文指定轨迹相似度阈值为 0.9，发布的 InferSyntax.py 则在百分制上使用 99。批量评估器将异常轨迹排除在汇总指标之外。这些源码差异意味着不能将此快照视为已复现的论文配置。本次未下载固件、捕获数据或模型载荷，也未运行上游代码或实验。",
+    "evidence_urls": [
+      "https://dl.acm.org/doi/10.1145/3728982",
+      "https://api.crossref.org/works/10.1145/3728982",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/README.md",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/requirements.txt",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/ICEPRE.py",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/Ctracer.py",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/InferSyntax.py",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/modbus_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/enip_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/iec104_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/config/s7comm_config.yaml",
+      "https://github.com/QYbPtqyb/ICEPRE/blob/506bdf1f970460d0eaa52f67ae9ae338795ef48b/evaluation/syntax_evaluation.py"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-netlifter",
+    "title": "Lifting Network Protocol Implementation to Precise Format Specification with Security Applications",
+    "title_zh": "从网络协议实现提取精确格式规范及其安全应用",
+    "authors": [
+      "Qingkai Shi",
+      "Junyang Shao",
+      "Yapeng Ye",
+      "Mingwei Zheng",
+      "Xiangyu Zhang"
+    ],
+    "year": 2023,
+    "publication_date": "2023-11-15",
+    "date_precision": "day",
+    "date_basis": "ACM’s Crossref deposit records published/print publication on 2023-11-15 and a separate online/publication-history date of 2023-11-21. This entry uses the published/print date, not the November 26–30 conference dates.",
+    "date_basis_zh": "ACM 提交的 Crossref 元数据将 published／纸质出版日期记为 2023-11-15，另列在线／发表历史日期为 2023-11-21。本条目采用 published／纸质出版日期，而非 11 月 26–30 日的会议日期。",
+    "venue": "ACM CCS 2023",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2305.11781",
+    "arxiv_version_reviewed": "v1",
+    "first_arxiv_date": "2023-05-19",
+    "doi": "10.1145/3576915.3616614",
+    "citation": {
+      "container_title": "Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security",
+      "publisher": "ACM",
+      "pages": "1287-1301",
+      "sources": [
+        "https://api.crossref.org/works/10.1145/3576915.3616614"
+      ]
+    },
+    "url": "https://dl.acm.org/doi/10.1145/3576915.3616614",
+    "pdf_url": "https://qingkaishi.github.io/public_pdfs/CCS23.pdf",
+    "code_url": "https://github.com/qingkaishi/netlifter",
+    "project_url": null,
+    "targets": [
+      "protocol"
+    ],
+    "description_en": "NetLifter statically lifts source-available C protocol parsers into BNF-style message grammars and first-order constraints between packet fields. It analyzes annotated LLVM bitcode using abstract format graphs, localized path-sensitive analysis, unfolding and reordering. The resulting field boundaries, constraints and names can support packet generation and parser construction.",
+    "description_zh": "NetLifter 将可获取源码的 C 协议解析器静态转换为 BNF 风格的报文文法及报文字段之间的一阶逻辑约束。它分析经过标注的 LLVM 位码，结合抽象格式图、局部路径敏感分析、展开与重排序。所得字段边界、约束与名称可用于报文生成及解析器构建。",
+    "scope_limitations_en": "Requires source/LLVM IR and packet-buffer/length annotations; it is not closed-binary or traffic-only recovery. The paper targets common top-down C parsers and does not support C++, inline assembly or libraries without available code. Pointer/loop analysis remains approximate; checksum fields can be identified while some checksum constraints are omitted, and fields ignored by an implementation may be missed. Precision/recall was manually checked on ten selected protocols. The reported fuzzing evaluation used three-hour runs repeated twenty times and bypassed checksum checks. It infers formats, not protocol state machines or proof of implementation equivalence.",
+    "scope_limitations_zh": "需要源码／LLVM 中间表示及报文缓冲区、长度标注，并非对闭源二进制或仅凭流量进行恢复。论文面向常见的自顶向下 C 解析器，不支持 C++、内联汇编及缺少源码的库。指针和循环分析仍有近似；可识别校验和字段，但部分校验和约束会被省略，实现中忽略的字段也可能遗漏。精确率／召回率在选定的十种协议上进行人工核对。报告的模糊测试采用每次三小时、重复二十次的实验，并绕过校验和检查。方法推断的是格式，而非协议状态机或实现等价性的证明。",
+    "why_fits_en": "Adds source-to-format inference with cross-field constraints, complementing traffic-based and binary-assisted protocol reconstruction research.",
+    "why_fits_zh": "补充包含跨字段约束的源码到格式推断方法，与基于流量及借助二进制的协议重建研究互补。",
+    "metadata_notes": "The final author PDF and Crossref establish the five-author order, CCS 2023 DOI and pages. The 19-page arXiv v1 retains an old CCS 2022 submission template and placeholder DOI; publication identity follows the final 15-page paper. The repository calls its prototype Popeye and warns of rough edges. Its reviewed 2025-04-21 snapshot declares AGPL-3.0-or-later in source headers. CMake requires 3.10+, LLVM 12.x and Z3>=4.8.12; README recommends LLVM 12.0.1 and the author’s modified Z3 4.8.12-popeye branch. Vectorized IR is unsupported: README documents -fno-vectorize and -fno-slp-vectorize, and recommends debug information and removal of optimization flags for field naming. This later artifact snapshot is not an independently reproduced 2023 environment; dependencies and target code retain separate terms. Source files were inspected without running upstream code, downloading benchmark inputs or reproducing experiments.",
+    "metadata_notes_zh": "最终作者版 PDF 与 Crossref 确认五位作者顺序、CCS 2023 DOI 和页码。19 页的 arXiv v1 保留旧的 CCS 2022 投稿模板及占位 DOI；出版身份以最终 15 页论文为准。仓库将原型称为 Popeye，并提示仍有粗糙之处。所审阅的 2025-04-21 快照在源码头部声明 AGPL-3.0-or-later。CMake 要求 3.10+、LLVM 12.x 与 Z3>=4.8.12；README 推荐 LLVM 12.0.1 及作者修改的 Z3 4.8.12-popeye 分支。不支持向量化中间表示：README 说明使用 -fno-vectorize 和 -fno-slp-vectorize，并建议保留调试信息、移除优化选项，以帮助字段命名。这个较晚的产物快照不代表独立复现了 2023 年环境；依赖与目标代码保留各自条款。本次仅审阅源码，未运行上游代码、下载基准输入或复现实验。",
+    "evidence_urls": [
+      "https://dl.acm.org/doi/10.1145/3576915.3616614",
+      "https://api.crossref.org/works/10.1145/3576915.3616614",
+      "https://qingkaishi.github.io/public_pdfs/CCS23.pdf",
+      "https://arxiv.org/abs/2305.11781",
+      "https://arxiv.org/pdf/2305.11781v1",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/README.md",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/LICENSE.txt",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/CMakeLists.txt",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/tools/popeye/popeye.cpp",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/tools/popeye/LiftingPass.cpp",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/benchmarks/popeye/readme.txt",
+      "https://github.com/qingkaishi/netlifter/blob/362fe1edc2c2027d6e404c5d27cf9fee8a6b6a48/benchmarks/popeye/regression.sh",
+      "https://github.com/qingkaishi/z3/blob/b42b2d6d6994f593976cb8cc7eb6b093532954c9/README-CMake.md",
+      "https://github.com/qingkaishi/z3/blob/b42b2d6d6994f593976cb8cc7eb6b093532954c9/LICENSE.txt"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-17",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-uiorchestra",
+    "title": "UIOrchestra: Generating High-Fidelity Code from UI Designs with a Multi-agent System",
+    "title_zh": "UIOrchestra：通过多智能体系统将 UI 设计转换为高保真代码",
+    "authors": [
+      "Chuhuai Yue",
+      "Jiajun Chai",
+      "Yufei Zhang",
+      "Zixiang Ding",
+      "Xihao Liang",
+      "Peixin Wang",
+      "Shihai Chen",
+      "Wang Yixuan",
+      "Yanping Wang",
+      "Guojun Yin",
+      "Wei Lin"
+    ],
+    "year": 2025,
+    "publication_date": "2025-11",
+    "date_precision": "month",
+    "date_basis": "The official ACL Anthology citation gives November 2025. Crossref records only the year; the November 4–9 conference dates printed in the PDF are not treated as a publication day.",
+    "date_basis_zh": "ACL Anthology 官方引文给出 2025 年 11 月。Crossref 仅记录年份；PDF 中的 11 月 4–9 日会议日期不作为具体出版日。",
+    "venue": "Findings of EMNLP 2025",
+    "publication_status": "conference-paper",
+    "arxiv_id": null,
+    "arxiv_version_reviewed": null,
+    "first_arxiv_date": null,
+    "doi": "10.18653/v1/2025.findings-emnlp.150",
+    "citation": {
+      "container_title": "Findings of the Association for Computational Linguistics: EMNLP 2025",
+      "publisher": "Association for Computational Linguistics",
+      "pages": "2769-2782",
+      "sources": [
+        "https://aclanthology.org/2025.findings-emnlp.150/",
+        "https://api.crossref.org/works/10.18653/v1/2025.findings-emnlp.150"
+      ]
+    },
+    "url": "https://aclanthology.org/2025.findings-emnlp.150/",
+    "pdf_url": "https://aclanthology.org/2025.findings-emnlp.150.pdf",
+    "code_url": null,
+    "project_url": null,
+    "targets": [
+      "app",
+      "website"
+    ],
+    "description_en": "UIOrchestra converts static mobile UI designs into React/CSS through layout-description, code-generation and rendered-image comparison agents. Its APPUI benchmark contains 1,101 human-refined code/rendering pairs based on screenshots from 165 apps across 12 categories. The reference code is reconstructed for evaluation, rather than recovered original application source.",
+    "description_zh": "UIOrchestra 通过布局描述、代码生成及渲染图像比较三个智能体，将静态移动 UI 设计转换为 React/CSS。其 APPUI 基准包含 1,101 组经人工修订的代码与渲染图像，依据 12 类中的 165 款应用截图构建。参考代码为评测而重建，并非恢复出的原始应用源码。",
+    "scope_limitations_en": "Tests visual, component and code similarity, not native-package execution, interaction, backend behavior or application equivalence. APPUI references are rendered reconstructions of iOS screenshots; unavailable images/icons use placeholders. A human study covers 200 samples with four annotators. The difference-analysis prompt ignores font-size/typeface differences and placeholder image content. Model snapshots, rendering dependencies and a reproducible runtime setup were not verified; experiments were not rerun.",
+    "scope_limitations_zh": "评测视觉、组件及代码相似度，不验证原生安装包执行、交互、后端行为或应用等价性。APPUI 参考图像来自对 iOS 截图所做重建的渲染结果；无法获取的图片／图标使用占位素材。人工研究由四位标注者评估 200 个样本。差异分析提示词忽略字号／字体差异及占位图像内容。未核实模型快照、渲染依赖或可复现的运行环境，亦未重新运行实验。",
+    "why_fits_en": "Adds a mobile-oriented screenshot reconstruction method and benchmark with explicit human-built reference data; also evaluates on Design2Code-hard webpages.",
+    "why_fits_zh": "补充面向移动界面的截图重建方法与基准，明确参考数据由人工参与构建，并在 Design2Code-hard 网页上开展评测。",
+    "metadata_notes": "Reviewed the final 14-page proceedings PDF. Its eleven-author order is retained, including Yanping Wang where ACL/Crossref metadata renders Wangyanping; Wang Yixuan is preserved as printed. No arXiv version was verified. The paper promises a code/data release, but the reviewed coauthor page has disabled code/project placeholders and no attributable release or artifact license was verified. Code/project URLs therefore remain unset. The paper is covered by ACL’s CC BY 4.0 policy; this does not establish licensing for an unreleased dataset or depicted apps.",
+    "metadata_notes_zh": "审阅最终 14 页会议论文 PDF，保留其中十一位作者的顺序，包括 ACL／Crossref 元数据写作 Wangyanping 的 Yanping Wang；Wang Yixuan 按论文原样保留。未核实 arXiv 版本。论文承诺发布代码与数据，但所审阅的合作者主页中，代码／项目链接仍是禁用的占位链接；未核实可归属于作者的发布产物或其许可，因此代码／项目 URL 留空。论文适用 ACL 的 CC BY 4.0 政策，但这并不证明尚未发布的数据集或所展示应用的许可。",
+    "evidence_urls": [
+      "https://aclanthology.org/2025.findings-emnlp.150/",
+      "https://aclanthology.org/2025.findings-emnlp.150.pdf",
+      "https://api.crossref.org/works/10.18653/v1/2025.findings-emnlp.150",
+      "https://gjyin.github.io/"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-18",
+    "verification": "source-reviewed",
+    "runtime_tested": false
+  },
+  {
+    "id": "paper-slade",
+    "title": "SLaDe: A Portable Small Language Model Decompiler for Optimized Assembly",
+    "title_zh": "SLaDe：面向优化汇编的可移植小语言模型反编译器",
+    "authors": [
+      "Jordi Armengol-Estapé",
+      "Jackson Woodruff",
+      "Chris Cummins",
+      "Michael F. P. O'Boyle"
+    ],
+    "year": 2024,
+    "publication_date": "2024-03-02",
+    "date_precision": "day",
+    "date_basis": "IEEE’s Crossref deposit gives published/print date 2024-03-02. Edinburgh’s publication record instead gives 2024-02-28, also the DOI-creation date. This entry uses the publisher-deposited print date and does not infer it solely from the conference schedule.",
+    "date_basis_zh": "IEEE 提交的 Crossref 元数据将 published／纸质出版日期记为 2024-03-02；爱丁堡大学出版记录则给出 2024-02-28，这也是 DOI 创建日期。本条目采用出版方提交的纸质出版日期，并非仅依据会议日程推定。",
+    "venue": "IEEE/ACM CGO 2024",
+    "publication_status": "conference-paper",
+    "arxiv_id": "2305.12520",
+    "arxiv_version_reviewed": "v3",
+    "first_arxiv_date": "2023-05-21",
+    "doi": "10.1109/CGO57630.2024.10444788",
+    "citation": {
+      "container_title": "2024 IEEE/ACM International Symposium on Code Generation and Optimization (CGO)",
+      "publisher": "IEEE",
+      "pages": "67-80",
+      "sources": [
+        "https://api.crossref.org/works/10.1109/CGO57630.2024.10444788",
+        "https://www.research.ed.ac.uk/en/publications/slade-a-portable-small-language-model-decompiler-for-optimized-as/"
+      ]
+    },
+    "url": "https://ieeexplore.ieee.org/document/10444788",
+    "pdf_url": "https://arxiv.org/pdf/2305.12520v3",
+    "code_url": "https://zenodo.org/records/10205121",
+    "project_url": null,
+    "targets": [
+      "binary"
+    ],
+    "description_en": "SLaDe translates function-level assembly into C with a 200M-parameter encoder–decoder model, code-specific tokenization and PsycheC type completion. It studies x86 and ARM at -O0 and -O3, combining generated candidates with input/output checks. The input is assembly text, not raw machine bytes; disassembly is outside the method.",
+    "description_zh": "SLaDe 使用 200M 参数的编码器—解码器模型、面向代码的分词及 PsycheC 类型补全，将函数级汇编转换为 C。研究覆盖 x86 与 ARM 的 -O0、-O3 设置，并结合生成候选与输入／输出检查。输入是汇编文本而非原始机器字节，反汇编不属于该方法。",
+    "scope_limitations_en": "Evaluation covers about 4,000 ExeBench functions and a 112-program synthesis suite. Beam size 5 selects the first candidate passing finite I/O tests; generated functions are inserted into the original calling context. Passing these tests is not whole-program or all-input equivalence. Edit similarity is a readability proxy. Longer functions, external calls and incorrect type/operator predictions remain failure modes; the model has 1,024-position source and target windows. Historical baseline comparisons have different coverage and do not establish current rankings.",
+    "scope_limitations_zh": "评测覆盖约 4,000 个 ExeBench 函数及含 112 个程序的合成基准。束宽为 5，并选择首个通过有限输入／输出测试的候选；生成函数被放回原始调用上下文。通过这些测试不代表完整程序或全部输入上的等价性。编辑相似度只是可读性的代理指标。较长函数、外部调用及错误的类型／运算符预测仍会导致失败；模型的输入和输出窗口均为 1,024 个位置。历史基线比较的覆盖范围不同，不能据此确立当前排名。",
+    "why_fits_en": "Adds type-inference-assisted neural decompilation with explicit execution-based evaluation, complementing symbol recovery and later LLM decompilation studies.",
+    "why_fits_zh": "补充结合类型推断与执行结果评测的神经反编译方法，与符号恢复及后续大语言模型反编译研究互补。",
+    "metadata_notes": "Reviewed arXiv v3 dated 2024-02-15, the accepted CGO manuscript; publication metadata establishes the final venue and pages. Paper reference 65 links the Zenodo artifact. Its separate LICENSE restricts included code/data/models to paper reproducibility and calls it nonproduction research code; no permissive license is inferred. The 1.83 GB archive was not downloaded or inspected. Appendix prerequisites include Python 3.8, PyTorch 1.10.2, Transformers 4.22.2, PsycheC, Haskell Stack and an AArch64 GCC toolchain. BTC weights are not redistributed and ChatGPT outputs may change. These are documented historical requirements, not a verified installation; no code or experiments were run.",
+    "metadata_notes_zh": "审阅 2024-02-15 发布的 arXiv v3，即 CGO 接收稿；出版元数据确认最终发表场所及页码。论文参考文献 65 链接至 Zenodo 产物，其独立 LICENSE 将所含代码／数据／模型限定用于论文复现，并说明这是不适合生产环境的研究代码，不能据此推定宽松许可。未下载或检查 1.83 GB 压缩包。附录列出的前提包括 Python 3.8、PyTorch 1.10.2、Transformers 4.22.2、PsycheC、Haskell Stack 及 AArch64 GCC 工具链。产物不再分发 BTC 权重，ChatGPT 输出也可能变化。这些是文档中的历史要求，并非已验证的安装环境；本次未运行代码或实验。",
+    "evidence_urls": [
+      "https://ieeexplore.ieee.org/document/10444788",
+      "https://api.crossref.org/works/10.1109/CGO57630.2024.10444788",
+      "https://www.research.ed.ac.uk/en/publications/slade-a-portable-small-language-model-decompiler-for-optimized-as/",
+      "https://conf.researchr.org/details/cgo-2024/cgo-2024-main-conference/17/SLaDe-A-Portable-Small-Language-Model-Decompiler-for-Optimized-Assembly",
+      "https://arxiv.org/abs/2305.12520",
+      "https://arxiv.org/pdf/2305.12520v3",
+      "https://zenodo.org/records/10205121",
+      "https://zenodo.org/api/records/10205121",
+      "https://zenodo.org/api/records/10205121/files/LICENSE/content"
+    ],
+    "kind": "research",
+    "verified_at": "2026-10-18",
     "verification": "source-reviewed",
     "runtime_tested": false
   }

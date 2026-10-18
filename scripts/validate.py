@@ -4,6 +4,7 @@ import datetime as dt
 import html
 import ipaddress
 import json
+import os
 from pathlib import Path
 import re
 import socket
@@ -16,6 +17,7 @@ from catalog import ROOT, RESOURCE_FILES
 from localization import read_localizations, validate_localizations
 from source_scope import read_scope, validate_scope
 from validate_papers import validate_papers
+from review_dates import review_date_is_future
 from source_descriptions import validate_description_capture
 from case_coverage import read_case_coverage, validate_case_coverage
 
@@ -101,7 +103,8 @@ def normalized_url(value):
     return parsed.scheme.lower(), parsed.netloc.lower(), path, parsed.query, parsed.fragment
 
 
-def validate_resources(records, errors):
+def validate_resources(records, errors, *, now=None):
+    now = dt.datetime.now(dt.timezone.utc) if now is None else now.astimezone(dt.timezone.utc)
     ids, urls = set(), set()
     for index, record in enumerate(records):
         where = f'resource[{index}]'
@@ -154,13 +157,21 @@ def validate_resources(records, errors):
             errors.append(f"{where}: unknown resource kind {record['kind']!r}")
         if record['relationship'] not in RELATIONSHIPS:
             errors.append(f"{where}: unknown relationship {record['relationship']!r}")
+        # CONTRIBUTING pairs independent reconstruction projects with their category; neither is inferred.
+        if record['relationship'] == 'independent-reconstruction' and record['category'] != 'reconstruction-cases':
+            errors.append(f"{where}: relationship 'independent-reconstruction' requires category 'reconstruction-cases'")
+        elif record['category'] == 'reconstruction-cases' and record['relationship'] != 'independent-reconstruction':
+            errors.append(f"{where}: category 'reconstruction-cases' requires relationship 'independent-reconstruction'")
         if record['verification'] != 'source-reviewed':
             errors.append(f'{where}.verification: use source-reviewed; runtime and reproduction results are out of scope (see CONTRIBUTING.md)')
         if not (nonempty_string(record['requirements']) or string_list(record['requirements'])):
             errors.append(f'{where}.requirements: use a nonempty string or list of nonempty strings')
         try:
             reviewed = parse_iso(record['verified_at'])
-            if reviewed > dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=1):
+            future = (review_date_is_future(reviewed.date(), now)
+                      if re.fullmatch(r'\d{4}-\d{2}-\d{2}', record['verified_at']) else
+                      reviewed > now + dt.timedelta(days=1))
+            if future:
                 errors.append(f'{where}.verified_at: review date is in the future')
         except (ValueError, TypeError):
             errors.append(f'{where}.verified_at: invalid ISO date or timezone-aware timestamp')
@@ -621,23 +632,180 @@ def validate_source_index(document, errors):
     return len(records)
 
 
-def prose_only(text):
-    """Remove fenced/indented code while retaining line numbers."""
-    lines, fence_char, fence_length = [], None, 0
-    for line in text.splitlines(keepends=True):
-        match = re.match(r'^ {0,3}(`{3,}|~{3,})', line)
-        if fence_char:
-            if match and match[1][0] == fence_char and len(match[1]) >= fence_length:
-                fence_char = None
-            lines.append('\n' if line.endswith('\n') else '')
-        elif match:
-            fence_char, fence_length = match[1][0], len(match[1])
-            lines.append('\n' if line.endswith('\n') else '')
-        elif line.startswith(('    ', '\t')):
-            lines.append('\n' if line.endswith('\n') else '')
+def list_item_prefix(line):
+    """Return (marker column, content column, marker) within the current container."""
+    match = re.match(r'^( {0,3})([-+*]|[0-9]{1,9}[.)])(?: +(.*)|$)', line)
+    if not match:
+        return None
+    marker_column = len(match[1])
+    marker_end = marker_column + len(match[2])
+    padding = len(line[marker_end:]) - len(line[marker_end:].lstrip(' '))
+    # Five or more spaces leave an indented code block after one padding space.
+    content_column = marker_end + (padding if 1 <= padding <= 4 else 1)
+    return marker_column, content_column, match[2]
+
+
+def fence_start(line):
+    match = re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$', line)
+    if match and not (match[1][0] == '`' and '`' in match[2]):
+        return match[1][0], len(match[1])
+    return None
+
+
+def nonparagraph_block(line, paragraph=False):
+    """Block starts relevant to list laziness and indented-code interruption."""
+    return bool(re.match(r'^ {0,3}(?:#{1,6}(?: |$)|>)', line)
+                or re.match(r'^ {0,3}</?pre(?:[ >]|$)', line, re.IGNORECASE)
+                or (paragraph and re.fullmatch(r' {0,3}(?:=+|-+) *', line))
+                or any(re.fullmatch(r' {0,3}(?:' + re.escape(char) + r' *){3,}', line)
+                       for char in '*_-'))
+
+
+def mask_inline_code(text):
+    """Mask equal-length backtick spans within one paragraph, preserving newlines."""
+    runs = list(re.finditer(r'`+', text))
+    parts, cursor, index = [], 0, 0
+    while index < len(runs):
+        opening = runs[index]
+        prefix = text[:opening.start()]
+        escapes = len(prefix) - len(prefix.rstrip('\\'))
+        if escapes % 2:
+            index += 1
+            continue
+        closing_index = next((following for following in range(index + 1, len(runs))
+                              if len(runs[following][0]) == len(opening[0])), None)
+        if closing_index is None:
+            index += 1
+            continue
+        end = runs[closing_index].end()
+        parts.append(text[cursor:opening.start()])
+        parts.append(re.sub(r'[^\r\n]', ' ', text[opening.start():end]))
+        cursor, index = end, closing_index + 1
+    return ''.join(parts) + text[cursor:]
+
+
+def prose_only(text, *, inline_code=False, include_pre_ranges=False):
+    """Mask code blocks while retaining list prose, original indentation and line numbers."""
+    # Items store marker/content columns, marker style, and whether they have content.
+    lines, containers, fence = [], [], None
+    paragraph = False
+    paragraph_lines = []
+    pre_base, pre_start = None, None
+    pre_ranges = []
+
+    def finish_pre():
+        nonlocal pre_base, pre_start
+        pre_ranges.append((pre_start, sum(map(len, lines))))
+        pre_base, pre_start = None, None
+
+    def flush_paragraph():
+        value = ''.join(paragraph_lines)
+        lines.append(mask_inline_code(value) if inline_code else value)
+        paragraph_lines.clear()
+
+    for raw in text.splitlines(keepends=True):
+        ending = re.search(r'(\r\n|\n|\r)$', raw)
+        masked = ending[0] if ending else ''
+        line = raw.rstrip('\r\n').expandtabs(4)
+        indent = len(line) - len(line.lstrip(' '))
+        blank = not line.strip()
+        if pre_base is not None:
+            if blank or indent >= pre_base:
+                # Keep raw HTML for links; default anchor extraction still masks indentation.
+                lines.append(raw if inline_code or indent < 4 else masked)
+                paragraph = False
+                if re.search(r'</pre\s*>', line, re.IGNORECASE):
+                    finish_pre()
+                continue
+            finish_pre()
+        if fence:
+            # An unclosed fence ends when its containing list item ends.
+            if blank or indent >= fence[2]:
+                closing = re.fullmatch(r' {0,3}(`{3,}|~{3,}) *', line[fence[2]:])
+                if closing and closing[1][0] == fence[0] and len(closing[1]) >= fence[1]:
+                    fence = None
+                lines.append(masked)
+                continue
+            fence = None
+        if blank:
+            flush_paragraph()
+            # A blank line ends an item that has not contained any content yet.
+            while containers and not containers[-1][3]:
+                containers.pop()
+            paragraph = False
+            lines.append(raw)
+            continue
+
+        base = containers[-1][1] if containers else 0
+        if indent < base:
+            outer = next((item[1] for item in reversed(containers) if item[1] <= indent), 0)
+            candidate = line[outer:]
+            prefix = list_item_prefix(candidate)
+            starts_list = False
+            if prefix:
+                marker_column, content_column, marker = prefix
+                sibling = any(outer + marker_column == item[0] and marker[-1] == item[2]
+                              for item in containers)
+                can_interrupt = marker in '-+*' or int(marker[:-1]) == 1
+                starts_list = sibling or (candidate[content_column:].strip() and can_interrupt)
+            interrupts = fence_start(candidate) or nonparagraph_block(candidate, paragraph) or starts_list
+            if paragraph and not interrupts:
+                # A lazy continuation belongs to the open list paragraph despite dedenting.
+                paragraph_lines.append(raw)
+                continue
+            flush_paragraph()
+            while containers and indent < containers[-1][1]:
+                containers.pop()
+            paragraph = False
+            base = containers[-1][1] if containers else 0
+
+        body = line[base:]
+        if body.strip():
+            containers = [(*item[:3], True) for item in containers]
+        while not nonparagraph_block(body, paragraph):
+            prefix = list_item_prefix(body)
+            if not prefix:
+                break
+            marker_column, content_column, marker = prefix
+            content = body[content_column:]
+            can_interrupt = marker in '-+*' or int(marker[:-1]) == 1
+            if paragraph and (not content.strip() or not can_interrupt):
+                break
+            flush_paragraph()
+            containers.append((base + marker_column, base + content_column, marker[-1], bool(content.strip())))
+            base += content_column
+            body = line[base:]
+            paragraph = False
+
+        opening = fence_start(body)
+        if re.match(r'^ {0,3}<pre(?:[ >]|$)', body, re.IGNORECASE):
+            flush_paragraph()
+            pre_base, pre_start = base, sum(map(len, lines))
+            lines.append(raw)
+            paragraph = False
+            if re.search(r'</pre\s*>', body, re.IGNORECASE):
+                finish_pre()
+        elif opening:
+            flush_paragraph()
+            fence = (*opening, base)
+            paragraph = False
+            lines.append(masked)
+        elif len(body) - len(body.lstrip(' ')) >= 4 and not paragraph:
+            flush_paragraph()
+            lines.append(masked)
         else:
-            lines.append(line)
-    return ''.join(lines)
+            continues_paragraph = bool(body.strip()) and not nonparagraph_block(body, paragraph)
+            if continues_paragraph:
+                paragraph_lines.append(raw)
+            else:
+                flush_paragraph()
+                lines.append(mask_inline_code(raw) if inline_code else raw)
+            paragraph = continues_paragraph
+    flush_paragraph()
+    if pre_base is not None:
+        finish_pre()
+    result = ''.join(lines)
+    return (result, pre_ranges) if include_pre_ranges else result
 
 
 def markdown_anchors(text):
@@ -667,13 +835,17 @@ HTML_LINK_PATTERN = re.compile(r'<[A-Za-z][^>]*?\b(?:href|src)=["\']([^"\']+)["\
 
 
 def document_links(text):
-    prose = prose_only(text)
-    # Inline code is not a rendered link; retain its newlines for diagnostics.
-    prose = re.sub(r'(`+)([^\n]*?)\1', lambda match: ' ' * len(match[0]), prose)
-    for pattern in (LINK_PATTERN, REFERENCE_PATTERN, HTML_LINK_PATTERN):
-        for match in pattern.finditer(prose):
+    # Inline spans may cross lines, but never a paragraph or block boundary.
+    prose, pre_ranges = prose_only(text, inline_code=True, include_pre_ranges=True)
+    markdown = prose
+    for start, end in reversed(pre_ranges):
+        markdown = markdown[:start] + re.sub(r'[^\r\n]', ' ', markdown[start:end]) + markdown[end:]
+    # Raw HTML links remain clickable inside <pre>; Markdown-like text does not.
+    for pattern, content in ((LINK_PATTERN, markdown), (REFERENCE_PATTERN, markdown),
+                             (HTML_LINK_PATTERN, prose)):
+        for match in pattern.finditer(content):
             destination = html.unescape(match[1].strip('<>'))
-            yield destination, prose.count('\n', 0, match.start()) + 1
+            yield destination, content.count('\n', 0, match.start()) + 1
 
 
 def validate_markdown(root, errors):
@@ -751,7 +923,7 @@ def main():
     index_path = ROOT / 'data/source-index.json'
     if index_path.exists():
         try:
-            index_document = json.loads(index_path.read_text())
+            index_document = json.loads(index_path.read_text(encoding='utf-8'))
         except (OSError, ValueError):
             errors.append('Source index could not be read as JSON.')
         else:
@@ -771,7 +943,8 @@ def main():
     count = validate_markdown(ROOT, errors)
     for script in ('build_readme.py', 'build_repository_index.py', 'build_case_coverage.py'):
         result = subprocess.run([sys.executable, str(ROOT / 'scripts' / script), '--check'],
-                                cwd=ROOT, text=True, capture_output=True, check=False)
+                                cwd=ROOT, encoding='utf-8', capture_output=True, check=False,
+                                env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
         if result.returncode:
             errors.append((result.stderr or result.stdout).strip() or f'{script}: generated content check failed.')
     if errors:

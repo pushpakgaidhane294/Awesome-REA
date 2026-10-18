@@ -7,7 +7,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from homepage_locales import localized_homepage, _Document, _ui_strings
+from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage, _Document, _ui_strings, _zh_repository_paths
+from open_graph import SOCIAL_IMAGE_ALT, open_graph_meta
 
 APP = (ROOT / 'site/app.js').read_text()
 TEMPLATE = (ROOT / 'site/index.html').read_text()
@@ -45,6 +46,7 @@ def fixture():
 <meta property="og:description" content="Old"><meta property="og:locale" content="en_US">
 <meta property="og:url" content="{ORIGIN}/"><meta name="twitter:title" content="Old">
 <meta name="twitter:description" content="Old"><meta property="og:image:alt" content="Old">
+<meta property="og:image" content="{ORIGIN}/social-card.png?v=abc">
 <link rel="stylesheet" href="styles.css?v=abc"><link rel="icon" href="./favicon.svg">
 <script type="application/ld+json">{schema}</script><script src="app.js?v=abc" defer></script>
 <script>window.neverExecuted = "preserved";</script></head><body>
@@ -52,7 +54,7 @@ def fixture():
 <input data-i18n-placeholder="searchPlaceholder" data-i18n-aria="searchLabel" placeholder="old" aria-label="old">
 <a data-locale-path="papers" href="/papers/?sort=year#paper-example">Papers</a>
 <a data-locale-path="resources" data-locale-fragment="game" href="/resources/">Games</a>
-<a href="/resources/#case">Case</a><a href="#catalog">Local</a>
+<a href="/cases/#case">Case directory</a><a href="/resources/#case">Case</a><a href="#catalog">Local</a>
 <a href="https://example.org/papers/#external">External</a><a href="catalog.json?v=abc" download>JSON</a>
 <img src="images/preview.png"><video poster="poster.png"></video>
 <select id="language-select"><option value="en" selected>English</option><option value="zh">简体中文</option></select>
@@ -79,6 +81,28 @@ class HomepageLocaleTests(unittest.TestCase):
                 original_svg = re.search(r'<svg class="symbol-bank"[\s\S]*?</svg>', TEMPLATE)[0]
                 self.assertIn(original_svg, html)
 
+    def test_chinese_homepage_links_chinese_repository_documents(self):
+        paths = _zh_repository_paths(APP)
+        self.assertEqual(paths, {'blob/main/CONTRIBUTING.md': 'blob/main/CONTRIBUTING.zh-CN.md'})
+        for english, chinese in paths.items():
+            self.assertIn(f'data-repo-path="{english}"', TEMPLATE)
+            self.assertTrue((ROOT / chinese.removeprefix('blob/main/')).is_file())
+        repository = 'https://github.com/reacher-z/Awesome-REA/'
+
+        def repository_links(html):
+            return {n['attrs']['data-repo-path']: n['attrs']['href'] for n in nodes(html, 'a') if 'data-repo-path' in n['attrs']}
+
+        chinese, english = localized_homepage(TEMPLATE, APP, 'zh'), localized_homepage(TEMPLATE, APP, 'en')
+        self.assertEqual(repository_links(chinese)['blob/main/CONTRIBUTING.zh-CN.md'], repository + 'blob/main/CONTRIBUTING.zh-CN.md')
+        self.assertNotIn('blob/main/CONTRIBUTING.md', repository_links(chinese))
+        # English-only documents keep their target; the Chinese label says the page is in English.
+        self.assertEqual(repository_links(chinese)['blob/main/data/README.md'], repository + 'blob/main/data/README.md')
+        self.assertIn('（英文）', _ui_strings(APP)['zh']['aboutCurated'])
+        self.assertEqual(repository_links(english)['blob/main/CONTRIBUTING.md'], repository + 'blob/main/CONTRIBUTING.md')
+        self.assertEqual(repository_links(localized_homepage(chinese, APP, 'en')), repository_links(english))
+        with self.assertRaises(ValueError):
+            localized_homepage(TEMPLATE.replace(repository + 'blob/main/CONTRIBUTING.md"', repository + 'blob/main/OTHER.md"', 1), APP, 'zh')
+
     def test_metadata_schema_and_asset_routes(self):
         original = fixture(); html = localized_homepage(original, APP, 'zh')
         self.assertEqual(content(html, nodes(html, 'title')[0]), _ui_strings(APP)['zh']['pageTitle'])
@@ -103,13 +127,53 @@ class HomepageLocaleTests(unittest.TestCase):
         page = after['@graph'][1]
         self.assertEqual((page['url'], page['@id'], page['inLanguage']), (ORIGIN + '/zh/', ORIGIN + '/zh/#collection', 'zh-CN'))
         self.assertEqual(page['mainEntity']['itemListElement'][0]['url'], ORIGIN + '/zh/papers/#paper-example')
-        self.assertEqual(page['mainEntity']['itemListElement'][0]['name'], _ui_strings(APP)['zh']['directoryPapers'])
+        self.assertEqual(page['mainEntity']['itemListElement'][0]['name'], HOMEPAGE_DESTINATIONS['papers'][1])
+
+    def test_social_block_is_the_shared_generator_output(self):
+        for lang in ('en', 'zh'):
+            with self.subTest(language=lang):
+                html = localized_homepage(fixture(), APP, lang)
+                strings = _ui_strings(APP)[lang]
+                home = ORIGIN + ('/zh/' if lang == 'zh' else '/')
+                self.assertIn(open_graph_meta(language=lang, title=strings['pageTitle'], description=strings['pageDescription'],
+                                              image_url=ORIGIN + '/social-card.png?v=abc', url=home), html)
+                social = [n['attrs'] for n in nodes(html, 'meta')
+                          if (n['attrs'].get('property') or n['attrs'].get('name') or '').startswith(('og:', 'twitter:'))]
+                keys = [attrs.get('property') or attrs.get('name') for attrs in social]
+                self.assertEqual(len(keys), len(set(keys)), 'Template social tags must not survive beside the shared block')
+                meta = {key: attrs['content'] for key, attrs in zip(keys, social)}
+                self.assertEqual(meta['og:image:alt'], SOCIAL_IMAGE_ALT[lang])
+                self.assertNotEqual(meta['og:image:alt'], strings['pageTitle'])
+                self.assertEqual((meta['og:locale'], meta['og:locale:alternate']),
+                                 ('zh_CN', 'en_US') if lang == 'zh' else ('en_US', 'zh_CN'))
+                self.assertEqual((meta['og:image:width'], meta['og:image:height'], meta['og:image:type']), ('1200', '630', 'image/png'))
+        with self.assertRaises(ValueError):
+            localized_homepage(fixture().replace('<meta property="og:image" content="' + ORIGIN + '/social-card.png?v=abc">', ''), APP, 'en')
+
+    def test_itemlist_names_are_destination_titles_not_link_text(self):
+        template = TEMPLATE.replace('</head>', '<script type="application/ld+json">' + json.dumps({
+            '@context': 'https://schema.org', '@graph': [{'@type': 'CollectionPage', '@id': ORIGIN + '/#collection', 'url': ORIGIN + '/',
+            'mainEntity': {'@type': 'ItemList', 'numberOfItems': 4, 'itemListElement': [
+                {'@type': 'ListItem', 'position': index, 'name': 'Old', 'url': f'{ORIGIN}/{path}/'}
+                for index, path in enumerate(HOMEPAGE_DESTINATIONS, 1)]}}]}) + '</script></head>')
+        for lang in ('en', 'zh'):
+            html = localized_homepage(template, APP, lang)
+            schema = json.loads(content(html, next(n for n in nodes(html, 'script') if n['attrs'].get('type') == 'application/ld+json')))
+            items = schema['@graph'][0]['mainEntity']['itemListElement']
+            prefix = ORIGIN + ('/zh' if lang == 'zh' else '')
+            self.assertEqual([(item['position'], item['url']) for item in items],
+                             [(index, f'{prefix}/{path}/') for index, path in enumerate(HOMEPAGE_DESTINATIONS, 1)])
+            names = [item['name'] for item in items]
+            self.assertEqual(names, [labels[lang == 'zh'] for labels in HOMEPAGE_DESTINATIONS.values()])
+            self.assertFalse(set(names) & set(_ui_strings(APP)[lang].values()))
+            self.assertFalse(any(arrow in name for name in names for arrow in '↗↓→'))
 
     def test_navigation_fragments_and_selected_language(self):
         html = localized_homepage(fixture(), APP, 'zh')
         hrefs = [n['attrs'].get('href') for n in nodes(html, 'a')]
         self.assertIn('/zh/papers/?sort=year#paper-example', hrefs)
         self.assertIn('/zh/resources/#case', hrefs)
+        self.assertIn('/zh/cases/#case', hrefs)
         self.assertIn('/zh/resources/#game', hrefs)
         self.assertIn('#catalog', hrefs)
         self.assertIn('https://example.org/papers/#external', hrefs)

@@ -4,20 +4,20 @@
 
 **103 个仓库** · 2026-10-16 UTC
 
-这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
+这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
 - [alufers/mitmproxy2swagger](https://github.com/alufers/mitmproxy2swagger) — 通过捕获流量，自动逆向分析 REST API。 **[9,652 星标]**
 - [Mouseww/anything-analyzer](https://github.com/Mouseww/anything-analyzer) — 全能协议分析工具：内置浏览器抓包、MITM 代理、JS hook、指纹伪装、AI 分析及 MCP Server，可无缝对接 AI 智能体与 IDE。 **[3,776 星标]**
 - [alphaSeclab/awesome-network-stuff](https://github.com/alphaSeclab/awesome-network-stuff) — 网络安全资源，涵盖代理/GFW/反向代理/隧道/VPN/Tor/I2P，以及中间人攻击、端口敲门、网络嗅探、网络分析等。目前收录 1700 多个开源工具，后续将补充文章。 **[926 星标]**
 - [netzob/netzob](https://github.com/netzob/netzob) — Netzob：协议逆向工程、建模与模糊测试 **[838 星标]**
 - [furiousMAC/continuity](https://github.com/furiousMAC/continuity) — Apple Continuity 协议逆向工程与协议解析器 **[688 星标]**
-- [brent-stone/CAN_Reverse_Engineering](https://github.com/brent-stone/CAN_Reverse_Engineering) — 面向控制器局域网（CAN）协议的自动化载荷逆向工程流程 **[456 星标]**
+- [brent-stone/CAN\_Reverse\_Engineering](https://github.com/brent-stone/CAN_Reverse_Engineering) — 面向控制器局域网（CAN）协议的自动化载荷逆向工程流程 **[456 星标]**
 - [0xMH/fichero-printer](https://github.com/0xMH/fichero-printer) — Fichero D11s 热敏标签打印机的 BLE 协议逆向工程与 Python 命令行工具 **[302 星标]**
 - [niloofarkheirkhah/nili](https://github.com/niloofarkheirkhah/nili) — Nili 是一个用于网络扫描、中间人操作、协议逆向工程和模糊测试的工具。 **[219 星标]**
 - [symbolicsoft/verifpal](https://github.com/symbolicsoft/verifpal) — 对现实世界中的密码协议进行分析。 **[133 星标]**
 - [Annyfee/spider-js-reverse](https://github.com/Annyfee/spider-js-reverse) — 精选不同网站的 JavaScript 逆向实例，提供详细讲解、知识点概括、加密算法、难度对比及跳转链接，涵盖补环境、提取 JavaScript、webpack 和瑞数等难点。 **[111 星标]**
-- [HackingLZ/maps_scanner](https://github.com/HackingLZ/maps_scanner) — 用于 Microsoft Defender 研究的 MAPS 云扫描器及响应解析器。 **[96 星标]**
-- [leodesigner/powmr_comm](https://github.com/leodesigner/powmr_comm) — PowMr 逆变器串行通信协议逆向工程 **[96 星标]**
+- [HackingLZ/maps\_scanner](https://github.com/HackingLZ/maps_scanner) — 用于 Microsoft Defender 研究的 MAPS 云扫描器及响应解析器。 **[96 星标]**
+- [leodesigner/powmr\_comm](https://github.com/leodesigner/powmr_comm) — PowMr 逆变器串行通信协议逆向工程 **[96 星标]**
 - [yapengye/NetPlier](https://github.com/yapengye/NetPlier) — NetPlier：基于消息轨迹的概率式网络协议逆向工程 **[75 星标]**
 - [HalilDeniz/ICMPWatch](https://github.com/HalilDeniz/ICMPWatch) — ICMPWatch：ICMP 数据包嗅探器 **[60 星标]**
 - [ringverse/protocol](https://github.com/ringverse/protocol) — 智能戒指协议逆向工程 **[56 星标]**
@@ -26,7 +26,7 @@
 - [KevenPotter/k-cloud-charge-analysis](https://github.com/KevenPotter/k-cloud-charge-analysis) — 高性能、轻量级 GB/T 27930-2023（云快充 1.6）协议 SDK，采用不依赖框架的设计，专为充电桩与平台对接场景打造，简化协议解析、指令生成与校验流程。 **[44 星标]**
 - [blafois/Daikin-Madoka-BRC1H-BLE-Reverse](https://github.com/blafois/Daikin-Madoka-BRC1H-BLE-Reverse) — Daikin BLE 控制器的协议逆向工程 **[39 星标]**
 - [dollthing/Agar.io-Protocol](https://github.com/dollthing/Agar.io-Protocol) — 对 Agar.io 的客户端／服务器通信协议进行逆向工程。 **[38 星标]**
-- [woodenphone/lego_dimensions_protocol](https://github.com/woodenphone/lego_dimensions_protocol) — Lego Dimensions“Gateway”外设的分析及基础封装库。 **[34 星标]**
+- [woodenphone/lego\_dimensions\_protocol](https://github.com/woodenphone/lego_dimensions_protocol) — Lego Dimensions“Gateway”外设的分析及基础封装库。 **[34 星标]**
 - [haebibisimax/PortSmith](https://github.com/haebibisimax/PortSmith) — 跨语言抓包规范化与采集器推断引擎：用 Go 将录制的 Redis 跟踪记录解析为稳定的中间格式，再用 Rust 从中推断通信模式。 **[33 星标]**
 - [JustVugg/Wiredigg](https://github.com/JustVugg/Wiredigg) — Wiredigg 是一款具有高级安全功能的综合网络分析工具，面向网络管理员、安全专业人员和 IT 爱好者。它通过现代、易用的界面提供实时抓包、协议分析、异常检测和威胁识别功能。 **[29 星标]**
 - [aelias-eu/vent-axia-remote](https://github.com/aelias-eu/vent-axia-remote) — Vent-Axia 有线遥控器协议分析与逆向工程 **[24 星标]**
@@ -34,7 +34,7 @@
 - [lockout/Bbuzz](https://github.com/lockout/Bbuzz) — Bbuzz：支持位级处理的网络协议模糊测试与逆向工程框架 **[24 星标]**
 - [neuxsbot-tk/tenkenme-codex](https://github.com/neuxsbot-tk/tenkenme-codex) — TenkenMe Codex：逆向工程、协议分析、运行时调试，以及技能与 MCP 工作流。 **[24 星标]**
 - [hi-zer/Industrial-protocols-dataset](https://github.com/hi-zer/Industrial-protocols-dataset) — 包含八种 ICS 协议的工业数据集，主要为评估协议逆向工程工具而收集。希望今后能继续补充。 **[22 星标]**
-- [luelista/pre_workbench](https://github.com/luelista/pre_workbench) — 协议逆向工程工作台。 **[22 星标]**
+- [luelista/pre\_workbench](https://github.com/luelista/pre_workbench) — 协议逆向工程工作台。 **[22 星标]**
 - [scratchadams/PRE-Resources](https://github.com/scratchadams/PRE-Resources) — 协议逆向工程资源。 **[22 星标]**
 - [symbolicsoft/noiseexplorer](https://github.com/symbolicsoft/noiseexplorer) — 用于推理 Noise Protocol Framework 的在线引擎。 **[21 星标]**
 - [vs-uulm/fieldhunter](https://github.com/vs-uulm/fieldhunter) — 协议逆向工程方法 FieldHunter 的重新实现。 **[18 星标]**
@@ -44,7 +44,7 @@
 - [larixer/zenbook-touchpad-i2c](https://github.com/larixer/zenbook-touchpad-i2c) — 华硕 ZenBook 触摸板 I2C HID 协议的逆向工程。 **[13 星标]**
 - [iconidentify/wiretap](https://github.com/iconidentify/wiretap) — AOL 协议 Wiretap 工具：用于 AOL 协议逆向工程的数据包捕获与分析。 **[12 星标]**
 - [PREUNN/preunn](https://github.com/PREUNN/preunn) — 论文《利用神经网络进行协议逆向工程》的实验代码。 **[12 星标]**
-- [warterbili/auto_reverse_](https://github.com/warterbili/auto_reverse_) — 尽可能使用 AI 自动完成逆向工程与协议分析，并辅助审查大规模混淆代码库。如有需要，请及时克隆或镜像仓库，以防遭到 DMCA 下架。 **[12 星标]**
+- [warterbili/auto\_reverse\_](https://github.com/warterbili/auto_reverse_) — 尽可能使用 AI 自动完成逆向工程与协议分析，并辅助审查大规模混淆代码库。如有需要，请及时克隆或镜像仓库，以防遭到 DMCA 下架。 **[12 星标]**
 - [aelias-eu/hewalex-geco-protocol](https://github.com/aelias-eu/hewalex-geco-protocol) — 针对 GECO G-422 系列太阳能水泵控制器的协议逆向工程与简单通信工具；Hewalex ZPS-18e 等产品也使用这些控制器。 **[11 星标]**
 - [HeathLoganCampbell/Nanocraft](https://github.com/HeathLoganCampbell/Nanocraft) — 逆向分析 Minecraft 1.8.9 服务端，以模拟其网络协议。 **[11 星标]**
 - [JosefKuchar/Splix.io-Protocol](https://github.com/JosefKuchar/Splix.io-Protocol) — splix.io 协议的逆向工程。 **[11 星标]**
@@ -80,7 +80,7 @@
 - [jamesccupps/CryptoAudit](https://github.com/jamesccupps/CryptoAudit) — CryptoAudit ML 分析网络流量（PCAP 文件或实时抓包），识别薄弱、已失效或缺失的加密，并尝试破解。结合用于流量分类的五模型机器学习集成、15 种以上解密方法、持久化密钥与凭据收集，以及可选的 Ollama AI 流量分析集成。 **[1 星标]**
 - [kambidi1973/sip-sentinel](https://github.com/kambidi1973/sip-sentinel) — SIP 协议分析与安全审计工具，对 VoIP/SIP 流量执行深度包检测，提供 RFC 3261 合规检查、安全漏洞检测和通话流程分析。 **[1 星标]**
 - [liao96312/teleagent-proxy](https://github.com/liao96312/teleagent-proxy) — TeleAgent 模型反向代理，提供本地兼容 OpenAI 的端点（研究用途）。 **[1 星标]**
-- [mar0ls/wireshark_plugin](https://github.com/mar0ls/wireshark_plugin) — 用于分析和解码网络协议的 Wireshark 解析插件，适用于网络安全、数据包检查和逆向工程。 **[1 星标]**
+- [mar0ls/wireshark\_plugin](https://github.com/mar0ls/wireshark_plugin) — 用于分析和解码网络协议的 Wireshark 解析插件，适用于网络安全、数据包检查和逆向工程。 **[1 星标]**
 - [Maxnor899/SAP2](https://github.com/Maxnor899/SAP2) — 小型音频后处理器。 **[1 星标]**
 - [nabiha-kinda-codes/Crypto-Protocol-Classifier](https://github.com/nabiha-kinda-codes/Crypto-Protocol-Classifier) — 机器学习分类器，利用随机数使用、双向认证和密钥新鲜度检查等结构特征预测密码协议设计中的安全缺陷，并在 Needham-Schroeder、WPA2、TLS 和 Kerberos 等真实协议上训练和测试。 **[1 星标]**
 - [Nicooow/jbl-partybox-tws-re](https://github.com/Nicooow/jbl-partybox-tws-re) — JBL PartyBox 100/200/300 无线 TWS 链路的逆向工程：协议帧、Linux 配对方法，以及 Python 模拟音箱服务端（播放/暂停、音量和立体声声道）。 **[1 星标]**
@@ -95,13 +95,13 @@
 - [vibe-coding-labs/AtomCodeReverseEngineering](https://github.com/vibe-coding-labs/AtomCodeReverseEngineering) — AtomCode CLI（v4.25.3）逆向工程完整分析报告，基于 Rust 二进制静态分析与运行时行为验证，覆盖认证、风控、AI 通信、Agent 引擎等 65 个以上子系统。 **[1 星标]**
 - [wdfdsyhb/SerialLens](https://github.com/wdfdsyhb/SerialLens) — AI 串口侦探：嗅探、解码和注释 UART 流量。 **[1 星标]**
 - [ashwinp17/wireshark-packet-analysis](https://github.com/ashwinp17/wireshark-packet-analysis) — 在隔离的网络安全实验环境中使用 Wireshark 进行抓包与网络流量分析。 **[0 星标]**
-- [ChitturiGanesh1803/CS5_Capture-and-Analyze-Network-Traffic-Using-Wireshark](https://github.com/ChitturiGanesh1803/CS5_Capture-and-Analyze-Network-Traffic-Using-Wireshark) — 数据包分析实操技能与协议认知。 **[0 星标]**
+- [ChitturiGanesh1803/CS5\_Capture-and-Analyze-Network-Traffic-Using-Wireshark](https://github.com/ChitturiGanesh1803/CS5_Capture-and-Analyze-Network-Traffic-Using-Wireshark) — 数据包分析实操技能与协议认知。 **[0 星标]**
 - [chrisjedwards/flight-check](https://github.com/chrisjedwards/flight-check) — 展示瑞典 10 座 Swedavia 机场实时到达、出发和安检排队时间的网页应用。使用带缓存及 43 个 pytest 测试的 Python/FastAPI 后端，以及原生 JavaScript + Bootstrap 前端。 **[0 星标]**
 - [cy3erm/ProtoForge](https://github.com/cy3erm/ProtoForge) — 逆向分析未知 TCP/UDP 协议：录制流量、推断帧划分/字段/校验和、针对运行中的目标验证，再使用有状态前缀进行确定性模糊测试。证据存储于 SQLite，支持便携导出。 **[0 星标]**
 - [dev-nayef/CFSBrands-B2C-Authentication-Flow-PoC](https://github.com/dev-nayef/CFSBrands-B2C-Authentication-Flow-PoC) — 用于 CFS Brands 的 B2C 账户自动注册和验证机器人，使用 Python，集成临时邮箱并支持代理。 **[0 星标]**
 - [gRiverOS/writing](https://github.com/gRiverOS/writing) — 技术研究文章。 **[0 星标]**
-- [Hassaballah-Adam/Foundations_Lab_Final](https://github.com/Hassaballah-Adam/Foundations_Lab_Final) — 安全基础实验，涵盖治理框架、取证调查、基础设施审计和协议分析。 **[0 星标]**
-- [mishraprashakha74-debug/CodeAlpha_Networksniffer-basic-](https://github.com/mishraprashakha74-debug/CodeAlpha_Networksniffer-basic-) — 为 CodeAlpha 网络安全实习设计的轻量级 Python 网络流量监控应用。脚本连接网络适配器，捕获实时数据包，解码第 3 层和第 4 层协议头（IP、TCP、UDP、ICMP），并提取原始载荷用于流量分析。 **[0 星标]**
+- [Hassaballah-Adam/Foundations\_Lab\_Final](https://github.com/Hassaballah-Adam/Foundations_Lab_Final) — 安全基础实验，涵盖治理框架、取证调查、基础设施审计和协议分析。 **[0 星标]**
+- [mishraprashakha74-debug/CodeAlpha\_Networksniffer-basic-](https://github.com/mishraprashakha74-debug/CodeAlpha_Networksniffer-basic-) — 为 CodeAlpha 网络安全实习设计的轻量级 Python 网络流量监控应用。脚本连接网络适配器，捕获实时数据包，解码第 3 层和第 4 层协议头（IP、TCP、UDP、ICMP），并提取原始载荷用于流量分析。 **[0 星标]**
 - [otfabric/go-modbus-capture](https://github.com/otfabric/go-modbus-capture) — 开源 Go 库和命令行工具，用于无损 Modbus 抓取文件、时间序列记录、格式转换，以及生成可供重放的数据。 **[0 星标]**
 - [prashanth0301/python-packet-sniffer](https://github.com/prashanth0301/python-packet-sniffer) — 基于 Scapy 构建、适合初学者的 Python 数据包嗅探器。实时捕获和分析 TCP、UDP、DNS、ICMP 和 ARP 数据包，提供协议解析、统计和数据包日志。 **[0 星标]**
 - [prosoftdev999/cdp-accessibility-replay](https://github.com/prosoftdev999/cdp-accessibility-replay) — 前端无障碍重建基准，用于在历史浏览器状态中重放 CDP 无障碍树、DOM 变更、节点身份、焦点、角色和无障碍名称。 **[0 星标]**

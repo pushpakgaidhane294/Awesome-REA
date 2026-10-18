@@ -4,7 +4,7 @@
 
 **131 个仓库** · 2026-10-16 UTC
 
-这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
+这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
 - [icsharpcode/ILSpy](https://github.com/icsharpcode/ILSpy) — .NET 反编译器，支持生成 PDB、ReadyToRun、元数据等功能，而且跨平台！ **[26,662 星标]**
 - [focus-creative-games/hybridclr](https://github.com/focus-creative-games/hybridclr) — HybridCLR 是一个特性完整、零成本、高性能、低内存的 Unity 全平台原生 C# 热更新解决方案。 **[7,993 星标]**
@@ -124,7 +124,7 @@
 - [edwardtay/awesome-reverse-engineering](https://github.com/edwardtay/awesome-reverse-engineering) — 精选 130 多种逆向工程工具，覆盖二进制文件、Android、.NET、固件和智能合约。每项均标注安全标记，提供每周维护数据和智能体时代的 MCP 服务器。 **[0 星标]**
 - [emoboy723/XS-DECOMPILER](https://github.com/emoboy723/XS-DECOMPILER) — Strata：适用于 Windows 的便携反编译器，结合 JADX/ILSpy/Ghidra 分析、AI 智能体、Ollama 和本地 JavaScript 去混淆，可选集成 dotPeek 和 Binary Ninja。 **[0 星标]**
 - [fuatsimsek/appray](https://github.com/fuatsimsek/appray) — 集成式 Android 安全平台：SAST、MobSF、基于模拟器的动态分析和 DAST（Nuclei），并提供 AI 辅助报告。 **[0 星标]**
-- [ixhlbxi/dotPeek_Project](https://github.com/ixhlbxi/dotPeek_Project) — 扫描 dotPeek 反编译后的 .NET 项目，提取完全限定导入路径、CLR 程序集引用及命名空间／类映射，输出 JSON 和 CSV。 **[0 星标]**
+- [ixhlbxi/dotPeek\_Project](https://github.com/ixhlbxi/dotPeek_Project) — 扫描 dotPeek 反编译后的 .NET 项目，提取完全限定导入路径、CLR 程序集引用及命名空间／类映射，输出 JSON 和 CSV。 **[0 星标]**
 - [jumpifequal/mcp-dotnet](https://github.com/jumpifequal/mcp-dotnet) — 面向 .NET 逆向工程的 MCP 服务器，提供元数据、交叉引用、IL、ILSpy 反编译、安全 API 扫描和 IL 修补。基于 dnlib、ILSpy、MCP SDK 2.x 和 .NET 10，支持 stdio 以及带 Bearer 身份验证的 Streamable HTTP。派生自 neoz/mcp-dotnet。 **[0 星标]**
 - [Metacarpalarteryostracism978/FH5-Car-Unlock-Utility](https://github.com/Metacarpalarteryostracism978/FH5-Car-Unlock-Utility) — 用于管理 Forza Horizon 5 点数、解锁车辆和增加抽奖次数的工具。 **[0 星标]**
 - [mushroomTW/rimworld-mod-mcp](https://github.com/mushroomTW/rimworld-mod-mcp) — 用于 RimWorld 模组开发的仅限本地 MCP 服务器：搜索游戏 Defs 和 C# API、反编译已安装模组、构建模组，并在隔离游戏会话中测试。兼容 Claude Code、Codex 和任意 MCP 客户端。 **[0 星标]**

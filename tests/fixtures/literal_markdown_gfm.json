@@ -1,0 +1,1132 @@
+{
+  "observed_at": "2026-10-17T11:14:27.220867+00:00",
+  "renderer": {
+    "endpoint": "https://api.github.com/markdown",
+    "mode": "gfm",
+    "context": null,
+    "api_version": "2022-11-28",
+    "http_status": "HTTP/2.0 200 OK",
+    "implementation_version": "not exposed"
+  },
+  "scope": "Exact synthetic text rendered through the GitHub Markdown API in GFM mode. Conversation-only issue/commit reference filters are outside repository-file rendering scope. Runtime and tests do not call the API.",
+  "response_sha256": "051160234c415644ff7be8604f5ec1c34e72a447b78e030da911511092565d57",
+  "cases": [
+    {
+      "id": "fixture-inline-en-paragraph",
+      "source": "Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.",
+      "context": "paragraph",
+      "encoded": "Runs on \\*nix and \\*BSD\\* hosts; \\*\\*bold\\*\\*, \\_italic\\_, \\_\\_strong\\_\\_, \\`--raw\\`, \\`\\`x\\`y\\`\\`, and \\~\\~legacy\\~\\~.",
+      "markdown": "Runs on \\*nix and \\*BSD\\* hosts; \\*\\*bold\\*\\*, \\_italic\\_, \\_\\_strong\\_\\_, \\`--raw\\`, \\`\\`x\\`y\\`\\`, and \\~\\~legacy\\~\\~.",
+      "expected_text": "Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-inline-en-bold-link-title",
+      "source": "Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.",
+      "context": "bold-link-title",
+      "encoded": "Runs on \\*nix and \\*BSD\\* hosts; \\*\\*bold\\*\\*, \\_italic\\_, \\_\\_strong\\_\\_, \\`--raw\\`, \\`\\`x\\`y\\`\\`, and \\~\\~legacy\\~\\~.",
+      "markdown": "[**Runs on \\*nix and \\*BSD\\* hosts; \\*\\*bold\\*\\*, \\_italic\\_, \\_\\_strong\\_\\_, \\`--raw\\`, \\`\\`x\\`y\\`\\`, and \\~\\~legacy\\~\\~.**](https://example.org/approved)",
+      "expected_text": "Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-inline-en-list-description",
+      "source": "Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.",
+      "context": "list-description",
+      "encoded": "Runs on \\*nix and \\*BSD\\* hosts; \\*\\*bold\\*\\*, \\_italic\\_, \\_\\_strong\\_\\_, \\`--raw\\`, \\`\\`x\\`y\\`\\`, and \\~\\~legacy\\~\\~.",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  Runs on \\*nix and \\*BSD\\* hosts; \\*\\*bold\\*\\*, \\_italic\\_, \\_\\_strong\\_\\_, \\`--raw\\`, \\`\\`x\\`y\\`\\`, and \\~\\~legacy\\~\\~.",
+      "expected_text": "Intentional title Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-inline-zh-paragraph",
+      "source": "在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。",
+      "context": "paragraph",
+      "encoded": "在 \\*nix 与 \\*BSD\\* 上运行；\\*\\*加粗\\*\\*、\\_斜体\\_、\\_\\_强调\\_\\_、\\`--raw\\` 和 \\~\\~旧模式\\~\\~ 都是字面文本。",
+      "markdown": "在 \\*nix 与 \\*BSD\\* 上运行；\\*\\*加粗\\*\\*、\\_斜体\\_、\\_\\_强调\\_\\_、\\`--raw\\` 和 \\~\\~旧模式\\~\\~ 都是字面文本。",
+      "expected_text": "在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-inline-zh-bold-link-title",
+      "source": "在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。",
+      "context": "bold-link-title",
+      "encoded": "在 \\*nix 与 \\*BSD\\* 上运行；\\*\\*加粗\\*\\*、\\_斜体\\_、\\_\\_强调\\_\\_、\\`--raw\\` 和 \\~\\~旧模式\\~\\~ 都是字面文本。",
+      "markdown": "[**在 \\*nix 与 \\*BSD\\* 上运行；\\*\\*加粗\\*\\*、\\_斜体\\_、\\_\\_强调\\_\\_、\\`--raw\\` 和 \\~\\~旧模式\\~\\~ 都是字面文本。**](https://example.org/approved)",
+      "expected_text": "在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-inline-zh-list-description",
+      "source": "在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。",
+      "context": "list-description",
+      "encoded": "在 \\*nix 与 \\*BSD\\* 上运行；\\*\\*加粗\\*\\*、\\_斜体\\_、\\_\\_强调\\_\\_、\\`--raw\\` 和 \\~\\~旧模式\\~\\~ 都是字面文本。",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  在 \\*nix 与 \\*BSD\\* 上运行；\\*\\*加粗\\*\\*、\\_斜体\\_、\\_\\_强调\\_\\_、\\`--raw\\` 和 \\~\\~旧模式\\~\\~ 都是字面文本。",
+      "expected_text": "Intentional title 在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-links-paragraph",
+      "source": "[label](https://example.com/a) ![image](https://example.com/a.png) [ref][x] [x]: https://example.com/x",
+      "context": "paragraph",
+      "encoded": "\\[label\\]\\(https<span>:</span>//example.com/a) !\\[image\\]\\(https<span>:</span>//example.com/a.png) \\[ref\\]\\[x\\] \\[x\\]: https<span>:</span>//example.com/x",
+      "markdown": "\\[label\\]\\(https<span>:</span>//example.com/a) !\\[image\\]\\(https<span>:</span>//example.com/a.png) \\[ref\\]\\[x\\] \\[x\\]: https<span>:</span>//example.com/x",
+      "expected_text": "[label](https://example.com/a) ![image](https://example.com/a.png) [ref][x] [x]: https://example.com/x",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-links-bold-link-title",
+      "source": "[label](https://example.com/a) ![image](https://example.com/a.png) [ref][x] [x]: https://example.com/x",
+      "context": "bold-link-title",
+      "encoded": "\\[label\\]\\(https<span>:</span>//example.com/a) !\\[image\\]\\(https<span>:</span>//example.com/a.png) \\[ref\\]\\[x\\] \\[x\\]: https<span>:</span>//example.com/x",
+      "markdown": "[**\\[label\\]\\(https<span>:</span>//example.com/a) !\\[image\\]\\(https<span>:</span>//example.com/a.png) \\[ref\\]\\[x\\] \\[x\\]: https<span>:</span>//example.com/x**](https://example.org/approved)",
+      "expected_text": "[label](https://example.com/a) ![image](https://example.com/a.png) [ref][x] [x]: https://example.com/x",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-links-list-description",
+      "source": "[label](https://example.com/a) ![image](https://example.com/a.png) [ref][x] [x]: https://example.com/x",
+      "context": "list-description",
+      "encoded": "\\[label\\]\\(https<span>:</span>//example.com/a) !\\[image\\]\\(https<span>:</span>//example.com/a.png) \\[ref\\]\\[x\\] \\[x\\]: https<span>:</span>//example.com/x",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\[label\\]\\(https<span>:</span>//example.com/a) !\\[image\\]\\(https<span>:</span>//example.com/a.png) \\[ref\\]\\[x\\] \\[x\\]: https<span>:</span>//example.com/x",
+      "expected_text": "Intentional title [label](https://example.com/a) ![image](https://example.com/a.png) [ref][x] [x]: https://example.com/x",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-html-entities-paragraph",
+      "source": "<b>literal</b> <script>noop()</script> <https://example.com> &amp; &#42; &#x3c; &copy; A & B < C > D",
+      "context": "paragraph",
+      "encoded": "&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D",
+      "markdown": "&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D",
+      "expected_text": "<b>literal</b> <script>noop()</script> <https://example.com> &amp; &#42; &#x3c; &copy; A & B < C > D",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-html-entities-bold-link-title",
+      "source": "<b>literal</b> <script>noop()</script> <https://example.com> &amp; &#42; &#x3c; &copy; A & B < C > D",
+      "context": "bold-link-title",
+      "encoded": "&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D",
+      "markdown": "[**&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D**](https://example.org/approved)",
+      "expected_text": "<b>literal</b> <script>noop()</script> <https://example.com> &amp; &#42; &#x3c; &copy; A & B < C > D",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-html-entities-list-description",
+      "source": "<b>literal</b> <script>noop()</script> <https://example.com> &amp; &#42; &#x3c; &copy; A & B < C > D",
+      "context": "list-description",
+      "encoded": "&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  &lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D",
+      "expected_text": "Intentional title <b>literal</b> <script>noop()</script> <https://example.com> &amp; &#42; &#x3c; &copy; A & B < C > D",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-slashes-paragraph",
+      "source": "Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\",
+      "context": "paragraph",
+      "encoded": "Original \\\\\\*nix\\\\\\*, C:\\\\Temp\\\\\\_file, \\\\\\\\server\\\\share, \\\\\\[link\\\\\\], \\\\\\`code\\\\\\`, ending\\\\",
+      "markdown": "Original \\\\\\*nix\\\\\\*, C:\\\\Temp\\\\\\_file, \\\\\\\\server\\\\share, \\\\\\[link\\\\\\], \\\\\\`code\\\\\\`, ending\\\\",
+      "expected_text": "Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-slashes-bold-link-title",
+      "source": "Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\",
+      "context": "bold-link-title",
+      "encoded": "Original \\\\\\*nix\\\\\\*, C:\\\\Temp\\\\\\_file, \\\\\\\\server\\\\share, \\\\\\[link\\\\\\], \\\\\\`code\\\\\\`, ending\\\\",
+      "markdown": "[**Original \\\\\\*nix\\\\\\*, C:\\\\Temp\\\\\\_file, \\\\\\\\server\\\\share, \\\\\\[link\\\\\\], \\\\\\`code\\\\\\`, ending\\\\**](https://example.org/approved)",
+      "expected_text": "Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-slashes-list-description",
+      "source": "Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\",
+      "context": "list-description",
+      "encoded": "Original \\\\\\*nix\\\\\\*, C:\\\\Temp\\\\\\_file, \\\\\\\\server\\\\share, \\\\\\[link\\\\\\], \\\\\\`code\\\\\\`, ending\\\\",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  Original \\\\\\*nix\\\\\\*, C:\\\\Temp\\\\\\_file, \\\\\\\\server\\\\share, \\\\\\[link\\\\\\], \\\\\\`code\\\\\\`, ending\\\\",
+      "expected_text": "Intentional title Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-urls-paragraph",
+      "source": "www.example.com https://example.com/a?q=x&y=z http://example.org/path HTTP://example.com HTTPS://example.com ftp://example.com WWW.example.com www.example.com/path?q=*x*",
+      "context": "paragraph",
+      "encoded": "www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=\\*x\\*",
+      "markdown": "www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=\\*x\\*",
+      "expected_text": "www.example.com https://example.com/a?q=x&y=z http://example.org/path HTTP://example.com HTTPS://example.com ftp://example.com WWW.example.com www.example.com/path?q=*x*",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-urls-bold-link-title",
+      "source": "www.example.com https://example.com/a?q=x&y=z http://example.org/path HTTP://example.com HTTPS://example.com ftp://example.com WWW.example.com www.example.com/path?q=*x*",
+      "context": "bold-link-title",
+      "encoded": "www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=\\*x\\*",
+      "markdown": "[**www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=\\*x\\***](https://example.org/approved)",
+      "expected_text": "www.example.com https://example.com/a?q=x&y=z http://example.org/path HTTP://example.com HTTPS://example.com ftp://example.com WWW.example.com www.example.com/path?q=*x*",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-urls-list-description",
+      "source": "www.example.com https://example.com/a?q=x&y=z http://example.org/path HTTP://example.com HTTPS://example.com ftp://example.com WWW.example.com www.example.com/path?q=*x*",
+      "context": "list-description",
+      "encoded": "www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=\\*x\\*",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=\\*x\\*",
+      "expected_text": "Intentional title www.example.com https://example.com/a?q=x&y=z http://example.org/path HTTP://example.com HTTPS://example.com ftp://example.com WWW.example.com www.example.com/path?q=*x*",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-emails-paragraph",
+      "source": "person@example.com person+tag@sub.example.org <person@example.com> a_b@example.com mailto:person@example.com",
+      "context": "paragraph",
+      "encoded": "person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a\\_b<span>@</span>example.com mailto:person<span>@</span>example.com",
+      "markdown": "person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a\\_b<span>@</span>example.com mailto:person<span>@</span>example.com",
+      "expected_text": "person@example.com person+tag@sub.example.org <person@example.com> a_b@example.com mailto:person@example.com",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-emails-bold-link-title",
+      "source": "person@example.com person+tag@sub.example.org <person@example.com> a_b@example.com mailto:person@example.com",
+      "context": "bold-link-title",
+      "encoded": "person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a\\_b<span>@</span>example.com mailto:person<span>@</span>example.com",
+      "markdown": "[**person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a\\_b<span>@</span>example.com mailto:person<span>@</span>example.com**](https://example.org/approved)",
+      "expected_text": "person@example.com person+tag@sub.example.org <person@example.com> a_b@example.com mailto:person@example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-emails-list-description",
+      "source": "person@example.com person+tag@sub.example.org <person@example.com> a_b@example.com mailto:person@example.com",
+      "context": "list-description",
+      "encoded": "person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a\\_b<span>@</span>example.com mailto:person<span>@</span>example.com",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a\\_b<span>@</span>example.com mailto:person<span>@</span>example.com",
+      "expected_text": "Intentional title person@example.com person+tag@sub.example.org <person@example.com> a_b@example.com mailto:person@example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-hash-mentions-paragraph",
+      "source": "#173 and @octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "context": "paragraph",
+      "encoded": "#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "markdown": "#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "expected_text": "#173 and @octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-hash-mentions-bold-link-title",
+      "source": "#173 and @octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "context": "bold-link-title",
+      "encoded": "#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "markdown": "[**#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.**](https://example.org/approved)",
+      "expected_text": "#173 and @octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-hash-mentions-list-description",
+      "source": "#173 and @octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "context": "list-description",
+      "encoded": "#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  #173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "expected_text": "Intentional title #173 and @octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-heading-paragraph",
+      "source": "# Heading ## and > quote",
+      "context": "paragraph",
+      "encoded": "\\# Heading ## and &gt; quote",
+      "markdown": "\\# Heading ## and &gt; quote",
+      "expected_text": "# Heading ## and > quote",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-heading-bold-link-title",
+      "source": "# Heading ## and > quote",
+      "context": "bold-link-title",
+      "encoded": "\\# Heading ## and &gt; quote",
+      "markdown": "[**\\# Heading ## and &gt; quote**](https://example.org/approved)",
+      "expected_text": "# Heading ## and > quote",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-heading-list-description",
+      "source": "# Heading ## and > quote",
+      "context": "list-description",
+      "encoded": "\\# Heading ## and &gt; quote",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\# Heading ## and &gt; quote",
+      "expected_text": "Intentional title # Heading ## and > quote",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-list-paragraph",
+      "source": "1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |",
+      "context": "paragraph",
+      "encoded": "1\\. one 2) two - dash + plus \\* star \\[ \\] unchecked \\[x\\] checked | pipes |",
+      "markdown": "1\\. one 2) two - dash + plus \\* star \\[ \\] unchecked \\[x\\] checked | pipes |",
+      "expected_text": "1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-list-bold-link-title",
+      "source": "1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |",
+      "context": "bold-link-title",
+      "encoded": "1\\. one 2) two - dash + plus \\* star \\[ \\] unchecked \\[x\\] checked | pipes |",
+      "markdown": "[**1\\. one 2) two - dash + plus \\* star \\[ \\] unchecked \\[x\\] checked | pipes |**](https://example.org/approved)",
+      "expected_text": "1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-list-list-description",
+      "source": "1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |",
+      "context": "list-description",
+      "encoded": "1\\. one 2) two - dash + plus \\* star \\[ \\] unchecked \\[x\\] checked | pipes |",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  1\\. one 2) two - dash + plus \\* star \\[ \\] unchecked \\[x\\] checked | pipes |",
+      "expected_text": "Intentional title 1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-thematic-paragraph",
+      "source": "---",
+      "context": "paragraph",
+      "encoded": "\\---",
+      "markdown": "\\---",
+      "expected_text": "---",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-thematic-bold-link-title",
+      "source": "---",
+      "context": "bold-link-title",
+      "encoded": "\\---",
+      "markdown": "[**\\---**](https://example.org/approved)",
+      "expected_text": "---",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-thematic-list-description",
+      "source": "---",
+      "context": "list-description",
+      "encoded": "\\---",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\---",
+      "expected_text": "Intentional title ---",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-table-paragraph",
+      "source": "a | b\n--- | ---\nc | d",
+      "context": "paragraph",
+      "encoded": "a | b --- | --- c | d",
+      "markdown": "a | b --- | --- c | d",
+      "expected_text": "a | b --- | --- c | d",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-table-bold-link-title",
+      "source": "a | b\n--- | ---\nc | d",
+      "context": "bold-link-title",
+      "encoded": "a | b --- | --- c | d",
+      "markdown": "[**a | b --- | --- c | d**](https://example.org/approved)",
+      "expected_text": "a | b --- | --- c | d",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-table-list-description",
+      "source": "a | b\n--- | ---\nc | d",
+      "context": "list-description",
+      "encoded": "a | b --- | --- c | d",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  a | b --- | --- c | d",
+      "expected_text": "Intentional title a | b --- | --- c | d",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-whitespace-paragraph",
+      "source": "  spaced\n\t文本   and line\r\nbreaks  ",
+      "context": "paragraph",
+      "encoded": "spaced 文本 and line breaks",
+      "markdown": "spaced 文本 and line breaks",
+      "expected_text": "spaced 文本 and line breaks",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-whitespace-bold-link-title",
+      "source": "  spaced\n\t文本   and line\r\nbreaks  ",
+      "context": "bold-link-title",
+      "encoded": "spaced 文本 and line breaks",
+      "markdown": "[**spaced 文本 and line breaks**](https://example.org/approved)",
+      "expected_text": "spaced 文本 and line breaks",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-whitespace-list-description",
+      "source": "  spaced\n\t文本   and line\r\nbreaks  ",
+      "context": "list-description",
+      "encoded": "spaced 文本 and line breaks",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  spaced 文本 and line breaks",
+      "expected_text": "Intentional title spaced 文本 and line breaks",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-literal-colon-paragraph",
+      "source": "https://example.com\nwww.example.com\nemail@example.com",
+      "context": "paragraph",
+      "encoded": "https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com",
+      "markdown": "https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com",
+      "expected_text": "https://example.com www.example.com email@example.com",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-literal-colon-bold-link-title",
+      "source": "https://example.com\nwww.example.com\nemail@example.com",
+      "context": "bold-link-title",
+      "encoded": "https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com",
+      "markdown": "[**https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com**](https://example.org/approved)",
+      "expected_text": "https://example.com www.example.com email@example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-literal-colon-list-description",
+      "source": "https://example.com\nwww.example.com\nemail@example.com",
+      "context": "list-description",
+      "encoded": "https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com",
+      "expected_text": "Intentional title https://example.com www.example.com email@example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-entity-url-paragraph",
+      "source": "https&#58;//example.com www&#46;example.com user&#64;example.com",
+      "context": "paragraph",
+      "encoded": "https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com",
+      "markdown": "https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com",
+      "expected_text": "https&#58;//example.com www&#46;example.com user&#64;example.com",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-entity-url-bold-link-title",
+      "source": "https&#58;//example.com www&#46;example.com user&#64;example.com",
+      "context": "bold-link-title",
+      "encoded": "https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com",
+      "markdown": "[**https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com**](https://example.org/approved)",
+      "expected_text": "https&#58;//example.com www&#46;example.com user&#64;example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-entity-url-list-description",
+      "source": "https&#58;//example.com www&#46;example.com user&#64;example.com",
+      "context": "list-description",
+      "encoded": "https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com",
+      "expected_text": "Intentional title https&#58;//example.com www&#46;example.com user&#64;example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-trailing-slash-paragraph",
+      "source": "Original backslash \\",
+      "context": "paragraph",
+      "encoded": "Original backslash \\\\",
+      "markdown": "Original backslash \\\\",
+      "expected_text": "Original backslash \\",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-trailing-slash-bold-link-title",
+      "source": "Original backslash \\",
+      "context": "bold-link-title",
+      "encoded": "Original backslash \\\\",
+      "markdown": "[**Original backslash \\\\**](https://example.org/approved)",
+      "expected_text": "Original backslash \\",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-trailing-slash-list-description",
+      "source": "Original backslash \\",
+      "context": "list-description",
+      "encoded": "Original backslash \\\\",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  Original backslash \\\\",
+      "expected_text": "Intentional title Original backslash \\",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-adjacent-zh-paragraph",
+      "source": "见https://example.com以及www.example.com；联系用户@example.com；(@octocat)。",
+      "context": "paragraph",
+      "encoded": "见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。",
+      "markdown": "见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。",
+      "expected_text": "见https://example.com以及www.example.com；联系用户@example.com；(@octocat)。",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-adjacent-zh-bold-link-title",
+      "source": "见https://example.com以及www.example.com；联系用户@example.com；(@octocat)。",
+      "context": "bold-link-title",
+      "encoded": "见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。",
+      "markdown": "[**见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。**](https://example.org/approved)",
+      "expected_text": "见https://example.com以及www.example.com；联系用户@example.com；(@octocat)。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-adjacent-zh-list-description",
+      "source": "见https://example.com以及www.example.com；联系用户@example.com；(@octocat)。",
+      "context": "list-description",
+      "encoded": "见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。",
+      "expected_text": "Intentional title 见https://example.com以及www.example.com；联系用户@example.com；(@octocat)。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-plus-paragraph",
+      "source": "+ a plain plus list marker",
+      "context": "paragraph",
+      "encoded": "\\+ a plain plus list marker",
+      "markdown": "\\+ a plain plus list marker",
+      "expected_text": "+ a plain plus list marker",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-block-plus-bold-link-title",
+      "source": "+ a plain plus list marker",
+      "context": "bold-link-title",
+      "encoded": "\\+ a plain plus list marker",
+      "markdown": "[**\\+ a plain plus list marker**](https://example.org/approved)",
+      "expected_text": "+ a plain plus list marker",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-plus-list-description",
+      "source": "+ a plain plus list marker",
+      "context": "list-description",
+      "encoded": "\\+ a plain plus list marker",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\+ a plain plus list marker",
+      "expected_text": "Intentional title + a plain plus list marker",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-dash-paragraph",
+      "source": "- [x] plain task marker",
+      "context": "paragraph",
+      "encoded": "\\- \\[x\\] plain task marker",
+      "markdown": "\\- \\[x\\] plain task marker",
+      "expected_text": "- [x] plain task marker",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-block-dash-bold-link-title",
+      "source": "- [x] plain task marker",
+      "context": "bold-link-title",
+      "encoded": "\\- \\[x\\] plain task marker",
+      "markdown": "[**\\- \\[x\\] plain task marker**](https://example.org/approved)",
+      "expected_text": "- [x] plain task marker",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-dash-list-description",
+      "source": "- [x] plain task marker",
+      "context": "list-description",
+      "encoded": "\\- \\[x\\] plain task marker",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\- \\[x\\] plain task marker",
+      "expected_text": "Intentional title - [x] plain task marker",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-quote-paragraph",
+      "source": "> plain quote",
+      "context": "paragraph",
+      "encoded": "&gt; plain quote",
+      "markdown": "&gt; plain quote",
+      "expected_text": "> plain quote",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-block-quote-bold-link-title",
+      "source": "> plain quote",
+      "context": "bold-link-title",
+      "encoded": "&gt; plain quote",
+      "markdown": "[**&gt; plain quote**](https://example.org/approved)",
+      "expected_text": "> plain quote",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-quote-list-description",
+      "source": "> plain quote",
+      "context": "list-description",
+      "encoded": "&gt; plain quote",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  &gt; plain quote",
+      "expected_text": "Intentional title > plain quote",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-ordered-paragraph",
+      "source": "12) plain ordered marker",
+      "context": "paragraph",
+      "encoded": "12\\) plain ordered marker",
+      "markdown": "12\\) plain ordered marker",
+      "expected_text": "12) plain ordered marker",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-block-ordered-bold-link-title",
+      "source": "12) plain ordered marker",
+      "context": "bold-link-title",
+      "encoded": "12\\) plain ordered marker",
+      "markdown": "[**12\\) plain ordered marker**](https://example.org/approved)",
+      "expected_text": "12) plain ordered marker",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-ordered-list-description",
+      "source": "12) plain ordered marker",
+      "context": "list-description",
+      "encoded": "12\\) plain ordered marker",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  12\\) plain ordered marker",
+      "expected_text": "Intentional title 12) plain ordered marker",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-heading-paragraph",
+      "source": "### plain heading",
+      "context": "paragraph",
+      "encoded": "\\### plain heading",
+      "markdown": "\\### plain heading",
+      "expected_text": "### plain heading",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-block-heading-bold-link-title",
+      "source": "### plain heading",
+      "context": "bold-link-title",
+      "encoded": "\\### plain heading",
+      "markdown": "[**\\### plain heading**](https://example.org/approved)",
+      "expected_text": "### plain heading",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-heading-list-description",
+      "source": "### plain heading",
+      "context": "list-description",
+      "encoded": "\\### plain heading",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\### plain heading",
+      "expected_text": "Intentional title ### plain heading",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-fence-paragraph",
+      "source": "``` rust code ```",
+      "context": "paragraph",
+      "encoded": "\\`\\`\\` rust code \\`\\`\\`",
+      "markdown": "\\`\\`\\` rust code \\`\\`\\`",
+      "expected_text": "``` rust code ```",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-block-fence-bold-link-title",
+      "source": "``` rust code ```",
+      "context": "bold-link-title",
+      "encoded": "\\`\\`\\` rust code \\`\\`\\`",
+      "markdown": "[**\\`\\`\\` rust code \\`\\`\\`**](https://example.org/approved)",
+      "expected_text": "``` rust code ```",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-block-fence-list-description",
+      "source": "``` rust code ```",
+      "context": "list-description",
+      "encoded": "\\`\\`\\` rust code \\`\\`\\`",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\`\\`\\` rust code \\`\\`\\`",
+      "expected_text": "Intentional title ``` rust code ```",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-backslash-prefix-paragraph",
+      "source": "Already escaped https\\://example.com and www\\.example.com and mail\\@example.com",
+      "context": "paragraph",
+      "encoded": "Already escaped https\\\\<span>:</span>//example.com and www\\\\.example.com and mail\\\\<span>@</span>example.com",
+      "markdown": "Already escaped https\\\\<span>:</span>//example.com and www\\\\.example.com and mail\\\\<span>@</span>example.com",
+      "expected_text": "Already escaped https\\://example.com and www\\.example.com and mail\\@example.com",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-backslash-prefix-bold-link-title",
+      "source": "Already escaped https\\://example.com and www\\.example.com and mail\\@example.com",
+      "context": "bold-link-title",
+      "encoded": "Already escaped https\\\\<span>:</span>//example.com and www\\\\.example.com and mail\\\\<span>@</span>example.com",
+      "markdown": "[**Already escaped https\\\\<span>:</span>//example.com and www\\\\.example.com and mail\\\\<span>@</span>example.com**](https://example.org/approved)",
+      "expected_text": "Already escaped https\\://example.com and www\\.example.com and mail\\@example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-backslash-prefix-list-description",
+      "source": "Already escaped https\\://example.com and www\\.example.com and mail\\@example.com",
+      "context": "list-description",
+      "encoded": "Already escaped https\\\\<span>:</span>//example.com and www\\\\.example.com and mail\\\\<span>@</span>example.com",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  Already escaped https\\\\<span>:</span>//example.com and www\\\\.example.com and mail\\\\<span>@</span>example.com",
+      "expected_text": "Intentional title Already escaped https\\://example.com and www\\.example.com and mail\\@example.com",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-html-generated-looking-paragraph",
+      "source": "<span>@</span> is literal source text; <a href=\"https://example.com\">link</a> is not markup.",
+      "context": "paragraph",
+      "encoded": "&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.",
+      "markdown": "&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.",
+      "expected_text": "<span>@</span> is literal source text; <a href=\"https://example.com\">link</a> is not markup.",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-html-generated-looking-bold-link-title",
+      "source": "<span>@</span> is literal source text; <a href=\"https://example.com\">link</a> is not markup.",
+      "context": "bold-link-title",
+      "encoded": "&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.",
+      "markdown": "[**&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.**](https://example.org/approved)",
+      "expected_text": "<span>@</span> is literal source text; <a href=\"https://example.com\">link</a> is not markup.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-html-generated-looking-list-description",
+      "source": "<span>@</span> is literal source text; <a href=\"https://example.com\">link</a> is not markup.",
+      "context": "list-description",
+      "encoded": "&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  &lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.",
+      "expected_text": "Intentional title <span>@</span> is literal source text; <a href=\"https://example.com\">link</a> is not markup.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-non-ascii-paragraph",
+      "source": "反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS://example.com。",
+      "context": "paragraph",
+      "encoded": "反编译 \\*BSD\\*、C++、Dart 3.13、公式 \\_x\\_ 与 \\~\\~旧版\\~\\~；网址 HTTPS<span>:</span>//example.com。",
+      "markdown": "反编译 \\*BSD\\*、C++、Dart 3.13、公式 \\_x\\_ 与 \\~\\~旧版\\~\\~；网址 HTTPS<span>:</span>//example.com。",
+      "expected_text": "反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS://example.com。",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-non-ascii-bold-link-title",
+      "source": "反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS://example.com。",
+      "context": "bold-link-title",
+      "encoded": "反编译 \\*BSD\\*、C++、Dart 3.13、公式 \\_x\\_ 与 \\~\\~旧版\\~\\~；网址 HTTPS<span>:</span>//example.com。",
+      "markdown": "[**反编译 \\*BSD\\*、C++、Dart 3.13、公式 \\_x\\_ 与 \\~\\~旧版\\~\\~；网址 HTTPS<span>:</span>//example.com。**](https://example.org/approved)",
+      "expected_text": "反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS://example.com。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-non-ascii-list-description",
+      "source": "反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS://example.com。",
+      "context": "list-description",
+      "encoded": "反编译 \\*BSD\\*、C++、Dart 3.13、公式 \\_x\\_ 与 \\~\\~旧版\\~\\~；网址 HTTPS<span>:</span>//example.com。",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  反编译 \\*BSD\\*、C++、Dart 3.13、公式 \\_x\\_ 与 \\~\\~旧版\\~\\~；网址 HTTPS<span>:</span>//example.com。",
+      "expected_text": "Intentional title 反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS://example.com。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-punctuation-only-paragraph",
+      "source": "*** ___ ~~~ ``` \\ [ ] & < >",
+      "context": "paragraph",
+      "encoded": "\\*\\*\\* \\_\\_\\_ \\~\\~\\~ \\`\\`\\` \\\\ \\[ \\] &amp; &lt; &gt;",
+      "markdown": "\\*\\*\\* \\_\\_\\_ \\~\\~\\~ \\`\\`\\` \\\\ \\[ \\] &amp; &lt; &gt;",
+      "expected_text": "*** ___ ~~~ ``` \\ [ ] & < >",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-punctuation-only-bold-link-title",
+      "source": "*** ___ ~~~ ``` \\ [ ] & < >",
+      "context": "bold-link-title",
+      "encoded": "\\*\\*\\* \\_\\_\\_ \\~\\~\\~ \\`\\`\\` \\\\ \\[ \\] &amp; &lt; &gt;",
+      "markdown": "[**\\*\\*\\* \\_\\_\\_ \\~\\~\\~ \\`\\`\\` \\\\ \\[ \\] &amp; &lt; &gt;**](https://example.org/approved)",
+      "expected_text": "*** ___ ~~~ ``` \\ [ ] & < >",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-punctuation-only-list-description",
+      "source": "*** ___ ~~~ ``` \\ [ ] & < >",
+      "context": "list-description",
+      "encoded": "\\*\\*\\* \\_\\_\\_ \\~\\~\\~ \\`\\`\\` \\\\ \\[ \\] &amp; &lt; &gt;",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\*\\*\\* \\_\\_\\_ \\~\\~\\~ \\`\\`\\` \\\\ \\[ \\] &amp; &lt; &gt;",
+      "expected_text": "Intentional title *** ___ ~~~ ``` \\ [ ] & < >",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-heading-entity-paragraph",
+      "source": "&#35;173 and &amp;#42; are literal entities, not issue links.",
+      "context": "paragraph",
+      "encoded": "&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.",
+      "markdown": "&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.",
+      "expected_text": "&#35;173 and &amp;#42; are literal entities, not issue links.",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-heading-entity-bold-link-title",
+      "source": "&#35;173 and &amp;#42; are literal entities, not issue links.",
+      "context": "bold-link-title",
+      "encoded": "&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.",
+      "markdown": "[**&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.**](https://example.org/approved)",
+      "expected_text": "&#35;173 and &amp;#42; are literal entities, not issue links.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-heading-entity-list-description",
+      "source": "&#35;173 and &amp;#42; are literal entities, not issue links.",
+      "context": "list-description",
+      "encoded": "&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  &amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.",
+      "expected_text": "Intentional title &#35;173 and &amp;#42; are literal entities, not issue links.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-hash-only-paragraph",
+      "source": "#",
+      "context": "paragraph",
+      "encoded": "\\#",
+      "markdown": "\\#",
+      "expected_text": "#",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-hash-only-bold-link-title",
+      "source": "#",
+      "context": "bold-link-title",
+      "encoded": "\\#",
+      "markdown": "[**\\#**](https://example.org/approved)",
+      "expected_text": "#",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-hash-only-list-description",
+      "source": "#",
+      "context": "list-description",
+      "encoded": "\\#",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\#",
+      "expected_text": "Intentional title #",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-plus-only-paragraph",
+      "source": "+",
+      "context": "paragraph",
+      "encoded": "\\+",
+      "markdown": "\\+",
+      "expected_text": "+",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-plus-only-bold-link-title",
+      "source": "+",
+      "context": "bold-link-title",
+      "encoded": "\\+",
+      "markdown": "[**\\+**](https://example.org/approved)",
+      "expected_text": "+",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-plus-only-list-description",
+      "source": "+",
+      "context": "list-description",
+      "encoded": "\\+",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\+",
+      "expected_text": "Intentional title +",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-dash-only-paragraph",
+      "source": "-",
+      "context": "paragraph",
+      "encoded": "\\-",
+      "markdown": "\\-",
+      "expected_text": "-",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-dash-only-bold-link-title",
+      "source": "-",
+      "context": "bold-link-title",
+      "encoded": "\\-",
+      "markdown": "[**\\-**](https://example.org/approved)",
+      "expected_text": "-",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-dash-only-list-description",
+      "source": "-",
+      "context": "list-description",
+      "encoded": "\\-",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  \\-",
+      "expected_text": "Intentional title -",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-ordered-only-paragraph",
+      "source": "1.",
+      "context": "paragraph",
+      "encoded": "1\\.",
+      "markdown": "1\\.",
+      "expected_text": "1.",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-ordered-only-bold-link-title",
+      "source": "1.",
+      "context": "bold-link-title",
+      "encoded": "1\\.",
+      "markdown": "[**1\\.**](https://example.org/approved)",
+      "expected_text": "1.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-ordered-only-list-description",
+      "source": "1.",
+      "context": "list-description",
+      "encoded": "1\\.",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  1\\.",
+      "expected_text": "Intentional title 1.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-emoji-tokens-paragraph",
+      "source": ":secret: :detective: :gear: :+1: :-1: :not_a_real_emoji:",
+      "context": "paragraph",
+      "encoded": "<span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not\\_a\\_real\\_emoji:",
+      "markdown": "<span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not\\_a\\_real\\_emoji:",
+      "expected_text": ":secret: :detective: :gear: :+1: :-1: :not_a_real_emoji:",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-emoji-tokens-bold-link-title",
+      "source": ":secret: :detective: :gear: :+1: :-1: :not_a_real_emoji:",
+      "context": "bold-link-title",
+      "encoded": "<span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not\\_a\\_real\\_emoji:",
+      "markdown": "[**<span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not\\_a\\_real\\_emoji:**](https://example.org/approved)",
+      "expected_text": ":secret: :detective: :gear: :+1: :-1: :not_a_real_emoji:",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-emoji-tokens-list-description",
+      "source": ":secret: :detective: :gear: :+1: :-1: :not_a_real_emoji:",
+      "context": "list-description",
+      "encoded": "<span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not\\_a\\_real\\_emoji:",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  <span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not\\_a\\_real\\_emoji:",
+      "expected_text": "Intentional title :secret: :detective: :gear: :+1: :-1: :not_a_real_emoji:",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-underscore-emoji-paragraph",
+      "source": ":woman_technologist: :man_technologist: :not_a_real_emoji: :smile::wave:",
+      "context": "paragraph",
+      "encoded": "<span>:</span>woman\\_technologist: <span>:</span>man\\_technologist: <span>:</span>not\\_a\\_real\\_emoji: <span>:</span>smile:<span>:</span>wave:",
+      "markdown": "<span>:</span>woman\\_technologist: <span>:</span>man\\_technologist: <span>:</span>not\\_a\\_real\\_emoji: <span>:</span>smile:<span>:</span>wave:",
+      "expected_text": ":woman_technologist: :man_technologist: :not_a_real_emoji: :smile::wave:",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-underscore-emoji-bold-link-title",
+      "source": ":woman_technologist: :man_technologist: :not_a_real_emoji: :smile::wave:",
+      "context": "bold-link-title",
+      "encoded": "<span>:</span>woman\\_technologist: <span>:</span>man\\_technologist: <span>:</span>not\\_a\\_real\\_emoji: <span>:</span>smile:<span>:</span>wave:",
+      "markdown": "[**<span>:</span>woman\\_technologist: <span>:</span>man\\_technologist: <span>:</span>not\\_a\\_real\\_emoji: <span>:</span>smile:<span>:</span>wave:**](https://example.org/approved)",
+      "expected_text": ":woman_technologist: :man_technologist: :not_a_real_emoji: :smile::wave:",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-underscore-emoji-list-description",
+      "source": ":woman_technologist: :man_technologist: :not_a_real_emoji: :smile::wave:",
+      "context": "list-description",
+      "encoded": "<span>:</span>woman\\_technologist: <span>:</span>man\\_technologist: <span>:</span>not\\_a\\_real\\_emoji: <span>:</span>smile:<span>:</span>wave:",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  <span>:</span>woman\\_technologist: <span>:</span>man\\_technologist: <span>:</span>not\\_a\\_real\\_emoji: <span>:</span>smile:<span>:</span>wave:",
+      "expected_text": "Intentional title :woman_technologist: :man_technologist: :not_a_real_emoji: :smile::wave:",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-literal-emoji-cn-paragraph",
+      "source": "字面别名 :woman_technologist: 与 :secret:，不是表情图案。",
+      "context": "paragraph",
+      "encoded": "字面别名 <span>:</span>woman\\_technologist: 与 <span>:</span>secret:，不是表情图案。",
+      "markdown": "字面别名 <span>:</span>woman\\_technologist: 与 <span>:</span>secret:，不是表情图案。",
+      "expected_text": "字面别名 :woman_technologist: 与 :secret:，不是表情图案。",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-literal-emoji-cn-bold-link-title",
+      "source": "字面别名 :woman_technologist: 与 :secret:，不是表情图案。",
+      "context": "bold-link-title",
+      "encoded": "字面别名 <span>:</span>woman\\_technologist: 与 <span>:</span>secret:，不是表情图案。",
+      "markdown": "[**字面别名 <span>:</span>woman\\_technologist: 与 <span>:</span>secret:，不是表情图案。**](https://example.org/approved)",
+      "expected_text": "字面别名 :woman_technologist: 与 :secret:，不是表情图案。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-literal-emoji-cn-list-description",
+      "source": "字面别名 :woman_technologist: 与 :secret:，不是表情图案。",
+      "context": "list-description",
+      "encoded": "字面别名 <span>:</span>woman\\_technologist: 与 <span>:</span>secret:，不是表情图案。",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  字面别名 <span>:</span>woman\\_technologist: 与 <span>:</span>secret:，不是表情图案。",
+      "expected_text": "Intentional title 字面别名 :woman_technologist: 与 :secret:，不是表情图案。",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-math-tokens-paragraph",
+      "source": "$x$ $$y$$ and $5.00 are literal symbols.",
+      "context": "paragraph",
+      "encoded": "<span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.",
+      "markdown": "<span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.",
+      "expected_text": "$x$ $$y$$ and $5.00 are literal symbols.",
+      "expected_hrefs": []
+    },
+    {
+      "id": "fixture-math-tokens-bold-link-title",
+      "source": "$x$ $$y$$ and $5.00 are literal symbols.",
+      "context": "bold-link-title",
+      "encoded": "<span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.",
+      "markdown": "[**<span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.**](https://example.org/approved)",
+      "expected_text": "$x$ $$y$$ and $5.00 are literal symbols.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    },
+    {
+      "id": "fixture-math-tokens-list-description",
+      "source": "$x$ $$y$$ and $5.00 are literal symbols.",
+      "context": "list-description",
+      "encoded": "<span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.",
+      "markdown": "- [**Intentional title**](https://example.org/approved)\n\n  <span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.",
+      "expected_text": "Intentional title $x$ $$y$$ and $5.00 are literal symbols.",
+      "expected_hrefs": [
+        "https://example.org/approved"
+      ]
+    }
+  ],
+  "html": "<div id=\"user-content-fixture-inline-en-paragraph\">\n<p>Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.</p>\n</div>\n<div id=\"user-content-fixture-inline-en-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.</strong></a></p>\n</div>\n<div id=\"user-content-fixture-inline-en-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>Runs on *nix and *BSD* hosts; **bold**, _italic_, __strong__, `--raw`, ``x`y``, and ~~legacy~~.</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-inline-zh-paragraph\">\n<p>在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。</p>\n</div>\n<div id=\"user-content-fixture-inline-zh-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。</strong></a></p>\n</div>\n<div id=\"user-content-fixture-inline-zh-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>在 *nix 与 *BSD* 上运行；**加粗**、_斜体_、__强调__、`--raw` 和 ~~旧模式~~ 都是字面文本。</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-links-paragraph\">\n<p>[label](https<span>:</span>//example.com/a) ![image](https<span>:</span>//example.com/a.png) [ref][x] [x]: https<span>:</span>//example.com/x</p>\n</div>\n<div id=\"user-content-fixture-links-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>[label](https<span>:</span>//example.com/a) ![image](https<span>:</span>//example.com/a.png) [ref][x] [x]: https<span>:</span>//example.com/x</strong></a></p>\n</div>\n<div id=\"user-content-fixture-links-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>[label](https<span>:</span>//example.com/a) ![image](https<span>:</span>//example.com/a.png) [ref][x] [x]: https<span>:</span>//example.com/x</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-html-entities-paragraph\">\n<p>&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D</p>\n</div>\n<div id=\"user-content-fixture-html-entities-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D</strong></a></p>\n</div>\n<div id=\"user-content-fixture-html-entities-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>&lt;b&gt;literal&lt;/b&gt; &lt;script&gt;noop()&lt;/script&gt; &lt;https<span>:</span>//example.com&gt; &amp;amp; &amp;#42; &amp;#x3c; &amp;copy; A &amp; B &lt; C &gt; D</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-slashes-paragraph\">\n<p>Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\</p>\n</div>\n<div id=\"user-content-fixture-slashes-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\</strong></a></p>\n</div>\n<div id=\"user-content-fixture-slashes-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>Original \\*nix\\*, C:\\Temp\\_file, \\\\server\\share, \\[link\\], \\`code\\`, ending\\</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-urls-paragraph\">\n<p>www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=*x*</p>\n</div>\n<div id=\"user-content-fixture-urls-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=*x*</strong></a></p>\n</div>\n<div id=\"user-content-fixture-urls-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>www<span>.</span>example.com https<span>:</span>//example.com/a?q=x&amp;y=z http<span>:</span>//example.org/path HTTP<span>:</span>//example.com HTTPS<span>:</span>//example.com ftp<span>:</span>//example.com WWW<span>.</span>example.com www<span>.</span>example.com/path?q=*x*</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-emails-paragraph\">\n<p>person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a_b<span>@</span>example.com mailto:person<span>@</span>example.com</p>\n</div>\n<div id=\"user-content-fixture-emails-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a_b<span>@</span>example.com mailto:person<span>@</span>example.com</strong></a></p>\n</div>\n<div id=\"user-content-fixture-emails-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>person<span>@</span>example.com person+tag<span>@</span>sub.example.org &lt;person<span>@</span>example.com&gt; a_b<span>@</span>example.com mailto:person<span>@</span>example.com</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-hash-mentions-paragraph\">\n<p>#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.</p>\n</div>\n<div id=\"user-content-fixture-hash-mentions-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.</strong></a></p>\n</div>\n<div id=\"user-content-fixture-hash-mentions-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>#173 and <span>@</span>octocat are literal tokens; user/repo#123 and GH-123 and 0123456789abcdef0123456789abcdef01234567 are text.</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-heading-paragraph\">\n<p># Heading ## and &gt; quote</p>\n</div>\n<div id=\"user-content-fixture-heading-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong># Heading ## and &gt; quote</strong></a></p>\n</div>\n<div id=\"user-content-fixture-heading-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p># Heading ## and &gt; quote</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-list-paragraph\">\n<p>1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |</p>\n</div>\n<div id=\"user-content-fixture-list-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |</strong></a></p>\n</div>\n<div id=\"user-content-fixture-list-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>1. one 2) two - dash + plus * star [ ] unchecked [x] checked | pipes |</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-thematic-paragraph\">\n<p>---</p>\n</div>\n<div id=\"user-content-fixture-thematic-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>---</strong></a></p>\n</div>\n<div id=\"user-content-fixture-thematic-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>---</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-table-paragraph\">\n<p>a | b --- | --- c | d</p>\n</div>\n<div id=\"user-content-fixture-table-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>a | b --- | --- c | d</strong></a></p>\n</div>\n<div id=\"user-content-fixture-table-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>a | b --- | --- c | d</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-whitespace-paragraph\">\n<p>spaced 文本 and line breaks</p>\n</div>\n<div id=\"user-content-fixture-whitespace-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>spaced 文本 and line breaks</strong></a></p>\n</div>\n<div id=\"user-content-fixture-whitespace-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>spaced 文本 and line breaks</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-literal-colon-paragraph\">\n<p>https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com</p>\n</div>\n<div id=\"user-content-fixture-literal-colon-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com</strong></a></p>\n</div>\n<div id=\"user-content-fixture-literal-colon-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>https<span>:</span>//example.com www<span>.</span>example.com email<span>@</span>example.com</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-entity-url-paragraph\">\n<p>https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com</p>\n</div>\n<div id=\"user-content-fixture-entity-url-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com</strong></a></p>\n</div>\n<div id=\"user-content-fixture-entity-url-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>https&amp;#58;//example.com www&amp;#46;example.com user&amp;#64;example.com</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-trailing-slash-paragraph\">\n<p>Original backslash \\</p>\n</div>\n<div id=\"user-content-fixture-trailing-slash-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Original backslash \\</strong></a></p>\n</div>\n<div id=\"user-content-fixture-trailing-slash-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>Original backslash \\</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-adjacent-zh-paragraph\">\n<p>见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。</p>\n</div>\n<div id=\"user-content-fixture-adjacent-zh-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。</strong></a></p>\n</div>\n<div id=\"user-content-fixture-adjacent-zh-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>见https<span>:</span>//example.com以及www<span>.</span>example.com；联系用户<span>@</span>example.com；(<span>@</span>octocat)。</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-block-plus-paragraph\">\n<p>+ a plain plus list marker</p>\n</div>\n<div id=\"user-content-fixture-block-plus-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>+ a plain plus list marker</strong></a></p>\n</div>\n<div id=\"user-content-fixture-block-plus-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>+ a plain plus list marker</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-block-dash-paragraph\">\n<p>- [x] plain task marker</p>\n</div>\n<div id=\"user-content-fixture-block-dash-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>- [x] plain task marker</strong></a></p>\n</div>\n<div id=\"user-content-fixture-block-dash-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>- [x] plain task marker</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-block-quote-paragraph\">\n<p>&gt; plain quote</p>\n</div>\n<div id=\"user-content-fixture-block-quote-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>&gt; plain quote</strong></a></p>\n</div>\n<div id=\"user-content-fixture-block-quote-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>&gt; plain quote</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-block-ordered-paragraph\">\n<p>12) plain ordered marker</p>\n</div>\n<div id=\"user-content-fixture-block-ordered-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>12) plain ordered marker</strong></a></p>\n</div>\n<div id=\"user-content-fixture-block-ordered-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>12) plain ordered marker</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-block-heading-paragraph\">\n<p>### plain heading</p>\n</div>\n<div id=\"user-content-fixture-block-heading-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>### plain heading</strong></a></p>\n</div>\n<div id=\"user-content-fixture-block-heading-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>### plain heading</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-block-fence-paragraph\">\n<p>``` rust code ```</p>\n</div>\n<div id=\"user-content-fixture-block-fence-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>``` rust code ```</strong></a></p>\n</div>\n<div id=\"user-content-fixture-block-fence-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>``` rust code ```</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-backslash-prefix-paragraph\">\n<p>Already escaped https\\<span>:</span>//example.com and www\\.example.com and mail\\<span>@</span>example.com</p>\n</div>\n<div id=\"user-content-fixture-backslash-prefix-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Already escaped https\\<span>:</span>//example.com and www\\.example.com and mail\\<span>@</span>example.com</strong></a></p>\n</div>\n<div id=\"user-content-fixture-backslash-prefix-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>Already escaped https\\<span>:</span>//example.com and www\\.example.com and mail\\<span>@</span>example.com</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-html-generated-looking-paragraph\">\n<p>&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.</p>\n</div>\n<div id=\"user-content-fixture-html-generated-looking-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.</strong></a></p>\n</div>\n<div id=\"user-content-fixture-html-generated-looking-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>&lt;span&gt;<span>@</span>&lt;/span&gt; is literal source text; &lt;a href=\"https<span>:</span>//example.com\"&gt;link&lt;/a&gt; is not markup.</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-non-ascii-paragraph\">\n<p>反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS<span>:</span>//example.com。</p>\n</div>\n<div id=\"user-content-fixture-non-ascii-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS<span>:</span>//example.com。</strong></a></p>\n</div>\n<div id=\"user-content-fixture-non-ascii-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>反编译 *BSD*、C++、Dart 3.13、公式 _x_ 与 ~~旧版~~；网址 HTTPS<span>:</span>//example.com。</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-punctuation-only-paragraph\">\n<p>*** ___ ~~~ ``` \\ [ ] &amp; &lt; &gt;</p>\n</div>\n<div id=\"user-content-fixture-punctuation-only-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>*** ___ ~~~ ``` \\ [ ] &amp; &lt; &gt;</strong></a></p>\n</div>\n<div id=\"user-content-fixture-punctuation-only-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>*** ___ ~~~ ``` \\ [ ] &amp; &lt; &gt;</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-heading-entity-paragraph\">\n<p>&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.</p>\n</div>\n<div id=\"user-content-fixture-heading-entity-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.</strong></a></p>\n</div>\n<div id=\"user-content-fixture-heading-entity-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>&amp;#35;173 and &amp;amp;#42; are literal entities, not issue links.</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-hash-only-paragraph\">\n<p>#</p>\n</div>\n<div id=\"user-content-fixture-hash-only-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>#</strong></a></p>\n</div>\n<div id=\"user-content-fixture-hash-only-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>#</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-plus-only-paragraph\">\n<p>+</p>\n</div>\n<div id=\"user-content-fixture-plus-only-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>+</strong></a></p>\n</div>\n<div id=\"user-content-fixture-plus-only-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>+</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-dash-only-paragraph\">\n<p>-</p>\n</div>\n<div id=\"user-content-fixture-dash-only-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>-</strong></a></p>\n</div>\n<div id=\"user-content-fixture-dash-only-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>-</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-ordered-only-paragraph\">\n<p>1.</p>\n</div>\n<div id=\"user-content-fixture-ordered-only-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>1.</strong></a></p>\n</div>\n<div id=\"user-content-fixture-ordered-only-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>1.</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-emoji-tokens-paragraph\">\n<p><span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not_a_real_emoji:</p>\n</div>\n<div id=\"user-content-fixture-emoji-tokens-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong><span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not_a_real_emoji:</strong></a></p>\n</div>\n<div id=\"user-content-fixture-emoji-tokens-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p><span>:</span>secret: <span>:</span>detective: <span>:</span>gear: <span>:</span>+1: <span>:</span>-1: <span>:</span>not_a_real_emoji:</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-underscore-emoji-paragraph\">\n<p><span>:</span>woman_technologist: <span>:</span>man_technologist: <span>:</span>not_a_real_emoji: <span>:</span>smile:<span>:</span>wave:</p>\n</div>\n<div id=\"user-content-fixture-underscore-emoji-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong><span>:</span>woman_technologist: <span>:</span>man_technologist: <span>:</span>not_a_real_emoji: <span>:</span>smile:<span>:</span>wave:</strong></a></p>\n</div>\n<div id=\"user-content-fixture-underscore-emoji-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p><span>:</span>woman_technologist: <span>:</span>man_technologist: <span>:</span>not_a_real_emoji: <span>:</span>smile:<span>:</span>wave:</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-literal-emoji-cn-paragraph\">\n<p>字面别名 <span>:</span>woman_technologist: 与 <span>:</span>secret:，不是表情图案。</p>\n</div>\n<div id=\"user-content-fixture-literal-emoji-cn-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>字面别名 <span>:</span>woman_technologist: 与 <span>:</span>secret:，不是表情图案。</strong></a></p>\n</div>\n<div id=\"user-content-fixture-literal-emoji-cn-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p>字面别名 <span>:</span>woman_technologist: 与 <span>:</span>secret:，不是表情图案。</p>\n</li>\n</ul>\n</div>\n<div id=\"user-content-fixture-math-tokens-paragraph\">\n<p><span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.</p>\n</div>\n<div id=\"user-content-fixture-math-tokens-bold-link-title\">\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong><span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.</strong></a></p>\n</div>\n<div id=\"user-content-fixture-math-tokens-list-description\">\n<ul>\n<li>\n<p><a href=\"https://example.org/approved\" rel=\"nofollow\"><strong>Intentional title</strong></a></p>\n<p><span>$</span>x<span>$</span> <span>$</span><span>$</span>y<span>$</span><span>$</span> and <span>$</span>5.00 are literal symbols.</p>\n</li>\n</ul>\n</div>"
+}

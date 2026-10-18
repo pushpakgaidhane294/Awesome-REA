@@ -7,7 +7,7 @@
 .browse-breadcrumbs a{color:var(--link)}
 .browse-breadcrumbs a:hover{text-decoration:underline;text-underline-offset:4px}
 .browse-intro{padding:25px 0 24px}
-.browse-intro h1{font-size:clamp(30px,3vw,43px)}
+.browse-intro h1{font-size:clamp(30px,3vw,43px);line-height:1.3;overflow-wrap:break-word;text-wrap:balance}
 .browse-main .browse-intro>p:last-child{max-width:72ch}
 .browse-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px}
 .browse-actions .button{font-size:14px}
@@ -15,7 +15,7 @@
 .browse-download{font-size:14px;color:var(--link);padding:8px 2px;text-decoration:underline;text-underline-offset:4px}
 .browse-provenance{padding-bottom:19px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
 .browse-provenance summary{min-height:44px;padding-block:9px;width:fit-content;cursor:pointer;color:var(--link);text-decoration:underline;text-underline-offset:4px}
-.browse-provenance p{max-width:72ch;margin:12px 0 0;line-height:1.8}
+.browse-provenance p{max-width:72ch;margin:12px 0 0;font-size:15px;line-height:1.8;color:var(--body)}
 .browse-provenance a{color:var(--link)}
 .browse-category-nav{display:flex;flex-wrap:wrap;gap:8px;padding:20px 0 4px}
 .browse-category-nav a{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--line);border-radius:7px;font-size:14px;color:var(--muted)}
@@ -24,19 +24,26 @@
 .browse-category-nav a[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .browse-topline{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:18px 0;color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
 .browse-topline p{margin:0}
+.browse-topline h2{margin:0;max-width:100%;font-size:22px;line-height:1.4;color:var(--ink);overflow-wrap:break-word;text-wrap:balance}
 .browse-topline p:last-child{font-size:14px}
 .browse-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .browse-category-card{display:flex;align-items:center;gap:15px;min-height:126px;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:0 2px 5px var(--shadow)}
 .browse-category-card:hover{border-color:var(--strong);background:var(--soft)}
 .browse-category-card>.icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;font-size:22px;color:var(--link);background:var(--tint);border-radius:10px}
 .browse-category-copy{min-width:0;flex:1}
-.browse-category-card h2{margin:0;font-size:16px;line-height:1.5;font-weight:650;overflow-wrap:anywhere}
-.browse-category-card p{margin:5px 0 0;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.browse-category-card h2{margin:0;font-size:18px;line-height:1.5;font-weight:650;overflow-wrap:break-word}
+.browse-category-card p{margin:5px 0 0;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
 .browse-category-arrow{margin-left:auto;font-size:20px;color:var(--steel)}
 .browse-repository h2{flex:1;min-width:0;margin:0;font:700 18px/1.5 var(--sans);letter-spacing:0;overflow-wrap:anywhere}
 .browse-github-fallback{font:700 12px/22px var(--sans);text-align:center}
 .browse-text-arrow{display:inline-block;margin-left:6px;font-size:13px;color:var(--steel)}
 .browse-repository .source-card-footer{margin-top:18px;padding-top:13px;border-top:1px solid var(--line)}
+/* Scope static reading rules here; homepage cards keep their own layout. */
+.browse-main .card-description,.browse-main .source-card-description{max-width:68ch;font-size:16px;line-height:1.8;color:var(--body)}
+.browse-main .requirements ul{max-width:68ch;font-size:15px;line-height:1.8;color:var(--body)}
+.browse-main .requirements li+li{margin-top:12px}
+.browse-main .requirements summary{min-height:44px;padding:10px 0;font-size:15px;line-height:1.6;color:var(--link)}
+html[lang="zh-CN"] .browse-main .card-description,html[lang="zh-CN"] .browse-main .source-card-description,html[lang="zh-CN"] .browse-main .requirements ul{max-width:36em;line-height:1.85}
 @media(max-width:1050px){.browse-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.browse-repository h2{flex-basis:100%}}
 @media(max-width:700px){
@@ -53,3 +60,4 @@
 }
 
 .browse-category-nav a{min-height:44px}
+@media(forced-colors:active){.browse-category-nav a[aria-current="page"]{forced-color-adjust:none;background:Highlight;border-color:Highlight;color:HighlightText}.browse-category-nav a[aria-current="page"]:focus-visible{outline-color:CanvasText}}

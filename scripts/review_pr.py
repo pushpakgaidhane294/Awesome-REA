@@ -282,7 +282,7 @@ def review_data(contents, changed):
                     errors.append(f'{SOURCE_SCOPE}: expected valid JSON without duplicate keys.')
                 else:
                     validate_scope(data['resources'], scope, errors)
-                    reviewed.append('Source-scope exclusions checked against repository IDs, README hashes, evidence links, dates, and bilingual reasons.')
+                    reviewed.append('Source-scope exclusions checked against repository IDs, README hashes, evidence links or availability rechecks, dates, and bilingual reasons.')
     return errors, reviewed
 
 
@@ -317,7 +317,7 @@ def main():
     repository = os.environ['GITHUB_REPOSITORY']
     if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository):
         raise ValueError('Invalid repository name')
-    event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+    event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text(encoding='utf-8'))
     number = int(event['pull_request']['number'])
     pull = api(repository, f'pulls/{number}', token)
     sha = pull['head']['sha']

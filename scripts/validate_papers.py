@@ -8,6 +8,8 @@ import re
 import sys
 from urllib.parse import urlsplit
 
+from review_dates import review_date_is_future
+
 
 ROOT = Path(__file__).resolve().parents[1]
 STATUSES = {'conference-paper', 'conference-accepted', 'journal-article', 'preprint'}
@@ -23,6 +25,13 @@ FIELDS = TEXT_FIELDS | {
     'authors', 'year', 'publication_date', 'arxiv_id', 'arxiv_version_reviewed',
     'first_arxiv_date', 'doi', 'code_url', 'project_url', 'targets',
     'evidence_urls', 'runtime_tested',
+}
+# Optional publisher container metadata for published papers; omitted when unverified.
+OPTIONAL_FIELDS = {'citation'}
+CITATION_PATTERNS = {
+    'container_title': None, 'publisher': None, 'series': None,
+    'volume': re.compile(r'[1-9]\d*'), 'issue': re.compile(r'[A-Za-z0-9]+'),
+    'pages': re.compile(r'([1-9]\d*)(?:-([1-9]\d*))?'), 'article_number': re.compile(r'[A-Za-z0-9]+'),
 }
 ARXIV_ID = re.compile(r'\d{4}\.\d{4,5}')
 
@@ -87,20 +96,26 @@ def has_reviewed_publisher_identity(record, evidence):
             and landing in evidence and pdf in evidence)
 
 
-def validate_papers(records, errors, *, url_check):
+def validate_papers(records, errors, *, url_check, now=None):
     """Use the caller's public-HTTPS checker so importing this module cannot cycle."""
     if not isinstance(records, list) or not records:
         errors.append('Paper catalog must be a nonempty array.')
         return
-    today = dt.datetime.now(dt.timezone.utc).date()
+    now = dt.datetime.now(dt.timezone.utc) if now is None else now.astimezone(dt.timezone.utc)
+    today = now.date()
     seen = {field: set() for field in ('id', 'url', 'arxiv_id', 'doi')}
     for index, record in enumerate(records):
         where = f'paper[{index}]'
         if not isinstance(record, dict):
             errors.append(f'{where}: must be an object')
             continue
-        if set(record) != FIELDS:
-            errors.append(f'{where}: missing or unknown paper fields')
+        if isinstance(record.get('id'), str) and record['id'].strip():
+            where = f"paper {record['id']!r}"
+        missing, unknown = FIELDS - record.keys(), record.keys() - FIELDS - OPTIONAL_FIELDS
+        if missing:
+            errors.append(f"{where}: missing fields {', '.join(sorted(missing))}")
+        if unknown:
+            errors.append(f"{where}: unknown fields {', '.join(sorted(unknown))}")
         for field in TEXT_FIELDS:
             value = record.get(field)
             if not isinstance(value, str) or not value.strip():
@@ -163,10 +178,15 @@ def validate_papers(records, errors, *, url_check):
             try:
                 if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
                     raise ValueError
-                if dt.date.fromisoformat(value) > today:
+                reviewed = dt.date.fromisoformat(value)
+                future = (review_date_is_future(reviewed, now) if field == 'verified_at'
+                          else reviewed > today)
+                if future:
                     raise ValueError
             except ValueError:
-                errors.append(f'{where}.{field}: use a non-future ISO calendar date')
+                expectation = ('an ISO calendar date no more than one day ahead of UTC'
+                               if field == 'verified_at' else 'a non-future ISO calendar date')
+                errors.append(f'{where}.{field}: use {expectation}')
 
         arxiv, doi, version = record.get('arxiv_id'), record.get('doi'), record.get('arxiv_version_reviewed')
         for field, value, pattern in (('arxiv_id', arxiv, ARXIV_ID), ('doi', doi, re.compile(r'10\.\d{4,9}/\S+'))):
@@ -211,6 +231,36 @@ def validate_papers(records, errors, *, url_check):
             problem = url_check(url)
             if problem:
                 errors.append(f'{where}.evidence_urls: {problem}')
+        if 'citation' in record:
+            validate_citation(record, evidence, where, errors)
+
+
+def validate_citation(record, evidence, where, errors):
+    """Container fields are verbatim publisher metadata from cited evidence, never inferred."""
+    citation = record['citation']
+    if not isinstance(citation, dict) or not citation:
+        errors.append(f'{where}.citation: use a nonempty object, or omit unverified container metadata')
+        return
+    if record.get('publication_status') not in {'conference-paper', 'journal-article'}:
+        errors.append(f'{where}.citation: container metadata applies only to published papers')
+    if not {'container_title', 'sources'} <= set(citation) or set(citation) - set(CITATION_PATTERNS) - {'sources'}:
+        errors.append(f'{where}.citation: needs container_title and sources, and only supported fields')
+    for field, pattern in CITATION_PATTERNS.items():
+        if field not in citation:
+            continue
+        value = citation[field]
+        if not isinstance(value, str) or not value.strip() or value != value.strip() or (pattern and not pattern.fullmatch(value)):
+            errors.append(f'{where}.citation.{field}: invalid value')
+        elif field == 'pages':
+            first, last = pattern.fullmatch(value).groups()
+            if last is not None and int(last) < int(first):
+                errors.append(f'{where}.citation.pages: last page precedes the first')
+    if 'issue' in citation and 'volume' not in citation:
+        errors.append(f'{where}.citation: an issue requires its volume')
+    sources, reviewed = citation.get('sources'), {*evidence, record.get('url'), record.get('pdf_url')}
+    if (not isinstance(sources, list) or not sources or len(set(map(str, sources))) != len(sources)
+            or any(source not in reviewed for source in sources)):
+        errors.append(f'{where}.citation.sources: cite the reviewed paper, PDF or evidence URLs that state these values')
 
 
 def main():

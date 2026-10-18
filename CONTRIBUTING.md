@@ -1,5 +1,7 @@
 # Contributing to Awesome Reverse Engineering Anything
 
+[简体中文快速入门](CONTRIBUTING.zh-CN.md)
+
 Help keep this collection useful, well organized, and current. Contributions can add a project, tool, case study, integration, related collection, or reference; correct an entry; or improve its category and description.
 
 ## Suggest a resource
@@ -38,19 +40,21 @@ Run every test with one command from the repository root. It needs Node.js for t
 python3 -m unittest discover -s tests -v
 ```
 
-The `validate` check runs exactly these steps: it byte-compiles every script and test, runs the test command, then runs the production build with the asset-URL option used by Cloudflare Pages. That build repeats catalog validation, the JavaScript syntax check, the site build and both site validators without fetching the asset origin.
+The `validate` check runs exactly these steps: it byte-compiles every script and test, runs the test command, then runs the production build with the asset-URL option used by Cloudflare Pages. That build repeats catalog validation, the JavaScript syntax check, the site build and both site validators without fetching the asset origin. Last, the [browser smoke test](docs/website.md#browser-smoke-test) rebuilds the site and loads it in headless Chrome; locally it skips with a message when Chrome or its pinned driver is missing.
 
 ```sh
 python3 -m compileall -q scripts tests
 python3 -m unittest discover -s tests -v
 python3 scripts/build_production.py --fontawesome-assets-url https://awesome-rea.pages.dev
+npm ci --prefix tests/browser --ignore-scripts
+node tests/browser/smoke.cjs
 ```
 
 Use `python3 scripts/check_links.py` for live source checks. Rate limits and temporary network failures are reported separately from confirmed missing links.
 
 ### Choose kind, relationship, category and targets
 
-Choose these fields independently; one does not determine the others:
+Choose these fields independently; apart from the [reconstruction pairing](#reconstruction-cases), one does not determine the others:
 
 - `kind`: what is being shared, such as a tool, integration or case study?
 - `relationship`: what connection to REA, an independent agent workflow, or a foundation tool does the evidence establish?
@@ -78,7 +82,9 @@ Use a verified paper DOI or arXiv identifier whenever available. Never substitut
 
 ## Reconstruction cases
 
-Cases may use REA, other agents, or independent reverse-engineering tools. Use `independent-reconstruction` for a documented reconstruction project with no established REA connection, and `reconstruction-cases` as its category. The `targets` describe the actual Website, Game, App, Binary, Firmware or Protocol domain. Identify author-reported results, incomplete behavior, platform limits and required original assets. Keep a pinned public source where possible; never include proprietary target binaries or private captures.
+Use the [reconstruction-case form](https://github.com/reacher-z/Awesome-REA/issues/new?template=case-study.yml) in English or Simplified Chinese. Separate the original inputs, reconstructed output and evidence; partial or untested cases can be suggested.
+
+Cases may use REA, other agents, or independent reverse-engineering tools. Use `independent-reconstruction` for a documented reconstruction project with no established REA connection, and `reconstruction-cases` as its category; validation rejects either value without the other. The `targets` describe the actual Website, Game, App, Binary, Firmware or Protocol domain. Identify author-reported results, incomplete behavior, platform limits and required original assets. Keep a pinned public source where possible; never include proprietary target binaries or private captures.
 
 ## Review and publication
 

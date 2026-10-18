@@ -4,7 +4,7 @@
 
 **177 个仓库** · 2026-10-16 UTC
 
-这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
+这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
 - [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) — 面向编程智能体的 Chrome DevTools。 **[53,630 星标]**
 - [mitmproxy/mitmproxy](https://github.com/mitmproxy/mitmproxy) — 支持 TLS 的交互式 HTTP 拦截代理，面向渗透测试人员和软件开发者。 **[45,662 星标]**
@@ -41,7 +41,7 @@
 - [airbus-cert/minusone](https://github.com/airbus-cert/minusone) — 基于 tree-sitter 的 PowerShell/JavaScript 去混淆工具 **[103 星标]**
 - [NotDec/NotDec](https://github.com/NotDec/NotDec) — 基于 LLVM IR 的 WebAssembly（Wasm）反编译器与静态分析框架，仍在开发中 **[94 星标]**
 - [proofofbots/web-re-toolkit](https://github.com/proofofbots/web-re-toolkit) — 无需浏览器的无界面 Akamai 和 Kasada 解题工具，以及用于构建它的逆向工程工具包 **[93 星标]**
-- [wxyz-abcd/node-haxball](https://github.com/wxyz-abcd/node-haxball) — 功能最强大且轻量的 API，可在 Node.js 和浏览器环境中开发自己的 Haxball（www.haxball.com）主机、客户端和独立应用，涵盖各种可想象的修改方式与功能。 **[63 星标]**
+- [wxyz-abcd/node-haxball](https://github.com/wxyz-abcd/node-haxball) — 功能最强大且轻量的 API，可在 Node.js 和浏览器环境中开发自己的 Haxball（www<span>.</span>haxball.com）主机、客户端和独立应用，涵盖各种可想象的修改方式与功能。 **[63 星标]**
 - [0x1Avram/js-deobfuscator](https://github.com/0x1Avram/js-deobfuscator) — 针对 obfuscator.io 混淆的 JavaScript 样本的去混淆工具。 **[62 星标]**
 - [evilpenguin/ThatWebInspector](https://github.com/evilpenguin/ThatWebInspector) — 为所有 iOS 应用启用 Web Inspector **[54 星标]**
 - [bates64/mamar](https://github.com/bates64/mamar) — 《纸片马里奥》（Nintendo 64）音乐编辑器。 **[47 星标]**
@@ -49,7 +49,7 @@
 - [0v41n/JSDefender-Deobfuscator](https://github.com/0v41n/JSDefender-Deobfuscator) — 对 JSDefender 保护的 JavaScript 代码去混淆，使其更易于分析 **[43 星标]**
 - [sophoslabs/WebAssembly](https://github.com/sophoslabs/WebAssembly) — WebAssembly 研究。 **[40 星标]**
 - [greekr4/rever-browser](https://github.com/greekr4/rever-browser) — 面向网页逆向工程的 AI 智能体浏览器 **[39 星标]**
-- [iscarelli/niimbot-web-bluetooth](https://github.com/iscarelli/niimbot-web-bluetooth) — 零依赖的 Web Bluetooth 驱动与逆向获得的协议文档，可直接在浏览器中使用 Niimbot 标签打印机，无需应用。已在 B1、B1 Pro、B2 Pro、M2-H、D11_H、D110 和 N1 上验证。 **[34 星标]**
+- [iscarelli/niimbot-web-bluetooth](https://github.com/iscarelli/niimbot-web-bluetooth) — 零依赖的 Web Bluetooth 驱动与逆向获得的协议文档，可直接在浏览器中使用 Niimbot 标签打印机，无需应用。已在 B1、B1 Pro、B2 Pro、M2-H、D11\_H、D110 和 N1 上验证。 **[34 星标]**
 - [ctala/api-reverse-engineer](https://github.com/ctala/api-reverse-engineer) — 用于捕获和逆向分析任意网站 API 调用的 Chrome 扩展：拦截 fetch 与 XHR，按标签页记录并导出 JSON。 **[33 星标]**
 - [txuswashere/pentesting](https://github.com/txuswashere/pentesting) — 网络安全资源：框架与标准、渗透测试审计与黑客技术、紫队、AD、API、Web、云、CTF、OSINT、渗透测试工具、网络安全、权限提升、漏洞利用、逆向分析、安全代码、漏洞赏金等。 **[33 星标]**
 - [KuiChi-x/reverseloom](https://github.com/KuiChi-x/reverseloom) — 面向网页逆向工程的开源 AI 浏览器智能体，利用 CDP、网络跟踪和 JavaScript 分析，将网站转换为可脱离浏览器运行的 API 客户端与爬虫。 **[31 星标]**
@@ -57,12 +57,12 @@
 - [Dvurechensky/Browser.Reverse.Engineering.Toolkit](https://github.com/Dvurechensky/Browser.Reverse.Engineering.Toolkit) — 由三部分组成的工具集，用于浏览器会话捕获、自动抓取和现代 Web 应用的离线重建。 **[30 星标]**
 - [Alirezaaliniya/element-finder](https://github.com/Alirezaaliniya/element-finder) — 以 Chrome 扩展形式提供的专业提取与重建平台：分析任意网页，将结构映射为 Elementor 组件，在可视化构建器中调整结果，并导出可直接用于 Elementor 的 JSON 与完整资源包。 **[28 星标]**
 - [lorenzoferre/deobfuscator](https://github.com/lorenzoferre/deobfuscator) — 自动化 JavaScript 去混淆流程。 **[24 星标]**
-- [pventuzelo/wasm_workshop](https://github.com/pventuzelo/wasm_workshop) — “WebAssembly 模块逆向入门”工作坊（NorthSec 2019、hack.lu 2019）。 **[23 星标]**
+- [pventuzelo/wasm\_workshop](https://github.com/pventuzelo/wasm_workshop) — “WebAssembly 模块逆向入门”工作坊（NorthSec 2019、hack.lu 2019）。 **[23 星标]**
 - [evex-dev/expose-kit](https://github.com/evex-dev/expose-kit) — JavaScript 去混淆通用工具包。 **[22 星标]**
 - [ma-pony/deepspider](https://github.com/ma-pony/deepspider) — AI 原生智能爬虫与 JavaScript 逆向工程平台，基于 DSH、Patchright/CDP 和独立语义运行时，从浏览器证据恢复参数生成逻辑，交付可验证的求解器。 **[21 星标]**
 - [Amal-David/meshy2glb](https://github.com/Amal-David/meshy2glb) — 用于在本地浏览器中查看 .meshy 文件的工具。 **[20 星标]**
 - [Hordekiller/ElementCopy](https://github.com/Hordekiller/ElementCopy) — Chrome 扩展（MV3），扫描正在运行的 Elementor 页面，将完整区块和小组件结构重建为可直接导入的 JSON 模板，无需访问数据库。 **[18 星标]**
-- [pventuzelo/reversing_ewasm_contract_101](https://github.com/pventuzelo/reversing_ewasm_contract_101) — Ewasm（Ethereum WebAssembly）合约逆向入门工作坊。 **[18 星标]**
+- [pventuzelo/reversing\_ewasm\_contract\_101](https://github.com/pventuzelo/reversing_ewasm_contract_101) — Ewasm（Ethereum WebAssembly）合约逆向入门工作坊。 **[18 星标]**
 - [rodyherrera/Lovelace](https://github.com/rodyherrera/Lovelace) — 自托管 API，免费使用 ChatGPT。Lovelace 还提供直观的多语言 Web 应用及详尽的软件使用文档。与 Ada 交互，并将其集成到你的应用中！ **[17 星标]**
 - [joakimeriksson/fm1-emu](https://github.com/joakimeriksson/fm1-emu) — M-VAVE FM-1 口袋合成器模拟器，可在浏览器和原生环境中运行未经修改的固件。 **[16 星标]**
 - [Edioff/akamai-analysis](https://github.com/Edioff/akamai-analysis) — 企业级反机器人分析：深入技术分析 Akamai Bot Manager v2 的检测机制。 **[15 星标]**
@@ -78,16 +78,16 @@
 - [CircuitSavage/hcaptcha-hsj-hsw-reversed](https://github.com/CircuitSavage/hcaptcha-hsj-hsw-reversed) — 提取 hCaptcha hsj/hsw 主密钥，对每个构建版本实现字节级精确匹配 **[10 星标]**
 - [ezpzfile/ezpzfile-xdw](https://github.com/ezpzfile/ezpzfile-xdw) — 可随处打开 DocuWorks（.xdw / .xbd）文件、添加批注并保存的开源项目，包含 Rust 引擎、单文件浏览器编辑器与格式规范，与富士胶片无关。 **[10 星标]**
 - [sun090909090/web-motion-video-analyzer-skill-v5](https://github.com/sun090909090/web-motion-video-analyzer-skill-v5) — Web Motion Video Analyzer Skill V5：网页动效视频分析技能，通过 Motion Reconstruction Spec 约束代码 AI，实现高保真复刻。 **[10 星标]**
-- [warterbili/PerimeterX_RE](https://github.com/warterbili/PerimeterX_RE) — 完整逆向分析 PerimeterX（HUMAN Security）反机器人 SDK；纯算法生成 _px3/_px2，无需浏览器或 Selenium；iFood、Grubhub 与 Bundle 均通过 10/10 验证；已解决 Wasm 工作量证明；记录 68 个生产环境问题，并附 AI 技能。 **[10 星标]**
+- [warterbili/PerimeterX\_RE](https://github.com/warterbili/PerimeterX_RE) — 完整逆向分析 PerimeterX（HUMAN Security）反机器人 SDK；纯算法生成 \_px3/\_px2，无需浏览器或 Selenium；iFood、Grubhub 与 Bundle 均通过 10/10 验证；已解决 Wasm 工作量证明；记录 68 个生产环境问题，并附 AI 技能。 **[10 星标]**
 - [cesaryuan/frida-node-api-tools](https://github.com/cesaryuan/frida-node-api-tools) — 用于拦截 Node.js API 与 Electron 应用的 Frida 脚本 **[9 星标]**
 - [yunusgungor/electron-reverse-engineering-skill](https://github.com/yunusgungor/electron-reverse-engineering-skill) — Electron 逆向工程技能，涵盖 ASAR 操作、源码去混淆、运行时注入、完整性检查绕过及实用定制 **[8 星标]**
 - [HaukeBartsch/mpr-4-html5](https://github.com/HaukeBartsch/mpr-4-html5) — 用于 Web 的多平面重建。 **[7 星标]**
 - [lolcaken/javascript-deobfuscator](https://github.com/lolcaken/javascript-deobfuscator) — 针对 javascript-obfuscator 5.x 输出的去混淆工具，支持字符串数组、控制流平坦化、自防护以及 RC4/base64 **[7 星标]**
-- [pventuzelo/google_keep_wasm](https://github.com/pventuzelo/google_keep_wasm) — Google Keep WebAssembly 模块分析 **[7 星标]**
+- [pventuzelo/google\_keep\_wasm](https://github.com/pventuzelo/google_keep_wasm) — Google Keep WebAssembly 模块分析 **[7 星标]**
 - [foderking/Deminify.js](https://github.com/foderking/Deminify.js) — 用于对 JavaScript 源文件进行去混淆和反压缩的 Web 应用。 **[5 星标]**
 - [pagpeter/GPJSD](https://github.com/pagpeter/GPJSD) — 基于 deob-transformations 的通用 JavaScript 去混淆工具 **[5 星标]**
 - [deojs/deojs](https://github.com/deojs/deojs) — 基于 Web 的去混淆工具 **[4 星标]**
-- [FengDushuo/Boa_Vue_Router](https://github.com/FengDushuo/Boa_Vue_Router) — 面向路由器网页的重建方案。 **[4 星标]**
+- [FengDushuo/Boa\_Vue\_Router](https://github.com/FengDushuo/Boa_Vue_Router) — 面向路由器网页的重建方案。 **[4 星标]**
 - [MrSchrodingers/fizz-rgb](https://github.com/MrSchrodingers/fizz-rgb) — 面向 Redragon Fizz K617 的 Linux RGB 控制器，包含守护进程、CLI 和 Electron GUI，提供 3D 键盘、60 多种预设（含 Minecraft 昼夜变化）、通过实体键盘游玩的交互式 Pong、动态缩略图及全局色调控制。 **[4 星标]**
 - [RAZKOM/JSDecloak](https://github.com/RAZKOM/JSDecloak) — 浏览器内 JavaScript 去混淆工作台，支持格式化、使用 Webcrack/Synchrony/Wakaru 去混淆，以及感知变量绑定的重命名。 **[4 星标]**
 - [VenMail/pdf2html-client](https://github.com/VenMail/pdf2html-client) — 高级客户端 PDF 转 HTML 工具，支持 WASM 解析、OCR 和智能文本布局重建，适用于文档管理系统和 Web 应用。 **[4 星标]**
@@ -105,7 +105,7 @@
 - [jackspirou/libstealthtech](https://github.com/jackspirou/libstealthtech) — 通过蓝牙低功耗控制 Lovesac StealthTech Sound + Charge 系统的开源库与工具 **[2 星标]**
 - [jlucaso1/ghidrs](https://github.com/jlucaso1/ghidrs) — WebAssembly 逆向工程工具包，包含解析器、中间表示、伪 C 反编译器、调用图、结构体恢复及前向/后向污点分析。 **[2 星标]**
 - [kevinmuoz/yara-x-playground](https://github.com/kevinmuoz/yara-x-playground) — 通过 WebAssembly 在浏览器中编写和运行规则的 YARA 试验场 **[2 星标]**
-- [ktn1703/Obscura-Deobfuscator](https://github.com/ktn1703/Obscura-Deobfuscator) — 面向 https://github.com/vientorepublic/obscura-js 的高级 TypeScript 去混淆命令行工具。 **[2 星标]**
+- [ktn1703/Obscura-Deobfuscator](https://github.com/ktn1703/Obscura-Deobfuscator) — 面向 https<span>:</span>//github.com/vientorepublic/obscura-js 的高级 TypeScript 去混淆命令行工具。 **[2 星标]**
 - [mvondracek/JsArrayRefDeobfuscator](https://github.com/mvondracek/JsArrayRefDeobfuscator) — 可还原 Array Ref 混淆格式的 JavaScript 去混淆工具。 **[2 星标]**
 - [ramanurag29/Earth-Lens](https://github.com/ramanurag29/Earth-Lens) — 一个卫星信号处理与图像重建协作项目，将 MATLAB 算法与网页可视化结合，以增强数据分析。 **[2 星标]**
 - [Rotzke/metrojobb](https://github.com/Rotzke/metrojobb) — 将 Metrojobb 网站邮箱保护函数的逆向实现转换为 Python。 **[2 星标]**
@@ -153,7 +153,7 @@
 - [divyansh9704/ine-product-price-tracker](https://github.com/divyansh9704/ine-product-price-tracker) — ⚡ 具备韧性的全栈电商价格监控引擎与分析仪表盘，采用 Node.js、WASM JIT、SHA-256 工作量证明求解器、Supabase Postgres RPC、React 18 和 Recharts，为 INE 作业构建。 **[0 星标]**
 - [Eabusham2/Minecraft-mod-malware-checker](https://github.com/Eabusham2/Minecraft-mod-malware-checker) — 离线浏览器扫描器，检查 Minecraft 模组中窃取令牌的恶意软件；读取代码而不运行，并说明代码的行为。 **[0 星标]**
 - [ferrolho/thermal-master-viewer](https://github.com/ferrolho/thermal-master-viewer) — 基于浏览器的 Thermal Master P3/P1 USB 热成像相机查看器。插入设备、打开页面即可，无需安装，直接通过 WebUSB 驱动。 **[0 星标]**
-- [hmallen99/VisualReconstructionWebApp](https://github.com/hmallen99/VisualReconstructionWebApp) — NeuroTech@Berkeley 视觉重建软件项目的网页基础设施。 **[0 星标]**
+- [hmallen99/VisualReconstructionWebApp](https://github.com/hmallen99/VisualReconstructionWebApp) — NeuroTech<span>@</span>Berkeley 视觉重建软件项目的网页基础设施。 **[0 星标]**
 - [IntrovertedTao/spa-bundle-recon](https://github.com/IntrovertedTao/spa-bundle-recon) — 对重度依赖 JavaScript 或受地域限制的单页应用进行静态分析：从公开 JS 打包文件中提取价格、套餐、API 端点和模型。仅使用标准库，无需浏览器。 **[0 星标]**
 - [ItsMika987/Uma-Web](https://github.com/ItsMika987/Uma-Web) — “Uma-Web”是在网页上重建“Umamusume: Pretty Derby”的项目。 **[0 星标]**
 - [jakub-studio/gearbox](https://github.com/jakub-studio/gearbox) — 网页逆向工程工具。 **[0 星标]**
@@ -165,8 +165,8 @@
 - [monstercameron/recompiled](https://github.com/monstercameron/recompiled) — 附来源链接的目录，收录反编译、重编译、API 转换、重新实现、模拟器和社区软件移植项目。 **[0 星标]**
 - [MrSpectra/lumen](https://github.com/MrSpectra/lumen) — Lumen：氛围 LED 灯光控制器。通过逆向分析闭源 USB 设备协议，自行构建应用，包含 Rust 守护进程、Electron 界面、DXGI 屏幕捕获、WASAPI 音频 FFT 和 HID。 **[0 星标]**
 - [nikolasovilj/ads2hist](https://github.com/nikolasovilj/ads2hist) — 对网页浏览历史进行部分重建。 **[0 星标]**
-- [Oneanalysis/Website_001](https://github.com/Oneanalysis/Website_001) — 从头重建 Web 的项目。 **[0 星标]**
-- [peitaosu/Cardiff_Web](https://github.com/peitaosu/Cardiff_Web) — Cardiff 的 Web 用户界面。 **[0 星标]**
+- [Oneanalysis/Website\_001](https://github.com/Oneanalysis/Website_001) — 从头重建 Web 的项目。 **[0 星标]**
+- [peitaosu/Cardiff\_Web](https://github.com/peitaosu/Cardiff_Web) — Cardiff 的 Web 用户界面。 **[0 星标]**
 - [prosoftdev999/scroll-anchor-replay](https://github.com/prosoftdev999/scroll-anchor-replay) — 浏览器状态重建基准，用于重放滚动锚点、DOM/布局变更、视口历史和异步前端更新。 **[0 星标]**
 - [prosoftdev999/sourcemap-revision-replay](https://github.com/prosoftdev999/sourcemap-revision-replay) — 前端源码映射取证基准，用于重建历史打包文件版本，并将运行时 JavaScript 位置映射回原始源码。 **[0 星标]**
 - [Raunaksplanet/Learn-Thick-client-bug-bounty](https://github.com/Raunaksplanet/Learn-Thick-client-bug-bounty) — 厚客户端漏洞赏金学习资源，目前在 GitBook 维护，提供 Windows、Electron 和 API 厚客户端渗透测试指南。 **[0 星标]**
@@ -176,7 +176,7 @@
 - [sharoon7171/mixdrop-direct-resolver](https://github.com/sharoon7171/mixdrop-direct-resolver) — 将 MixDrop 文件 ID 解析为直接的 mxcontent.net MP4 URL。Node.js 服务端获取嵌入页面，从播放器脚本中提取带签名的 CDN 链接，验证视频流，并提供处理 Referer 的代理以供浏览器播放。 **[0 星标]**
 - [ShuhangGe/grokbot-queue](https://github.com/ShuhangGe/grokbot-queue) — 并行运行多个 Cursor Grok Bot 的任务；工作在云端执行，笔记本内存占用保持稳定。无官方 API，采用三级回退机制驱动 Electron 界面。 **[0 星标]**
 - [stackadnan/js-forensics](https://github.com/stackadnan/js-forensics) — 开源 JavaScript 逆向工程工具包，支持去混淆、AST 分析、字符串提取和 Web 行为发现。 **[0 星标]**
-- [sum-catnip/foundry-deobfuscator](https://github.com/sum-catnip/foundry-deobfuscator) — 适用于 foundryvtt（https://foundryvtt）0.8.0 之前版本的去混淆器，也可能适用于其他使用 javascript-obfuscator（https://www.npmjs.com/package/javascript-obfuscator）的项目。 **[0 星标]**
+- [sum-catnip/foundry-deobfuscator](https://github.com/sum-catnip/foundry-deobfuscator) — 适用于 foundryvtt（https<span>:</span>//foundryvtt）0.8.0 之前版本的去混淆器，也可能适用于其他使用 javascript-obfuscator（https<span>:</span>//www<span>.</span>npmjs.com/package/javascript-obfuscator）的项目。 **[0 星标]**
 - [trenbonole/sbpf-inspect](https://github.com/trenbonole/sbpf-inspect) — Solana sBPF 程序的离线接口恢复工具，恢复 Anchor 指令、账户和事件，每项均附字节偏移证据。采用 Rust，提供命令行和 WebAssembly。 **[0 星标]**
 - [twentyseventhllc-lgtm/google-earth-flight-tracker](https://github.com/twentyseventhllc-lgtm/google-earth-flight-tracker) — 为 Google Earth 提供真实飞行模型，通过向其 WebAssembly 堆写入相机数据替换原有简化物理系统。包含空气动力学、失速、5 种飞机、玻璃座舱、自动驾驶和 KML 航线记录。 **[0 星标]**
 - [williamfzc/cdp2cli](https://github.com/williamfzc/cdp2cli) — 通过 Chrome DevTools Protocol（CDP）附加，将 Electron/CEF/WebView2 桌面应用转换为命令行工具，提供操作指南、逐应用验证的接口约定和取证工具。 **[0 星标]**

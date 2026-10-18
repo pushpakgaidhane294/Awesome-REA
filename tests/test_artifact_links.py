@@ -54,7 +54,7 @@ class ArtifactLinkTests(unittest.TestCase):
         self.assertEqual({k: v for k, v in result[0].items() if k != 'related_entries'}, records[0])
         self.assertEqual(result[0]['description_en'], '')
         self.assertEqual(result[0]['verification'], 'automated-readme-scan')
-        self.assertEqual(result[0]['related_entries'][0]['href_zh'], '/zh/papers/#paper-example')
+        self.assertEqual(result[0]['related_entries'][0]['href_zh'], '/zh/papers/paper-example/')
 
     def test_duplicate_fields_deduplicate_and_input_order_does_not_change_links(self):
         papers = [paper(project_url='https://github.com/owner/project/tree/main'),
@@ -89,8 +89,8 @@ class ArtifactLinkTests(unittest.TestCase):
         row = with_artifact_links([source()], [paper(title='<script>research</script>')], [resource()])[0]
         for language, prefix, label in (('en', '', 'Related research'), ('zh', '/zh', '相关研究')):
             rendered = repository_card(row, language, False)
-            self.assertIn(f'href="{prefix}/papers/#paper-example"', rendered)
-            self.assertIn(f'href="{prefix}/resources/#example-tool"', rendered)
+            self.assertIn(f'href="{prefix}/papers/paper-example/"', rendered)
+            self.assertIn(f'href="{prefix}/resources/example-tool/"', rendered)
             self.assertIn(label, rendered)
             self.assertIn('No description supplied' if language == 'en' else '上游仓库未提供项目简介', rendered)
             self.assertNotIn('<script>research</script>', rendered)

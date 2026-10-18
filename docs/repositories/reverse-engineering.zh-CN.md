@@ -2,16 +2,16 @@
 
 [全部分类](README.zh-CN.md) · [English](reverse-engineering.md)
 
-**623 个仓库** · 2026-10-16 UTC
+**622 个仓库** · 2026-10-16 UTC
 
-这些是自动发现的项目，不是逐项精选或运行测试后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
+这些是自动发现的项目，不是逐项精选或运行验证后的推荐。分类来自元数据；简介由上游描述翻译而来。星标为采集时快照，不是实时排名。
 
 - [morluto/rea](https://github.com/morluto/rea) — 借助智能体逆向工程任何对象，涵盖从应用行为到原生二进制文件的各个层面。 **[271,152 星标]**
 - [Hack-with-Github/Awesome-Hacking](https://github.com/Hack-with-Github/Awesome-Hacking) — 面向黑客、渗透测试人员和安全研究人员的各类精选资源列表合集。 **[122,703 星标]**
 - [xtekky/gpt4free](https://github.com/xtekky/gpt4free) — gpt4free 官方仓库 | 汇集多种强大的语言模型 | opus 4.6、gpt 5.3、kimi 2.5、deepseek v3.2、gemini 3 **[66,872 星标]**
 - [zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill) — 逆向工程、授权渗透测试与安全研究技能路由包：AI 自动路由、按需自举工具链、自进化知识库，支持 Claude Code、Kiro、Cursor、Cline 等 AI 编程客户端。 **[42,160 星标]**
 - [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) — Playwright MCP 服务器。 **[38,219 星标]**
-- [The-Art-of-Hacking/h4cker](https://github.com/The-Art-of-Hacking/h4cker) — 本仓库由 Omar Santos（@santosomar）维护，收录数千项有关道德黑客、漏洞赏金、数字取证与事件响应（DFIR）、AI 安全、漏洞研究、漏洞利用开发、逆向工程等方面的资源。🔥 另见：https://hackertraining.org **[29,768 星标]**
+- [The-Art-of-Hacking/h4cker](https://github.com/The-Art-of-Hacking/h4cker) — 本仓库由 Omar Santos（<span>@</span>santosomar）维护，收录数千项有关道德黑客、漏洞赏金、数字取证与事件响应（DFIR）、AI 安全、漏洞研究、漏洞利用开发、逆向工程等方面的资源。🔥 另见：https<span>:</span>//hackertraining.org **[29,768 星标]**
 - [vitalysim/Awesome-Hacking-Resources](https://github.com/vitalysim/Awesome-Hacking-Resources) — 帮助你提升能力的黑客技术与渗透测试资源合集！ **[17,522 星标]**
 - [Tyrrrz/YoutubeDownloader](https://github.com/Tyrrrz/YoutubeDownloader) — 从 YouTube 下载视频和播放列表。 **[16,441 星标]**
 - [seemoo-lab/openhaystack](https://github.com/seemoo-lab/openhaystack) — 今天就打造你自己的“AirTags”🏷！借助 Apple 庞大的“查找”网络追踪个人蓝牙设备的框架。 **[13,844 星标]**
@@ -20,7 +20,7 @@
 - [mandiant/flare-vm](https://github.com/mandiant/flare-vm) — 面向 Windows 系统的软件安装脚本合集，便于在虚拟机上搭建和维护逆向工程环境。 **[9,147 星标]**
 - [Col-E/Recaf](https://github.com/Col-E/Recaf) — 现代化 Java 字节码编辑器。 **[7,437 星标]**
 - [AloneMonkey/MonkeyDev](https://github.com/AloneMonkey/MonkeyDev) — 无需越狱，利用 CaptainHook Tweak、Logos Tweak 和命令行工具为 iOS 应用打补丁。 **[6,800 星标]**
-- [rmusser01/Infosec_Reference](https://github.com/rmusser01/Infosec_Reference) — 一份靠谱的信息安全参考资料；非微软 Git 托管版本见 https://rmusser.net/git/admin-2/Infosec_Reference。 **[6,007 星标]**
+- [rmusser01/Infosec\_Reference](https://github.com/rmusser01/Infosec_Reference) — 一份靠谱的信息安全参考资料；非微软 Git 托管版本见 https<span>:</span>//rmusser.net/git/admin-2/Infosec\_Reference。 **[6,007 星标]**
 - [jindrapetrik/jpexs-decompiler](https://github.com/jindrapetrik/jpexs-decompiler) — JPEXS Free Flash Decompiler（FFDec）是开源 Flash SWF 反编译器与编辑器，可提取和编辑 ActionScript、图像、声音、形状、字体及其他 SWF 资源。 **[5,941 星标]**
 - [ReagentX/imessage-exporter](https://github.com/ReagentX/imessage-exporter) — 导出 iMessage 数据并运行 iMessage 诊断。 **[5,675 星标]**
 - [mentebinaria/retoolkit](https://github.com/mentebinaria/retoolkit) — 逆向工程师工具包。 **[5,315 星标]**
@@ -38,7 +38,7 @@
 - [mandiant/flare-floss](https://github.com/mandiant/flare-floss) — FLARE 混淆字符串求解器：自动提取恶意软件中的混淆字符串。 **[4,189 星标]**
 - [ericc-ch/copilot-api](https://github.com/ericc-ch/copilot-api) — 将 GitHub Copilot 转换为兼容 OpenAI/Anthropic API 的服务器，可用于 Claude Code！ **[4,147 星标]**
 - [AloneMonkey/frida-ios-dump](https://github.com/AloneMonkey/frida-ios-dump) — 从越狱设备提取已解密的 IPA。 **[3,957 星标]**
-- [dekuNukem/Nintendo_Switch_Reverse_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering) — 探索 Joy-Con 与 Nintendo Switch 的内部工作原理。 **[3,792 星标]**
+- [dekuNukem/Nintendo\_Switch\_Reverse\_Engineering](https://github.com/dekuNukem/Nintendo_Switch_Reverse_Engineering) — 探索 Joy-Con 与 Nintendo Switch 的内部工作原理。 **[3,792 星标]**
 - [JJTech0130/pypush](https://github.com/JJTech0130/pypush) — Python APNs 与 iMessage 客户端。 **[3,785 星标]**
 - [schemaspy/schemaspy](https://github.com/schemaspy/schemaspy) — 轻松构建数据库文档。 **[3,732 星标]**
 - [momo5502/sogen](https://github.com/momo5502/sogen) — 🪅 Windows 与 Linux 用户态模拟器。 **[3,730 星标]**
@@ -47,10 +47,10 @@
 - [kevoreilly/CAPEv2](https://github.com/kevoreilly/CAPEv2) — 恶意软件配置与载荷提取。 **[3,570 星标]**
 - [vaib25vicky/awesome-mobile-security](https://github.com/vaib25vicky/awesome-mobile-security) — 致力于集中收集所有实用的 Android 与 iOS 安全相关资源。所有引用和工具均归各自所有者所有，我仅负责维护。 **[3,561 星标]**
 - [V33RU/awesome-connected-things-sec](https://github.com/V33RU/awesome-connected-things-sec) — 面向各种联网设备的精选安全资源列表。 **[3,559 星标]**
-- [dweinstein/awesome-frida](https://github.com/dweinstein/awesome-frida) — Awesome Frida：Frida 精选资源列表，http://www.frida.re/（https://github.com/frida/frida）。 **[3,548 星标]**
+- [dweinstein/awesome-frida](https://github.com/dweinstein/awesome-frida) — Awesome Frida：Frida 精选资源列表，http<span>:</span>//www<span>.</span>frida.re/（https<span>:</span>//github.com/frida/frida）。 **[3,548 星标]**
 - [commaai/opendbc](https://github.com/commaai/opendbc) — 适用于你汽车的 Python API。 **[3,493 星标]**
 - [nabla-c0d3/ssl-kill-switch2](https://github.com/nabla-c0d3/ssl-kill-switch2) — 用于在 iOS 和 macOS 应用中禁用 SSL 证书校验（包括证书锁定）的黑盒工具。 **[3,322 星标]**
-- [hookmaster/frida-all-in-one](https://github.com/hookmaster/frida-all-in-one) — 《FRIDA 操作手册》，作者：@hluwa、@r0ysue。 **[3,153 星标]**
+- [hookmaster/frida-all-in-one](https://github.com/hookmaster/frida-all-in-one) — 《FRIDA 操作手册》，作者：<span>@</span>hluwa、<span>@</span>r0ysue。 **[3,153 星标]**
 - [zhizhuodemao/js-reverse-mcp](https://github.com/zhizhuodemao/js-reverse-mcp) — 面向 AI 智能体设计的 JavaScript 逆向 MCP 服务器：支持有界面的 Chrome 调试、断点、网络与 WebSocket 分析、Patchright 反检测，并可选用 CloakBrowser。 **[2,961 星标]**
 - [ivRodriguezCA/RE-iOS-Apps](https://github.com/ivRodriguezCA/RE-iOS-Apps) — 完全免费、开源的 iOS 应用逆向工程在线课程。 **[2,917 星标]**
 - [ma1co/Sony-PMCA-RE](https://github.com/ma1co/Sony-PMCA-RE) — Sony 数码相机逆向工程。 **[2,916 星标]**
@@ -87,13 +87,13 @@
 - [Cur10s1tyByt3/GenP](https://github.com/Cur10s1tyByt3/GenP) — 本仓库保存 GenP 的源材料与相关文档，仅供归档和研究使用。 **[1,340 星标]**
 - [tobefuturer/restore-symbol](https://github.com/tobefuturer/restore-symbol) — 用于恢复 iOS 应用中已剥离符号表的逆向工程工具。 **[1,338 星标]**
 - [viruscamp/luadec](https://github.com/viruscamp/luadec) — 支持 Lua 5.1、5.2 和 5.3 的 Lua 反编译器。 **[1,334 星标]**
-- [Bixilon/Minosoft](https://github.com/Bixilon/Minosoft) — 从零编写的 Minecraft 开源重新实现。https://gitlab.bixilon.de/bixilon/minosoft 的镜像。 **[1,309 星标]**
+- [Bixilon/Minosoft](https://github.com/Bixilon/Minosoft) — 从零编写的 Minecraft 开源重新实现。https<span>:</span>//gitlab.bixilon.de/bixilon/minosoft 的镜像。 **[1,309 星标]**
 - [rocky/python-decompile3](https://github.com/rocky/python-decompile3) — 适用于 Python 3.7–3.8 的反编译器，从 uncompyle6 精简而来，以便重构并着手修复一些长期存在的问题。 **[1,275 星标]**
 - [paazmaya/shuji](https://github.com/paazmaya/shuji) — 从 sourcemap 逆向还原 JavaScript 和 CSS 源代码。 **[1,246 星标]**
 - [OpenStick/OpenStick](https://github.com/OpenStick/OpenStick) — 对基于 msm8916 的 4G 调制解调器进行逆向工程。 **[1,192 星标]**
 - [kpwn/iOSRE](https://github.com/kpwn/iOSRE) — iOS 逆向工程。 **[1,183 星标]**
-- [mrphrazer/reverser_ai](https://github.com/mrphrazer/reverser_ai) — 在消费级硬件上使用本地大语言模型（LLM），提供自动化逆向工程辅助。 **[1,158 星标]**
-- [MatthewKuKanich/CAN_Commander](https://github.com/MatthewKuKanich/CAN_Commander) — CAN Commander 是用于 CAN（控制器局域网）总线系统逆向工程的综合工具，旨在为汽车爱好者、工程师与安全研究人员提供可靠平台，与 CAN 网络交互并进行分析，从而深入理解和操控通信。 **[1,078 星标]**
+- [mrphrazer/reverser\_ai](https://github.com/mrphrazer/reverser_ai) — 在消费级硬件上使用本地大语言模型（LLM），提供自动化逆向工程辅助。 **[1,158 星标]**
+- [MatthewKuKanich/CAN\_Commander](https://github.com/MatthewKuKanich/CAN_Commander) — CAN Commander 是用于 CAN（控制器局域网）总线系统逆向工程的综合工具，旨在为汽车爱好者、工程师与安全研究人员提供可靠平台，与 CAN 网络交互并进行分析，从而深入理解和操控通信。 **[1,078 星标]**
 - [toniebox-reverse-engineering/teddycloud](https://github.com/toniebox-reverse-engineering/teddycloud) — teddyCloud 是 Boxine Cloud 的开源服务器替代实现。 **[1,072 星标]**
 - [neuroradiology/InsideReCaptcha](https://github.com/neuroradiology/InsideReCaptcha) — 逆向分析新的“无验证码”ReCaptcha 系统…… **[1,051 星标]**
 - [danielweidman/pixmob-ir-reverse-engineering](https://github.com/danielweidman/pixmob-ir-reverse-engineering) — 研究 PixMob 红外协议（现也支持射频！），让你能在家中控制 PixMob 手环。 **[1,040 星标]**
@@ -105,7 +105,7 @@
 - [LING71671/Open-ClaudeCode](https://github.com/LING71671/Open-ClaudeCode) — Claude Code 源码与运行时产物的研究档案，由公开 npm 源码映射重建而来。 **[968 星标]**
 - [Dump-GUY/Malware-analysis-and-Reverse-engineering](https://github.com/Dump-GUY/Malware-analysis-and-Reverse-engineering) — 我公开发布的部分恶意软件分析与逆向工程成果。 **[966 星标]**
 - [ludwig-v/wireless-carplay-dongle-reverse-engineering](https://github.com/ludwig-v/wireless-carplay-dongle-reverse-engineering) — CPlay2Air / Carlinkit 无线 Apple CarPlay 适配器逆向工程。 **[938 星标]**
-- [JonathanSalwan/Tigress_protection](https://github.com/JonathanSalwan/Tigress_protection) — 探索 Tigress 软件保护，破解部分保护机制并解决其逆向工程挑战。利用符号执行、污点分析和 LLVM 自动去混淆。 **[928 星标]**
+- [JonathanSalwan/Tigress\_protection](https://github.com/JonathanSalwan/Tigress_protection) — 探索 Tigress 软件保护，破解部分保护机制并解决其逆向工程挑战。利用符号执行、污点分析和 LLVM 自动去混淆。 **[928 星标]**
 - [Sebastrion/awesome-unofficial-pc-ports](https://github.com/Sebastrion/awesome-unofficial-pc-ports) — 精选优质非官方 PC 移植版列表。 **[902 星标]**
 - [SubmitGame/awesome-decomp-games](https://github.com/SubmitGame/awesome-decomp-games) — 带评分并自动刷新的反编译、重编译和逆向工程游戏列表，涵盖反编译项目、静态重编译项目、源码移植、引擎重制和浏览器移植版。 **[863 星标]**
 - [chenxiancai/STCObfuscator](https://github.com/chenxiancai/STCObfuscator) — iOS 全局自动化代码混淆工具！支持对 CocoaPods 组件代码一并混淆，完美避开硬编码方法、静态库方法和系统库方法！ **[822 星标]**
@@ -120,7 +120,7 @@
 - [bahattinkoc/ipaverse](https://github.com/bahattinkoc/ipaverse) — 无需 Xcode 或终端即可下载、重新签名并侧载 iOS、iPadOS、macOS、tvOS 和 visionOS 应用，并提供用于授权安全测试的工具集，包括 ATS 绕过、Frida 注入、静态扫描和 FairPlay 转储。 **[679 星标]**
 - [google/jsir](https://github.com/google/jsir) — 新一代 JavaScript 分析工具。 **[672 星标]**
 - [arcanite24/pinyon-shift](https://github.com/arcanite24/pinyon-shift) — Forza Horizon 静态重编译项目的可玩预览版。 **[671 星标]**
-- [yincongcyincong/wechat_chatter](https://github.com/yincongcyincong/wechat_chatter) — 微信 macOS 版消息收发逆向与 hook。 **[655 星标]**
+- [yincongcyincong/wechat\_chatter](https://github.com/yincongcyincong/wechat_chatter) — 微信 macOS 版消息收发逆向与 hook。 **[655 星标]**
 - [pret/pokeheartgold](https://github.com/pret/pokeheartgold) — 《宝可梦 心金/魂银》的反编译代码。 **[649 星标]**
 - [ThomasThelen/Anti-Debugging](https://github.com/ThomasThelen/Anti-Debugging) — 一组 C++ 程序，演示检测调试器附加状态的常用方法。 **[630 星标]**
 - [lifting-bits/rellic](https://github.com/lifting-bits/rellic) — Rellic 可从 LLVM bitcode 生成不含 goto 的 C 代码。 **[621 星标]**
@@ -138,21 +138,21 @@
 - [jac3km4/redscript](https://github.com/jac3km4/redscript) — redscript 编译器与反编译器工具包。 **[520 星标]**
 - [MaxPixelStudios/MinecraftDecompiler](https://github.com/MaxPixelStudios/MinecraftDecompiler) — Minecraft 反编译器。实用的工具和库，可通过常用映射与多种反编译器，对 Minecraft（或任意 JAR 文件）去混淆和反编译。也可作为库处理混淆映射，例如将映射转换为另一种格式。 **[493 星标]**
 - [marsinator358/luajit-decompiler-v2](https://github.com/marsinator358/luajit-decompiler-v2) — LuaJIT 字节码反编译器。 **[487 星标]**
-- [aozhimin/iOS-APM-Secrets](https://github.com/aozhimin/iOS-APM-Secrets) — :secret: 开发中：深度揭秘各大 APM 厂商 iOS SDK 背后的核心技术和实现细节，持续更新中…… **[474 星标]**
+- [aozhimin/iOS-APM-Secrets](https://github.com/aozhimin/iOS-APM-Secrets) — <span>:</span>secret: 开发中：深度揭秘各大 APM 厂商 iOS SDK 背后的核心技术和实现细节，持续更新中…… **[474 星标]**
 - [holly-hacker/EazFixer](https://github.com/holly-hacker/EazFixer) — 用于 Eazfuscator 的去混淆工具。 **[456 星标]**
 - [CTR-tools/CTR-ModSDK](https://github.com/CTR-tools/CTR-ModSDK) — ModSDK：使用 C 为《古惑狼赛车》制作模组的工具包。本仓库也包含使用 C 对 CTR 进行完整反编译与逆向工程的项目。 **[453 星标]**
 - [halo-re/halo](https://github.com/halo-re/halo) — 《光环：战斗进化》（初代 Xbox 版）反编译研究项目。 **[451 星标]**
 - [kabiroberai/theos-jailed](https://github.com/kabiroberai/theos-jailed) — 用于开发 iOS 8 及以上版本免越狱插件的 Theos 模块 **[409 星标]**
 - [ergrelet/themida-unmutate](https://github.com/ergrelet/themida-unmutate) — 针对 Themida、WinLicense 和 Code Virtualizer 3.x 基于变异的混淆机制的静态去混淆工具。 **[403 星标]**
-- [Arenukvern/mcp_flutter](https://github.com/Arenukvern/mcp_flutter) — 面向 Flutter AI 智能体驱动开发的 MCP 工具集（MCP／CLI 加自定义客户端工具），通过闭环反馈（视觉与语义快照）和高度可定制的客户端能力适配任意 Flutter 应用。如今这类系统常被称为智能体执行框架。 **[389 星标]**
+- [Arenukvern/mcp\_flutter](https://github.com/Arenukvern/mcp_flutter) — 面向 Flutter AI 智能体驱动开发的 MCP 工具集（MCP／CLI 加自定义客户端工具），通过闭环反馈（视觉与语义快照）和高度可定制的客户端能力适配任意 Flutter 应用。如今这类系统常被称为智能体执行框架。 **[389 星标]**
 - [ResistanceTo/MiniWatts](https://github.com/ResistanceTo/MiniWatts) — 基于 iOS 私有 API 构建的 iPhone 电池、充电与温度检测工具，可展示充电器实际功率、真正到达电芯的功率、全部 30 个温度传感器读数，以及 USB-PD 握手过程。 **[386 星标]**
 - [lifting-bits/anvill](https://github.com/lifting-bits/anvill) — anvill 将原始机器码转换为优雅的 LLVM bitcode。 **[384 星标]**
 - [projectPiki/pikmin2](https://github.com/projectPiki/pikmin2) — 由系列爱好者制作的《皮克敏 2》（美版）反编译项目。 **[380 星标]**
 - [richinfante/iphonebackuptools](https://github.com/richinfante/iphonebackuptools) — iOS 备份数据提取 **[361 星标]**
 - [GenericException/SkidSuite](https://github.com/GenericException/SkidSuite) — Java 逆向工程工具与资料链接合集。 **[355 星标]**
 - [sztupy/luadec51](https://github.com/sztupy/luadec51) — 适用于 Lua 5.1 的 Lua 反编译器。 **[353 星标]**
-- [we11cheng/WCShadowrocket](https://github.com/we11cheng/WCShadowrocket) — iOS Shadowrocket（砸壳重签，仅供参考，添加节点存在问题）。另一个翻墙项目 Potatso 的源码参见：https://github.com/we11cheng/WCPotatso **[353 星标]**
-- [mildsunrise/darter](https://github.com/mildsunrise/darter) — :detective: Dart / Flutter VM 快照分析器 **[345 星标]**
+- [we11cheng/WCShadowrocket](https://github.com/we11cheng/WCShadowrocket) — iOS Shadowrocket（砸壳重签，仅供参考，添加节点存在问题）。另一个翻墙项目 Potatso 的源码参见：https<span>:</span>//github.com/we11cheng/WCPotatso **[353 星标]**
+- [mildsunrise/darter](https://github.com/mildsunrise/darter) — <span>:</span>detective: Dart / Flutter VM 快照分析器 **[345 星标]**
 - [AngeloD2022/jsxer](https://github.com/AngeloD2022/jsxer) — 快速且准确的 JSXBIN 反编译器。 **[327 星标]**
 - [rrika/cdcEngineDXHR](https://github.com/rrika/cdcEngineDXHR) — 《杀出重围：人类革命》的反编译代码。 **[323 星标]**
 - [everettjf/Yolo](https://github.com/everettjf/Yolo) — 😈 关于 iOS 开发或逆向工程的脚本与演示项目 **[321 星标]**
@@ -177,18 +177,18 @@
 - [SimplyProgrammer/Minecraft-Deobfuscator3000](https://github.com/SimplyProgrammer/Minecraft-Deobfuscator3000) — 强大的通用 Minecraft 模组去混淆工具及 Java 反编译器！ **[246 星标]**
 - [CFSworks/wavebird-reversing](https://github.com/CFSworks/wavebird-reversing) — 对 WaveBird 协议进行逆向工程，造福人类 **[244 星标]**
 - [Patoke/re-plants-vs-zombies](https://github.com/Patoke/re-plants-vs-zombies) — 通过逆向工程重建《植物大战僵尸》年度版全部功能，并在此基础上扩展的项目 **[234 星标]**
-- [macmade/dyld_cache_extract](https://github.com/macmade/dyld_cache_extract) — macOS 工具，用于从 macOS 和 iOS 的 dyld_shared_cache 中提取动态库。 **[225 星标]**
+- [macmade/dyld\_cache\_extract](https://github.com/macmade/dyld_cache_extract) — macOS 工具，用于从 macOS 和 iOS 的 dyld\_shared\_cache 中提取动态库。 **[225 星标]**
 - [VelocityRa/awesome-game-file-format-reversing](https://github.com/VelocityRa/awesome-game-file-format-reversing) — 用于逆向分析和处理电子游戏文件格式的文档、工具与资源合集。 **[225 星标]**
 - [psxrestore/Condemned2Recomp](https://github.com/psxrestore/Condemned2Recomp) — 使用 RexGlue 对《Condemned 2: Bloodshot》进行的静态重编译。 **[223 星标]**
 - [emu-russia/breaks](https://github.com/emu-russia/breaks) — Nintendo Entertainment System（NES）、Famicom 及其兼容机芯片逆向工程 **[221 星标]**
 - [koopthekoopa/wii-ipl](https://github.com/koopthekoopa/wii-ipl) — 由粉丝带来的 Wii 菜单反编译项目。 **[218 星标]**
 - [xxDark/SSVM](https://github.com/xxDark/SSVM) — 运行在 JVM 上的 Java 虚拟机 **[216 星标]**
 - [resilar/crchack](https://github.com/resilar/crchack) — 探索 CRC 逆向分析，兼顾乐趣与实用价值 **[212 星标]**
-- [xuemian168/qqpet_automation](https://github.com/xuemian168/qqpet_automation) — QQ 宠物怀旧服的 macOS 移植版：逆向分析、移除遥测、Ruffle Flash，以及自动养护命令行工具。 **[211 星标]**
+- [xuemian168/qqpet\_automation](https://github.com/xuemian168/qqpet_automation) — QQ 宠物怀旧服的 macOS 移植版：逆向分析、移除遥测、Ruffle Flash，以及自动养护命令行工具。 **[211 星标]**
 - [landaire/unfuck](https://github.com/landaire/unfuck) — Python 2.7 字节码“修烂摊子”工具，也就是去混淆工具 **[204 星标]**
 - [jd-opensource/arkdecompiler](https://github.com/jd-opensource/arkdecompiler) — HarmonyOS NEXT（纯血鸿蒙）反编译器 **[203 星标]**
 - [tangosdev/sm64ds-decomp](https://github.com/tangosdev/sm64ds-decomp) — 从零开始将《超级马力欧 64 DS》反编译为逐字节匹配的 C/C++ 代码，附实时进度图谱和匹配工具。 **[202 星标]**
-- [mrphrazer/r2con2021_deobfuscation](https://github.com/mrphrazer/r2con2021_deobfuscation) — 基于虚拟机的去混淆工作坊资料 **[201 星标]**
+- [mrphrazer/r2con2021\_deobfuscation](https://github.com/mrphrazer/r2con2021_deobfuscation) — 基于虚拟机的去混淆工作坊资料 **[201 星标]**
 - [OpenGMK/GM8Decompiler](https://github.com/OpenGMK/GM8Decompiler) — GameMaker 8.x 可执行文件反编译器 **[201 星标]**
 - [monkbai/DNN-decompiler](https://github.com/monkbai/DNN-decompiler) — BTD（Bin To DNN）：DNN 可执行文件反编译器 **[199 星标]**
 - [DenuvoSoftwareSolutions/SiMBA](https://github.com/DenuvoSoftwareSolutions/SiMBA) — 高效去混淆线性布尔算术混合表达式 **[197 星标]**
@@ -200,8 +200,8 @@
 - [danielkrupinski/vac-hooks](https://github.com/danielkrupinski/vac-hooks) — Hook Valve Anti-Cheat 使用的 WinAPI 函数，记录调用并拦截参数与返回值，DLL 使用 C 编写。 **[186 星标]**
 - [T14Raptor/go-fAST](https://github.com/T14Raptor/go-fAST) — 使用 Go 编写的 JavaScript AST 解析器、遍历器和生成器 **[186 星标]**
 - [mikeroyal/Firmware-Guide](https://github.com/mikeroyal/Firmware-Guide) — 固件指南 **[171 星标]**
-- [DissectMalware/batch_deobfuscator](https://github.com/DissectMalware/batch_deobfuscator) — 对使用字符串替换和转义字符技术混淆的批处理脚本进行去混淆。 **[169 星标]**
-- [7h3w4lk3r/THE_HIVE](https://github.com/7h3w4lk3r/THE_HIVE) — 我的进攻性安全公开笔记 **[168 星标]**
+- [DissectMalware/batch\_deobfuscator](https://github.com/DissectMalware/batch_deobfuscator) — 对使用字符串替换和转义字符技术混淆的批处理脚本进行去混淆。 **[169 星标]**
+- [7h3w4lk3r/THE\_HIVE](https://github.com/7h3w4lk3r/THE_HIVE) — 我的进攻性安全公开笔记 **[168 星标]**
 - [MrLuit/evm](https://github.com/MrLuit/evm) — 以太坊虚拟机（EVM）字节码反编译器 **[168 星标]**
 - [ox-eye/Ox4Shell](https://github.com/ox-eye/Ox4Shell) — 轻松对 Log4Shell 载荷去混淆。 **[168 星标]**
 - [userbradley/BeReal](https://github.com/userbradley/BeReal) — BeReal 的内部工作原理 **[167 星标]**
@@ -229,14 +229,14 @@
 - [localh0t/backfuzz](https://github.com/localh0t/backfuzz) — 协议模糊测试工具包 **[131 星标]**
 - [DerekSelander/mobdevim](https://github.com/DerekSelander/mobdevim) — 与已连接的 iOS 设备交互的命令行工具，使用 Apple 的 MobileDevice 框架。 **[129 星标]**
 - [minaminao/erever](https://github.com/minaminao/erever) — 用于逆向分析 EVM 字节码的个人瑞士军刀工具，处于高度实验阶段 **[128 星标]**
-- [extremecoders-re/bytecode_simplifier](https://github.com/extremecoders-re/bytecode_simplifier) — 针对 PjOrion 混淆的 Python 脚本的通用去混淆工具 **[126 星标]**
+- [extremecoders-re/bytecode\_simplifier](https://github.com/extremecoders-re/bytecode_simplifier) — 针对 PjOrion 混淆的 Python 脚本的通用去混淆工具 **[126 星标]**
 - [hgarrereyn/STRIDE](https://github.com/hgarrereyn/STRIDE) — 对反编译后的可执行文件进行简单类型识别 **[123 星标]**
 - [imugee/pegasus](https://github.com/imugee/pegasus) — WinDbg 逆向工程扩展插件 **[123 星标]**
 - [mahaloz/sailr-eval](https://github.com/mahaloz/sailr-eval) — SAILR 论文中用于衡量反编译质量的评估流水线 **[121 星标]**
 - [andkorzh/PPU-LITE](https://github.com/andkorzh/PPU-LITE) — 通过逆向工程制作、时钟级精确且成本最低的 FPGA PPU 替代品。 **[119 星标]**
 - [decrazyo/unifying](https://github.com/decrazyo/unifying) — Logitech Unifying 协议的自由开源重新实现 **[119 星标]**
 - [Physics365/991CN-X-CW-Decompilation](https://github.com/Physics365/991CN-X-CW-Decompilation) — 991CN X 反编译及资料整理 **[119 星标]**
-- [CriminalRETeam/gta2_re](https://github.com/CriminalRETeam/gta2_re) — 重新实现 GTA2 10.5（PC 版） **[118 星标]**
+- [CriminalRETeam/gta2\_re](https://github.com/CriminalRETeam/gta2_re) — 重新实现 GTA2 10.5（PC 版） **[118 星标]**
 - [ropcat/reversing-unofficial-APIs](https://github.com/ropcat/reversing-unofficial-APIs) — “非官方 API”逆向工程资源。 **[116 星标]**
 - [pgarba/SiMBA-](https://github.com/pgarba/SiMBA-) — 将 MBA 求解器 SiMBA 移植到 C/C++，用于实际应用中的 MBA 去混淆 **[115 星标]**
 - [landoncrabtree/awesome-cyber](https://github.com/landoncrabtree/awesome-cyber) — 精选网络安全工具列表，适用于蓝队和红队行动。 **[112 星标]**
@@ -285,7 +285,7 @@
 - [jbsouthe/http-breakout-proxy](https://github.com/jbsouthe/http-breakout-proxy) — 用于逆向分析协议通信的 HTTP 代理分析 **[61 星标]**
 - [GenryTheFox0/Project-2099](https://github.com/GenryTheFox0/Project-2099) — Spider-Man: Edge of Time 的非官方 Windows 重编译版，提供 PC 控制、设置、本地化、成就及模组支持。 **[60 星标]**
 - [joekav/SlideCaptcha](https://github.com/joekav/SlideCaptcha) — 上游仓库未提供项目简介。 **[60 星标]**
-- [HackingLZ/svg_phishing_tools](https://github.com/HackingLZ/svg_phishing_tools) — 用于常见 SVG 附件钓鱼的 SVG 分析与生成工具 **[57 星标]**
+- [HackingLZ/svg\_phishing\_tools](https://github.com/HackingLZ/svg_phishing_tools) — 用于常见 SVG 附件钓鱼的 SVG 分析与生成工具 **[57 星标]**
 - [0xdad0/awesome-iOS-security-tools](https://github.com/0xdad0/awesome-iOS-security-tools) — 为安全用途设计的 iOS 工具合集。 **[54 星标]**
 - [OpenLavaFormat/OpenLava](https://github.com/OpenLavaFormat/OpenLava) — OpenLava 是 Lava 媒体格式的开源实现，该格式最初由 Airbnb 创建 **[54 星标]**
 - [bekmansurov/gree-hvac-protocol](https://github.com/bekmansurov/gree-hvac-protocol) — 基于逆向工程整理的 GREE 空调 UART 数据交换协议说明 **[52 星标]**
@@ -293,12 +293,12 @@
 - [dobizz/TikTok](https://github.com/dobizz/TikTok) — 使用 Python 和 Selenium 下载 TikTok 上的公开视频。 **[50 星标]**
 - [DosX-dev/JS-Hooker](https://github.com/DosX-dev/JS-Hooker) — 加载此 .js 模块，即可开始跟踪 JavaScript 应用的全部外部调用。 **[50 星标]**
 - [k0imet/CTFs](https://github.com/k0imet/CTFs) — 历届 CTF 解题报告合集，涵盖多种主题和类别，适合各个技能水平。 **[50 星标]**
-- [dhruvanbhalara/flutter_agent_lens](https://github.com/dhruvanbhalara/flutter_agent_lens) — 以智能体为中心的 MCP（模型上下文协议）服务，用于调试、性能分析及优化运行中的 Flutter 应用。通过 WebSocket 将 AI 助手连接到 Dart VM Service，直接访问组件树、内存快照、网络流量、有状态 CPU 性能分析及布局差异比较。 **[49 星标]**
+- [dhruvanbhalara/flutter\_agent\_lens](https://github.com/dhruvanbhalara/flutter_agent_lens) — 以智能体为中心的 MCP（模型上下文协议）服务，用于调试、性能分析及优化运行中的 Flutter 应用。通过 WebSocket 将 AI 助手连接到 Dart VM Service，直接访问组件树、内存快照、网络流量、有状态 CPU 性能分析及布局差异比较。 **[49 星标]**
 - [eset/wslink-vm-analyzer](https://github.com/eset/wslink-vm-analyzer) — WslinkVMAnalyzer 用于辅助分析 Wslink 恶意软件中受虚拟机保护的代码 **[49 星标]**
 - [GiZcesi/OpenTricky](https://github.com/GiZcesi/OpenTricky) — OpenTricky 是通过静态重编译制作的 SSX Tricky 非官方 PC 移植。需自备光盘。 **[49 星标]**
 - [ropbear/tmpcli](https://github.com/ropbear/tmpcli) — TP-Link Tether 管理协议（TMP）的逆向工程项目；该协议可用于经过身份验证的 TP-Link 路由器配置及其他场景。 **[49 星标]**
-- [shinyquagsire23/vive_ultimate_tracker_re](https://github.com/shinyquagsire23/vive_ultimate_tracker_re) — 对 VIVE 无线适配器和六自由度 Ultimate 追踪器的协议进行逆向工程 **[49 星标]**
-- [Flying-Toast/qiyi_smartcube_protocol](https://github.com/Flying-Toast/qiyi_smartcube_protocol) — 对 QiYi Smart Cube 使用的蓝牙协议进行逆向工程 **[48 星标]**
+- [shinyquagsire23/vive\_ultimate\_tracker\_re](https://github.com/shinyquagsire23/vive_ultimate_tracker_re) — 对 VIVE 无线适配器和六自由度 Ultimate 追踪器的协议进行逆向工程 **[49 星标]**
+- [Flying-Toast/qiyi\_smartcube\_protocol](https://github.com/Flying-Toast/qiyi_smartcube_protocol) — 对 QiYi Smart Cube 使用的蓝牙协议进行逆向工程 **[48 星标]**
 - [hutaoshusband/Prometheus-WeAre-Devs-Dumper](https://github.com/hutaoshusband/Prometheus-WeAre-Devs-Dumper) — 基于 Python 跟踪的去混淆工具，可处理任何经 WeAreDevs 混淆的 Roblox 脚本 **[48 星标]**
 - [Biswa96/TraceEvent](https://github.com/Biswa96/TraceEvent) — 在实时会话中跟踪事件 **[47 星标]**
 - [Shhoya/MutantKiller](https://github.com/Shhoya/MutantKiller) — VMP Mutation API 修复工具 **[47 星标]**
@@ -317,7 +317,7 @@
 - [Biswa96/WinLight](https://github.com/Biswa96/WinLight) — 通过内容交付管理，随时随地下载 Windows 10 聚焦锁屏图片。 **[38 星标]**
 - [minecraft-cursed-legacy/Plasma](https://github.com/minecraft-cursed-legacy/Plasma) — 旧版 Minecraft 的映射文件（目前仅支持 beta 1.7.3）。 **[38 星标]**
 - [OWASP/mas-crackmes](https://github.com/OWASP/mas-crackmes) — MAS Crackmes，又称 UnCrackable Apps，是 OWASP MAS 项目中的一组移动应用逆向工程挑战。 **[38 星标]**
-- [zatakon/vevor_heater_control](https://github.com/zatakon/vevor_heater_control) — 对 Vevor 加热器通信协议进行逆向工程 **[37 星标]**
+- [zatakon/vevor\_heater\_control](https://github.com/zatakon/vevor_heater_control) — 对 Vevor 加热器通信协议进行逆向工程 **[37 星标]**
 - [0v41n/JSConfuser-String-Decryptor](https://github.com/0v41n/JSConfuser-String-Decryptor) — 用于静态解密受 JSConfuser 保护程序中字符串的简单算法。 **[36 星标]**
 - [alexrp/tera-re](https://github.com/alexrp/tera-re) — TERA 逆向工程。 **[36 星标]**
 - [soumikmohianuta/pixtoapp](https://github.com/soumikmohianuta/pixtoapp) — 上游仓库未提供项目简介。 **[36 星标]**
@@ -331,7 +331,7 @@
 - [NaniteFactory/hookwin10calc](https://github.com/NaniteFactory/hookwin10calc) — 通过逆向工程修改 Windows 10 Calculator.exe（UWP 应用）的工具，为 Windows 计算器加入韩文和汉文支持的补丁。 **[32 星标]**
 - [yellowbyte/opaque-predicates-detective](https://github.com/yellowbyte/opaque-predicates-detective) — 通过识别混淆造成的破坏来检测不透明谓词的方法。 **[32 星标]**
 - [alexgaoth/awesome-reverse-engineered](https://github.com/alexgaoth/awesome-reverse-engineered) — 避免重复逆向工程。汇集 12,000 多个开源工具，均通过逆向分析闭源应用、API、设备、协议、文件格式、游戏和 AI 工具构建。提供搜索网站和智能体技能，每晚更新。 **[31 星标]**
-- [joncardasis/AppExplorer](https://github.com/joncardasis/AppExplorer) — :gear: 展示 Apple 私有框架用法的应用。 **[31 星标]**
+- [joncardasis/AppExplorer](https://github.com/joncardasis/AppExplorer) — <span>:</span>gear: 展示 Apple 私有框架用法的应用。 **[31 星标]**
 - [kyle-elliott/DVM](https://github.com/kyle-elliott/DVM) — 通过将 amd64 提升为 Z3 表达式实现的符号执行。 **[31 星标]**
 - [phreakocious/plugin-shark](https://github.com/phreakocious/plugin-shark) — 实用 Wireshark/tshark 插件合集。 **[31 星标]**
 - [lutwidse/Extract-Protocol-From-LINE-Write-up](https://github.com/lutwidse/Extract-Protocol-From-LINE-Write-up) — LINE 逆向工程。本文来自我在 2018 年进行的分析，请注意，部分协议在 2020 年已发生变化。 **[30 星标]**
@@ -358,7 +358,7 @@
 - [oncecreated/jscrambler-reverse-engineering](https://github.com/oncecreated/jscrambler-reverse-engineering) — JScrambler 逆向工程与技巧分析。 **[24 星标]**
 - [rynn-k/Gemini-Reverse](https://github.com/rynn-k/Gemini-Reverse) — gemini.google.com 的非官方 Node.js 客户端。 **[24 星标]**
 - [ejfkdev/jscd](https://github.com/ejfkdev/jscd) — 将 bytenode .jsc（V8 代码缓存）静态还原为 JavaScript，纯 Rust 实现，无需定制补丁版 V8/Node。支持 Node 8→26、V8 5.8–14.6；已测试 2.5 万个 .jsc 文件，失败数为 0。 **[23 星标]**
-- [siara-cc/sqlite3_page_explorer](https://github.com/siara-cc/sqlite3_page_explorer) — 用于探索表和索引内部组织结构的跨平台应用。 **[23 星标]**
+- [siara-cc/sqlite3\_page\_explorer](https://github.com/siara-cc/sqlite3_page_explorer) — 用于探索表和索引内部组织结构的跨平台应用。 **[23 星标]**
 - [SIGMME/IWR-Bench](https://github.com/SIGMME/IWR-Bench) — 上游仓库未提供项目简介。 **[23 星标]**
 - [dfch/BydCanProtocol](https://github.com/dfch/BydCanProtocol) — 对与 Victron/Venus OS 配合使用的比亚迪 CAN 协议进行“逆向工程”。 **[22 星标]**
 - [IbrahimIrfan/pspoke](https://github.com/IbrahimIrfan/pspoke) — 在 PSP 上原生运行《宝可梦 白金》与《宝可梦 魂银》。需自行提供 ROM。 **[22 星标]**
@@ -401,7 +401,7 @@
 - [zhizhuodemao/ai-reverse-resources](https://github.com/zhizhuodemao/ai-reverse-resources) — 适用于 Codex 和 Claude Code 的 AI 辅助逆向工程插件市场。 **[13 星标]**
 - [zmkhtr/SwiftUIInspector](https://github.com/zmkhtr/SwiftUIInspector) — 仅用于调试的 SwiftUI 运行时检查器，支持覆盖层、日志、导航跟踪和 UIKit 托管。 **[13 星标]**
 - [Darwinist/Digitizer](https://github.com/Darwinist/Digitizer) — 劫持 I/O Kit，向 iOS 触摸数字化器分发触控事件 **[12 星标]**
-- [MIGINC/BAP_RE](https://github.com/MIGINC/BAP_RE) — BAP（Bedien-und Anzeigeprotokoll，控制与显示协议）的逆向工程。 **[12 星标]**
+- [MIGINC/BAP\_RE](https://github.com/MIGINC/BAP_RE) — BAP（Bedien-und Anzeigeprotokoll，控制与显示协议）的逆向工程。 **[12 星标]**
 - [rotinom/fansync](https://github.com/rotinom/fansync) — Fanimation FanSync 协议与云端配置的逆向工程。 **[12 星标]**
 - [scirpter/Nebul0us.ts](https://github.com/scirpter/Nebul0us.ts) — 已弃用。 **[12 星标]**
 - [siddharthsaini/Snapshot-Instagram-Clone](https://github.com/siddharthsaini/Snapshot-Instagram-Clone) — Snapshot 是一款受 Instagram 启发、使用 Flutter 和 Firebase 开发的社交网络应用。 **[12 星标]**
@@ -413,8 +413,8 @@
 - [cobanov/freeband](https://github.com/cobanov/freeband) — 在 iPhone 上读取 Xiaomi Smart Band 10／10 Pro，无需 Mi Fitness 或小米账号。 **[10 星标]**
 - [Lunaphied/wii-hacking](https://github.com/Lunaphied/wii-hacking) — 作者研究 Wii、Starlet、IOS、boot1、boot2 等过程中积累的各类研究工具与笔记。 **[10 星标]**
 - [pymitsubishi/mac-577if-e](https://github.com/pymitsubishi/mac-577if-e) — MAC-577IF2-E 分析工具：用于分析与提取三菱 MAC-577IF2-E Wi-Fi 适配器固件的一组工具。 **[10 星标]**
-- [RainLib/ASO_demo](https://github.com/RainLib/ASO_demo) — ASO 项目（iOS 端）。希望向这一方向发展的开发者可参考本项目，欢迎点星。 **[10 星标]**
-- [status403com/cybersource_encryption](https://github.com/status403com/cybersource_encryption) — 可完整运行的概念验证（PoC），演示如何重建 pokemoncenter.com 等网站使用的 CyberSource 信用卡/借记卡加密。该实现复现 CyberSource 的 Flex Microform 流程，生成可用于结账自动化的有效支付令牌（jti）。 **[10 星标]**
+- [RainLib/ASO\_demo](https://github.com/RainLib/ASO_demo) — ASO 项目（iOS 端）。希望向这一方向发展的开发者可参考本项目，欢迎点星。 **[10 星标]**
+- [status403com/cybersource\_encryption](https://github.com/status403com/cybersource_encryption) — 可完整运行的概念验证（PoC），演示如何重建 pokemoncenter.com 等网站使用的 CyberSource 信用卡/借记卡加密。该实现复现 CyberSource 的 Flex Microform 流程，生成可用于结账自动化的有效支付令牌（jti）。 **[10 星标]**
 - [sunweiliang/IJianJiCrack](https://github.com/sunweiliang/IJianJiCrack) — iOS 爱剪辑专业版破解，无需越狱。 **[10 星标]**
 - [XiaoDuoYa/AeVideoGen](https://github.com/XiaoDuoYa/AeVideoGen) — AeVideoGen Skill 是一个工具集，用于制作商业级 AE 风格产品发布、功能讲解、界面交互演示和宣传视频，提供覆盖创意策划、参考视频分析、素材重建、基于 Web 的动效渲染及质量保证的端到端流程。 **[10 星标]**
 - [xKashyap/tele-bot-ipa](https://github.com/xKashyap/tele-bot-ipa) — 📥 使用这个具备 SSH/SFTP 管理功能的 Telegram 机器人，轻松下载与解密 iOS IPA 文件，并自动安装和整理应用。 **[10 星标]**
@@ -439,7 +439,7 @@
 - [haise0/kdz-toolkit](https://github.com/haise0/kdz-toolkit) — 用于 LG KDZ 固件文件的脚本工具、信息资源与分析报告列表。 **[7 星标]**
 - [ineo6/redchat](https://github.com/ineo6/redchat) — 免越狱微信。 **[7 星标]**
 - [iotwizz/iot-firmware-database](https://github.com/iotwizz/iot-firmware-database) — 精选的 1000 份商用物联网设备固件合集，附经核验的下载链接，供安全研究、渗透测试与固件分析使用。 **[7 星标]**
-- [JohannesMilke/story_app_example](https://github.com/JohannesMilke/story_app_example) — 构建类似 WhatsApp Stories 或 Snapshot Stories 的 Flutter 动态故事应用。 **[7 星标]**
+- [JohannesMilke/story\_app\_example](https://github.com/JohannesMilke/story_app_example) — 构建类似 WhatsApp Stories 或 Snapshot Stories 的 Flutter 动态故事应用。 **[7 星标]**
 - [Jor02/sexyhiker](https://github.com/Jor02/sexyhiker) — Sexy Hiking 的反编译器。 **[7 星标]**
 - [mstan/DragonBallZLegacyofGokuIIRecomp](https://github.com/mstan/DragonBallZLegacyofGokuIIRecomp) — 《Dragon Ball Z: The Legacy of Goku II》的静态重编译，支持自适应宽屏，属于 R.A.I.D. 社区的一部分。 **[7 星标]**
 - [MTJailed/FWLR](https://github.com/MTJailed/FWLR) — iOS 框架与库逆向分析工具。 **[7 星标]**
@@ -461,7 +461,7 @@
 - [ByteV0rtex/CVE-2026-64788](https://github.com/ByteV0rtex/CVE-2026-64788) — CVE-2026-64788 概念验证：IOGPUFamily 释放后使用漏洞（iOS 26.6 / 23G71）。 **[5 星标]**
 - [cloverfield11/ios26-hypervisor-research](https://github.com/cloverfield11/ios26-hypervisor-research) — 通过静态逆向工程提供证据，表明 Apple 在运行 iOS 26 的消费级 iPhone 上启用了硬件虚拟机监控器 **[5 星标]**
 - [frontboat/shortcutkit](https://github.com/frontboat/shortcutkit) — 从 TypeScript 或 Python 构建、验证并签名 Apple 快捷指令（.shortcut）文件。全部 339 个内置操作均带类型定义，提取自 macOS 上的快捷指令引擎。 **[5 星标]**
-- [Magier/JavaScript2img_Decoder](https://github.com/Magier/JavaScript2img_Decoder) — 解码经 JavaScript2img 混淆的 JavaScript 代码的工具 **[5 星标]**
+- [Magier/JavaScript2img\_Decoder](https://github.com/Magier/JavaScript2img_Decoder) — 解码经 JavaScript2img 混淆的 JavaScript 代码的工具 **[5 星标]**
 - [Michelleeby/pokemodemerald](https://github.com/Michelleeby/pokemodemerald) — 《宝可梦 绿宝石》的反编译项目。 **[5 星标]**
 - [TheQmaks/chatruletka](https://github.com/TheQmaks/chatruletka) — 一些逆向工程相关内容 **[5 星标]**
 - [bethgelab/revenge-bench](https://github.com/bethgelab/revenge-bench) — RevengeBench：通过行为实验逆向恢复代码空间策略。 **[4 星标]**
@@ -469,11 +469,10 @@
 - [JamesHopbourn/iOS-Reverse-Engineering-Tools](https://github.com/JamesHopbourn/iOS-Reverse-Engineering-Tools) — iOS 逆向工程工具 **[4 星标]**
 - [Kuruyia/pokeranger2](https://github.com/Kuruyia/pokeranger2) — Pokémon Ranger: Shadows of Almia 的反编译项目。 **[4 星标]**
 - [malus-security/kextractor](https://github.com/malus-security/kextractor) — 内核缓存操作库。 **[4 星标]**
-- [Shellghostt/De-Caffeinator](https://github.com/Shellghostt/De-Caffeinator) — 面向安全审计的 JavaScript 逆向工程与资源分析流水线，可爬取目标、对代码包去混淆，并提取隐藏端点和密钥。 **[4 星标]**
 - [theamorn/flutter-snapshot-test](https://github.com/theamorn/flutter-snapshot-test) — 演示如何在 Flutter 中进行快照测试的示例。 **[4 星标]**
 - [tyonger-stack/GrokNode](https://github.com/tyonger-stack/GrokNode) — 基于公开发布的 Grok Bot 0.18.0 macOS 应用进行非官方源码级重建，产出可读 TypeScript，提供 Codex 与 OpenRouter 两档推理路由、本地 Docker 沙箱和本地用量统计，仅限研究用途。 **[4 星标]**
 - [Adilnasceng/requestlab](https://github.com/Adilnasceng/requestlab) — 用于拦截、修改和逆向分析 HTTP 请求的 Chrome DevTools 扩展，在深色开发者工具面板中提供实时请求日志、规则引擎、模拟响应、重放、速率限制绕过和 WebSocket 监控。 **[3 星标]**
-- [ByteV0rtex/CVE-2026-65349](https://github.com/ByteV0rtex/CVE-2026-65349) — CVE-2026-65349 概念验证：vfs_attr_pack_internal 中 getattrlist 的越界写入（iOS 26.6／23G71） **[3 星标]**
+- [ByteV0rtex/CVE-2026-65349](https://github.com/ByteV0rtex/CVE-2026-65349) — CVE-2026-65349 概念验证：vfs\_attr\_pack\_internal 中 getattrlist 的越界写入（iOS 26.6／23G71） **[3 星标]**
 - [Cynostial/malibu](https://github.com/Cynostial/malibu) — 为 Spectacles 2 独立实现 iPhone 配对与 MP4 导入。 **[3 星标]**
 - [DaniGuardiola/egolatron](https://github.com/DaniGuardiola/egolatron) — ❤️ 检测给自己推文点赞的工具！ **[3 星标]**
 - [dopecoder/fest](https://github.com/dopecoder/fest) — fest 是受 Jest 启发的简单 Flutter 快照测试工具，可进行集成测试并比较截图、渲染树和图层树等快照。 **[3 星标]**
@@ -503,11 +502,11 @@
 - [CarelessInternet/node-schoolsoft](https://github.com/CarelessInternet/node-schoolsoft) — 通过逆向工程获得的 SchoolSoft 移动应用所用 API。 **[2 星标]**
 - [DSTCyber/safe-deobs-evaluation](https://github.com/DSTCyber/safe-deobs-evaluation) — 论文《Optimizing Away JavaScript Obfuscation》的配套研究产物 **[2 星标]**
 - [eduardomcb/Unpacker](https://github.com/eduardomcb/Unpacker) — Unpacker 类提供检测和还原混淆 JavaScript 代码的方法，扫描混淆中常见的特定模式，并尝试逆转混淆过程。 **[2 星标]**
-- [EIGHTFINITE/pokeemerald-expansion](https://github.com/EIGHTFINITE/pokeemerald-expansion) — 👾 派生自 https://github.com/rh-hideout/pokeemerald-expansion 的《宝可梦 绿宝石》反编译项目 — https://github.com/EIGHTFINITE/pokeemerald-expansion/tree/master | https://github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/INSTALL.md | https://github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/CHANGELOG.md **[2 星标]**
+- [EIGHTFINITE/pokeemerald-expansion](https://github.com/EIGHTFINITE/pokeemerald-expansion) — 👾 派生自 https<span>:</span>//github.com/rh-hideout/pokeemerald-expansion 的《宝可梦 绿宝石》反编译项目 — https<span>:</span>//github.com/EIGHTFINITE/pokeemerald-expansion/tree/master | https<span>:</span>//github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/INSTALL.md | https<span>:</span>//github.com/EIGHTFINITE/pokeemerald-expansion/blob/master/CHANGELOG.md **[2 星标]**
 - [emclrk/rf-bitkit](https://github.com/emclrk/rf-bitkit) — 用于逆向分析射频协议的分析函数合集。 **[2 星标]**
 - [evanjcosgrove/claude-cowork-1m-patch](https://github.com/evanjcosgrove/claude-cowork-1m-patch) — 恢复 Claude Desktop 的 Cowork 在 macOS 上的 1M 上下文窗口 **[2 星标]**
 - [hadysata/flutter-versions](https://github.com/hadysata/flutter-versions) — Dart SDK 快照哈希、引擎提交与 Flutter 版本列表。 **[2 星标]**
-- [jamesccupps/P2_Wireshark_Dissector_And_P2_Scanner](https://github.com/jamesccupps/P2_Wireshark_Dissector_And_P2_Scanner) — 面向 P2（“Protocol II”）的工具与技术参考；P2 是运行于 TCP 之上的 Siemens APOGEE 楼宇自动化协议。包含 Wireshark 解析器、只读扫描器、供开发使用的虚拟 PXC 面板及 P2→BACnet/IP 桥接，面向操作自有旧设备的业主和运营人员。 **[2 星标]**
+- [jamesccupps/P2\_Wireshark\_Dissector\_And\_P2\_Scanner](https://github.com/jamesccupps/P2_Wireshark_Dissector_And_P2_Scanner) — 面向 P2（“Protocol II”）的工具与技术参考；P2 是运行于 TCP 之上的 Siemens APOGEE 楼宇自动化协议。包含 Wireshark 解析器、只读扫描器、供开发使用的虚拟 PXC 面板及 P2→BACnet/IP 桥接，面向操作自有旧设备的业主和运营人员。 **[2 星标]**
 - [maxhuk/flutter-perf-analyzer](https://github.com/maxhuk/flutter-perf-analyzer) — 一项 Claude Code 技能，可从 DevTools 快照诊断 Flutter 卡顿帧，并编写能定位到代码的分析简报。 **[2 星标]**
 - [parl0v/nidhunt](https://github.com/parl0v/nidhunt) — 从 NID 哈希恢复 PS5 库函数名，用于模拟器开发。 **[2 星标]**
 - [r4yb3l/hollow](https://github.com/r4yb3l/hollow) — 适用于 Flutter 的像素级精确骨架加载屏幕。将任意组件包装在 Skeleton 中，hollow 就会对真实渲染树创建快照，并生成与实际界面匹配的动态微光效果。 **[2 星标]**
@@ -528,7 +527,7 @@
 - [defuscator/awesome-javascript-deobfuscation](https://github.com/defuscator/awesome-javascript-deobfuscation) — JavaScript 去混淆工具、技术和参考资料合集，明确标记所有会执行样本代码的工具。 **[1 星标]**
 - [EHF32/livebox-api](https://github.com/EHF32/livebox-api) — 📶 通过逆向工程实现的 Livebox 路由器管理 API，可查询或修改 Wi-Fi、NAT、软电话、DNS、防火墙等配置数据。 **[1 星标]**
 - [enenhenhao/qqmusic-downloader](https://github.com/enenhenhao/qqmusic-downloader) — QQ 音乐网页版逆向下载工具（VMP 签名与 ag-1 加密提取）。 **[1 星标]**
-- [Foo-Manroot/Flutter-snapshot-reconstructor](https://github.com/Foo-Manroot/Flutter-snapshot-reconstructor) — 从以 DEBUG 模式构建的应用所生成的 Dart VM 快照（kernel_blob.bin）恢复原始源代码。 **[1 星标]**
+- [Foo-Manroot/Flutter-snapshot-reconstructor](https://github.com/Foo-Manroot/Flutter-snapshot-reconstructor) — 从以 DEBUG 模式构建的应用所生成的 Dart VM 快照（kernel\_blob.bin）恢复原始源代码。 **[1 星标]**
 - [FutronPrime/app-surgeon](https://github.com/FutronPrime/app-surgeon) — ☰ FutЯøn ☰：逆向分析、自定义任意已安装应用并为其添加功能。支持修补编译代码、注入自定义 UI，以及在 30 多种语言之间转换代码。不绑定大语言模型，可配合 Ollama、Claude Code、OpenClaw 或任意 AI 助手使用，云服务成本为零。 **[1 星标]**
 - [Fyfar/zt-dq02-scpi](https://github.com/Fyfar/zt-dq02-scpi) — ZOYI ZT-DQ02 LCR 测试仪的 SCPI 命令参考，从固件提取并在真实硬件上验证。 **[1 星标]**
 - [geranton93/spotify-no-ads](https://github.com/geranton93/spotify-no-ads) — Spicetify 扩展，通过广告投放、引擎状态与编排等源头机制移除 Spotify 桌面端广告，而非将音量静音。包含验证工具。 **[1 星标]**
@@ -537,11 +536,11 @@
 - [juan-viox/rea-jev](https://github.com/juan-viox/rea-jev) — 上游仓库未提供项目简介。 **[1 星标]**
 - [kittennbfive/UARTfind](https://github.com/kittennbfive/UARTfind) — 在探测无文档电路板时帮助寻找串口输出的逆向工程辅助工具，包含硬件和软件。 **[1 星标]**
 - [KristijanZic/unflutter](https://github.com/KristijanZic/unflutter) — Flutter/Dart AOT 快照静态分析器。 **[1 星标]**
-- [kumiyuki/ioe_cheat](https://github.com/kumiyuki/ioe_cheat) — 用于在 ioe.vn 上作弊的用户脚本（使用 Tampermonkey）。作者不会继续更新，但部分功能应该仍可使用。 **[1 星标]**
+- [kumiyuki/ioe\_cheat](https://github.com/kumiyuki/ioe_cheat) — 用于在 ioe.vn 上作弊的用户脚本（使用 Tampermonkey）。作者不会继续更新，但部分功能应该仍可使用。 **[1 星标]**
 - [Lecheeel/jammers-simulator-research](https://github.com/Lecheeel/jammers-simulator-research) — Jammers Simulator 自动化逆向分析、授权靶机测试与证据归档工具集。 **[1 星标]**
 - [liolu/ds-decomp-studio](https://github.com/liolu/ds-decomp-studio) — DS Decomp Studio：组织 Nintendo DS 匹配式反编译工作，将函数按每组 50 个分块并按难度评级，提供人类与 AI 共用的工作队列、机器任务运行器和引擎图谱。 **[1 星标]**
 - [LXgssy/zxLeafOS-2.0](https://github.com/LXgssy/zxLeafOS-2.0) — zxLeafOS 2.0 正式版 v3 - 以 MIT 协议开源的完整 Scratch 3.0 项目源码（含热更新镜像） **[1 星标]**
-- [OsvaldoVar/investigation_byd-n16-kbd](https://github.com/OsvaldoVar/investigation_byd-n16-kbd) — 在 Thunderobot Zero 16 上研究 BYD N16 键盘协议和 Linux 灯效。 **[1 星标]**
+- [OsvaldoVar/investigation\_byd-n16-kbd](https://github.com/OsvaldoVar/investigation_byd-n16-kbd) — 在 Thunderobot Zero 16 上研究 BYD N16 键盘协议和 Linux 灯效。 **[1 星标]**
 - [ozyz/awds-decomp](https://github.com/ozyz/awds-decomp) — Advance Wars: Dual Strike（Nintendo DS，欧洲版 AWRP rev 0）的匹配式反编译项目。 **[1 星标]**
 - [Pasoxn/malware](https://github.com/Pasoxn/malware) — 上游仓库未提供项目简介。 **[1 星标]**
 - [Pentesting-28/Unofficial-Grok-API](https://github.com/Pentesting-28/Unofficial-Grok-API) — 非官方 Grok API（尚未完成）。 **[1 星标]**
@@ -557,7 +556,7 @@
 - [VedAstro/Tripataki-Chart-Jagannatha-Hora-Reverse-Engineered](https://github.com/VedAstro/Tripataki-Chart-Jagannatha-Hora-Reverse-Engineered) — 基于恢复的 JHora 逻辑构建年度 Tripataki Chakra，包含 Varsha Lagna 以及按传统方法依据年龄推进行星的位置。 **[1 星标]**
 - [WncFht/zcode-teardown](https://github.com/WncFht/zcode-teardown) — 逐版逆向拆解 ZCode IDE 的 55 个版本（v2.2.0–v3.12.3），包含签名快照、版本差异及工作区快照上传机制的 25 页分析报告。 **[1 星标]**
 - [0xARYA/pooky](https://github.com/0xARYA/pooky) — 🔑 Supreme 旧版 “pooky” 加密密钥提取器。 **[0 星标]**
-- [a-hamouda/golden_helpers](https://github.com/a-hamouda/golden_helpers) — Golden Helpers 是一个 Dart 库，提供一组便利工具，帮助 Flutter 应用开展黄金图像测试。此类测试通过比较组件快照（黄金文件）与实际结果来保证界面一致性。 **[0 星标]**
+- [a-hamouda/golden\_helpers](https://github.com/a-hamouda/golden_helpers) — Golden Helpers 是一个 Dart 库，提供一组便利工具，帮助 Flutter 应用开展黄金图像测试。此类测试通过比较组件快照（黄金文件）与实际结果来保证界面一致性。 **[0 星标]**
 - [Abdoulrazack1/Logic-Lens](https://github.com/Abdoulrazack1/Logic-Lens) — 提取任意 JavaScript 函数背后逻辑公式或数学不变量的 AI。使用 TensorFlow.js 和 AST 变异。 **[0 星标]**
 - [aconstantinou-cmd/PythonArrayDeobfuscator](https://github.com/aconstantinou-cmd/PythonArrayDeobfuscator) — 此脚本旨在加速处理被放入数组的函数，用相应函数替换代码中通过数组索引进行的调用。下文提供演示。 **[0 星标]**
 - [AkashNaickar/crdb-sample-frontend](https://github.com/AkashNaickar/crdb-sample-frontend) — 用原生 HTML/CSS/JS 静态重建 Littlebird.ai 首页，附带无依赖测试套件及 Vercel 部署。 **[0 星标]**
@@ -587,11 +586,11 @@
 - [KaramelliS/claude-custom-models](https://github.com/KaramelliS/claude-custom-models) — 在 Claude Desktop 中运行任意大语言模型，包括 DeepSeek、Qwen、GPT 和本地模型，提供本地补丁工具及 Anthropic↔OpenAI 转换代理。 **[0 星标]**
 - [kareemheshaam/jsunveil](https://github.com/kareemheshaam/jsunveil) — 基于模式匹配的字符串数组式 JavaScript 去混淆器，面向 obfuscator.io 风格混淆，可恢复字符串、移除诱饵，并适应每次构建重新生成的混淆代码。 **[0 星标]**
 - [KOLANICH-libs/ClosureCompiler.py](https://github.com/KOLANICH-libs/ClosureCompiler.py) — Google Closure Compiler 的 Python 绑定。 **[0 星标]**
-- [kumiyuki/azota_cheat](https://github.com/kumiyuki/azota_cheat) — 对 Azota 编码方法的逆向分析及几种绕过方法。 **[0 星标]**
-- [kumiyuki/lms_vnedu_cheat](https://github.com/kumiyuki/lms_vnedu_cheat) — 用于 lms.vnedu.vn 实例的作弊工具。 **[0 星标]**
-- [kumiyuki/wayground_cheat](https://github.com/kumiyuki/wayground_cheat) — 作者用于绕过 Wayground 新版“反作弊”功能的方法。 **[0 星标]**
+- [kumiyuki/azota\_cheat](https://github.com/kumiyuki/azota_cheat) — 对 Azota 编码方法的逆向分析及几种绕过方法。 **[0 星标]**
+- [kumiyuki/lms\_vnedu\_cheat](https://github.com/kumiyuki/lms_vnedu_cheat) — 用于 lms.vnedu.vn 实例的作弊工具。 **[0 星标]**
+- [kumiyuki/wayground\_cheat](https://github.com/kumiyuki/wayground_cheat) — 作者用于绕过 Wayground 新版“反作弊”功能的方法。 **[0 星标]**
 - [laykhinkhin/baileys](https://github.com/laykhinkhin/baileys) — 上游仓库未提供项目简介。 **[0 星标]**
-- [linyf0721/dart_snapshot](https://github.com/linyf0721/dart_snapshot) — 跳过 Flutter 私有库发布验证的 dart_snapshot。 **[0 星标]**
+- [linyf0721/dart\_snapshot](https://github.com/linyf0721/dart_snapshot) — 跳过 Flutter 私有库发布验证的 dart\_snapshot。 **[0 星标]**
 - [marwanvx/m4spider-notebook-audit](https://github.com/marwanvx/m4spider-notebook-audit) — 针对 M4 Spider Notebook 的逆向工程、安全审计和违反政策的证据，涉及 OpenCode 克隆及 Chrome DPAPI Cookie 提取。 **[0 星标]**
 - [meszarimola/fluttergoldentests](https://github.com/meszarimola/fluttergoldentests) — 用于演示如何在 Flutter 中创建快照（golden）组件测试的仓库。 **[0 星标]**
 - [mkbraion/lefon-reverse-engineering](https://github.com/mkbraion/lefon-reverse-engineering) — 用于逆向工程、源代码分析、结构检查和理解软件项目的 TypeScript 工具。 **[0 星标]**
@@ -599,29 +598,29 @@
 - [nazeeh111/Eidryl](https://github.com/nazeeh111/Eidryl) — 从有状态 API 行为中学习可移植、可执行的模型，涵盖隐藏模式。 **[0 星标]**
 - [NEO-LAX/kz-control-linux](https://github.com/NEO-LAX/kz-control-linux) — 面向 KZZI K75RGB Lite 和 ATTACK SHARK R2 的 Linux 控制中心。 **[0 星标]**
 - [NH-Mason/flutter-190774-repro](https://github.com/NH-Mason/flutter-190774-repro) — flutter/flutter#190774 的最小 Windows 复现：在 Impeller 下，对 GPU 表面外部纹理获取快照会导致崩溃 **[0 星标]**
-- [Ninthless/cy_jsvmp_elec](https://github.com/Ninthless/cy_jsvmp_elec) — cy_jsvmp 的 Electron 版本。 **[0 星标]**
+- [Ninthless/cy\_jsvmp\_elec](https://github.com/Ninthless/cy_jsvmp_elec) — cy\_jsvmp 的 Electron 版本。 **[0 星标]**
 - [Niophy/blackboard-adu-api](https://github.com/Niophy/blackboard-adu-api) — 说明 ADU 学生如何通过内部 API 获取自己的 Blackboard Ultra 课程文件，包含已研究的端点、失败情形，以及如何向 AI 智能体说明执行方式。 **[0 星标]**
 - [omerAydin0/assetlab](https://github.com/omerAydin0/assetlab) — 将 Android Unity 构建转为可搜索的研究资料库：从图集中裁切精灵、根据 Unity 自身的引用图识别角色，并从预制件重组动画。 **[0 星标]**
 - [PANCHO7532/udp-relay](https://github.com/PANCHO7532/udp-relay) — 使用这个纯 JavaScript 编写的 MITM 工具，实时分析和审计 UDP 数据包！ **[0 星标]**
 - [Prinsessen/innovv-k7-autodump-](https://github.com/Prinsessen/innovv-k7-autodump-) — 将 INNOVV K7 行车记录仪自动备份到 NAS：摩托车开始充电时（通过 BLE 读取 Victron Blue Smart），车库内的 Shelly Plus Uni 闭合车上的继电器以唤醒相机，再由 Raspberry Pi 通过 WiFi 拉取并校验录像。openHAB 运行状态机，包括检测充电夹是否接在车上。 **[0 星标]**
-- [prongbang/snapshot_widget](https://github.com/prongbang/snapshot_widget) — 将 Flutter Widget 截取为 Uint8List 图像的库。 **[0 星标]**
+- [prongbang/snapshot\_widget](https://github.com/prongbang/snapshot_widget) — 将 Flutter Widget 截取为 Uint8List 图像的库。 **[0 星标]**
 - [prosoftdev999/hydration-event-reconcile](https://github.com/prosoftdev999/hydration-event-reconcile) — 前端故障重建基准，用于协调还原 SSR 水合、DOM 事件、应用状态、WebSocket 历史、调度时序、源码映射和计算样式。 **[0 星标]**
 - [psm1st/lohasmeal-flutter-public](https://github.com/psm1st/lohasmeal-flutter-public) — Lohasmeal Flutter WebView 外壳与 coklog 宿主，提供经过清理的公开快照，秘密信息已脱敏。 **[0 星标]**
-- [QWavey/flutter_decompile](https://github.com/QWavey/flutter_decompile) — 从 Flutter 应用的 AOT 快照重建结构骨架，并标记每一处缺失。另附模拟器启动器。 **[0 星标]**
+- [QWavey/flutter\_decompile](https://github.com/QWavey/flutter_decompile) — 从 Flutter 应用的 AOT 快照重建结构骨架，并标记每一处缺失。另附模拟器启动器。 **[0 星标]**
 - [RealAlphabet/ariadne-js](https://github.com/RealAlphabet/ariadne-js) — Ariadne 静态追踪 JavaScript 中的变量，并提取重现其值所需的代码，无需执行目标程序。 **[0 星标]**
-- [Retr0-code/jsast](https://github.com/Retr0-code/jsast) — 使用 @babel 自动生成 JavaScript 抽象语法树。 **[0 星标]**
+- [Retr0-code/jsast](https://github.com/Retr0-code/jsast) — 使用 <span>@</span>babel 自动生成 JavaScript 抽象语法树。 **[0 星标]**
 - [rj-since-2000/Places-App](https://github.com/rj-since-2000/Places-App) — 使用地理定位 API 保存位置快照的 Flutter 应用 **[0 星标]**
-- [sharoon7171/streamtape-direct-resolver](https://github.com/sharoon7171/streamtape-direct-resolver) — 将 Streamtape 文件 ID 或 URL 解析为 tapecontent.net MP4。获取 /v/{id}，重放 get_video 的 innerHTML 混淆逻辑，跟随入口的 302 重定向，并用范围请求探查 CDN 中的 ftyp 原子。Node HTTP 服务端提供静态界面、POST /api/resolve JSON API、parse-video-id 输入解析器、解析计时器，以及直接指向 CDN 的 HTML5 video src。 **[0 星标]**
+- [sharoon7171/streamtape-direct-resolver](https://github.com/sharoon7171/streamtape-direct-resolver) — 将 Streamtape 文件 ID 或 URL 解析为 tapecontent.net MP4。获取 /v/{id}，重放 get\_video 的 innerHTML 混淆逻辑，跟随入口的 302 重定向，并用范围请求探查 CDN 中的 ftyp 原子。Node HTTP 服务端提供静态界面、POST /api/resolve JSON API、parse-video-id 输入解析器、解析计时器，以及直接指向 CDN 的 HTML5 video src。 **[0 星标]**
 - [skiddgoddamn/bothelp-mcp](https://github.com/skiddgoddamn/bothelp-mcp) — 通过 BotHelp 构建器的私有 WebSocket-RPC 读取并构建机器人流程的 MCP 服务器和 Claude Code 插件，支持 Telegram、VK、MAX 和 WhatsApp。无依赖。 **[0 星标]**
 - [sohankanna/Malware-Analysis-Collection](https://github.com/sohankanna/Malware-Analysis-Collection) — 恶意软件样本、钓鱼工具包和诈骗基础设施的技术分析，包含失陷指标（IOC）、逆向工程笔记及去混淆后的载荷。 **[0 星标]**
 - [sourman/cursor-driver](https://github.com/sourman/cursor-driver) — 以编程方式控制 Cursor 编辑器，通过 CDP 读取和修改其实时运行状态。 **[0 星标]**
 - [sresarehumantoo/reaper](https://github.com/sresarehumantoo/reaper) — JavaScript 和 TypeScript 的死代码与混淆分析器，提供加固的 Docker 沙箱用于动态分析。 **[0 星标]**
 - [ssh333/Monster-Party](https://github.com/ssh333/Monster-Party) — 用于 Ankni 设备的 Flutter v2 BLE 振动控制器。支持双通道 PWM、20 Hz 调度器、波形/播放列表、后台播放、自动重连和本地配置。 **[0 星标]**
 - [TheQY71/yuanrenxue-solver-skill](https://github.com/TheQY71/yuanrenxue-solver-skill) — 用于解决猿人学（yuanrenxue）JavaScript 逆向比赛挑战的智能体技能：识别特征、选择路线、验证。 **[0 星标]**
-- [toms74209200/widgetbook_snapshot](https://github.com/toms74209200/widgetbook_snapshot) — Flutter／Widgetbook 快照测试示例 **[0 星标]**
+- [toms74209200/widgetbook\_snapshot](https://github.com/toms74209200/widgetbook_snapshot) — Flutter／Widgetbook 快照测试示例 **[0 星标]**
 - [UnknownHacker1/rea-groundtruth](https://github.com/UnknownHacker1/rea-groundtruth) — 将 REA（Reverse Engineer Anything）的报告与代码实际内容进行核对，并提供针对其盲点的一键复现。 **[0 星标]**
 - [VaalRL/orphan-clean](https://github.com/VaalRL/orphan-clean) — 🧹 跨语言、多项目依赖审计工具：使用 DAG 传递闭包找出孤立软件包，提供三层安全分级和自动快照回滚，一键清理 Rust／Flutter 编译缓存，回收数十 GB 空间。审计 Python、Node.js、Rust 和 Flutter 项目的依赖，通过分层安全锁与 pip freeze 回滚快照安全清理孤立软件包。 **[0 星标]**
-- [van4yta/command_chain_timeline](https://github.com/van4yta/command_chain_timeline) — 用于可视化 command_chain 执行快照的交互式 Flutter 时间线。 **[0 星标]**
+- [van4yta/command\_chain\_timeline](https://github.com/van4yta/command_chain_timeline) — 用于可视化 command\_chain 执行快照的交互式 Flutter 时间线。 **[0 星标]**
 - [vybebat/flutterscope](https://github.com/vybebat/flutterscope) — 针对 AOT 编译的 Flutter 应用进行安全分析。从 Dart 快照中恢复事实，并映射到 OWASP MASVS 控制项。 **[0 星标]**
 - [winnpixie/xhr-x](https://github.com/winnpixie/xhr-x) — 通过修改原型来操纵和侦听 XMLHttpRequest。 **[0 星标]**
 - [Xlron01/Pinterest-upload-extension](https://github.com/Xlron01/Pinterest-upload-extension) — 一键社交发布工具（Chrome MV3）：从任意网站捕获媒体并发布真实 Pinterest Pin；基于 HAR 逆向分析，采用模拟人类操作的 DOM 自动化和远程选择器配置。 **[0 星标]**

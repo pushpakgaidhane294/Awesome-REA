@@ -6,15 +6,18 @@ The canonical website is [AwesomeREA.org](https://awesomerea.org/); the public s
 
 ## What the site provides
 
-- `/papers/` and `/zh/papers/` provide the source-reviewed bibliography with original author names, publication status, precise dates, bilingual scope limits and BibTeX downloads. The `.bib` files use standard month macros and are served as `application/x-bibtex; charset=utf-8` through [site/_headers](../site/_headers). Some papers also appear in the curated catalog; the counts are not additive.
+- `/papers/` and `/zh/papers/` provide the source-reviewed bibliography with original author names, publication status, precise dates, bilingual scope limits and BibTeX downloads. The `.bib` files use standard month macros, add publisher container titles, volumes and pages only when a record's `citation` cites them, print preprint and accepted-paper arXiv identifiers as `howpublished` for classic styles, and are served as `application/x-bibtex; charset=utf-8` through [site/_headers](../site/_headers). Some papers also appear in the curated catalog; the counts are not additive.
 - `/resources/` and `/zh/resources/` contain every curated record in ordinary HTML, with its original source, review date, requirements, and a stable section link.
+- `/resources/<id>/` and `/papers/<id>/`, with matching `/zh/` routes, provide complete detail pages for curated resources and papers. Listing cards and related-entry links expose these URLs through ordinary HTML links while keeping external title/source links and previous listing anchors.
+- `/cases/` and `/zh/cases/` collect the case-study subset by subject, with full descriptions, prerequisites, evidence and direct links to individual entries. Case counts are part of the curated total, not an additional collection.
 - `/about/` and `/zh/about/` explain the collection, its relationship to REA, source review, and the separate automated repository index.
 - `/browse/` and `/zh/browse/` provide category pages for the automated index. Their provenance stays distinct from curated resources.
-- Every indexable page has a canonical URL and sitemap entry. Paired language pages have reciprocal `hreflang` links. Fragment IDs locate entries; they are not separate sitemap URLs.
+- Every indexable page has a canonical URL and sitemap entry. Paired language pages have reciprocal `hreflang` links. Detail-page inventory is derived from reviewed resource and paper IDs; automatic scan records do not produce individual pages. Existing fragment IDs still locate entries within lists and are not separate sitemap URLs.
+- Detail pages use `WebPage` and `BreadcrumbList` metadata. A resource's main entity is a `CreativeWork` linked to the original resource; a paper uses `ScholarlyArticle` with its recorded authors, publication status, identifiers and date precision. Source-review dates are not presented as publication dates, and resource pages do not invent authors, licenses or ratings.
 - WebSite, CollectionPage/AboutPage, ItemList, and BreadcrumbList metadata describe the visible content. The site does not claim ratings, official affiliation, or reproduction results it does not have.
 - `/llms.txt` is an optional navigation index for readers and tools. `/catalog.json` is the machine-readable curated catalog. Neither guarantees indexing or citation.
 
-Run `python3 scripts/build_production.py` before publication. It validates the source catalogs and generated READMEs, checks the browser script, builds the site, and validates canonical pages, language links, static resource coverage, metadata, and crawler permissions.
+Run `python3 scripts/build_production.py` before publication. It validates the source catalogs and generated READMEs, checks the browser script, builds the site, and validates canonical pages, language links, exact detail-page inventory, static resource coverage, metadata, and crawler permissions. These checks establish crawlable structure and source consistency; they do not demonstrate indexing or ranking.
 
 ## What the evidence supports
 
@@ -59,6 +62,24 @@ At launch, use Games / Websites / Apps as content types, platform and Showcase /
 A top-level `404.html` makes unknown paths return HTTP 404 instead of the homepage. The sitemap omits modification dates when a significant page-change date cannot be established reliably; a source-review timestamp is not a page-modification timestamp.
 
 Run `python3 scripts/submit_indexnow.py` to preview the sitemap URL batch, then `python3 scripts/submit_indexnow.py --submit` after deployment. The command checks the live ownership file, sitemap, public build manifest and canonical page content against this build before sending a notification. It submits only canonical awesomerea.org URLs. HTTP 200 confirms receipt; HTTP 202 means key validation is pending. Neither confirms indexing. See the [IndexNow protocol](https://www.indexnow.org/documentation).
+
+For an optional delta, retain a previous `build-manifest.json` outside `dist/` and obtain its SHA-256 from a reviewed publication receipt. A newly calculated digest of an untrusted download does not establish that it is an approved baseline. Set `APPROVED_PREVIOUS_SHA256` to that recorded digest, then preview:
+
+```sh
+python3 scripts/submit_indexnow.py \
+  --previous-manifest previous-build-manifest.json \
+  --previous-manifest-sha256 "$APPROVED_PREVIOUS_SHA256"
+```
+
+Both baseline arguments are required together. The baseline must match the supplied digest and the current manifest schema and HTML-normalization version. Malformed JSON, duplicate keys, unsafe file paths, symlinks and incompatible hashes are rejected. The baseline's referenced paths are never opened or fetched.
+
+The delta dry run makes no network requests. Its JSON report includes full current/baseline manifest digests, the current sitemap digest, checkout revision/cleanliness when available, and sorted added/updated **current canonical URLs**. Unchanged URLs are counted rather than printed. The manifest hashes bind the actual build; a checkout revision does not by itself prove that a dirty build came from that commit. HTML selection compares normalized `html_sha256`, so unchanged pages are excluded even if raw transport-only HTML differs.
+
+After reviewing the report and deploying the build, add `--submit` to the same command. Before any POST, the command still verifies ownership, the complete current sitemap, the deployed manifest and **every current canonical page**, including unchanged pages. Only the notification payload is smaller. An empty HTML delta makes no network request. If non-HTML files changed with no selected HTML pages, the report flags review as required and `--submit` exits nonzero without a POST: review which pages the data/assets affect, or use the default full-sitemap mode after that review. Non-HTML changes are also reported alongside nonempty deltas.
+
+Removed HTML candidates are **filenames only**, including possible noncanonical files such as `404.html`; they are never converted to historical URLs or notified as deletions. Other changed HTML files outside the current sitemap are reported separately and excluded. A previous canonical inventory and actual deployed deletion/redirect evidence would be needed for a separate removal workflow. A missing manifest entry alone supplies neither. IndexNow supports added, updated and deleted URLs, but a notification is not proof of search-engine removal. [IndexNow documentation](https://www.indexnow.org/documentation)
+
+Each `--submit` invocation sends at most one POST and never retries automatically. A timeout or unavailable response leaves the result unconfirmed; do not blindly repeat an uncertain submission. HTTP 202 remains key-validation-pending, and no response establishes indexing or ranking.
 
 `build-manifest.json` records deterministic hashes and byte sizes for public output files, including the paper bibliography and browser-search projection. It contains no environment paths or account settings. HTML comparison accounts for recognized Cloudflare analytics and email-obfuscation transformations; page text, structured data and application asset revisions remain part of the comparison. Missing or stale canonical pages stop submission even when the sitemap's URL list has not changed.
 

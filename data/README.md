@@ -34,9 +34,9 @@ The validator accepts the category keys defined in `CATEGORIES` in [build_readme
 - `foundation` (Foundation tool): an established analysis tool, library or framework that works independently of REA.
 - `learning` (Learning resource): a course, book, reference or research resource with no established REA connection.
 
-Source review dates are snapshots; upstream requirements may change. A documentation link on `main` may describe functionality that is not in a released package; keep that distinction in the description or requirements.
+Source review dates are snapshots; upstream requirements may change. GitHub file and directory evidence links (`/blob/`, `/tree/`) name the reviewed commit, so they keep showing the reviewed text, while `url` remains the moving project link. Resource and paper review dates allow at most the next UTC calendar day to accommodate reviewers ahead of UTC. Resource review timestamps retain an exact 24-hour allowance; publication and first-arXiv dates must not be in the future. A documentation link on `main` may describe functionality that is not in a released package; keep that distinction in the description or requirements.
 
-`benchmarks.json` is a separate repository comparison dataset. Star counts are observations at `observed_at`, not a live ranking, quality score, or predicted growth rate. The comparison notes explain the population and limitations.
+`benchmarks.json` is a separate repository comparison dataset. Star counts are observations at `observed_at`, not a live ranking, quality score, or predicted growth rate. It holds one GitHub REST API observation of 19 repositories (2 designated anchors and 17 comparison repositories) between 2026-10-16T00:47:46Z and 00:47:48Z. Each README evidence link names the default-branch commit that served the observed README, whose file matches `readme_blob_sha`. The repositories were chosen deliberately to cover high-profile references and direct neighbors, not sampled at random, so the data supports neither causal comparisons nor growth estimates. The [comparison notes](../docs/benchmark-research.zh-CN.md) (Chinese, dated snapshot) explain the selection and limitations.
 
 `papers.json` is a separate bibliography, rendered into the [English paper directory](https://awesomerea.org/papers/), [Chinese paper directory](https://awesomerea.org/zh/papers/), and both READMEs. The bibliography is counted separately from the repository scans. Some papers also appear in the curated collection, so paper and curated totals must not be added as unique entries. Records preserve original titles and author names, publication venue and status, date precision, DOI/arXiv identifiers, public primary sources, bilingual summaries and scope limitations. Chinese titles are translations. A preprint is labeled as such; an open paper does not imply an open dataset or evaluation service. Code links require an author-provided source. Review dates describe bibliography checks, not publication dates or reproduced results.
 
@@ -57,6 +57,7 @@ Each paper record has exactly these fields; the validator rejects missing or ext
 | `arxiv_version_reviewed` | `v1`, `v2`, … or `null` | arXiv version checked; `null` when there is no `arxiv_id` |
 | `first_arxiv_date` | ISO date or `null` | First arXiv submission date; `null` when there is no `arxiv_id` |
 | `doi` | DOI such as `10.18653/v1/2024.emnlp-main.203`, or `null` | Paper DOI, never a software or dataset DOI |
+| `citation` | Optional object; omit when unverified | Published papers only. `container_title` and, where the publisher states them, `volume`, `issue`, `series`, `pages` (`first-last`), `article_number` and `publisher`, copied from the sources listed in `sources` (the paper URL, PDF or `evidence_urls`). BibTeX uses them; cards and READMEs keep `venue` |
 | `url` | HTTPS URL | Canonical paper page, unique in the bibliography |
 | `pdf_url` | HTTPS URL | Public PDF of the paper |
 | `code_url` / `project_url` | HTTPS URL or `null` | Author-provided code / project page |
@@ -67,7 +68,7 @@ Each paper record has exactly these fields; the validator rejects missing or ext
 | `evidence_urls` | Nonempty list of HTTPS URLs | Primary sources checked for the record |
 | `metadata_notes` / `metadata_notes_zh` | Text | Notes on identifiers, dates, acceptance or artifacts |
 | `kind` | `research` | Fixed value |
-| `verified_at` | ISO date | Date of the bibliography review; not in the future |
+| `verified_at` | ISO date | Date of the bibliography review; at most one calendar day ahead of UTC for timezone differences |
 | `verification` | `source-reviewed` | Fixed value; sources were checked, not reproduced |
 | `runtime_tested` | `false` | Fixed value; reproduction results are not recorded |
 
@@ -75,7 +76,7 @@ Each paper record has exactly these fields; the validator rejects missing or ext
 
 Search the bibliography with `python3 scripts/catalog.py --papers --target website`, add a query such as `interaction`, or use `--language zh` for Chinese output. `--json` returns matching source records for tools and agents. Paper search is separate from `--source-index` and the default curated-resource search.
 
-The `protocol` target is available in curated, paper and source-index searches. It covers communication formats, exchanges and state, including hardware-bus protocols when those are the analysis subject. Multiple targets are allowed; paper `targets[0]` controls its single primary section. Supporting the target does not assign it to existing records or change automatic scan classifications; generated source-index exports show it only through an exact curated cross-reference. See the [target guidance](../CONTRIBUTING.md#suggest-a-resource).
+The `protocol` target is available in curated, paper and source-index searches. It covers communication formats, exchanges and state, including hardware-bus protocols when those are the analysis subject. Multiple targets are allowed; paper `targets[0]` controls its single primary section. Supporting the target does not assign it to existing records. Scan classification engine 4 assigns it to new captures only from an explicit protocol-analysis signal; retained source records keep their stored labels, so generated source-index exports currently show it only through an exact curated cross-reference. See the [target guidance](../CONTRIBUTING.md#suggest-a-resource).
 
 Paper DOI/arXiv fields may both be null only for a published conference or workshop paper matching an explicitly reviewed publisher identity profile. The USENIX Security and WOOT profiles bind a canonical presentation page to its final PDF, series, publication year and exact evidence URLs. Artifact identifiers stay in the artifact notes; they never replace a paper identifier. Citations and structured data omit unavailable identifiers. See the [paper contribution rules](../CONTRIBUTING.md#suggest-a-research-paper).
 

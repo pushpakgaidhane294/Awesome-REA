@@ -1,0 +1,73 @@
+name: Suggest a reconstruction case / 推荐重建案例
+description: Share a bounded reconstruction case with public evidence. 可用英文或简体中文填写。
+title: "Case study: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        English or 简体中文 is welcome; you do not need to write both. Partial or untested cases can be submitted. Sharing a reproduction result helps source review; it does not make a catalog entry runtime-verified.
+        可用英文或简体中文填写，无需重复翻译。部分重建或未测试的案例也可提交；复现说明用于帮助来源复核，不直接作为目录的运行验证结论。
+
+        Issues are public. Link public evidence; do not upload proprietary target binaries or private captures. Remove credentials, private account details and personal filesystem paths. Report security problems privately under the [security policy](https://github.com/reacher-z/Awesome-REA/security/policy).
+        Issue 内容公开。请链接公开证据，不要上传专有目标二进制文件或私人抓包数据，并去除凭据、私人账户信息及个人文件系统路径。安全问题请按[安全策略](https://github.com/reacher-z/Awesome-REA/security/policy)私下报告。
+  - type: input
+    id: url
+    attributes:
+      label: Case URL / 案例链接
+      description: Original project repository or author write-up. 原项目仓库或作者报告。
+    validations:
+      required: true
+  - type: textarea
+    id: target_inputs
+    attributes:
+      label: Original target and inputs / 原始目标与输入
+      description: Name the original software or device, its version if known, and the inputs or observations used. 写明原软件或设备、已知版本，以及使用的输入或观察资料。
+      placeholder: "Target / 目标: ...\nInputs / 输入: screenshots, user-supplied assets, message traces... / 截图、用户自备资源、报文记录等。"
+    validations:
+      required: true
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Reconstructed outputs and limits / 重建输出与边界
+      description: What was rebuilt, generated or extracted, and what remains out of scope? UI-only, asset-only and protocol-subset cases are valid. 重建、生成或提取了什么？哪些内容未覆盖？仅重建界面、提取资源或还原部分协议均可。
+    validations:
+      required: true
+  - type: textarea
+    id: methods
+    attributes:
+      label: Methods and tools / 方法与工具
+      description: Name documented methods, tools or agents; unknown is fine. REA use is not required. 填写来源中记载的方法、工具或智能体；未知可留空，不要求使用 REA。
+    validations:
+      required: false
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Primary evidence / 一手证据
+      description: Link the public documentation, code or demonstration supporting the outputs and results. Prefer commit permalinks or dated sources. 提供支持输出及结果的公开文档、代码或演示链接，优先使用固定提交或注明日期的来源。
+    validations:
+      required: true
+  - type: dropdown
+    id: results_status
+    attributes:
+      label: Result evidence / 结果证据状态
+      description: Independent reproduction means someone other than the original author reran the method and compared the result. 独立复现指原作者以外的人实际运行了方法并比较结果。
+      options:
+        - Unknown or not tested / 未知或未测试
+        - Author-reported only / 仅作者报告
+        - Independently reproduced in part or in full / 已部分或全部独立复现
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Results and reproduction scope / 结果与复现范围
+      description: Separate author-reported results from any independent reproduction. State what was compared, link public reproduction evidence if available, and note untested behavior. Unknown is acceptable. 区分作者报告与独立复现，说明比较了什么、可用的公开复现证据和尚未测试的行为；可以填写未知。
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements and licensing / 使用条件与许可
+      description: Note required original assets, platforms, tool versions, source availability or license limits when known. Describe requirements without attaching the original files. 按已知情况注明原始资源、平台、工具版本、源码可用性或许可限制；只描述使用条件，不附原始文件。
+    validations:
+      required: false

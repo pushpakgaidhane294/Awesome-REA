@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 import shutil
+import tempfile
 from pathlib import Path
 from urllib.parse import urlsplit
 from xml.sax.saxutils import escape as xml_escape
@@ -14,8 +15,9 @@ from xml.sax.saxutils import escape as xml_escape
 from build_browse_pages import build_browse_pages
 from build_discovery_pages import build_discovery_pages
 from build_paper_pages import build_paper_pages
+from build_entry_pages import build_entry_pages
 from build_manifest import write_build_manifest
-from homepage_locales import localized_homepage
+from homepage_locales import HOMEPAGE_DESTINATIONS, localized_homepage
 from artifact_links import with_artifact_links, with_curated_labels
 from source_browser import write_source_browser
 from localization import read_localizations, localized_records
@@ -52,10 +54,10 @@ def fontawesome_markup(html: str, stylesheet_url: str) -> str:
     return html
 
 
-def configure_fontawesome(html: str, licensed_package: Path | None, assets_url: str | None = None) -> str:
+def configure_fontawesome(html: str, licensed_package: Path | None, assets_url: str | None = None, *, output: Path) -> str:
     """Embed licensed fonts only in ignored deployment output; keep source portable."""
-    generated_css = OUTPUT / "fontawesome.css"
-    font_output = OUTPUT / "fonts"
+    generated_css = output / "fontawesome.css"
+    font_output = output / "fonts"
     font_names = ("fa-light-300.woff2", "fa-brands-400.woff2")
     if licensed_package is None:
         generated_css.unlink(missing_ok=True)
@@ -134,12 +136,9 @@ def default_targets(record: dict) -> list[str]:
     return sorted(found or {"binary"})
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    icons = parser.add_mutually_exclusive_group()
-    icons.add_argument("--fontawesome-dir", type=Path, help="Optional local licensed Font Awesome Pro package; copied only into ignored deployment output.")
-    icons.add_argument("--fontawesome-assets-url", help="Trusted HTTPS origin/path serving the authorized Font Awesome deployment; no font files are downloaded or copied.")
-    args = parser.parse_args()
+def build_site(output: Path, *, fontawesome_dir: Path | None = None,
+               fontawesome_assets_url: str | None = None) -> tuple[int, int, int]:
+    """Render a complete site into a fresh, caller-owned staging directory."""
     translations = json.loads((SOURCE / "translations.zh-CN.json").read_text(encoding="utf-8"))
     papers = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
     resources = []
@@ -162,20 +161,20 @@ def main() -> None:
         raise ValueError("Duplicate catalog IDs")
     latest_review = max(record["verified_at"] for record in resources)
     metadata = {"site_url": SITE_URL, "repository_url": REPOSITORY_URL, "resource_count": len(resources), "independent_integration_count": sum(r["group"] == "agents" for r in resources), "latest_review": latest_review, "verification_note": "Curated resource descriptions are reviewed against primary sources. The broader repository index is collected automatically."}
-    OUTPUT.mkdir(exist_ok=True)
+    output.mkdir()
     for path in SOURCE.iterdir():
         if path.name == "translations.zh-CN.json":
             continue
         if path.is_dir():
-            shutil.copytree(path, OUTPUT / path.name, dirs_exist_ok=True)
+            shutil.copytree(path, output / path.name)
         else:
-            shutil.copy2(path, OUTPUT / path.name)
-    html = (OUTPUT / "index.html").read_text(encoding="utf-8")
+            shutil.copy2(path, output / path.name)
+    html = (output / "index.html").read_text(encoding="utf-8")
     for key, value in {"RESOURCE_COUNT": len(resources), "INTEGRATION_COUNT": metadata["independent_integration_count"], "REVIEWED_AT": latest_review}.items():
         html = html.replace("{{" + key + "}}", str(value))
-    html = configure_fontawesome(html, args.fontawesome_dir, args.fontawesome_assets_url)
+    html = configure_fontawesome(html, fontawesome_dir, fontawesome_assets_url, output=output)
     source_index_path = ROOT / "data" / "source-index.json"
-    source_index_output = OUTPUT / "source-index.json"
+    source_index_output = output / "source-index.json"
     browse_document = None
     metadata["source_index"] = {"available": False, "resource_count": 0}
     if source_index_path.is_file():
@@ -202,19 +201,19 @@ def main() -> None:
                 index_meta = index_data.get("meta", {})
                 metadata["source_index"] = {"available": True, "resource_count": len(successful) - excluded_count, "scanned_count": len(successful), "excluded_count": excluded_count, "status": index_meta.get("status", ""), "completed_at": index_meta.get("completed_at"), "verification": "automated-readme-scan"}
                 source_index_output.write_text(json.dumps(index_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-                write_source_browser(OUTPUT, source_index_output.read_bytes())
+                write_source_browser(output, source_index_output.read_bytes())
     if not metadata["source_index"]["available"]:
         source_index_output.unlink(missing_ok=True)
-        write_source_browser(OUTPUT, None)
+        write_source_browser(output, None)
     topic_labels_path = SOURCE / "topics.i18n.json"
-    topic_labels = json.loads(topic_labels_path.read_text()) if topic_labels_path.exists() else {}
+    topic_labels = json.loads(topic_labels_path.read_text(encoding="utf-8")) if topic_labels_path.exists() else {}
     metadata["paper_count"] = len(papers)
     catalog = {"meta": metadata, "resources": resources, "topic_labels": topic_labels}
-    (OUTPUT / "catalog.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (OUTPUT / "papers.json").write_text(json.dumps(papers, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (output / "catalog.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (output / "papers.json").write_text(json.dumps(papers, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     for key, value in {"BROWSE_COUNT": metadata["source_index"]["resource_count"], "SCANNED_COUNT": metadata["source_index"].get("scanned_count", 0), "PAPER_COUNT": len(papers)}.items():
         html = html.replace("{{" + key + "}}", f"{value:,}")
-    navigation = [("browse", "Repository directory"), ("resources", "Curated resources"), ("papers", "Research papers"), ("about", "About the collection")]
+    navigation = [(path, names[0]) for path, names in HOMEPAGE_DESTINATIONS.items()]
     structured = {"@context": "https://schema.org", "@graph": [
         {"@type": "WebSite", "@id": SITE_URL + "/#website", "url": SITE_URL + "/", "name": "Awesome Reverse Engineering Anything", "alternateName": "Awesome REA", "inLanguage": ["en", "zh-CN"]},
         {"@type": "CollectionPage", "@id": SITE_URL + "/#collection", "url": SITE_URL + "/", "name": "Awesome Reverse Engineering Anything", "inLanguage": "en", "isPartOf": {"@id": SITE_URL + "/#website"}, "description": "An independent collection of reverse-engineering tools, projects, case studies and research papers for websites, games, apps, binaries, firmware and communication protocols.", "mainEntity": {"@type": "ItemList", "numberOfItems": len(navigation), "itemListElement": [{"@type": "ListItem", "position": i, "name": name, "url": f"{SITE_URL}/{path}/"} for i, (path, name) in enumerate(navigation, 1)]}}
@@ -222,51 +221,118 @@ def main() -> None:
     html = html.replace("</head>", '<script type="application/ld+json">' + json.dumps(structured, ensure_ascii=False).replace("<", "\\u003c") + '</script>\n</head>')
     asset_hrefs = {}
     for filename, attribute in (("app.js", "src"), ("styles.css", "href"), ("favicon.svg", "href")):
-        revision = hashlib.sha256((OUTPUT / filename).read_bytes()).hexdigest()[:16]
+        revision = hashlib.sha256((output / filename).read_bytes()).hexdigest()[:16]
         asset_hrefs[filename] = f'/{filename}?v={revision}'
         html = html.replace(f'{attribute}="{filename}"', f'{attribute}="{filename}?v={revision}"')
-    social_revision = hashlib.sha256((OUTPUT / "social-card.png").read_bytes()).hexdigest()[:16]
+    social_revision = hashlib.sha256((output / "social-card.png").read_bytes()).hexdigest()[:16]
     html = html.replace(f'{SITE_URL}/social-card.png"', f'{SITE_URL}/social-card.png?v={social_revision}"')
     data_digest = hashlib.sha256()
     for filename in ("catalog.json", "source-index.json", "source-browser.json", "papers.json"):
-        path = OUTPUT / filename
+        path = output / filename
         if path.is_file():
             data_digest.update(filename.encode("utf-8") + b"\0" + path.read_bytes())
     data_revision = data_digest.hexdigest()[:16]
     html = html.replace('<html ', f'<html data-catalog-revision="{data_revision}" ', 1)
     # Both entry pages contain their own language before JavaScript runs.
     app_source = (SOURCE / "app.js").read_text(encoding="utf-8")
-    (OUTPUT / "index.html").write_text(localized_homepage(html, app_source, "en"), encoding="utf-8")
-    (OUTPUT / "zh").mkdir(exist_ok=True)
-    (OUTPUT / "zh/index.html").write_text(localized_homepage(html, app_source, "zh"), encoding="utf-8")
-    browse_revision = hashlib.sha256((OUTPUT / "browse.css").read_bytes()).hexdigest()[:16]
-    icon_stylesheet = "/fontawesome.css" if args.fontawesome_dir else (args.fontawesome_assets_url.rstrip("/") + "/fontawesome.css" if args.fontawesome_assets_url else None)
+    (output / "index.html").write_text(localized_homepage(html, app_source, "en"), encoding="utf-8")
+    (output / "zh").mkdir(exist_ok=True)
+    (output / "zh/index.html").write_text(localized_homepage(html, app_source, "zh"), encoding="utf-8")
+    browse_revision = hashlib.sha256((output / "browse.css").read_bytes()).hexdigest()[:16]
+    icon_stylesheet = "/fontawesome.css" if fontawesome_dir else (fontawesome_assets_url.rstrip("/") + "/fontawesome.css" if fontawesome_assets_url else None)
     browse_urls = build_browse_pages(
-        OUTPUT, browse_document, curated_count=len(resources), site_url=SITE_URL,
+        output, browse_document, curated_count=len(resources), site_url=SITE_URL,
         repository_url=REPOSITORY_URL, styles_href=asset_hrefs["styles.css"],
         browse_styles_href=f"/browse.css?v={browse_revision}",
         favicon_href=asset_hrefs["favicon.svg"],
         social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
         data_revision=data_revision, icon_stylesheet_href=icon_stylesheet,
     )
-    discovery_paths = build_discovery_pages(OUTPUT, catalog, browse_document)
-    papers_revision = hashlib.sha256((OUTPUT / "papers.css").read_bytes()).hexdigest()[:16]
+    discovery_paths = build_discovery_pages(output, catalog, browse_document)
+    papers_revision = hashlib.sha256((output / "papers.css").read_bytes()).hexdigest()[:16]
     paper_urls = build_paper_pages(
-        OUTPUT, papers, site_url=SITE_URL, repository_url=REPOSITORY_URL,
+        output, papers, site_url=SITE_URL, repository_url=REPOSITORY_URL,
         styles_href=asset_hrefs["styles.css"], papers_styles_href=f"/papers.css?v={papers_revision}",
         favicon_href=asset_hrefs["favicon.svg"], social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
         icon_stylesheet_href=icon_stylesheet,
     )
-    (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
-    (OUTPUT / "CNAME").write_text("awesomerea.org\n", encoding="utf-8")
-    (OUTPUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
+    entry_revision = hashlib.sha256((output / "entry.css").read_bytes()).hexdigest()[:16]
+    entry_urls = build_entry_pages(
+        output, resources, papers, site_url=SITE_URL, repository_url=REPOSITORY_URL,
+        styles_href=asset_hrefs["styles.css"], entry_styles_href=f"/entry.css?v={entry_revision}",
+        favicon_href=asset_hrefs["favicon.svg"], social_image_href=f"{SITE_URL}/social-card.png?v={social_revision}",
+        icon_stylesheet_href=icon_stylesheet,
+    )
+    (output / ".nojekyll").write_text("", encoding="utf-8")
+    (output / "CNAME").write_text("awesomerea.org\n", encoding="utf-8")
+    (output / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
     # Review timestamps describe sources, not every page's modification date.
     # Omit lastmod rather than advertising a fabricated build-time freshness signal.
-    sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls]
+    sitemap_urls = [SITE_URL + "/", SITE_URL + "/zh/", *browse_urls, *(SITE_URL + path for path in discovery_paths), *paper_urls, *entry_urls]
     sitemap_entries = [f'<url><loc>{xml_escape(url)}</loc></url>' for url in sitemap_urls]
-    (OUTPUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
-    write_build_manifest(OUTPUT)
-    print(f"Built {len(resources)} curated resources, {len(papers)} papers and {len(sitemap_urls)} indexable pages → dist/ ({SITE_URL})")
+    (output / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join(sitemap_entries) + '\n</urlset>\n', encoding="utf-8")
+    write_build_manifest(output)
+    return len(resources), len(papers), len(sitemap_urls)
+
+
+def check_output_directory(output: Path) -> None:
+    """Never follow a deployment-directory symlink or replace a non-directory."""
+    if output.is_symlink() or (output.exists() and not output.is_dir()):
+        raise ValueError("Deployment output must be a directory, not a symlink or file.")
+
+
+def build_staged_site(*, fontawesome_dir: Path | None = None,
+                      fontawesome_assets_url: str | None = None) -> tuple[int, int, int]:
+    """Keep the previous deployment intact until generation and its manifest succeed."""
+    check_output_directory(OUTPUT)
+    # This directory stays ignored even if an interrupted rollback needs manual recovery.
+    cache = OUTPUT.parent / ".cache"
+    check_output_directory(cache)
+    cache.mkdir(exist_ok=True)
+    workspace = Path(tempfile.mkdtemp(prefix="site-build-", dir=cache))
+    staged, previous = workspace / "next", workspace / "previous"
+    preserve_previous = False
+    try:
+        counts = build_site(staged, fontawesome_dir=fontawesome_dir,
+                            fontawesome_assets_url=fontawesome_assets_url)
+        check_output_directory(OUTPUT)
+        try:
+            if OUTPUT.exists():
+                OUTPUT.rename(previous)
+            if OUTPUT.exists() or OUTPUT.is_symlink():
+                raise FileExistsError("Deployment output changed during replacement.")
+            staged.rename(OUTPUT)
+        except BaseException:
+            if previous.exists():
+                try:
+                    if OUTPUT.exists() or OUTPUT.is_symlink():
+                        raise FileExistsError("Deployment output changed before rollback.")
+                    previous.rename(OUTPUT)
+                except BaseException as error:
+                    preserve_previous = True
+                    raise RuntimeError(
+                        "Could not restore the prior deployment; it is preserved in "
+                        + ".cache/" + workspace.name + "/previous."
+                    ) from error
+            raise
+        return counts
+    finally:
+        if not preserve_previous:
+            # Only remove this invocation's temporary directory, never its parent.
+            shutil.rmtree(workspace)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    icons = parser.add_mutually_exclusive_group()
+    icons.add_argument("--fontawesome-dir", type=Path, help="Optional local licensed Font Awesome Pro package; copied only into ignored deployment output.")
+    icons.add_argument("--fontawesome-assets-url", help="Trusted HTTPS origin/path serving the authorized Font Awesome deployment; no font files are downloaded or copied.")
+    args = parser.parse_args()
+    resources, papers, pages = build_staged_site(
+        fontawesome_dir=args.fontawesome_dir,
+        fontawesome_assets_url=args.fontawesome_assets_url,
+    )
+    print(f"Built {resources} curated resources, {papers} papers and {pages} indexable pages in dist/ ({SITE_URL})")
 
 
 if __name__ == "__main__":

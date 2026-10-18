@@ -5,6 +5,17 @@ import json
 import re
 from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
 
+from open_graph import open_graph_meta
+
+# Homepage ItemList names: each destination page's H1, not the arrowed link text.
+HOMEPAGE_DESTINATIONS = {
+    'browse': ('Browse repositories by category', '按分类浏览仓库'),
+    'resources': ('Curated reverse engineering resources', '精选逆向工程资源'),
+    'cases': ('Reverse-engineering case studies', '逆向工程案例合集'),
+    'papers': ('Papers & benchmarks', '论文与评测基准'),
+    'about': ('About the collection and its sources', '关于合集与数据来源'),
+}
+
 
 class _Strings:
     """A deliberately small parser: objects, quoted strings, comments, trailing commas."""
@@ -81,6 +92,21 @@ def _ui_strings(source):
             any(not isinstance(key, str) or not isinstance(value, str) for key, value in values.items())
             for values in result.values()):
         raise ValueError('Expected EN/ZH dictionaries of strings')
+    return result
+
+
+def _zh_repository_paths(source):
+    """Repository documents with a Chinese counterpart, read from the literal app.js also uses."""
+    declarations = list(re.finditer(r'(?m)^\s*const\s+ZH_REPOSITORY_PATHS\s*=\s*', source))
+    if not declarations:
+        return {}
+    if len(declarations) != 1:
+        raise ValueError('Expected at most one const ZH_REPOSITORY_PATHS dictionary')
+    parser = _Strings(source, declarations[0].end())
+    result = parser.object(); parser.take(';')
+    if any(not isinstance(value, str) or not re.fullmatch(r'blob/main/[A-Za-z0-9._/-]+\.md', value)
+           for item in result.items() for value in item):
+        raise ValueError('Chinese repository paths must map Markdown files under blob/main/')
     return result
 
 
@@ -162,7 +188,7 @@ def _locale_url(value, origin, language):
     if path.startswith('/zh/'):
         path = path[3:]
     if path == '/' or any(path == '/' + area + '/' or path.startswith('/' + area + '/')
-                          for area in ('browse', 'resources', 'papers', 'about')):
+                          for area in ('browse', 'resources', 'cases', 'papers', 'about')):
         path = ('/zh' if language == 'zh' else '') + path
     return urlunsplit((parsed.scheme, parsed.netloc, path, parsed.query, parsed.fragment))
 
@@ -176,6 +202,10 @@ def localized_homepage(html, app_source, language):
     if language not in {'en', 'zh'}:
         raise ValueError('Homepage language must be en or zh')
     strings = _ui_strings(app_source)[language]
+    # The build localizes the English template; the inverse map keeps a Chinese page convertible back.
+    repository_paths = _zh_repository_paths(app_source)
+    if language == 'en':
+        repository_paths = {chinese: english for english, chinese in repository_paths.items()}
     document = _Document(html)
     if document.stack:
         raise ValueError('Homepage markup has unclosed elements')
@@ -217,7 +247,6 @@ def localized_homepage(html, app_source, language):
             if '@id' in result:
                 result['@id'] = home + ('#' + urlsplit(result['@id']).fragment if '#' in result['@id'] else '')
             items = result.get('mainEntity', {}).get('itemListElement', []) if isinstance(result.get('mainEntity'), dict) else []
-            labels = {'browse': 'browseDirectory', 'resources': 'curatedMode', 'papers': 'directoryPapers', 'about': 'directoryAbout'}
             for item in items:
                 if isinstance(item, dict) and isinstance(item.get('url'), str):
                     parsed = urlsplit(item['url'])
@@ -225,9 +254,23 @@ def localized_homepage(html, app_source, language):
                         continue
                     path = parsed.path.removeprefix('/zh').strip('/')
                     item['url'] = _locale_url(item['url'], origin, language)
-                    if path in labels:
-                        item['name'] = translated(labels[path])
+                    if path in HOMEPAGE_DESTINATIONS:
+                        item['name'] = HOMEPAGE_DESTINATIONS[path][language == 'zh']
         return result
+
+    # The template's social tags are replaced by the block every generator shares.
+    social = [n for n in document.nodes if n['tag'] == 'meta' and (
+        (n['attrs'].get('property') or '').startswith('og:') or (n['attrs'].get('name') or '').startswith('twitter:'))]
+    images = [n['attrs'].get('content') for n in social if n['attrs'].get('property') == 'og:image']
+    if len(images) != 1 or not images[0]:
+        raise ValueError('Homepage needs exactly one og:image URL')
+
+    def own_line(node):
+        """Span a tag with its indentation and newline when it is alone on its line."""
+        start = html.rfind('\n', 0, node['start']) + 1
+        if html[start:node['start']].strip() or html[node['end']:node['end'] + 1] != '\n':
+            return node['start'], node['end']
+        return start, node['end'] + 1
 
     for node in document.nodes:
         tag, original = node['tag'], node['attrs']
@@ -235,6 +278,12 @@ def localized_homepage(html, app_source, language):
         if tag == 'link' and attrs.get('rel') == 'alternate' and 'hreflang' in attrs:
             end = node['end'] + int(html[node['end']:node['end'] + 1] == '\n')
             edits.append((node['start'], end, '')); continue
+        if social and node is social[0]:
+            edits.append((node['start'], node['end'], open_graph_meta(
+                language=language, title=translated('pageTitle'), description=translated('pageDescription'),
+                image_url=images[0], url=home))); continue
+        if any(node is other for other in social):
+            edits.append((*own_line(node), '')); continue
         if tag == 'html': attrs['lang'] = locale
         if node is canonical_nodes[0]: attrs['href'] = home
         if tag == 'title': edits.append((node['inner'], node['close'], escape(translated('pageTitle'))))
@@ -242,12 +291,8 @@ def localized_homepage(html, app_source, language):
             edits.append((node['inner'], node['close'], _markup(translated(attrs['data-i18n']))))
         for marker, target in [('data-i18n-placeholder', 'placeholder'), ('data-i18n-aria', 'aria-label')]:
             if marker in attrs: attrs[target] = translated(attrs[marker])
-        if tag == 'meta':
-            key = attrs.get('name') or attrs.get('property')
-            if key in {'description', 'og:description', 'twitter:description'}: attrs['content'] = translated('pageDescription')
-            elif key in {'og:title', 'twitter:title', 'og:image:alt', 'twitter:image:alt'}: attrs['content'] = translated('pageTitle')
-            elif key == 'og:locale': attrs['content'] = 'zh_CN' if language == 'zh' else 'en_US'
-            elif key == 'og:url': attrs['content'] = home
+        if tag == 'meta' and attrs.get('name') == 'description':
+            attrs['content'] = translated('pageDescription')
         if tag == 'option' and node['parent'] and node['parent']['attrs'].get('id') == 'language-select':
             attrs.pop('selected', None)
             if attrs.get('value') == language: attrs['selected'] = None
@@ -255,6 +300,13 @@ def localized_homepage(html, app_source, language):
             if key in attrs and isinstance(attrs[key], str): attrs[key] = _root_url(attrs[key])
         if tag == 'a' and 'href' in attrs:
             attrs['href'] = _locale_url(attrs['href'], origin, language)
+        if attrs.get('data-repo-path') in repository_paths:
+            # Chinese pages link the Chinese document; app.js then keeps the localized data-repo-path.
+            path, href = attrs['data-repo-path'], attrs.get('href', '')
+            if not href.endswith('/' + path):
+                raise ValueError('Homepage repository link does not end with its data-repo-path')
+            attrs['href'] = href[:-len(path)] + repository_paths[path]
+            attrs['data-repo-path'] = repository_paths[path]
         if 'data-locale-path' in attrs:
             path = attrs['data-locale-path']
             if not re.fullmatch(r'[a-z][a-z0-9-]*(?:/[a-z0-9-]+)*', path):

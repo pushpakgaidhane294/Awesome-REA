@@ -10,6 +10,8 @@ from pathlib import Path
 import re
 from urllib.parse import urlsplit
 
+from open_graph import open_graph_meta
+
 STATUS_LABELS = {
     'conference-paper': ('Conference paper', '会议论文'),
     'conference-accepted': ('Conference accepted', '会议已接收'),
@@ -26,6 +28,19 @@ TARGET_LABELS = {
 }
 MONTHS = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
 BIBTEX_MONTHS = tuple(name[:3].lower() for name in MONTHS)
+
+
+def papers_newest_first(papers: list[dict]) -> list[dict]:
+    """Use the README display order without filling in unverified date parts.
+
+    Within a year, recorded ISO date prefixes sort before year-only records;
+    their relative position is a display convention, not an inferred exact date.
+    English title and stable ID break ties identically in both languages.
+    """
+    return sorted(papers, key=lambda paper: (
+        paper['year'], paper['publication_date'] or str(paper['year']),
+        paper['title'].casefold(), paper['id'],
+    ), reverse=True)
 
 
 def web_url(value: str) -> str:
@@ -73,14 +88,21 @@ def bibtex_text(paper: dict) -> str:
         ('year', str(paper['year'])),
         ('url', paper['url']),
     ]
-    if kind == 'inproceedings':
-        fields.append(('booktitle', literal(paper['venue'])))
-    elif kind == 'article':
-        fields.append(('journal', literal(paper['venue'])))
-    elif paper['publication_status'] == 'conference-accepted':
-        fields.append(('note', literal('Accepted at ' + paper['venue'] + '; exact proceedings date not verified')))
+    # Container fields come only from the publisher metadata cited in `citation`;
+    # without it, published entries keep the short venue label.
+    container = paper.get('citation') or {}
+    if kind in {'inproceedings', 'article'}:
+        fields.append(('booktitle' if kind == 'inproceedings' else 'journal', literal(container.get('container_title') or paper['venue'])))
+        for key, field in (('volume', 'volume'), ('issue', 'number'), ('series', 'series'), ('pages', 'pages'),
+                           ('article_number', 'eid'), ('publisher', 'publisher')):
+            if container.get(key):
+                fields.append((field, literal(container[key]).replace('-', '--') if key == 'pages' else literal(container[key])))
     else:
-        fields.append(('note', 'Preprint'))
+        # plain.bst and plainnat.bst ignore eprint, so misc entries also print the arXiv locator.
+        if paper.get('arxiv_id'):
+            fields.append(('howpublished', 'arXiv:' + paper['arxiv_id']))
+        # Review caveats stay on the paper page; the reference states only the status.
+        fields.append(('note', literal('Accepted to ' + paper['venue']) if paper['publication_status'] == 'conference-accepted' else 'Preprint'))
     if paper.get('doi'):
         fields.append(('doi', paper['doi']))
     if paper.get('arxiv_id'):
@@ -127,6 +149,9 @@ def paper_card(paper: dict, language: str, use_pro: bool) -> str:
     original_title = f'<p class="paper-original-title" lang="en">{escape(paper["title"])}</p>' if zh else ''
     links = [f'<a class="paper-link paper-link-primary" href="{web_url(paper["url"])}" target="_blank" rel="noopener noreferrer">{label("Paper", "论文")}{icon("external", use_pro)}</a>',
              f'<a class="paper-link" href="{web_url(paper["pdf_url"])}" target="_blank" rel="noopener noreferrer">PDF{icon("external", use_pro)}</a>']
+    detail_path = f"{'/zh' if zh else ''}/papers/{paper['id']}/"
+    detail_label = label('Full entry: ' + title, '完整条目：' + title)
+    links.append(f'<a class="paper-link entry-detail-link" data-entry-link="{paper["id"]}" href="{detail_path}" aria-label="{escape(detail_label, quote=True)}">{label("Full entry", "完整条目")}</a>')
     for field, en, cn in (('code_url', 'Code', '代码'), ('project_url', 'Project', '项目')):
         if paper.get(field):
             links.append(f'<a class="paper-link" href="{web_url(paper[field])}" target="_blank" rel="noopener noreferrer">{label(en, cn)}{icon("external", use_pro)}</a>')
@@ -138,18 +163,18 @@ def paper_card(paper: dict, language: str, use_pro: bool) -> str:
     if paper.get('arxiv_id'):
         metadata.append(('arXiv', paper['arxiv_id']))
     if paper.get('arxiv_version_reviewed'):
-        metadata.append((label('Reviewed arXiv version', '已核对的 arXiv 版本'), paper['arxiv_version_reviewed']))
+        metadata.append((label('Reviewed arXiv version', '已复核的 arXiv 版本'), paper['arxiv_version_reviewed']))
     if paper.get('doi'):
         metadata.append(('DOI', paper['doi']))
-    metadata.append((label('Sources checked', '来源核对日期'), formatted_date(paper['verified_at'], language)))
+    metadata.append((label('Sources checked', '来源复核日期'), formatted_date(paper['verified_at'], language)))
     details = ''.join(f'<dt>{escape(key)}</dt><dd>{escape(value)}</dd>' for key, value in metadata)
     source_links = ''.join(f'<li><a href="{web_url(url)}" target="_blank" rel="noopener noreferrer">{escape(url)}</a></li>' for url in paper['evidence_urls'])
     return f'''<article class="paper-card" id="{paper['id']}" data-paper-id="{paper['id']}">
-  <header><div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3>{original_title}<p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p></header>
+  <header><h3><a href="{web_url(paper['url'])}" target="_blank" rel="noopener noreferrer">{escape(title)}{icon('external', use_pro)}</a></h3>{original_title}<div class="paper-meta"><span class="paper-year">{paper['year']}</span><span class="paper-venue" lang="en">{escape(paper['venue'])}</span><span class="paper-status paper-status-{paper['publication_status']}">{status}</span></div><p class="paper-authors" lang="en">{escape('; '.join(paper['authors']))}</p></header>
   <p class="paper-description">{escape(paper[f'description_{language}'])}</p>
   <div class="paper-scope"><h4>{label('Scope & limitations', '研究范围与局限')}</h4><p>{escape(paper[f'scope_limitations_{language}'])}</p></div>
   <nav class="paper-links" aria-label="{escape(label('Links for ' + paper['title'], title + '的相关链接'), quote=True)}">{''.join(links)}</nav>
-  <details class="paper-details"><summary>{label('Bibliographic details & sources', '引文详情与来源')}</summary><h4>{label('Why it fits this collection', '与本合集的关联')}</h4><p>{escape(paper[f'why_fits_{language}'])}</p><dl>{details}</dl><p>{escape(paper['metadata_notes_zh' if zh else 'metadata_notes'])}</p><h4>{label('Primary sources', '一手来源')}</h4><ul>{source_links}</ul><p class="paper-review-note">{label('Source review only; experiments were not rerun for this collection.', '本合集仅核对来源，未重新运行论文实验。')}</p></details>
+  <details class="paper-details"><summary>{label('Bibliographic details & sources', '引文详情与来源')}</summary><h4>{label('Why it fits this collection', '与本合集的关联')}</h4><p>{escape(paper[f'why_fits_{language}'])}</p><dl>{details}</dl><p>{escape(paper['metadata_notes_zh' if zh else 'metadata_notes'])}</p><h4>{label('Primary sources', '一手来源')}</h4><ul>{source_links}</ul><p class="paper-review-note">{label('Source review only; experiments were not rerun for this collection.', '本合集仅做来源复核，未重新运行论文实验。')}</p></details>
 </article>'''
 
 
@@ -191,6 +216,9 @@ def build_paper_pages(
             web_url(url)
         groups[paper['targets'][0]].append(paper)
 
+    groups = {target: papers_newest_first(groups[target]) for target in TARGET_LABELS}
+    ordered = [paper for target in TARGET_LABELS for paper in groups[target]]
+
     # Citation downloads preserve the original title and author names in both languages.
     citation_dir = site_dir / 'papers' / 'citations'
     citation_dir.mkdir(parents=True, exist_ok=True)
@@ -210,7 +238,7 @@ def build_paper_pages(
     search_fields = ('id', 'title', 'title_zh', 'description_en', 'description_zh', 'authors', 'doi', 'arxiv_id',
                      'year', 'publication_status', 'targets')
     search_data = json.dumps({'schema_version': 1, 'papers': [
-        {key: paper.get(key) for key in search_fields} for paper in papers
+        {key: paper.get(key) for key in search_fields} for paper in ordered
     ]}, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
 
     canonical_urls = []
@@ -228,10 +256,10 @@ def build_paper_pages(
         about = '/zh/about/' if zh else '/about/'
         title = label('Papers & benchmarks · AwesomeREA.org', '论文与评测基准 · AwesomeREA.org')
         protocol_scope = label('protocol inference, ', '协议推断、') if any('protocol' in paper['targets'] for paper in papers) else ''
-        description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, {protocol_scope}firmware analysis, and website, game, and app reconstruction, with citations and research limitations.', f'{len(papers)} 篇已核对来源的论文，涵盖二进制逆向、反编译、智能体评估、{protocol_scope}固件分析，以及网站、游戏和应用重建，附引文和研究边界。')
+        description = label(f'{len(papers)} source-reviewed papers on binary reverse engineering, decompilation, agent evaluation, {protocol_scope}firmware analysis, and website, game, and app reconstruction, with citations and research limitations.', f'{len(papers)} 篇来源已复核的论文，涵盖二进制逆向、反编译、智能体评估、{protocol_scope}固件分析，以及网站、游戏和应用重建，附引文和研究边界。')
+        intro = label(f'Explore {len(papers)} papers on reverse engineering and software reconstruction, newest year first within each section.', f'浏览 {len(papers)} 篇逆向工程与软件重建论文，各分区按年份从新到旧排列。')
         nav = []
         sections = []
-        ordered = []
         for target, target_labels in TARGET_LABELS.items():
             if not groups[target]:
                 continue
@@ -240,7 +268,6 @@ def build_paper_pages(
             articles = '\n'.join(paper_card(paper, language, use_pro) for paper in groups[target])
             count_label = f'{len(groups[target])} ' + ('篇论文' if zh else ('paper' if len(groups[target]) == 1 else 'papers'))
             sections.append(f'<section class="paper-section" aria-labelledby="research-{target}" data-paper-section="{target}"><div class="paper-section-heading"><h2 id="research-{target}">{target_label}</h2><span data-paper-section-count>{count_label}</span></div><div class="paper-grid">{articles}</div></section>')
-            ordered.extend(groups[target])
         status_options = ''.join(f'<option value="{status}">{escape(labels[int(zh)])}</option>'
                                  for status, labels in STATUS_LABELS.items()
                                  if any(paper['publication_status'] == status for paper in papers))
@@ -271,18 +298,7 @@ def build_paper_pages(
   <link rel="alternate" hreflang="en" href="{site_url}/papers/">
   <link rel="alternate" hreflang="zh-CN" href="{site_url}/zh/papers/">
   <link rel="alternate" hreflang="x-default" href="{site_url}/papers/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AwesomeREA.org">
-  <meta property="og:locale" content="{('zh_CN' if zh else 'en_US')}">
-  <meta property="og:title" content="{title}">
-  <meta property="og:description" content="{escape(description, quote=True)}">
-  <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{escape(social_image_href, quote=True)}">
-  <meta property="og:image:alt" content="{title}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{title}">
-  <meta name="twitter:description" content="{escape(description, quote=True)}">
-  <meta name="twitter:image" content="{escape(social_image_href, quote=True)}">
+  {open_graph_meta(language=language, title=title, description=description, image_url=social_image_href, url=canonical)}
   <link rel="icon" href="{escape(favicon_href, quote=True)}" type="image/svg+xml">
   <link rel="stylesheet" href="{escape(styles_href, quote=True)}">
   <link rel="stylesheet" href="{escape(papers_styles_href, quote=True)}">
@@ -295,16 +311,16 @@ def build_paper_pages(
 <header class="site-header"><div class="shell header-inner"><a class="wordmark" href="{home}" aria-label="{label('AwesomeREA.org home', 'AwesomeREA.org 首页')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a><nav class="header-nav" aria-label="{label('Main navigation', '主导航')}"><a class="papers-language" href="{counterpart}" lang="{label('zh-CN', 'en')}" hreflang="{label('zh-CN', 'en')}" aria-label="{label('Switch to Simplified Chinese', '切换为英文')}">{icon('globe', use_pro)}<span>{label('简体中文', 'English')}</span></a><a class="github-link" href="{web_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{icon('github', use_pro)}<span>GitHub</span></a></nav></div></header>
 <main id="papers-content" class="shell papers-main">
   <nav class="papers-breadcrumbs" aria-label="{label('Breadcrumb', '当前位置')}"><a href="{home}">{label('Home', '首页')}</a><span aria-hidden="true">/</span><span aria-current="page">{label('Papers & benchmarks', '论文与评测基准')}</span></nav>
-  <section class="collection-intro papers-intro" aria-labelledby="papers-title"><p class="eyebrow">{label('RESEARCH & EVIDENCE', '研究与证据')}</p><h1 id="papers-title">{label('Papers & benchmarks', '论文与评测基准')}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
+  <section class="collection-intro papers-intro" aria-labelledby="papers-title"><p class="eyebrow">{label('RESEARCH & EVIDENCE', '研究与证据')}</p><h1 id="papers-title">{label('Papers & benchmarks', '论文与评测基准')}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(intro)}</p></section>
   <div class="papers-actions"><a class="button button-outline" href="{web_url(repository_url + "/issues/new?template=paper.yml")}" target="_blank" rel="noopener noreferrer">{icon("document", use_pro)}{label("Suggest a paper", "推荐论文")}</a><a class="button button-outline" href="{browse}">{icon('layers', use_pro)}{label('Browse repositories', '浏览仓库')}</a><a class="papers-bibliography" href="/papers/references.bib" download="awesomerea-papers.bib" type="application/x-bibtex">{label('Download bibliography', '下载参考文献')} · BibTeX ↓</a></div>
-  <p class="papers-review-policy">{label('Journal articles, conference papers, accepted papers, and preprints are labeled separately. We check primary sources; inclusion does not mean experiments were rerun or results independently reproduced.', '期刊论文、会议论文、已接收论文和预印本分别标注。本合集核对一手来源；收录不代表已重新运行实验或独立复现结果。')}</p>
+  <p class="papers-review-policy">{label('We check primary sources; we do not rerun experiments or independently reproduce results.', '仅复核一手来源，未重新运行实验或独立复现结果。')}</p>
   <form id="paper-search" class="paper-search" role="search" aria-label="{label('Search research papers', '搜索研究论文')}" hidden>
     <div class="paper-search-field paper-search-query"><label for="paper-query">{label('Search papers', '搜索论文')}</label><input id="paper-query" name="q" type="search" maxlength="240" autocomplete="off" placeholder="{label('Title, author, keyword, DOI or arXiv ID', '标题、作者、关键词、DOI 或 arXiv 编号')}" aria-describedby="paper-search-help"></div>
     <div class="paper-search-field"><label for="paper-target">{label('Target', '目标')}</label><select id="paper-target" name="target"><option value="all">{label('All targets', '全部目标')}</option>{target_options}</select></div>
     <div class="paper-search-field"><label for="paper-status">{label('Publication status', '发表状态')}</label><select id="paper-status" name="status"><option value="all">{label('All statuses', '全部状态')}</option>{status_options}</select></div>
     <div class="paper-search-field"><label for="paper-year">{label('Year', '年份')}</label><select id="paper-year" name="year"><option value="all">{label('All years', '全部年份')}</option>{year_options}</select></div>
     <button id="paper-clear" class="button button-outline" type="button">{label('Clear filters', '清除筛选')}</button>
-    <p id="paper-search-help" class="paper-search-help">{label('Search titles and summaries in English or Chinese, plus authors and identifiers. Target filters include every recorded target; papers stay in their primary research section.', '可搜索中英文标题与简介，以及作者和标识符。目标筛选包含论文记录的全部目标；论文仍显示在其主要研究分区。')}</p>
+    <p id="paper-search-help" class="paper-search-help">{label('Search in English or Chinese. Filters match every listed target; papers stay in their main section.', '支持中英文搜索。筛选匹配全部目标，论文仍按主要目标分组。')}</p>
     <p id="paper-results" class="paper-search-results" role="status" aria-live="polite" aria-atomic="true"></p>
   </form>
   <div id="paper-empty" class="paper-search-empty" hidden><p>{label('No papers match these filters.', '没有符合这些条件的论文。')}</p><button id="paper-empty-reset" class="button button-outline" type="button">{label('Clear filters and show all papers', '清除筛选并显示全部论文')}</button></div>

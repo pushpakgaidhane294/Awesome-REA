@@ -30,8 +30,11 @@ class PaperSearchTests(unittest.TestCase):
                 self.assertIn('/paper-search.js?v=' + hashlib.sha256(script).hexdigest()[:16], html)
                 projection = json.loads(re.search(r'<script id="paper-search-data" type="application/json">(.*?)</script>', html, re.S)[1])
                 self.assertEqual(projection['schema_version'], 1)
-                self.assertEqual([row['id'] for row in projection['papers']], [row['id'] for row in papers])
-                for original, indexed in zip(papers, projection['papers']):
+                self.assertEqual([row['id'] for row in projection['papers']], re.findall(r'data-paper-id="([^"]+)"', html))
+                indexed_by_id = {row['id']: row for row in projection['papers']}
+                self.assertEqual(set(indexed_by_id), {row['id'] for row in papers})
+                for original in papers:
+                    indexed = indexed_by_id[original['id']]
                     self.assertEqual(indexed, {key: original.get(key) for key in indexed})
                     self.assertIn(escape(original['description_' + lang]), html)
                     self.assertIn(escape(original['scope_limitations_' + lang]), html)

@@ -11,9 +11,13 @@ import re
 import shutil
 from urllib.parse import unquote, urlsplit
 
-from build_readme import KIND_LABELS, TARGETS, collection_section
+from build_readme import KIND_LABELS, RELATIONSHIPS, TARGETS, collection_section
+from open_graph import open_graph_meta
+from source_scope import exclusion_counts, unavailable_clause
 
 
+# The upstream project that the collection's name echoes.
+REA_REPOSITORY_URL = 'https://github.com/morluto/rea'
 SECTIONS = {
     'website': ('Websites', '网站'),
     'game': ('Games', '游戏'),
@@ -23,7 +27,7 @@ SECTIONS = {
     'protocol': ('Protocols', '协议'),
     'agents-and-mcp': ('Agents and MCP', '智能体与 MCP'),
     'related-collections': ('Related collections', '相关资源合集'),
-    'references-and-learning': ('References and learning', '文档与学习资料'),
+    'references-and-learning': ('References and learning', '文档与学习资源'),
 }
 
 
@@ -121,7 +125,9 @@ def _requirements(record: dict, language: str) -> list[str]:
 
 def _resource_card(record: dict, language: str) -> str:
     zh = language == 'zh'
+    detail_path = f"{'/zh' if zh else ''}/resources/{record['id']}/"
     name = (record.get('name_zh') or record['name']) if zh else record['name']
+    detail_label = f'完整条目：{name}' if zh else f'Full entry: {name}'
     description = record[f'description_{language}']
     kind = KIND_LABELS[record['kind']][1 if zh else 0]
     targets = ' · '.join(TARGETS[target][1 if zh else 0] for target in record['targets'])
@@ -135,14 +141,69 @@ def _resource_card(record: dict, language: str) -> str:
     return f'''<article class="resource-card browse-repository" id="{escape(record['id'], quote=True)}" data-record-id="{escape(record['id'], quote=True)}" data-resource-id="{escape(record['id'], quote=True)}">
   <div class="card-heading"><h3><a class="card-title-link" href="{_url(record['url'])}" target="_blank" rel="noopener noreferrer">{escape(name)}<span class="browse-text-arrow" aria-hidden="true">↗</span></a></h3><span class="resource-kind">{escape(kind)}</span></div>
   <p class="card-description">{escape(description)}</p>
-  <div class="card-meta"><span>{escape(targets)}</span><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
-  <details class="requirements"><summary>{('详情与使用条件' if zh else 'Details and requirements')}</summary><ul>{requirements}</ul>{('<ul>' + additional + '</ul>' if additional else '')}<div class="resource-detail-meta"><span>{('资料已复核' if zh else 'Source-reviewed')}</span><time datetime="{escape(reviewed, quote=True)}">{('复核于' if zh else 'Reviewed')} {escape(reviewed[:10])}</time></div></details>
+  <div class="card-meta"><span>{escape(targets)}</span><a class="entry-detail-link" data-entry-link="{escape(record['id'], quote=True)}" href="{escape(detail_path, quote=True)}" aria-label="{escape(detail_label, quote=True)}">{('完整条目' if zh else 'Full entry')}</a><a href="{_url(record['evidence_url'])}" target="_blank" rel="noopener noreferrer">{('原始来源 ↗' if zh else 'Primary source ↗')}</a></div>
+  <details class="requirements"><summary>{('详情与使用条件' if zh else 'Details and requirements')}</summary><ul>{requirements}</ul>{('<ul>' + additional + '</ul>' if additional else '')}<div class="resource-detail-meta"><span>{('来源已复核' if zh else 'Source-reviewed')}</span><time datetime="{escape(reviewed, quote=True)}">{('复核于' if zh else 'Reviewed')} {escape(reviewed[:10])}</time></div></details>
 </article>'''
+
+
+def _case_row(record: dict, language: str, section: str) -> str:
+    """Keep reported scope visible, with original evidence one native disclosure away."""
+    zh = language == 'zh'
+    name = (record.get('name_zh') or record['name']) if zh else record['name']
+    identifier = escape(record['id'], quote=True)
+    detail_path = f"{'/zh' if zh else ''}/resources/{identifier}/"
+    detail_label = ('完整条目：' if zh else 'Full entry: ') + name
+    relationship = RELATIONSHIPS[record['relationship']][int(zh)]
+    targets = ' · '.join(TARGETS[target][int(zh)] for target in record['targets'])
+    requirements = ''.join(f'<li>{escape(item)}</li>' for item in _requirements(record, language))
+    evidence = [(record['evidence_url'], '原始证据' if zh else 'Primary evidence')]
+    evidence += [(url, f'补充来源 {index}' if zh else f'Additional source {index}')
+                 for index, url in enumerate(record.get('additional_evidence_urls', []), 1)]
+    evidence_links = ''.join(f'<li><a href="{_url(url)}" target="_blank" rel="noopener noreferrer">{escape(label)} <span aria-hidden="true">↗</span></a></li>'
+                             for url, label in evidence)
+    reviewed = str(record['verified_at'])
+    return f'''<article class="case-row" id="{identifier}" data-case-id="{identifier}" data-resource-id="{identifier}" data-case-section="{escape(section, quote=True)}">
+  <div class="case-heading"><h3><a href="{detail_path}">{escape(name)}</a></h3><span class="case-relationship">{escape(relationship)}</span></div>
+  <p class="case-description">{escape(record[f'description_{language}'])}</p>
+  <div class="case-footer"><div class="case-meta"><span class="case-targets">{escape(targets)}</span><a class="entry-detail-link" data-entry-link="{identifier}" href="{detail_path}" aria-label="{escape(detail_label, quote=True)}">{('完整条目' if zh else 'Full entry')}</a><a class="case-source" href="{_url(record['url'])}" target="_blank" rel="noopener noreferrer">{('案例来源' if zh else 'Case source')} <span aria-hidden="true">↗</span></a></div>
+  <details class="case-evidence"><summary>{('使用条件与证据' if zh else 'Requirements and evidence')}</summary><div class="case-evidence-body"><ul class="case-requirements">{requirements}</ul><ul class="case-evidence-links">{evidence_links}</ul><p class="case-review-date"><time datetime="{escape(reviewed, quote=True)}">{('来源复核日期：' if zh else 'Source review: ')}{escape(reviewed[:10])}</time></p></div></details>
+  </div>
+</article>'''
+
+
+def _case_collection(resources: list[dict], language: str, site_url: str) -> tuple[str, list[dict]]:
+    zh = language == 'zh'
+    prefix = '/zh' if zh else ''
+    groups = defaultdict(list)
+    for record in resources:
+        if record['kind'] == 'case-study':
+            groups[collection_section(record)].append(record)
+    sections, navigation, items = [], [], []
+    for key, labels in SECTIONS.items():
+        if not groups[key]:
+            continue
+        label = labels[int(zh)]
+        navigation.append(f'<a href="#cases-{key}">{escape(label)}<span>{len(groups[key])}</span></a>')
+        sections.append(f'<section class="case-section" id="cases-{key}" data-case-section="{key}" aria-labelledby="case-heading-{key}"><div class="browse-topline"><h2 id="case-heading-{key}">{escape(label)}</h2><p>{len(groups[key])} {("个案例" if zh else ("case" if len(groups[key]) == 1 else "cases"))}</p></div><div class="case-list">' + '\n'.join(_case_row(record, language, key) for record in groups[key]) + '</div></section>')
+        for record in groups[key]:
+            name = (record.get('name_zh') or record['name']) if zh else record['name']
+            items.append({'name': name, 'url': f"{site_url}{prefix}/resources/{record['id']}/", 'description': record[f'description_{language}']})
+    search = '/zh/?view=curated&amp;kind=case-study#catalog' if zh else '/?view=curated&amp;kind=case-study&amp;lang=en#catalog'
+    note = ('案例已计入精选总数，每项按主要用途出现一次，并保留所有目标标签。来源核查不代表本合集已独立运行验证或确认 REA 参与。'
+            if zh else 'These cases are part of the curated total and appear once under their primary subject, with all target labels retained. Source review does not imply independent runtime verification or REA involvement.')
+    nav = f'<nav class="browse-category-nav cases-nav" aria-label="{("案例主题" if zh else "Case subjects")}">{"".join(navigation)}</nav>' if navigation else ''
+    empty = '' if items else f'<p class="cases-empty">{("当前目录还没有案例条目。" if zh else "No case studies are currently listed.")}</p>'
+    content = f'''<div class="cases-collection" data-case-count="{len(items)}" data-curated-count="{len(resources)}">
+<div class="browse-actions"><a class="button button-primary" href="{search}">{('搜索案例' if zh else 'Search cases')}</a><a class="button button-outline" href="{prefix}/resources/">{('全部精选资源' if zh else 'All resources')}</a></div>
+<details class="cases-note"><summary>{('关于这些案例' if zh else 'About these cases')}</summary><p>{escape(note)}</p></details>{nav}{''.join(sections)}{empty}
+</div>'''
+    return content, items
 
 
 def _document(*, site_url: str, repository_url: str, path: str, language: str,
               title: str, description: str, content: str, schema: dict | None,
-              assets: dict, icon_stylesheet: str | None, noindex: bool = False) -> str:
+              assets: dict, icon_stylesheet: str | None, noindex: bool = False,
+              main_class: str = '', extra_styles: tuple[str, ...] = ()) -> str:
     zh = language == 'zh'
     locale = 'zh-CN' if zh else 'en'
     root = '/zh/' if zh else '/'
@@ -159,8 +220,14 @@ def _document(*, site_url: str, repository_url: str, path: str, language: str,
                    else '<span class="icon browse-github-fallback" aria-hidden="true">GH</span>')
     language_link = '' if noindex else f'<a class="browse-language" href="{counterpart}" lang="{("en" if zh else "zh-CN")}" hreflang="{("en" if zh else "zh-CN")}">{globe_icon}<span>{("English" if zh else "简体中文")}</span></a>'
     prefix = '/zh' if zh else ''
+    # The bilingual 404 template has no canonical address or language counterpart.
+    social = open_graph_meta(language=language, title=title + ' · AwesomeREA.org', description=description,
+                             image_url=site_url + assets['social'],
+                             url=None if noindex else canonical, paired=not noindex)
     footer = ('原创说明和代码采用 MIT 许可；上游描述与链接项目保留各自的许可。' if zh
               else 'Original editorial content and code: MIT. Upstream descriptions and linked projects retain their own licenses.')
+    extra_css = ''.join(f'\n  <link rel="stylesheet" href="{escape(href, quote=True)}">' for href in extra_styles)
+    page_class = ' ' + escape(main_class, quote=True) if main_class else ''
     return f'''<!doctype html>
 <html lang="{locale}"{(' data-icon-set="fontawesome"' if icon_stylesheet else '')}>
 <head>
@@ -170,21 +237,10 @@ def _document(*, site_url: str, repository_url: str, path: str, language: str,
   <title>{escape(title)} · AwesomeREA.org</title>
   <meta name="description" content="{escape(description, quote=True)}">
   {metadata}
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AwesomeREA.org">
-  <meta property="og:locale" content="{('zh_CN' if zh else 'en_US')}">
-  <meta property="og:title" content="{escape(title, quote=True)} · AwesomeREA.org">
-  <meta property="og:description" content="{escape(description, quote=True)}">
-  <meta property="og:url" content="{_url(canonical)}">
-  <meta property="og:image" content="{_url(site_url + assets['social'])}">
-  <meta property="og:image:alt" content="{escape(title, quote=True)}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{escape(title, quote=True)} · AwesomeREA.org">
-  <meta name="twitter:description" content="{escape(description, quote=True)}">
-  <meta name="twitter:image" content="{_url(site_url + assets['social'])}">
+  {social}
   <link rel="icon" href="{assets['favicon']}" type="image/svg+xml">
   <link rel="stylesheet" href="{assets['styles']}">
-  <link rel="stylesheet" href="{assets['browse']}">
+  <link rel="stylesheet" href="{assets['browse']}">{extra_css}
   {('<link rel="stylesheet" href="' + escape(icon_stylesheet, quote=True) + '">' if icon_stylesheet else '')}
   {jsonld_script(schema) if schema else ''}
 </head>
@@ -194,19 +250,19 @@ def _document(*, site_url: str, repository_url: str, path: str, language: str,
   <a class="wordmark" href="{root}" aria-label="{('AwesomeREA.org 首页' if zh else 'AwesomeREA.org home')}"><span class="brand-mark" aria-hidden="true">r<span>↗</span></span><span>Awesome<span class="wordmark-rea">REA</span><span class="wordmark-domain">.org</span></span></a>
   <nav class="header-nav" aria-label="{('主导航' if zh else 'Main navigation')}">{language_link}<a class="github-link" href="{_url(repository_url)}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{github_icon}<span>GitHub</span></a></nav>
 </div></header>
-<main id="discovery-content" class="shell browse-main">
+<main id="discovery-content" class="shell browse-main{page_class}">
   <nav class="browse-breadcrumbs" aria-label="{('当前位置' if zh else 'Breadcrumb')}"><a href="{root}">{('首页' if zh else 'Home')}</a><span aria-hidden="true">/</span><span aria-current="page">{escape(title)}</span></nav>
   <section class="collection-intro browse-intro"><p class="eyebrow">{('逆向工程资源集合' if zh else 'THE REVERSE ENGINEERING COLLECTION')}</p><h1>{escape(title)}<span class="title-dot" aria-hidden="true">.</span></h1><p>{escape(description)}</p></section>
   {content}
 </main>
-<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/resources/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/source-index.json" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
+<footer class="site-footer"><div class="shell footer-top"><p>{('独立的资源集合，在公开协作中持续更新。' if zh else 'An independent resource collection, updated in public.')}</p><div class="footer-links"><a href="{prefix}/resources/">{('精选资源' if zh else 'Curated resources')}</a><a href="{prefix}/cases/">{('案例合集' if zh else 'Case studies')}</a><a href="{prefix}/browse/">{('仓库目录' if zh else 'Repository directory')}</a><a href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a href="{prefix}/about/">{('关于与来源' if zh else 'About and sources')}</a><a href="/catalog.json" download="awesomerea-curated-catalog.json">{('精选 JSON ↓' if zh else 'Curated JSON ↓')}</a><a href="/source-index.json" download="awesomerea-repository-index.json">{('仓库 JSON ↓' if zh else 'Repository JSON ↓')}</a></div></div><div class="shell footer-bottom">{footer}</div></footer>
 </body>
 </html>
 '''
 
 
 def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | None) -> list[str]:
-    """Write discovery assets and return four root-relative HTML sitemap paths.
+    """Write discovery assets and return six root-relative HTML sitemap paths.
 
     ``catalog`` is the built catalog object with localized names and requirements.
     ``source_index`` is the full localized/scoped scan, including excluded records.
@@ -219,10 +275,12 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
     _url(site_url)
     _url(repository_url)
     resources = catalog['resources']
+    case_count = sum(record['kind'] == 'case-study' for record in resources)
     if len({record['id'] for record in resources}) != len(resources):
         raise ValueError('Duplicate curated IDs in discovery pages')
     scanned = [record for record in (source_index or {}).get('resources', []) if record.get('scan_status') == 'readme-scanned']
     excluded = sum(record.get('scope_status') == 'excluded' for record in scanned)
+    out_of_scope, unavailable = exclusion_counts(scanned)
     browse_count = len(scanned) - excluded
     paper_path = site_dir / 'papers.json'
     papers = json.loads(paper_path.read_text(encoding='utf-8')) if paper_path.is_file() else []
@@ -257,7 +315,7 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         title = '精选逆向工程资源' if zh else 'Curated reverse engineering resources'
         description = (f'{len(resources):,} 项工具、项目、集成、案例与参考资源，覆盖网站、游戏、应用、原生二进制、固件及通信协议。'
                        if zh else f'{len(resources):,} tools, projects, integrations, case studies, and references for websites, games, apps, native binaries, firmware, and communication protocols.')
-        note = ('“资料已复核”表示说明已依据一手文档核对，不代表已安装、执行、安全审计或验证兼容性。前置条件和审阅日期随条目保留。'
+        note = ('“来源已复核”表示说明已依据一手文档核对，不代表已安装、执行、安全审计或验证兼容性。使用条件和复核日期随条目保留。'
                 if zh else 'Source-reviewed means descriptions were checked against primary documentation. It does not mean installation, execution, security auditing, or compatibility testing. Each entry retains requirements and its review date.')
         sections, items, navigation = [], [], []
         for key, labels in SECTIONS.items():
@@ -270,19 +328,27 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
                 name = (record.get('name_zh') or record['name']) if zh else record['name']
                 items.append({'name': name, 'url': record['url'], 'description': record[f'description_{language}']})
         content = f'''<div class="browse-actions"><a class="button button-primary" href="{('/zh/?view=curated' if zh else '/?view=curated&amp;lang=en')}">{('搜索与筛选' if zh else 'Search and filter')}</a><a class="button button-outline" href="{prefix}/browse/">{('浏览仓库' if zh else 'Browse repositories')}</a><a class="button button-outline" href="{prefix}/papers/">{('研究论文' if zh else 'Research papers')}</a><a class="browse-download" href="/catalog.json" download="awesomerea-curated-catalog.json">{('下载精选 JSON ↓' if zh else 'Download curated JSON ↓')}</a></div>
-<p class="collection-note">{escape(note)}</p><nav class="browse-category-nav" aria-label="{('资源分类' if zh else 'Resource categories')}">{''.join(navigation)}</nav>{''.join(sections)}'''
+<details class="browse-provenance"><summary>{("来源复核与验证范围" if zh else "Source review and testing limits")}</summary><p>{escape(note)}</p></details><nav class="browse-category-nav" aria-label="{('资源分类' if zh else 'Resource categories')}">{''.join(navigation)}</nav>{''.join(sections)}'''
         rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href)
+        paths.append(path)
+
+        path = prefix + '/cases/'
+        title = '逆向工程案例合集' if zh else 'Reverse-engineering case studies'
+        content, items = _case_collection(resources, language, site_url)
+        description = (f'从 {len(resources):,} 项精选资源中筛选出的 {len(items):,} 个案例，保留重建方法、成果边界与原始证据。'
+                       if zh else f'{len(items):,} case studies from {len(resources):,} curated resources, with documented reconstruction methods, scope, and original evidence.')
+        rendered[path] = _document(site_url=site_url, repository_url=repository_url, path=path, language=language, title=title, description=description, content=content, schema=collection_page_schema(site_url + path, title, description, locale, items, site_url), assets=assets, icon_stylesheet=icons.href, main_class='cases-main', extra_styles=(_asset(site_dir, 'cases.css'),))
         paths.append(path)
 
         path = prefix + '/about/'
         title = '关于合集与数据来源' if zh else 'About the collection and its sources'
         description = ('AwesomeREA.org 是独立的逆向工程资源合集，收录工具、项目、案例和参考资料。' if zh else 'AwesomeREA.org is an independent collection of reverse-engineering tools, projects, case studies, and references.')
-        summary = (f'{len(resources):,} 项精选资源；{len(scanned):,} 个实际读取 README 的仓库；{browse_count:,} 个可浏览条目。{excluded} 个超出范围的条目保留在完整扫描数据中。'
-                   if zh else f'{len(resources):,} curated resources; {len(scanned):,} repositories whose READMEs were fetched; {browse_count:,} browsable entries. The {excluded} out-of-scope entries remain in the complete scan data.')
+        summary = (f'{len(resources):,} 项精选资源；{len(scanned):,} 个实际读取 README 的仓库；{browse_count:,} 个可浏览条目。{out_of_scope} 个超出范围的条目{unavailable_clause(unavailable, zh)}保留在完整扫描数据中。'
+                   if zh else f'{len(resources):,} curated resources; {len(scanned):,} repositories whose READMEs were fetched; {browse_count:,} browsable entries. The {out_of_scope} out-of-scope entries{unavailable_clause(unavailable, zh)} remain in the complete scan data.')
         if papers:
             summary += (f' 研究论文目录单独整理 {len(papers):,} 篇论文，其中 {overlapping_papers:,} 篇也收录于这 {len(resources):,} 项精选资源。上述数量不能相加作为独立项目总数。'
                         if zh else f' The paper bibliography lists {len(papers):,} papers; {overlapping_papers:,} of these also appear among the {len(resources):,} curated resources. Do not sum these counts as unique projects.')
-        evidence = ('精选说明依据一手来源核对，并保留前置条件和复核日期。自动扫描记录来源、时间、README 字节数、Git blob 标识和 SHA-256；未执行上游代码，也不重新发布 README 正文。'
+        evidence = ('精选说明依据一手来源核对，并保留使用条件和复核日期。自动扫描记录来源、时间、README 字节数、Git blob 标识和 SHA-256；未执行上游代码，也不重新发布 README 正文。'
                     if zh else 'Curated descriptions are checked against primary sources, with requirements and review dates retained. Automated scans record sources, timestamps, README byte counts, Git blob identifiers, and SHA-256 hashes. Upstream code is not executed and README bodies are not republished.')
         if scan_date:
             evidence += (f' 最新扫描快照：{scan_date} UTC。' if zh else f' Latest scan snapshot: {scan_date} UTC.')
@@ -291,9 +357,15 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
         licensing = ('本仓库原创说明和代码采用 MIT 许可。上游项目及其描述保留各自许可；许可证标识仅是采集时元数据。生成的双语索引保留 description_original 上游原文，翻译由 AI 辅助完成。'
                      if zh else 'Original editorial content and code in this repository use the MIT license. Upstream projects and their descriptions retain their own licenses; license identifiers are metadata snapshots. The generated bilingual index preserves upstream text as description_original, and translations are AI-assisted.')
         facts = [('收录范围' if zh else 'What is collected', summary), ('来源与更新' if zh else 'Evidence and updates', evidence), ('范围与复核' if zh else 'Scope and review', scope), ('语言与许可' if zh else 'Languages and licenses', licensing)]
-        fact_cards = ''.join(f'<section class="source-card browse-repository"><h2>{escape(heading)}</h2><p class="card-description">{escape(text)}</p></section>' for heading, text in facts)
+        # Same wording as the README About sections; the label comes from the shared relationship vocabulary.
+        documentation_label = RELATIONSHIPS['official-documentation'][1 if zh else 0]
+        rea_text = (f'是单独维护的上游 CLI 与 MCP 项目。本合集名称与之呼应，但并非 REA 官方仓库；条目标签及“{documentation_label}”等关系标注中的 REA 均指该项目。'
+                    if zh else f"is a separate upstream CLI and MCP project. This collection's name echoes it, but it is not the REA repository; “REA” in entry tags and labels such as “{documentation_label}” refers to that project.")
+        rea = f'<a href="{_url(REA_REPOSITORY_URL)}">{("REA（Reverse Engineer Anything）" if zh else "REA (Reverse Engineer Anything)")}</a> {escape(rea_text)}'
+        fact_cards = f'<section class="source-card browse-repository"><h2>{("与 REA 的关系" if zh else "REA and this collection")}</h2><p class="card-description">{rea}</p></section>'
+        fact_cards += ''.join(f'<section class="source-card browse-repository"><h2>{escape(heading)}</h2><p class="card-description">{escape(text)}</p></section>' for heading, text in facts)
         companion_url = 'https://aicanwhat.com/zh/' if zh else 'https://aicanwhat.com/'
-        companion_description = ('收录 AI 参与开发的游戏、网站与应用，以及 Agent 训练和评测使用的环境、基准和数据集。每个项目保留原始来源、开发方式说明和使用限制。'
+        companion_description = ('收录 AI 参与开发的游戏、网站与应用，以及智能体训练和评测使用的环境、基准和数据集。每个项目保留原始来源、开发方式说明和使用限制。'
                                  if zh else 'A directory of games, websites, and apps made with AI, plus environments, benchmarks, and datasets for training and evaluating agents. Each project retains original sources, development evidence, and practical limits.')
         fact_cards += f'<section class="source-card browse-repository"><h2>{("相关目录" if zh else "Companion directory")}</h2><p class="card-description"><a href="{companion_url}">AI Can What?</a> — {companion_description}</p></section>'
         links = [
@@ -304,11 +376,11 @@ def build_discovery_pages(site_dir: Path, catalog: dict, source_index: dict | No
             ('/source-index.json', '完整双语扫描 JSON' if zh else 'Complete bilingual scan JSON'),
             ('/papers.json', '论文元数据 JSON' if zh else 'Paper metadata JSON'),
             (repository_url + '/blob/main/' + ('README.zh-CN.md' if zh else 'README.md'), 'GitHub README'),
-            (repository_url + '/blob/main/docs/source-scan.md', '扫描方法' if zh else 'Scan methodology'),
+            (repository_url + '/blob/main/docs/source-scan.md', '扫描方法（英文）' if zh else 'Scan methodology'),
             (repository_url + '/blob/main/data/source-scope.json', '范围排除记录' if zh else 'Scope exclusion records'),
-            (repository_url + '/blob/main/data/README.md', '数据格式与维护' if zh else 'Data format and maintenance'),
+            (repository_url + '/blob/main/data/README.md', '数据格式与维护（英文）' if zh else 'Data format and maintenance'),
             (repository_url + '/blob/main/LICENSE', 'MIT 许可证' if zh else 'MIT license'),
-            (repository_url + '/blob/main/CONTRIBUTING.md', '贡献指南' if zh else 'Contribution guide'),
+            (repository_url + '/blob/main/' + ('CONTRIBUTING.zh-CN.md' if zh else 'CONTRIBUTING.md'), '贡献指南' if zh else 'Contribution guide'),
         ]
         link_html = ''.join(f'<a href="{(_url(url) if url.startswith("http") else escape(url, quote=True))}">{escape(label)}</a>' for url, label in links)
         content = f'<div class="source-results">{fact_cards}</div><section><div class="browse-topline"><h2>{("浏览、下载与来源" if zh else "Browse, download, and inspect sources")}</h2></div><nav class="browse-category-nav" aria-label="{("来源与下载" if zh else "Sources and downloads")}">{link_html}</nav></section>'
@@ -338,13 +410,15 @@ Source review checks documentation, not successful execution, security, or REA c
 ## English navigation
 
 - [Curated resources]({site_url}/resources/): All curated entries, requirements, evidence links, and review dates.
+- [Case studies]({site_url}/cases/): {case_count} documented cases, a subset of the curated resources, with full descriptions and source evidence.
 - [Repository directory]({site_url}/browse/): Static categories and public repository descriptions.
 - [Research papers]({site_url}/papers/): A separate research bibliography.
 - [About and provenance]({site_url}/about/): Scope, source methods, counts, translations, and licenses.
 
 ## 简体中文
 
-- [精选资源]({site_url}/zh/resources/): 精选条目、前置条件、来源链接与复核日期。
+- [精选资源]({site_url}/zh/resources/): 精选条目、使用条件、来源链接与复核日期。
+- [案例合集]({site_url}/zh/cases/): {case_count} 个案例，是精选资源的子集，保留完整说明与来源证据。
 - [仓库目录]({site_url}/zh/browse/): 静态分类与公开项目简介。
 - [研究论文]({site_url}/zh/papers/): 单独维护的研究文献目录。
 - [关于与来源]({site_url}/zh/about/): 收录范围、来源方法、数量、翻译与许可。

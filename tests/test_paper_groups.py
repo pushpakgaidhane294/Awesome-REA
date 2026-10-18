@@ -8,10 +8,10 @@ from validate_site import Page, validate_paper_groups
 
 
 PAPERS = [
-    {'id': 'paper-gamereplica', 'targets': ['game', 'website']},
-    {'id': 'paper-sprite-game-ui', 'targets': ['game']},
-    {'id': 'paper-remaui', 'targets': ['app']},
-    {'id': 'paper-web-example', 'targets': ['website']},
+    {'id': 'paper-gamereplica', 'targets': ['game', 'website'], 'year': 2026, 'publication_date': None, 'title': 'Game replica'},
+    {'id': 'paper-sprite-game-ui', 'targets': ['game'], 'year': 2025, 'publication_date': None, 'title': 'Sprite'},
+    {'id': 'paper-remaui', 'targets': ['app'], 'year': 2015, 'publication_date': None, 'title': 'Remaui'},
+    {'id': 'paper-web-example', 'targets': ['website'], 'year': 2024, 'publication_date': None, 'title': 'Web example'},
 ]
 LABELS = {
     'game': ('Game reconstruction and reverse engineering', '游戏重建与逆向工程'),
@@ -58,6 +58,12 @@ class PaperGroupTests(unittest.TestCase):
             section('website', ['paper-web-example', 'paper-gamereplica']))
         with self.assertRaisesRegex(AssertionError, 'primary-target grouping'):
             validate_paper_groups(Page(wrong), PAPERS, 'en')
+
+    def test_reversed_dates_fail_despite_correct_section_membership(self):
+        original = section('game', ['paper-gamereplica', 'paper-sprite-game-ui'])
+        reversed_order = section('game', ['paper-sprite-game-ui', 'paper-gamereplica'])
+        with self.assertRaisesRegex(AssertionError, 'newest-first ordering'):
+            validate_paper_groups(Page(correct_document().replace(original, reversed_order)), PAPERS, 'en')
 
     def test_incorrect_count_and_untranslated_heading_fail(self):
         for language in ('en', 'zh'):

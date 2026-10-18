@@ -5,17 +5,22 @@
 ## Source and generated files
 
 - [site/](../site/) contains the dependency-free HTML, CSS, JavaScript, favicon and social image. Update the SVG and PNG together when the illustration changes.
+- [open_graph.py](../scripts/open_graph.py) writes the Open Graph and Twitter card tags for the homepage and every generated page, with the image type and size read from `social-card.png` and a localized description of the card as its alt text. The 404 page has no `og:url`.
 - [rea-resources.json](../data/rea-resources.json) and [tool-resources.json](../data/tool-resources.json) are the resource sources. Keep bilingual descriptions, evidence links, prerequisites, review dates and target labels accurate.
 - [translations.zh-CN.json](../site/translations.zh-CN.json) supplies Chinese resource names and prerequisites. New records also need translations here.
 - [topics.i18n.json](../site/topics.i18n.json) supplies bilingual display labels for common repository topics. Canonical upstream topic IDs remain intact for links and exact filtering.
 - [source-index.json](../data/source-index.json) supplies the broader repository collection from successful automated README fetches. Its counts and review status stay separate from the curated records. [Repository locale files](../data/locales/README.md) provide English and Simplified Chinese descriptions; the generated data also preserves the original upstream text. See [scan methodology](source-scan.md).
-- [source-scope.json](../data/source-scope.json) removes clearly unrelated scan matches from browsing while keeping their original scan evidence in the full downloadable JSON. The footer offers separate repository-index and curated-catalog downloads.
+- [source-scope.json](../data/source-scope.json) removes clearly unrelated scan matches, duplicate README copies and repositories whose upstream is no longer available from browsing while keeping their original scan evidence in the full downloadable JSON. The footer offers separate repository-index and curated-catalog downloads.
 - [source_browser.py](../scripts/source_browser.py) generates compact `source-browser.json` for interactive search. It contains eligible records in the same order, with bilingual/original-text search, card details and evidence annotations. The full `/source-index.json` download remains complete, including excluded records, failures and discovery history. The browser payload records the full export's SHA-256 and is checked against it during the build.
 - [build_site.py](../scripts/build_site.py) combines the catalogs, derives counts, copies the site assets, and generates `catalog.json`, `robots.txt`, `sitemap.xml`, `CNAME` and `.nojekyll` in `dist/`.
 - [build_browse_pages.py](../scripts/build_browse_pages.py) emits 20 static category pages under `/browse/` and `/zh/browse/`. These include full localized repository content without JavaScript, reciprocal language links, canonical URLs, and sitemap entries. Counts and scope exclusions use the same data as search.
 - [build_discovery_pages.py](../scripts/build_discovery_pages.py) emits bilingual `/resources/` and `/about/` pages, evidence and review dates for curated entries, structured metadata, and the optional `llms.txt` navigation index. The homepage and browse pages link to these pages.
+- [build_entry_pages.py](../scripts/build_entry_pages.py) emits one English/Chinese detail-page pair for each curated resource and paper: `/resources/<id>/`, `/papers/<id>/` and their `/zh/` counterparts. These pages retain complete reviewed descriptions, requirements or research limits, original source links and citation metadata. They describe the catalog entry; they do not replace the upstream project or paper.
+- `/cases/` and `/zh/cases/` provide a compact subject index of the existing case-study records. Complete descriptions remain visible; native disclosures retain requirements, evidence and review dates. The homepage and README link directly to this bilingual collection view.
+- Static collection lists and related-entry links lead to these detail pages using ordinary links. Existing `/resources/#<id>` and `/papers/#<id>` listing anchors remain available. The automated repository index continues to use category pages and does not generate individual pages for scanned repositories.
 - [validate_discovery.py](../scripts/validate_discovery.py) checks the generated site's canonical routes, language links, static record coverage, JSON-LD and crawler permissions. The production build and CI both run it. See [search discovery](search-discovery.md) for sources, submission steps, and measurement limits.
 - `dist/` is ignored by Git. Rebuild it from source instead of editing generated files. The resource count is a count of catalog records, not distinct software projects.
+- Builds generate a fresh site in ignored `.cache/` storage before replacing `dist/`, so removed source assets do not survive a rebuild. A generation or manifest failure leaves the previous output intact. If replacement fails, the builder restores the previous directory; if restoration also fails, it reports the retained recovery directory. Treat all files inside `dist/` as generated output, not a place for unrelated files.
 
 ## Build and preview
 
@@ -29,7 +34,7 @@ node --check site/app.js
 python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 ```
 
-The test command runs every Python and browser test offline; CI runs the same command.
+The test command runs every Python test and the Node tests of the browser scripts offline; CI runs the same command. The [browser smoke test](#browser-smoke-test) is a separate step.
 
 Open `http://127.0.0.1:8000`. Use HTTP rather than opening `index.html` directly, because the directory fetches `catalog.json` and `source-browser.json`. Stop the preview server with Ctrl+C.
 
@@ -37,9 +42,22 @@ After source, locale, or scope edits, regenerate the [GitHub browsing directory]
 
 The bare homepage always opens in English. Use `/zh/` or the language selector to open Chinese; old browser preferences do not override the default. Generated pages link to `/zh/` routes, while existing `?lang=zh` links still render Chinese.
 
-Before publication, check English and Chinese at desktop and 390 px widths: search, all filter types, empty results, clearing filters, loading more, prerequisite expansion, keyboard focus and the language selector. Confirm repository descriptions change language alongside the interface, including filtered and newly loaded cards. Check translated prerequisites and empty-description fallbacks, and confirm the canonical URL, social image URLs, `CNAME`, robots and sitemap agree on `awesomerea.org`.
+Before publication, check English and Chinese at desktop and 390 px widths: search, all filter types, empty results, clearing filters, loading more, prerequisite expansion, keyboard focus and the language selector. Confirm repository descriptions change language alongside the interface, including filtered and newly loaded cards. Check translated prerequisites and empty-description fallbacks, and confirm the canonical URL, social image URLs, `CNAME`, robots and sitemap agree on `awesomerea.org`. The browser smoke test below automates part of this list; it does not replace the review.
+
+The validators derive the sitemap inventory from collection routes, category definitions and current curated/paper IDs. Adding or removing a reviewed entry changes two detail URLs; there is no fixed page-count limit. Checks require exact detail IDs, complete localized content, ordinary listing links, reciprocal languages, self-canonicals and source-bound structured data. The entry builder removes only obsolete pages carrying its own generated-page marker and preserves listing pages and citation downloads.
 
 Review the exact `dist/` payload for credentials, account identifiers, administrative URLs, personal filesystem paths and unrelated files. The public catalog should contain public source links only. Publish generated assets, never an entire working directory or `.git` folder. `source-reviewed` describes a check of the resource's documentation; it does not assert that every listed tool has been executed.
+
+### Browser smoke test
+
+[smoke.cjs](../tests/browser/smoke.cjs) rebuilds `dist/` with the public fallback icons, serves it on `127.0.0.1` with the [site/_headers](../site/_headers) rules, and loads it in an installed headless Chrome or Chromium at 1280 px and 390 px. Requests to any other origin are blocked. Both homepages and a set of collection, about, browse and detail pages must load without console errors, Content Security Policy violations, failed local requests or horizontal page overflow. On each homepage it also checks the initial curated and repository card counts and status totals against the built JSON, a search-and-clear cycle, Show More in both views, requirement expansion, and a language switch that keeps a target filter.
+
+```sh
+npm ci --prefix tests/browser --ignore-scripts
+node tests/browser/smoke.cjs
+```
+
+The pinned `puppeteer-core` package drives the installed browser and downloads none; set `CHROME_PATH` when Chrome is not in a standard location. Without a browser or the package, the test prints the reason and skips locally, while CI fails. Screenshots are written to the ignored `.cache/browser-smoke/` directory, and CI keeps them as the `browser-smoke-screenshots` workflow artifact for 14 days. They are for people to inspect: the test does not compare images, approve the visual design, or open any linked resource.
 
 ### Optional licensed production icons
 
@@ -64,6 +82,19 @@ python3 scripts/build_production.py --fontawesome-assets-url https://awesome-rea
 The website uses **Cloudflare Pages**. Keep this collection's source public; `Awesome-REA/awesome-rea.github.io` is reserved for **private artifact backups**, independently of the hosting service. Confirm its visibility when maintaining that backup. GitHub Free for organizations supports Pages from public repositories; private-repository Pages requires a qualifying paid plan. [GitHub Pages availability](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
 
 For automatic deployment, connect the public source repository through Pages Git integration, select the production branch, use the asset-URL build command above, and set the output directory to `dist`. The build starts at the repository root and needs Python 3.10+. Git integration can build and deploy pushed changes without storing a separate deployment token in this repository. Confirm the deployed commit and domain state after configuring the integration. [Official Git integration instructions](https://developers.cloudflare.com/pages/get-started/git-integration/).
+
+The canonical host is `awesomerea.org`. The Cloudflare Single Redirect named **Canonical www to apex** matches `(http.host eq "www.awesomerea.org")` and returns **301** with the dynamic target `concat("https://awesomerea.org", http.request.uri.path)` and **Preserve query string** enabled. Keep the existing `www` DNS record proxied so the rule runs. This hostname rule is configured at the Cloudflare edge; Pages `_redirects` does not support host matching. [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), [Pages domain redirect guidance](https://developers.cloudflare.com/pages/how-to/www-redirect/).
+
+Include these checks after deployment or domain changes:
+
+```sh
+curl --head --silent 'https://www.awesomerea.org/papers/?x=1'
+curl --location --silent --output /dev/null --write-out '%{http_code} %{url_effective} %{num_redirects}\n' 'http://www.awesomerea.org/'
+```
+
+The first request should return `301` and `location: https://awesomerea.org/papers/?x=1`. The second should end at `https://awesomerea.org/` with `200` in at most two redirects. Also check a localized path and repeated or encoded query parameters, and confirm the corresponding apex page still returns `200` without a hostname redirect.
+
+[site/_headers](../site/_headers) adds site-wide security headers: a Content Security Policy, `X-Frame-Options: DENY`, a Permissions Policy that disables unused device features, and HSTS with a 30-day `max-age`. The policy allows only same-origin scripts, styles, images and JSON requests, plus the icon stylesheet and fonts from `https://awesome-rea.pages.dev`; `validate_site.py` fails the build if a page adds inline code, inline styles, frames or another asset origin. Cloudflare's same-origin email-decoding script is allowed, and so is Cloudflare Web Analytics, which the edge injects only on the production domain (its beacon from `https://static.cloudflareinsights.com` and its reports to `https://cloudflareinsights.com`); `validate_site.py` keeps both origins in the policy because built pages never show the beacon. Enabling Zaraz, JavaScript detections or any other injected script requires updating the policy first. `includeSubDomains` and `preload` need an owner decision about every subdomain before they are added.
 
 ## Direct Upload for the icon origin or a manual deployment
 
@@ -94,5 +125,7 @@ After deployment, verify the returned deployment URL, then confirm the custom-do
 The build writes an English homepage at `/` and a complete Chinese homepage at `/zh/`. Each has its own canonical URL, localized title and description, and reciprocal `hreflang` links. Both routes appear in the sitemap. The language control preserves query filters and the current fragment when moving between these routes; existing `?lang=zh` links remain readable.
 
 Homepage navigation and featured collection links are ordinary HTML links, available before JavaScript runs. Search uses the curated catalog by default; `?view=source-index` explicitly opens the automated repository index. Both views share the contributor credits. Font Awesome Pro continues to load through the configured authorized asset origin; no licensed font binaries are committed.
+
+When a nonblank curated query has no matches, readers can continue with the same query in the active language's paper directory or the available repository index. The paper link opens the existing bibliography search; the repository action retains its automatic-index label. Offering these actions does not fetch either collection or promise a match.
 
 The interactive catalog defaults to a compact list. The Layout control switches between compact rows and cards without rebuilding results, so expanded details and current filters stay in place. `?layout=cards` shares the card layout; omitting it uses the compact list. The choice travels with language links. Compact repository rows keep related entries and clickable topics inside Details; descriptions remain complete at the same reading size.
