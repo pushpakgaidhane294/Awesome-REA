@@ -4,6 +4,7 @@ __pycache__/
 node_modules/
 .venv/
 .cache/
+labs/**/output/
 *.local.json
 dist/
 .env
